@@ -1,31 +1,78 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+<div id="navbar-main">
+  <nav class="navbar navbar-expand-lg navbar-dark mb-3 fixed-top">
     <div class="container">
-      <a class="navbar-brand" routerLink="/medical-chain" routerLinkActive="active">
-        <div class="logo"></div> Medical Chain</a>
-      <button class="navbar-toggler navbar-toggler-right"
-        type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-label="Toggle navigation"
-        [attr.aria-expanded]="!isCollapsed" 
-        (click)="SetCollapsed()"
-        >
+      <a class="navbar-brand" routerLink="/home" routerLinkActive="active">
+        <div class="logo">
+          <div>
+            <img src="../../../assets/logo/main-logo.png" alt=""> </div>
+          <div>
+            <h5> กรมพัฒนาธุรกิจการค้า </h5>
+            <h6> Department of Business Development </h6>
+          </div>
+        </div>
+      </a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-label="Toggle navigation" [attr.aria-expanded]="!isCollapsed" (click)="setCollapsed()">
         <div class="navbar-toggler-icon"></div>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/request-medical" routerLinkActive="active" (click)="SetCollapsed()">Request</a>
+            <a class="nav-link" routerLinkActive="active" data-toggle="modal" (click)="openModal(signInModal)">เข้าสู่ระบบ</a>
+          </li>
+          <li class="nav-item d-none d-lg-block">
+            <div class="seperate"></div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/medical-record" routerLinkActive="active" (click)="SetCollapsed()">Medical Record List</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/request-other" routerLinkActive="active" (click)="SetCollapsed()">Request from Other</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/summary-discharge" routerLinkActive="active" (click)="SetCollapsed()">Summary Discharge</a>
+            <a class="nav-link" routerLink="/sign-up" routerLinkActive="active" (click)="setCollapsed()">สมัครสมาชิก</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  
+</div>
+<ng-template #signInModal let-c="close" let-d="dismiss">
+  <div class="modal-header"> </div>
+  <div class="modal-body">
+    <div class="row w-45 float-right">
+      <div class="col-12">
+        <form>
+          <div class="form-group">
+            <p class="text-light text-center">เข้าสู่ระบบ
+              <span class="text-orange">เครื่อข่ายธงฟ้าชุมชน</span>
+            </p>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control text-center" id="inputUsername"
+              name="inputUsername" [(ngModel)]="model.username" placeholder="Username"> </div>
+          <div class="form-group">
+            <input type="password" class="form-control text-center" id="inputPassword"
+              name="inputPassword" [(ngModel)]="model.password" placeholder="Password"> </div>
+          <div class="form-group">
+            <button type="button" class="btn bg-orange text-white text-center" (click)="signIn()">เข้าสู่ระบบ</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link" href="#">ลืมรหัสผ่าน</a>
+      </li>
+      <li class="nav-item">
+        <div class="seperate"></div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">ช่วยเหลือ</a>
+      </li>
+      <li class="nav-item">
+        <div class="seperate"></div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">สมัครสมาชิกใหม่</a>
+      </li>
+    </ul>
+  </div>
+</ng-template>

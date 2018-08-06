@@ -3,9 +3,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Routes, RouterModule } from '@angular/router';
 
 import { FileNotFoundComponent } from './pages/file-not-found/file-not-found.component';
+import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/medical-chain', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'index', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: '**', component: FileNotFoundComponent }
 ];
 
