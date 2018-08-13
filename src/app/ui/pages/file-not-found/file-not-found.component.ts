@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-file-not-found',
   templateUrl: './file-not-found.component.html',

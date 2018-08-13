@@ -14,6 +14,13 @@ import { FooterComponent } from './footer/footer.component';
 import { FileNotFoundComponent } from './pages/file-not-found/file-not-found.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AuthService } from '../core/auth.service';
+import { RegisterDealerComponent } from './pages/register/register-dealer/register-dealer.component';
+import { RegisterMainComponent } from './pages/register/register-main/register-main.component';
+import { RegisterRetailComponent } from './pages/register/register-retail/register-retail.component';
+import { RegisterWholesaleComponent } from './pages/register/register-wholesale/register-wholesale.component';
+import { LayoutService } from '../core/layout.service';
+import { AuthGuard } from '../core/auth.guard';
+import { UserService } from '../core/user.service';
 
 @NgModule({
   imports: [
@@ -27,10 +34,11 @@ import { AuthService } from '../core/auth.service';
     ReactiveFormsModule
   ],
   declarations: [
-    LayoutComponent, HeaderComponent, FooterComponent,
-    FileNotFoundComponent, HomeComponent
+    LayoutComponent, HeaderComponent, FooterComponent, FileNotFoundComponent,
+    HomeComponent, RegisterDealerComponent, RegisterMainComponent,
+    RegisterRetailComponent, RegisterWholesaleComponent
   ],
-  providers: [AuthService],
+  providers: [AuthService, LayoutService, AuthGuard, UserService],
   exports: [LayoutComponent]
 })
 export class UiModule { }
