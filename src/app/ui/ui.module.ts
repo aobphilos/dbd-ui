@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -13,6 +13,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { FooterComponent } from './footer/footer.component';
 import { FileNotFoundComponent } from './pages/file-not-found/file-not-found.component';
 import { HomeComponent } from './pages/home/home.component';
+import { AuthService } from '../core/auth.service';
 
 @NgModule({
   imports: [
@@ -22,12 +23,14 @@ import { HomeComponent } from './pages/home/home.component';
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     CommonModule,
     UiRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     LayoutComponent, HeaderComponent, FooterComponent,
     FileNotFoundComponent, HomeComponent
   ],
+  providers: [AuthService],
   exports: [LayoutComponent]
 })
 export class UiModule { }

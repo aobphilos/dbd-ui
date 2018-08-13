@@ -42,12 +42,12 @@ img {
 }
 
 a {
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
 }
 
 a:hover {
-  color: rgba(255, 255, 255, 1);
+  color: #f7a600;
   text-decoration: none;
 }
 
@@ -84,26 +84,6 @@ h4 {
   width: inherit;
 }
 
-div.bg-main {
-  width: 100%;
-  height: 100%;
-  background: url('assets/bg/main.png') top center no-repeat;
-  background-size: 100% 33%;
-  background-position-y: -20px;
-  font-family: 'rsuregular';
-  font-size: 18px;
-  color: #333333;
-  -webkit-font-smoothing: antialiased;
-  -moz-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -o-font-smoothing: antialiased;
-  margin: 0;
-  clear: both;
-  @media (max-width: map-get($grid-breakpoints, md)) {
-    background-size: 100% 13rem;
-  }
-}
-
 .text-orange {
   color: #f7a600;
 }
@@ -120,6 +100,10 @@ div.bg-main {
   color: #636363;
 }
 
+.text-yellow {
+  color: #ffe699;
+}
+
 .bg-orange {
   background-color: #f7a600;
 }
@@ -134,6 +118,10 @@ div.bg-main {
 
 .bg-gray {
   background-color: #636363;
+}
+
+.bg-yellow {
+  background-color: #ffe699;
 }
 
 /* ====== Import From P'Boy ====== */

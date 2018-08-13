@@ -1,3 +1,4 @@
+@import "~bootstrap/scss/bootstrap";
 .navbar {
   .logo {
     div {
@@ -5,13 +6,55 @@
       margin-right: 0.5rem;
       img {
         width: 5.5rem;
+        @include media-breakpoint-down(sm) {
+          width: 4.5rem;
+        }
+      }
+      h5 {
+        font-size: 1.2rem;
+      }
+      span {
+        font-size: 1rem;
       }
       h5,
-      h6 {
+      span {
         margin: 0;
-        line-height: 1.25rem;
+        line-height: 1.1rem;
+        @include media-breakpoint-down(sm) {
+          font-size: 1rem;
+        }
       }
     }
+  }
+  .collapse {
+    &.navbar-collapse {
+      a {
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+      }
+      a:hover {
+        color: #ffe699;
+        text-decoration: none;
+      }
+      @include media-breakpoint-down(md) {
+        ul {
+          list-style-type: square;
+          color: white;
+          padding-left: 3rem;
+          li {
+            padding: 0 2rem;
+          }
+        }
+      }
+    }
+  }
+  .scroll-move>& {
+    background: #5b2d90;
+    border-bottom: 0.4rem outset #f7a600;
+  }
+  @include media-breakpoint-down(md) {
+    background: #5b2d90;
+    border-bottom: 0.4rem outset #f7a600;
   }
 }
 

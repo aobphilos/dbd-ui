@@ -1,19 +1,18 @@
-<div id="navbar-main">
-  <nav class="navbar navbar-expand-lg navbar-dark mb-3 fixed-top">
+<div id="navbar-main" [class.scroll-move]="isScrollMove">
+  <nav class="navbar navbar-expand-lg navbar-dark mb-3 fixed-top" [class.shadow-lg]="isScrollMove">
     <div class="container">
       <a class="navbar-brand" routerLink="/home" routerLinkActive="active">
         <div class="logo">
           <div>
             <img src="../../../assets/logo/main-logo.png" alt=""> </div>
           <div>
-            <h5> กรมพัฒนาธุรกิจการค้า </h5>
-            <h6> Department of Business Development </h6>
+            <h5> กรมพัฒนาธุรกิจการค้า กระทรวงพาณิชย์</h5>
+            <span> Department of Business Development </span>
           </div>
         </div>
       </a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-label="Toggle navigation" [attr.aria-expanded]="!isCollapsed" (click)="setCollapsed()">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-label="Toggle navigation" [attr.aria-expanded]="!isCollapsed" (click)="setCollapsed()">
         <div class="navbar-toggler-icon"></div>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
@@ -33,24 +32,24 @@
   </nav>
 </div>
 <ng-template #signInModal let-c="close" let-d="dismiss">
-  <div class="modal-header"> </div>
+  <div class="modal-header">
+    <ngb-alert type="warning" class="d-none">{{ errorMessage }}</ngb-alert>
+  </div>
   <div class="modal-body">
     <div class="row w-45 float-right">
       <div class="col-12">
-        <form>
+        <form [formGroup]="loginForm">
           <div class="form-group">
             <p class="text-light text-center">เข้าสู่ระบบ
               <span class="text-orange">เครื่อข่ายธงฟ้าชุมชน</span>
             </p>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control text-center" id="inputUsername"
-              name="inputUsername" [(ngModel)]="model.username" placeholder="Username"> </div>
+            <input type="email" formControlName="email" class="form-control text-center" placeholder="Email"> </div>
           <div class="form-group">
-            <input type="password" class="form-control text-center" id="inputPassword"
-              name="inputPassword" [(ngModel)]="model.password" placeholder="Password"> </div>
+            <input type="password" class="form-control text-center" formControlName="password" placeholder="Password"> </div>
           <div class="form-group">
-            <button type="button" class="btn bg-orange text-white text-center" (click)="signIn()">เข้าสู่ระบบ</button>
+            <button type="button" class="btn bg-orange text-white text-center" (click)="tryLogin(loginForm.value)">เข้าสู่ระบบ</button>
           </div>
         </form>
       </div>
