@@ -24,7 +24,7 @@
             <div class="seperate"></div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/sign-up" routerLinkActive="active" (click)="setCollapsed()">สมัครสมาชิก</a>
+            <a class="nav-link" routerLinkActive="active" data-toggle="modal" (click)="openModal(signUpModal)">สมัครสมาชิก</a>
           </li>
         </ul>
       </div>
@@ -56,7 +56,7 @@
     </div>
   </div>
   <div class="modal-footer">
-    <ul class="nav justify-content-center">
+    <ul class="nav text-white justify-content-center">
       <li class="nav-item">
         <a class="nav-link" href="#">ลืมรหัสผ่าน</a>
       </li>
@@ -70,8 +70,52 @@
         <div class="seperate"></div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">สมัครสมาชิกใหม่</a>
+        <a class="nav-link" href="#" (click)="d(signUpModal)">สมัครสมาชิกใหม่</a>
       </li>
     </ul>
   </div>
 </ng-template>
+<ng-template #signUpModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <ngb-alert type="warning" class="d-none">{{ errorMessage }}</ngb-alert>
+    </div>
+    <div class="modal-body">
+      <div class="row w-45 float-right">
+        <div class="col-12">
+          <form [formGroup]="loginForm">
+            <div class="form-group">
+              <p class="text-light text-center">สมัครสมาชิก
+                <span class="text-orange">เครื่อข่ายธงฟ้าชุมชน</span>
+              </p>
+            </div>
+            <div class="form-group">
+              <input type="email" formControlName="email" class="form-control text-center" placeholder="Email"> </div>
+            <div class="form-group">
+              <input type="password" class="d-none" formControlName="password" placeholder="Password" value="DBD2018!"> </div>
+            <div class="form-group">
+              <button type="button" class="btn bg-orange text-white text-center" (click)="tryLogin(loginForm.value)">สมัครสมาชิก</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <ul class="nav text-white justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" href="#">ลืมรหัสผ่าน</a>
+        </li>
+        <li class="nav-item">
+          <div class="seperate"></div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">ช่วยเหลือ</a>
+        </li>
+        <li class="nav-item">
+          <div class="seperate"></div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" (click)="d(signInModal)">เข้าสู่ระบบ</a>
+        </li>
+      </ul>
+    </div>
+  </ng-template>

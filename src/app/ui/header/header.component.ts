@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, TemplateRef } from '@angular/core';
 import { AuthService } from '../../core/auth.service';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -59,6 +59,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .open(content, {
         windowClass: 'modal-signin',
         backdrop: 'static'
+      });
+
+    this.modalRef.result.then(
+      value => { },
+      reason => {
+        if (reason instanceof TemplateRef) {
+          this.openModal(reason);
+        }
       });
   }
 
