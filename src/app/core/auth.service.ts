@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase';
+import { auth } from 'firebase/app';
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -12,7 +12,7 @@ export class AuthService {
 
   doFacebookLogin() {
     return new Promise<any>((resolve, reject) => {
-      const provider = new firebase.auth.FacebookAuthProvider();
+      const provider = new auth.FacebookAuthProvider();
       this.afAuth.auth
         .signInWithPopup(provider)
         .then(res => {
@@ -26,7 +26,7 @@ export class AuthService {
 
   doTwitterLogin() {
     return new Promise<any>((resolve, reject) => {
-      const provider = new firebase.auth.TwitterAuthProvider();
+      const provider = new auth.TwitterAuthProvider();
       this.afAuth.auth
         .signInWithPopup(provider)
         .then(res => {
@@ -40,7 +40,7 @@ export class AuthService {
 
   doGoogleLogin() {
     return new Promise<any>((resolve, reject) => {
-      const provider = new firebase.auth.GoogleAuthProvider();
+      const provider = new auth.GoogleAuthProvider();
       provider.addScope('profile');
       provider.addScope('email');
       this.afAuth.auth
@@ -56,7 +56,7 @@ export class AuthService {
 
   doRegister(value) {
     return new Promise<any>((resolve, reject) => {
-      firebase.auth().createUserWithEmailAndPassword(value.email, environment.masterPassword)
+      auth().createUserWithEmailAndPassword(value.email, environment.masterPassword)
         .then(res => {
           if (res) {
             res.user.sendEmailVerification()
@@ -72,7 +72,7 @@ export class AuthService {
 
   doLogin(value) {
     return new Promise<any>((resolve, reject) => {
-      firebase.auth().signInWithEmailAndPassword(value.email, value.password)
+      auth().signInWithEmailAndPassword(value.email, value.password)
         .then(res => {
           resolve(res);
         }, err => reject(err));
@@ -81,7 +81,7 @@ export class AuthService {
 
   doLogout() {
     return new Promise((resolve, reject) => {
-      if (firebase.auth().currentUser) {
+      if (auth().currentUser) {
         this.afAuth.auth.signOut();
         resolve();
       } else {
@@ -92,7 +92,7 @@ export class AuthService {
 
   doResetPassword(email: string) {
     return new Promise<any>((resolve, reject) => {
-      firebase.auth().sendPasswordResetEmail(email)
+      auth().sendPasswordResetEmail(email)
         .then(res => {
           console.log('sent Password Reset Email!');
           resolve(res);

@@ -8,15 +8,15 @@
 
 .welcome {
   img {
-    width: 20%;
+    height: 13rem;
     @include media-breakpoint-down(lg) {
-      width: 27%;
+      width: 11rem;
     }
     @include media-breakpoint-down(md) {
-      width: 34%;
+      width: 9rem;
     }
     @include media-breakpoint-down(sm) {
-      width: 70%;
+      width: 11rem;
     }
   }
   p {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase';
+import { auth } from 'firebase/app';
 
 @Injectable()
 export class UserService {
@@ -15,7 +15,7 @@ export class UserService {
 
   getCurrentUser() {
     return new Promise<any>((resolve, reject) => {
-      firebase.auth().onAuthStateChanged((user) => {
+      auth().onAuthStateChanged((user) => {
         if (user) {
           resolve(user);
         } else {
@@ -27,7 +27,7 @@ export class UserService {
 
   updateCurrentUser(value) {
     return new Promise<any>((resolve, reject) => {
-      const user = firebase.auth().currentUser;
+      const user = auth().currentUser;
       user.updateProfile({
         displayName: value.name,
         photoURL: user.photoURL

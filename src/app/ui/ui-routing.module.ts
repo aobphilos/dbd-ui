@@ -4,7 +4,7 @@ import {
   Routes, RouterModule, Router, NavigationEnd, ActivatedRoute
 } from '@angular/router';
 
-import { filter, map, mergeMap } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 import { AuthGuard } from '../core/auth.guard';
 
@@ -20,6 +20,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterMainComponent, canActivate: [AuthGuard] },
   { path: '**', component: FileNotFoundComponent }
 ];
+
+const FlagFileNotFound = 'FileNotFoundComponent';
 
 @NgModule({
   imports: [NgbModule.forRoot(), RouterModule.forRoot(routes, { useHash: true })],
@@ -38,10 +40,10 @@ export class UiRoutingModule {
       })
     ).subscribe((event) => {
       let cp = '';
-      if (event && event['component']) {
-        cp = event['component']['name'] || '';
+      if (event && event.snapshot && event.snapshot.routeConfig) {
+        cp = event.snapshot.routeConfig.path || '';
       }
-      this.layoutService.toggleMap(!/FileNotFoundComponent/i.test(cp));
+      this.layoutService.toggleMap(cp !== '**');
     });
   }
 }
