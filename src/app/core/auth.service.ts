@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthService {
@@ -55,18 +56,16 @@ export class AuthService {
 
   doRegister(value) {
     return new Promise<any>((resolve, reject) => {
-      firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
+      firebase.auth().createUserWithEmailAndPassword(value.email, environment.masterPassword)
         .then(res => {
-          resolve(res);
-        }, err => reject(err));
-    });
-  }
-
-  doRegisterWithEmailVerify(value) {
-    return new Promise<any>((resolve, reject) => {
-      firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
-        .then(res => {
-          resolve(res);
+          if (res) {
+            res.user.sendEmailVerification()
+              .then(() => resolve())
+              .catch(() => reject());
+          } else {
+            console.log('failed to create user');
+            reject();
+          }
         }, err => reject(err));
     });
   }
@@ -91,5 +90,14 @@ export class AuthService {
     });
   }
 
+  doResetPassword(email: string) {
+    return new Promise<any>((resolve, reject) => {
+      firebase.auth().sendPasswordResetEmail(email)
+        .then(res => {
+          console.log('sent Password Reset Email!');
+          resolve(res);
+        }, err => reject(err));
+    });
+  }
 
 }

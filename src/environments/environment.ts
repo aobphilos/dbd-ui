@@ -11,7 +11,8 @@ export const environment = {
     projectId: 'dbd-ui',
     storageBucket: 'dbd-ui.appspot.com',
     messagingSenderId: '401525491596'
-  }
+  },
+  masterPassword: 'DBD@2018!T'
 };
 
 /*

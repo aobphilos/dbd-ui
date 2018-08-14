@@ -13,7 +13,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public isCollapsed = true;
   public isScrollMove = false;
   public errorMessage: string;
-  public loginForm: FormGroup;
+  public signInForm: FormGroup;
+  public signUpForm: FormGroup;
 
   constructor(
     private modalService: NgbModal,
@@ -34,9 +35,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   createForm() {
-    this.loginForm = this.fb.group({
+    this.signInForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
+    });
+    this.signUpForm = this.fb.group({
+      email: ['', Validators.required]
     });
   }
 
@@ -44,6 +48,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.doLogin(value)
       .then(res => {
         this.modalRef.close();
+      }, err => {
+        console.log(err);
+        this.errorMessage = err.message;
+      });
+  }
+
+  tryRegister(value) {
+    this.authService.doRegister(value)
+      .then(res => {
+        console.log('Your account has been created');
+        this.errorMessage = '';
       }, err => {
         console.log(err);
         this.errorMessage = err.message;
@@ -68,6 +83,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
           this.openModal(reason);
         }
       });
+  }
+
+  onKeyDownSignIn(event) {
+    if (event.keyCode === 13) {
+      this.tryLogin(this.signInForm.value);
+    }
+  }
+
+  onKeyDownSignUp(event) {
+    if (event.keyCode === 13) {
+      this.tryRegister(this.signUpForm.value);
+    }
   }
 
   ngOnInit() {
