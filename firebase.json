@@ -7,7 +7,7 @@
       "**/node_modules/**"
     ],
     "headers": [{
-      "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+      "source": "**/*.@(eot|otf|ttf|ttc|woff|woff2|svg|font.css)",
       "headers": [{
         "key": "Access-Control-Allow-Origin",
         "value": "*"
@@ -24,7 +24,8 @@
         "key": "Cache-Control",
         "value": "max-age=300"
       }]
-    }]
+    }],
+    "cleanUrls": true,
+    "trailingSlash": false
   }
-
 }
