@@ -18,9 +18,11 @@ import { RegisterDealerComponent } from './pages/register/register-dealer/regist
 import { RegisterMainComponent } from './pages/register/register-main/register-main.component';
 import { RegisterRetailComponent } from './pages/register/register-retail/register-retail.component';
 import { RegisterWholesaleComponent } from './pages/register/register-wholesale/register-wholesale.component';
-import { LayoutService } from '../core/layout.service';
+import { LayoutService } from './layout/layout.service';
 import { AuthGuard } from '../core/auth.guard';
 import { UserService } from '../core/user.service';
+import { NotifyComponent } from './notify/notify.component';
+import { NotifyService } from './notify/notify.service';
 
 @NgModule({
   imports: [
@@ -36,9 +38,9 @@ import { UserService } from '../core/user.service';
   declarations: [
     LayoutComponent, HeaderComponent, FooterComponent, FileNotFoundComponent,
     HomeComponent, RegisterDealerComponent, RegisterMainComponent,
-    RegisterRetailComponent, RegisterWholesaleComponent
+    RegisterRetailComponent, RegisterWholesaleComponent, NotifyComponent
   ],
-  providers: [AuthService, LayoutService, AuthGuard, UserService],
+  providers: [AuthService, LayoutService, AuthGuard, UserService, NotifyService],
   exports: [LayoutComponent]
 })
 export class UiModule { }

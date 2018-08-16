@@ -73,9 +73,10 @@ export class AuthService {
   doLogin(value) {
     return new Promise<any>((resolve, reject) => {
       auth().signInWithEmailAndPassword(value.email, value.password)
-        .then(res => {
-          resolve(res);
-        }, err => reject(err));
+        .then(
+          res => resolve(res),
+          err => reject(err)
+        );
     });
   }
 

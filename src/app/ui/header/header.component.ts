@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy, TemplateRef } from '@angular/core';
 import { AuthService } from '../../core/auth.service';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LayoutService } from '../layout/layout.service';
+import { NotifyService } from '../notify/notify.service';
 
 @Component({
   selector: 'app-header',
@@ -15,11 +17,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public errorMessage: string;
   public signInForm: FormGroup;
   public signUpForm: FormGroup;
+  public toggleMenu: boolean;
 
   constructor(
     private modalService: NgbModal,
     public authService: AuthService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private layoutService: LayoutService,
+    private notifyService: NotifyService
   ) {
     this.createForm();
   }
@@ -52,19 +57,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .then(res => {
         this.modalRef.close();
       }, err => {
-        console.log(err);
-        this.errorMessage = err.message;
+        this.notifyService.setNotifyMessage(err.message);
       });
   }
 
   tryRegister(value) {
     this.authService.doRegister(value)
       .then(res => {
-        console.log('Your account has been created');
+        this.notifyService.setNotifyMessage('Your account has been created');
         this.errorMessage = '';
       }, err => {
-        console.log(err);
-        this.errorMessage = err.message;
+        this.notifyService.setNotifyMessage(err.message);
       });
   }
 
@@ -101,6 +104,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.layoutService.showMainMenu.subscribe(flag => this.toggleMenu = flag);
+
     window.addEventListener('scroll', (e) => this.onWindowScroll(e), true);
   }
 
