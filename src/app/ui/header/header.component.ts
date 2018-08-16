@@ -57,17 +57,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .then(res => {
         this.modalRef.close();
       }, err => {
-        this.notifyService.setNotifyMessage(err.message);
+        this.notifyService.setWarningMessage(err.message);
       });
   }
 
   tryRegister(value) {
     this.authService.doRegister(value)
       .then(res => {
-        this.notifyService.setNotifyMessage('Your account has been created');
+        this.notifyService.setSuccessMessage('Your account has been created');
         this.errorMessage = '';
       }, err => {
-        this.notifyService.setNotifyMessage(err.message);
+        this.notifyService.setWarningMessage(err.message);
       });
   }
 
@@ -76,6 +76,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   openModal(content) {
+    this.signUpForm.reset();
+    this.signInForm.reset();
+
     this.modalRef = this.modalService
       .open(content, {
         windowClass: 'modal-signin',
