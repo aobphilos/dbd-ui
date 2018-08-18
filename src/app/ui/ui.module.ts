@@ -23,6 +23,8 @@ import { AuthGuard } from '../core/auth.guard';
 import { UserService } from '../core/user.service';
 import { NotifyComponent } from './notify/notify.component';
 import { NotifyService } from './notify/notify.service';
+import { IndicatorComponent } from './indicator/indicator.component';
+import { IndicatorService } from './indicator/indicator.service';
 
 @NgModule({
   imports: [
@@ -38,9 +40,11 @@ import { NotifyService } from './notify/notify.service';
   declarations: [
     LayoutComponent, HeaderComponent, FooterComponent, FileNotFoundComponent,
     HomeComponent, RegisterDealerComponent, RegisterMainComponent,
-    RegisterRetailComponent, RegisterWholesaleComponent, NotifyComponent
+    RegisterRetailComponent, RegisterWholesaleComponent, NotifyComponent, IndicatorComponent
   ],
-  providers: [AuthService, LayoutService, AuthGuard, UserService, NotifyService],
+  providers: [
+    AuthService, LayoutService, AuthGuard, UserService, NotifyService, IndicatorService
+  ],
   exports: [LayoutComponent]
 })
 export class UiModule { }

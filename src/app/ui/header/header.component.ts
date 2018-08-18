@@ -4,6 +4,7 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LayoutService } from '../layout/layout.service';
 import { NotifyService } from '../notify/notify.service';
+import { IndicatorService } from '../indicator/indicator.service';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +25,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     public authService: AuthService,
     private fb: FormBuilder,
     private layoutService: LayoutService,
-    private notifyService: NotifyService
+    private notifyService: NotifyService,
+    private indicatorService: IndicatorService
   ) {
     this.createForm();
   }
