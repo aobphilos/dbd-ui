@@ -65,6 +65,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.doRegister(value)
       .then(res => {
         this.notifyService.setSuccessMessage('Your account has been created');
+        setTimeout(() => {
+          this.modalRef.close();
+          this.notifyService.clear();
+        }, 2500);
         this.errorMessage = '';
       }, err => {
         this.notifyService.setWarningMessage(err.message);

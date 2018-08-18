@@ -16,6 +16,10 @@ export class NotifyService {
     return this.notifyMessageSource.asObservable();
   }
 
+  clear() {
+    this.notifyMessageSource.next(new Notify());
+  }
+
   setInfoMessage(message: string) {
     this.setMessage(message, NotifyType.INFO);
   }
