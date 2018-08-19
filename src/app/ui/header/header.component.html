@@ -11,14 +11,12 @@
           </div>
         </div>
       </a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-label="Toggle navigation" [attr.aria-expanded]="!isCollapsed" (click)="setCollapsed()"
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-label="Toggle navigation" [attr.aria-expanded]="!isCollapsed" (click)="setCollapsed()"
         *ngIf="toggleMenu">
         <div class="navbar-toggler-icon"></div>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed"
-        *ngIf="toggleMenu">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed" *ngIf="toggleMenu">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" data-toggle="modal" (click)="openModal(signInModal)">เข้าสู่ระบบ</a>
@@ -48,11 +46,9 @@
             </p>
           </div>
           <div class="form-group">
-            <input type="email" formControlName="email" class="form-control text-center"
-              placeholder="Email"> </div>
+            <input type="email" formControlName="email" class="form-control text-center" placeholder="Email"> </div>
           <div class="form-group">
-            <input type="password" class="form-control text-center" formControlName="password"
-              placeholder="Password"> </div>
+            <input type="password" class="form-control text-center" formControlName="password" placeholder="Password"> </div>
           <div class="form-group">
             <button type="button" class="btn bg-orange text-white text-center" (click)="tryLogin(signInForm.value)">เข้าสู่ระบบ</button>
           </div>
@@ -94,8 +90,9 @@
             </p>
           </div>
           <div class="form-group">
-            <input type="email" formControlName="email" class="form-control text-center"
-              placeholder="Email"> </div>
+            <input type="email" formControlName="email" class="form-control text-center" placeholder="Email"> </div>
+          <div class="form-group">
+            <input type="password" class="form-control text-center" formControlName="password" placeholder="Password"> </div>
           <div class="form-group">
             <button type="button" class="btn bg-orange text-white text-center" (click)="tryRegister(signUpForm.value)">สมัครสมาชิก</button>
           </div>

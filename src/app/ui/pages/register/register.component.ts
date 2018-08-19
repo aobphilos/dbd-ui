@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { RegisterService } from './register.service';
 import { Router } from '@angular/router';
 import { RegisterStep } from '../../../enum/register-step';
-import { RegisterType } from '../../../enum/register-type';
 
 @Component({
   selector: 'app-register',
@@ -13,41 +12,35 @@ export class RegisterComponent implements OnInit {
 
   private currentStep: RegisterStep;
 
-
-  constructor(private router: Router, private registerService: RegisterService) {
-    this.currentStep = RegisterStep.CHOOSE_PLAN;
-  }
+  constructor(private router: Router, private registerService: RegisterService) { }
 
   choosePlan(planId: number) {
     this.registerService.setPlanId(planId);
-    this.changeStep(RegisterStep.EDIT_USER_INFO);
+    this.registerService.setRegisterStep(RegisterStep.EDIT_USER_INFO);
   }
 
-  showPlan() {
+  get showPlan() {
     return this.currentStep === RegisterStep.CHOOSE_PLAN;
   }
 
-  showUserInfo() {
+  get showUserInfo() {
     return this.currentStep === RegisterStep.EDIT_USER_INFO;
   }
 
-  showRetail() {
+  get showRetail() {
     return this.currentStep === RegisterStep.EDIT_RETAIL;
   }
 
-  showWholesale() {
+  get showWholesale() {
     return this.currentStep === RegisterStep.EDIT_WHOLE_SALE;
   }
 
-  showDealer() {
+  get showDealer() {
     return this.currentStep === RegisterStep.EDIT_DEALER;
   }
 
-  private changeStep(step: RegisterStep) {
-    this.currentStep = step;
-  }
-
   ngOnInit() {
+    this.registerService.registerStep.subscribe(step => this.currentStep = step);
   }
 
 }

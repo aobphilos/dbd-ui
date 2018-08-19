@@ -1,8 +1,4 @@
 @import "~bootstrap/scss/bootstrap";
-.line-break {
-  border-bottom: 0.05rem solid #f7a600;
-}
-
 .card-columns {
   column-count: 3;
   @include media-breakpoint-down(sm) {

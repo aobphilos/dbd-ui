@@ -3,17 +3,34 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase/app';
 import { environment } from '../../environments/environment';
 import { IndicatorService } from '../ui/indicator/indicator.service';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthService {
+  private authState: Observable<firebase.User>;
+  private currentUser: firebase.User = null;
 
   constructor(
     public afAuth: AngularFireAuth,
     private indicatorService: IndicatorService
-  ) { }
+  ) {
+
+    this.authState = this.afAuth.authState;
+    this.authState.subscribe(user => {
+      if (user) {
+        this.currentUser = user;
+      } else {
+        this.currentUser = null;
+      }
+    });
+  }
 
   private showBusy = () => this.indicatorService.showBusy();
   private hideBusy = () => this.indicatorService.hideBusy();
+
+  getAuthState() {
+    return this.authState;
+  }
 
   doFacebookLogin() {
     return new Promise<any>((resolve, reject) => {
@@ -62,7 +79,7 @@ export class AuthService {
   doRegister(value) {
     return new Promise<any>((resolve, reject) => {
       this.showBusy();
-      auth().createUserWithEmailAndPassword(value.email, environment.masterPassword)
+      auth().createUserWithEmailAndPassword(value.email, value.password)
         .then(res => {
           if (res) {
             res.user.sendEmailVerification()
@@ -105,7 +122,7 @@ export class AuthService {
 
   doLogout() {
     return new Promise((resolve, reject) => {
-      if (auth().currentUser) {
+      if (this.currentUser) {
         this.afAuth.auth.signOut();
         resolve();
       } else {

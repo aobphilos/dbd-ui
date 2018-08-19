@@ -41,7 +41,13 @@
   <div *ngIf="showUserInfo">
     <app-user-info></app-user-info>
   </div>
-  <div *ngIf="showDealer">
+  <div *ngIf="showRetail">
+    <app-user-retail></app-user-retail>
+  </div>
+  <div *ngIf="showWholesale">
     <app-user-wholesale></app-user-wholesale>
+  </div>
+  <div *ngIf="showDealer">
+    <app-user-dealer></app-user-dealer>
   </div>
 </div>

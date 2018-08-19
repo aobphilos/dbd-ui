@@ -1,37 +1,48 @@
 import { Injectable } from '@angular/core';
-import { RegisterForm } from '../../../model/register-form';
+import { BehaviorSubject } from 'rxjs';
 import { SessionType } from '../../../enum/session-type';
+import { RegisterForm } from '../../../model/register-form';
 import { RegisterType } from '../../../enum/register-type';
+import { RegisterStep } from '../../../enum/register-step';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService {
 
-  private regisForm: RegisterForm;
+  private registerForm: RegisterForm;
+  private registerStepSource = new BehaviorSubject<RegisterStep>(RegisterStep.CHOOSE_PLAN);
 
   constructor() {
     const form: RegisterForm = JSON.parse(sessionStorage.getItem(SessionType.REGISTER));
-    this.regisForm = form || new RegisterForm('');
+    this.registerForm = form || new RegisterForm('');
   }
 
   setPlanId(id: number) {
     switch (id) {
-      case 1: this.regisForm.planId = RegisterType.RETAIL; break;
-      case 2: this.regisForm.planId = RegisterType.WHOLE_SALE; break;
-      case 3: this.regisForm.planId = RegisterType.DEALER; break;
+      case 1: this.registerForm.planId = RegisterType.RETAIL; break;
+      case 2: this.registerForm.planId = RegisterType.WHOLE_SALE; break;
+      case 3: this.registerForm.planId = RegisterType.DEALER; break;
     }
     this.updateStorage();
   }
 
   setProfile(username: string, code: string) {
-    this.regisForm.username = username;
-    this.regisForm.code = code;
+    this.registerForm.username = username;
+    this.registerForm.code = code;
     this.updateStorage();
   }
 
   private updateStorage() {
-    sessionStorage.setItem(SessionType.REGISTER, JSON.stringify(this.regisForm));
+    sessionStorage.setItem(SessionType.REGISTER, JSON.stringify(this.registerForm));
+  }
+
+  get registerStep() {
+    return this.registerStepSource.asObservable();
+  }
+
+  setRegisterStep(step: RegisterStep) {
+    this.registerStepSource.next(step);
   }
 
 }
