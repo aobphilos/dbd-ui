@@ -1,0 +1,20 @@
+@import "~bootstrap/scss/bootstrap";
+div.bg-main {
+  width: 100%;
+  height: 100%;
+  background: url('../assets/bg/main.png') center center no-repeat;
+  background-size: 130% 35rem;
+  background-position-y: -246px;
+  font-family: 'rsuregular';
+  font-size: 18px;
+  color: #333333;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -o-font-smoothing: antialiased;
+  margin: 0;
+  clear: both;
+  @include media-breakpoint-down(md) {
+    background: initial;
+  }
+}

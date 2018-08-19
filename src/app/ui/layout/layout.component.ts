@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LayoutService } from '../../core/layout.service';
 
 @Component({
   selector: 'app-layout',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor() { }
+  toggleMap: boolean;
+
+  constructor(private layoutService: LayoutService) { }
 
   ngOnInit() {
+    this.layoutService.showGoogleMap.subscribe(flag => this.toggleMap = flag);
   }
 
 }

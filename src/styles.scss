@@ -3,11 +3,135 @@
 @import "styles-variables";
 @import "~bootstrap/scss/bootstrap";
 @import "~font-awesome/scss/font-awesome";
+@import "styles-modal-signin";
+/* ====== Import From P'Boy ====== */
+
+@font-face {
+  font-family: 'rsuregular';
+  src: url('../fonts/rsu_regular/rsu_regular_0-webfont.eot');
+  src: url('../fonts/rsu_regular/rsu_regular_0-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/rsu_regular/rsu_regular_0-webfont.woff2') format('woff2'), url('../fonts/rsu_regular/rsu_regular_0-webfont.woff') format('woff'), url('../fonts/rsu_regular/rsu_regular_0-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'rsubold';
+  src: url('../fonts/rsu_bold/rsu_bold_0-webfont.eot');
+  src: url('../fonts/rsu_bold/rsu_bold_0-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/rsu_bold/rsu_bold_0-webfont.woff2') format('woff2'), url('../fonts/rsu_bold/rsu_bold_0-webfont.woff') format('woff'), url('../fonts/rsu_bold/rsu_bold_0-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+input,
+textarea,
+select {
+  font-family: 'rsuregular';
+  font-size: 18px;
+  color: #333333;
+  border: 0;
+}
+
+input:focus {
+  border: 0px;
+  outline: none;
+}
+
+img {
+  border: 0px;
+  outline: none;
+}
+
+a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #f7a600;
+  text-decoration: none;
+}
+
+a.Link01 {
+  text-decoration: underline
+}
+
+a.Link01:hover {
+  text-decoration: underlin
+}
+
+a:active,
+a:focus {
+  outline: none;
+}
+
+b {
+  font-family: 'rsubold';
+  font-weight: normal;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'rsubold';
+  font-weight: normal;
+}
+
+.clear {
+  clear: both;
+  margin: 0px;
+  padding: 0px;
+  width: inherit;
+}
+
+.text-orange {
+  color: #f7a600;
+}
+
+.text-purple {
+  color: #5b2d90;
+}
+
+.text-red {
+  color: #ff4c43;
+}
+
+.text-gray {
+  color: #636363;
+}
+
+.text-yellow {
+  color: #ffe699;
+}
+
+.bg-orange {
+  background-color: #f7a600;
+}
+
+.bg-purple {
+  background-color: #5b2d90;
+}
+
+.bg-red {
+  background-color: #ff4c43;
+}
+
+.bg-gray {
+  background-color: #636363;
+}
+
+.bg-yellow {
+  background-color: #ffe699;
+}
+
+/* ====== Import From P'Boy ====== */
+
 header {
   nav {
     width: 100%;
   }
-  @media (min-width: map-get($grid-breakpoints, sm)) {
+  @media (min-width: map-get($grid-breakpoints,
+  sm)) {
     nav {
       width: 80%;
     }
