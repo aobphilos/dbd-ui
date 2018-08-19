@@ -14,10 +14,6 @@ import { FooterComponent } from './footer/footer.component';
 import { FileNotFoundComponent } from './pages/file-not-found/file-not-found.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AuthService } from '../core/auth.service';
-import { RegisterDealerComponent } from './pages/register/register-dealer/register-dealer.component';
-import { RegisterMainComponent } from './pages/register/register-main/register-main.component';
-import { RegisterRetailComponent } from './pages/register/register-retail/register-retail.component';
-import { RegisterWholesaleComponent } from './pages/register/register-wholesale/register-wholesale.component';
 import { LayoutService } from './layout/layout.service';
 import { AuthGuard } from '../core/auth.guard';
 import { UserService } from '../core/user.service';
@@ -25,6 +21,11 @@ import { NotifyComponent } from './notify/notify.component';
 import { NotifyService } from './notify/notify.service';
 import { IndicatorComponent } from './indicator/indicator.component';
 import { IndicatorService } from './indicator/indicator.service';
+import { UserInfoComponent } from './pages/user/user-info/user-info.component';
+import { UserWholesaleComponent } from './pages/user/user-wholesale/user-wholesale.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { UserRetailComponent } from './pages/user/user-retail/user-retail.component';
+import { UserDealerComponent } from './pages/user/user-dealer/user-dealer.component';
 
 @NgModule({
   imports: [
@@ -39,8 +40,8 @@ import { IndicatorService } from './indicator/indicator.service';
   ],
   declarations: [
     LayoutComponent, HeaderComponent, FooterComponent, FileNotFoundComponent,
-    HomeComponent, RegisterDealerComponent, RegisterMainComponent,
-    RegisterRetailComponent, RegisterWholesaleComponent, NotifyComponent, IndicatorComponent
+    HomeComponent, RegisterComponent, NotifyComponent, IndicatorComponent,
+    UserInfoComponent, UserWholesaleComponent, UserRetailComponent, UserDealerComponent
   ],
   providers: [
     AuthService, LayoutService, AuthGuard, UserService, NotifyService, IndicatorService

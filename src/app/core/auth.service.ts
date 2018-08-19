@@ -88,10 +88,17 @@ export class AuthService {
 
   doLogin(value) {
     return new Promise<any>((resolve, reject) => {
+      this.showBusy();
       auth().signInWithEmailAndPassword(value.email, value.password)
         .then(
-          res => resolve(res),
-          err => reject(err)
+          res => {
+            this.hideBusy();
+            resolve(res);
+          },
+          err => {
+            this.hideBusy();
+            reject(err);
+          }
         );
     });
   }

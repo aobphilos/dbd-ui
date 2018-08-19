@@ -11,15 +11,15 @@ import { RegisterGuard } from '../core/register.guard';
 
 import { FileNotFoundComponent } from './pages/file-not-found/file-not-found.component';
 import { HomeComponent } from './pages/home/home.component';
-import { RegisterMainComponent } from './pages/register/register-main/register-main.component';
 import { LayoutService } from './layout/layout.service';
 import { PathType } from '../enum/path-type';
+import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'index', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'register', component: RegisterMainComponent, canActivate: [RegisterGuard] },
+  { path: 'register', component: RegisterComponent, canActivate: [RegisterGuard] },
   { path: '**', component: FileNotFoundComponent }
 ];
 

@@ -143,6 +143,10 @@ i.fa::before {
 }
 
 .btn {
+  &.btn-primary {
+    color: rgba(255, 255, 255, 0.85);
+    background-color: #f7a600;
+  }
   &.btn-calendar {
     width: 3rem;
     text-align: center;
