@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NotifyService } from './notify.service';
 import { Notify } from '../../model/notify';
 import { NotifyType } from '../../enum/notify-type';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-notify',
@@ -14,6 +15,10 @@ export class NotifyComponent implements OnInit {
 
   constructor(private notifyService: NotifyService) {
     this.notify = new Notify();
+  }
+
+  get notifyAnime() {
+    return this.showNotify ? 'show' : 'hide';
   }
 
   get message() {
@@ -37,7 +42,7 @@ export class NotifyComponent implements OnInit {
   }
 
   onAlertDismiss() {
-    this.notifyService.setMessage('');
+    this.notifyService.clear();
   }
 
   ngOnInit() {

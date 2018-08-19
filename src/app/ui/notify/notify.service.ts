@@ -32,7 +32,10 @@ export class NotifyService {
     this.setMessage(message, NotifyType.SUCCESS);
   }
 
-  setMessage(message: string, type: NotifyType = NotifyType.INFO) {
+  private setMessage(message: string, type: NotifyType = NotifyType.INFO) {
     this.notifyMessageSource.next({ message: message, type: type });
+    if (type !== NotifyType.WARNING) {
+      setTimeout(() => this.clear(), 2500);
+    }
   }
 }

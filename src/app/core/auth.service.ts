@@ -61,17 +61,28 @@ export class AuthService {
 
   doRegister(value) {
     return new Promise<any>((resolve, reject) => {
+      this.showBusy();
       auth().createUserWithEmailAndPassword(value.email, environment.masterPassword)
         .then(res => {
           if (res) {
             res.user.sendEmailVerification()
-              .then(() => resolve())
-              .catch(() => reject());
+              .then(() => {
+                this.hideBusy();
+                resolve();
+              })
+              .catch(() => {
+                this.hideBusy();
+                reject();
+              });
           } else {
             console.log('failed to create user');
+            this.hideBusy();
             reject();
           }
-        }, err => reject(err));
+        }, err => {
+          this.hideBusy();
+          reject(err);
+        });
     });
   }
 
