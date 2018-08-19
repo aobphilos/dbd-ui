@@ -2,13 +2,18 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase/app';
 import { environment } from '../../environments/environment';
+import { IndicatorService } from '../ui/indicator/indicator.service';
 
 @Injectable()
 export class AuthService {
 
   constructor(
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+    private indicatorService: IndicatorService
   ) { }
+
+  private showBusy = () => this.indicatorService.showBusy();
+  private hideBusy = () => this.indicatorService.hideBusy();
 
   doFacebookLogin() {
     return new Promise<any>((resolve, reject) => {
@@ -56,26 +61,38 @@ export class AuthService {
 
   doRegister(value) {
     return new Promise<any>((resolve, reject) => {
+      this.showBusy();
       auth().createUserWithEmailAndPassword(value.email, environment.masterPassword)
         .then(res => {
           if (res) {
             res.user.sendEmailVerification()
-              .then(() => resolve())
-              .catch(() => reject());
+              .then(() => {
+                this.hideBusy();
+                resolve();
+              })
+              .catch(() => {
+                this.hideBusy();
+                reject();
+              });
           } else {
             console.log('failed to create user');
+            this.hideBusy();
             reject();
           }
-        }, err => reject(err));
+        }, err => {
+          this.hideBusy();
+          reject(err);
+        });
     });
   }
 
   doLogin(value) {
     return new Promise<any>((resolve, reject) => {
       auth().signInWithEmailAndPassword(value.email, value.password)
-        .then(res => {
-          resolve(res);
-        }, err => reject(err));
+        .then(
+          res => resolve(res),
+          err => reject(err)
+        );
     });
   }
 

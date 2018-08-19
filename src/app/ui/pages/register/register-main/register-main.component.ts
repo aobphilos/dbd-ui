@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IndicatorService } from '../../../indicator/indicator.service';
 
 @Component({
   selector: 'app-register-main',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterMainComponent implements OnInit {
 
-  constructor() { }
+  constructor(private indicatorService: IndicatorService) { }
+
+  showBusy() {
+    this.indicatorService.showBusy();
+    // setTimeout(() => {
+    //   this.indicatorService.hideBusy();
+    // }, 2500);
+  }
 
   ngOnInit() {
   }

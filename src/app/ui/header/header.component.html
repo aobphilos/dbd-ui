@@ -13,10 +13,12 @@
       </a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-label="Toggle navigation" [attr.aria-expanded]="!isCollapsed" (click)="setCollapsed()">
+        aria-label="Toggle navigation" [attr.aria-expanded]="!isCollapsed" (click)="setCollapsed()"
+        *ngIf="toggleMenu">
         <div class="navbar-toggler-icon"></div>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed"
+        *ngIf="toggleMenu">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" data-toggle="modal" (click)="openModal(signInModal)">เข้าสู่ระบบ</a>
@@ -59,7 +61,7 @@
     </div>
   </div>
   <div class="modal-footer">
-    <ul class="nav text-white justify-content-center">
+    <ul class="nav justify-content-center">
       <li class="nav-item">
         <a class="nav-link" href="#">ลืมรหัสผ่าน</a>
       </li>
@@ -102,7 +104,7 @@
     </div>
   </div>
   <div class="modal-footer">
-    <ul class="nav text-white justify-content-center">
+    <ul class="nav justify-content-center">
       <li class="nav-item">
         <a class="nav-link" href="#">ลืมรหัสผ่าน</a>
       </li>
