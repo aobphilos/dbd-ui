@@ -1,0 +1,28 @@
+.indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  .modal-backdrop {
+    background-color: #000;
+    opacity: 0.5;
+    z-index: 2000;
+  }
+  .modal-content {
+    margin: auto;
+    z-index: 2001;
+    border-radius: 50% !important;
+    width: 10.5rem;
+    .app-loading {
+      .spinner {
+        height: 14rem;
+        width: 15rem;
+        left: -3.3rem;
+      }
+    }
+  }
+}

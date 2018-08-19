@@ -2,13 +2,18 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase/app';
 import { environment } from '../../environments/environment';
+import { IndicatorService } from '../ui/indicator/indicator.service';
 
 @Injectable()
 export class AuthService {
 
   constructor(
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+    private indicatorService: IndicatorService
   ) { }
+
+  private showBusy = () => this.indicatorService.showBusy();
+  private hideBusy = () => this.indicatorService.hideBusy();
 
   doFacebookLogin() {
     return new Promise<any>((resolve, reject) => {

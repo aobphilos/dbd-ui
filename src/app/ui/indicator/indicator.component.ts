@@ -1,5 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit } from '@angular/core';
 import { IndicatorService } from './indicator.service';
 
 @Component({
@@ -8,35 +7,14 @@ import { IndicatorService } from './indicator.service';
   styleUrls: ['./indicator.component.scss']
 })
 export class IndicatorComponent implements OnInit {
-  private modalRef: NgbModalRef;
+  showBusy: boolean;
 
-  @ViewChild('indicator') private indicatorTemplate: TemplateRef<any>;
-
-  constructor(private modalService: NgbModal,
-    private indicatorService: IndicatorService
-  ) { }
-
-  openModalCentered(content) {
-    this.modalRef = this.modalService.open(content, {
-      windowClass: 'modal-indicator',
-      backdrop: 'static',
-      keyboard: false,
-      centered: true,
-      size: 'sm'
-    });
+  constructor(private indicatorService: IndicatorService) {
+    this.showBusy = false;
   }
 
   ngOnInit() {
-
-    this.indicatorService.busyIndicator.subscribe(flag => {
-      if (flag) {
-        this.openModalCentered(this.indicatorTemplate);
-      } else {
-        if (this.modalRef) {
-          this.modalRef.close();
-        }
-      }
-    });
+    this.indicatorService.busyIndicator.subscribe(flag => this.showBusy = flag);
   }
 
 }

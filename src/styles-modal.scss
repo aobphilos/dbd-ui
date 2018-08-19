@@ -53,17 +53,4 @@
       }
     }
   }
-  &.modal-indicator {
-    .modal-content {
-      border-radius: 50% !important;
-      width: 56%;
-      .app-loading {
-        .spinner {
-          height: 14rem;
-          width: 15rem;
-          left: -3.3rem;
-        }
-      }
-    }
-  }
 }
