@@ -1,5 +1,5 @@
 <div id="navbar-main" [class.scroll-move]="isScrollMove">
-  <nav class="navbar navbar-expand-lg navbar-dark mb-3 fixed-top" [class.shadow-lg]="isScrollMove">
+  <nav class="navbar navbar-dark mb-3 fixed-top" [ngClass]="{'navbar-expand-xl move-lg': userVerified,'navbar-expand-lg move-md': !userVerified, 'shadow-lg': isScrollMove }">
     <div class="container">
       <a class="navbar-brand" routerLink="/home" routerLinkActive="active">
         <div class="logo">
@@ -11,23 +11,63 @@
           </div>
         </div>
       </a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-label="Toggle navigation" [attr.aria-expanded]="!isCollapsed" (click)="setCollapsed()"
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-label="Toggle navigation" [attr.aria-expanded]="!isCollapsed" (click)="setCollapsed()"
         *ngIf="toggleMenu">
         <div class="navbar-toggler-icon"></div>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed" *ngIf="toggleMenu">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" data-toggle="modal" (click)="openModal(signInModal)">เข้าสู่ระบบ</a>
-          </li>
-          <li class="nav-item d-none d-lg-block">
-            <div class="seperate"></div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" data-toggle="modal" (click)="openModal(signUpModal)">สมัครสมาชิก</a>
-          </li>
-        </ul>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed"
+        *ngIf="toggleMenu">
+        <ng-container *ngIf="userVerified; then signedIn; else needSignIn"></ng-container>
+        <ng-template #signedIn>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" data-toggle="modal" routerLink="/home">หน้าหลัก</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" data-toggle="modal" routerLink="/news">ข่าวประชาสัมพันธ์</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" data-toggle="modal" routerLink="/product">สินค้า</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" data-toggle="modal" routerLink="/promotion">โปรโมชั่น</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" data-toggle="modal" routerLink="/webboard">เว็บบอร์ด</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" data-toggle="modal" routerLink="/contact">ติดต่อเรา</a>
+            </li>
+            <li class="nav-item d-none" [ngClass]="{'d-xl-block': userVerified,'d-lg-block': !userVerified}">
+              <div class="seperate"></div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link text-orange" href="#" id="navbarDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" [attr.aria-expanded]="!isUserCollapsed"
+                (click)="setUserCollapsed()"> {{authService.user.email|formatRemoveAt}} </a>
+              <div class="dropdown-menu"
+                aria-labelledby="navbarDropdown" [ngbCollapse]="isUserCollapsed">
+                <a class="nav-link text-orange" routerLinkActive="active" data-toggle="modal"
+                  (click)="tryLogout()"> ออกจากระบบ </a>
+              </div>
+            </li>
+          </ul>
+        </ng-template>
+        <ng-template #needSignIn>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" data-toggle="modal" (click)="openModal(signInModal)">เข้าสู่ระบบ</a>
+            </li>
+            <li class="nav-item d-none d-lg-block">
+              <div class="seperate"></div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" data-toggle="modal" (click)="openModal(signUpModal)">สมัครสมาชิก</a>
+            </li>
+          </ul>
+        </ng-template>
       </div>
     </div>
   </nav>
@@ -46,9 +86,11 @@
             </p>
           </div>
           <div class="form-group">
-            <input type="email" formControlName="email" class="form-control text-center" placeholder="Email"> </div>
+            <input type="email" formControlName="email" class="form-control text-center"
+              placeholder="Email"> </div>
           <div class="form-group">
-            <input type="password" class="form-control text-center" formControlName="password" placeholder="Password"> </div>
+            <input type="password" class="form-control text-center" formControlName="password"
+              placeholder="Password"> </div>
           <div class="form-group">
             <button type="button" class="btn bg-orange text-white text-center" (click)="tryLogin(signInForm.value)">เข้าสู่ระบบ</button>
           </div>
@@ -90,9 +132,11 @@
             </p>
           </div>
           <div class="form-group">
-            <input type="email" formControlName="email" class="form-control text-center" placeholder="Email"> </div>
+            <input type="email" formControlName="email" class="form-control text-center"
+              placeholder="Email"> </div>
           <div class="form-group">
-            <input type="password" class="form-control text-center" formControlName="password" placeholder="Password"> </div>
+            <input type="password" class="form-control text-center" formControlName="password"
+              placeholder="Password"> </div>
           <div class="form-group">
             <button type="button" class="btn bg-orange text-white text-center" (click)="tryRegister(signUpForm.value)">สมัครสมาชิก</button>
           </div>

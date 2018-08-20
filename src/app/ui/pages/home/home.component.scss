@@ -2,7 +2,14 @@
 .qoute {
   color: white;
   @include media-breakpoint-down(md) {
-    color: black;
+    &.move-md {
+      color: black;
+    }
+  }
+  @include media-breakpoint-down(lg) {
+    &.move-lg {
+      color: black;
+    }
   }
 }
 

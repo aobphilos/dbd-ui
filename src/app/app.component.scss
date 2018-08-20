@@ -15,6 +15,13 @@ div.bg-main {
   margin: 0;
   clear: both;
   @include media-breakpoint-down(md) {
-    background: initial;
+    &.move-md {
+      background: initial;
+    }
+  }
+  @include media-breakpoint-down(lg) {
+    &.move-lg {
+      background: initial;
+    }
   }
 }

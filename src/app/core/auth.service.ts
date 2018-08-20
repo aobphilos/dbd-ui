@@ -1,35 +1,36 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase/app';
-import { environment } from '../../environments/environment';
 import { IndicatorService } from '../ui/indicator/indicator.service';
 import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthService {
+
   private authState: Observable<firebase.User>;
-  private currentUser: firebase.User = null;
+  private currentUser: firebase.User;
 
   constructor(
     public afAuth: AngularFireAuth,
     private indicatorService: IndicatorService
   ) {
-
     this.authState = this.afAuth.authState;
-    this.authState.subscribe(user => {
-      if (user) {
-        this.currentUser = user;
-      } else {
-        this.currentUser = null;
-      }
-    });
+    this.authState.subscribe(user => this.currentUser = user);
   }
 
   private showBusy = () => this.indicatorService.showBusy();
   private hideBusy = () => this.indicatorService.hideBusy();
 
-  getAuthState() {
-    return this.authState;
+  get user() {
+    return this.currentUser;
+  }
+
+  get needVerify() {
+    return (this.user && !this.user.emailVerified);
+  }
+
+  get hasVerified() {
+    return (this.user && this.user.emailVerified);
   }
 
   doFacebookLogin() {
@@ -103,6 +104,16 @@ export class AuthService {
     });
   }
 
+  doVerifyEmail(code: string) {
+    return new Promise<any>((resolve, reject) => {
+      auth().applyActionCode(code)
+        .then(
+          res => resolve(res),
+          err => reject(err)
+        );
+    });
+  }
+
   doLogin(value) {
     return new Promise<any>((resolve, reject) => {
       this.showBusy();
@@ -122,7 +133,7 @@ export class AuthService {
 
   doLogout() {
     return new Promise((resolve, reject) => {
-      if (this.currentUser) {
+      if (this.hasVerified) {
         this.afAuth.auth.signOut();
         resolve();
       } else {

@@ -18,6 +18,14 @@ export class RegisterService {
     this.registerForm = form || new RegisterForm('');
   }
 
+  get registerStep() {
+    return this.registerStepSource.asObservable();
+  }
+
+  get form() {
+    return this.registerForm;
+  }
+
   setPlanId(id: number) {
     switch (id) {
       case 1: this.registerForm.planId = RegisterType.RETAIL; break;
@@ -35,10 +43,6 @@ export class RegisterService {
 
   private updateStorage() {
     sessionStorage.setItem(SessionType.REGISTER, JSON.stringify(this.registerForm));
-  }
-
-  get registerStep() {
-    return this.registerStepSource.asObservable();
   }
 
   setRegisterStep(step: RegisterStep) {

@@ -4,6 +4,7 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LayoutService } from '../layout/layout.service';
 import { NotifyService } from '../notify/notify.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,7 @@ import { NotifyService } from '../notify/notify.service';
 export class HeaderComponent implements OnInit, OnDestroy {
   private modalRef: NgbModalRef;
   public isCollapsed = true;
+  public isUserCollapsed = true;
   public isScrollMove = false;
   public errorMessage: string;
   public signInForm: FormGroup;
@@ -24,7 +26,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     public authService: AuthService,
     private fb: FormBuilder,
     private layoutService: LayoutService,
-    private notifyService: NotifyService
+    private notifyService: NotifyService,
+    private router: Router
   ) {
     this.createForm();
   }
@@ -42,6 +45,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.isScrollMove = ((scrollY || 0) > 0);
   }
 
+  get userVerified() {
+    return this.authService.hasVerified;
+  }
+
   createForm() {
     this.signInForm = this.fb.group({
       email: ['', Validators.required],
@@ -55,7 +62,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   tryLogout() {
     this.authService.doLogout()
-      .then(res => console.log('Signout completed'),
+      .then(
+        res => {
+          this.router.navigate(['/home']);
+        },
         err => console.log('Signout failed'));
 
   }
@@ -88,14 +98,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.isCollapsed = !this.isCollapsed;
   }
 
+  setUserCollapsed() {
+    this.isUserCollapsed = !this.isUserCollapsed;
+  }
+
   openModal(content) {
     this.signUpForm.reset();
     this.signInForm.reset();
 
     this.modalRef = this.modalService
       .open(content, {
-        windowClass: 'modal-signin',
-        backdrop: 'static'
+        windowClass: 'modal-signin'
       });
 
     this.modalRef.result.then(
@@ -121,7 +134,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.layoutService.showMainMenu.subscribe(flag => this.toggleMenu = flag);
-
     window.addEventListener('scroll', (e) => this.onWindowScroll(e), true);
   }
 

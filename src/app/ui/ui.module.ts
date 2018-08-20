@@ -26,6 +26,7 @@ import { UserWholesaleComponent } from './pages/user/user-wholesale/user-wholesa
 import { RegisterComponent } from './pages/register/register.component';
 import { UserRetailComponent } from './pages/user/user-retail/user-retail.component';
 import { UserDealerComponent } from './pages/user/user-dealer/user-dealer.component';
+import { FormatRemoveAtPipe } from '../core/pipe/format-remove-at.pipe';
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import { UserDealerComponent } from './pages/user/user-dealer/user-dealer.compon
   declarations: [
     LayoutComponent, HeaderComponent, FooterComponent, FileNotFoundComponent,
     HomeComponent, RegisterComponent, NotifyComponent, IndicatorComponent,
-    UserInfoComponent, UserWholesaleComponent, UserRetailComponent, UserDealerComponent
+    UserInfoComponent, UserWholesaleComponent, UserRetailComponent, UserDealerComponent,
+    FormatRemoveAtPipe
   ],
   providers: [
     AuthService, LayoutService, AuthGuard, UserService, NotifyService, IndicatorService

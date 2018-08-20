@@ -1,39 +1,50 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase/app';
+import { UserInfo } from '../model/user-info';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
+
+  private userCollection: AngularFirestoreCollection<UserInfo>;
+  private users: Observable<UserInfo[]>;
+  private userDoc: AngularFirestoreDocument<UserInfo>;
 
   constructor(
     public db: AngularFirestore,
     public afAuth: AngularFireAuth
   ) {
+    this.userCollection = this.db.collection<UserInfo>('user-info', q => q.orderBy('firstName', 'asc'));
+    this.users = this.userCollection.snapshotChanges().pipe(
+      map(
+        changes => {
+          return changes.map(
+            a => {
+              const data = a.payload.doc.data() as UserInfo;
+              data.id = a.payload.doc.id;
+              return data;
+            });
+        }));
   }
 
+  getUsers() {
+    return this.users;
+  }
 
-  getCurrentUser() {
+  add(user: UserInfo) {
     return new Promise<any>((resolve, reject) => {
-      auth().onAuthStateChanged((user) => {
-        if (user) {
-          resolve(user);
-        } else {
-          reject('No user logged in');
-        }
-      });
+      this.userCollection.add(user)
+        .then(() => resolve(), (err) => reject(err));
     });
   }
 
-  updateCurrentUser(value) {
+  delete(user: UserInfo) {
     return new Promise<any>((resolve, reject) => {
-      const user = auth().currentUser;
-      user.updateProfile({
-        displayName: value.name,
-        photoURL: user.photoURL
-      }).then(res => {
-        resolve(res);
-      }, err => reject(err));
+      const userDoc = this.db.doc(`user-info/${user.id}`);
+      userDoc.delete().then(() => resolve(), (err) => reject(err));
     });
   }
 }

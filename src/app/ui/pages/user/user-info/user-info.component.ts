@@ -47,6 +47,9 @@ export class UserInfoComponent implements OnInit {
 
   tryUpdateUser(value) {
     this.submitted = true;
+
+    this.authService.doVerifyEmail(this.registerService.form.code);
+
     console.log('update: ', JSON.stringify(value));
   }
 
