@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-between mx-auto mb-3 line-break">
+  <div>
+    <h4>ข้อมูลทั่วไป</h4>
+  </div>
+  <div>
+    <a href="#" class="link-dark" (click)="goBack($event)"> ย้อนกลับ </a>
+  </div>
+</div>
+<div class="mx-auto mb-3">
+  <div class="d-flex justify-content-center">
+    <div class="col-sm-12 col-md-9 col-lg-7">
+      <form #memberInfoForm="ngForm">
+        <div class="form-group">
+          <label for="storeName">ชื่อร้านค้า / บริษัท</label>
+          <input class="form-control" type="text" id="storeName"
+            required name="storeName" [(ngModel)]="model.storeName"
+            placeholder="กรอกชื่อร้านค้า / บริษัท"
+            #storeName="ngModel">
+        </div>
+        <div class="form-group">
+          <label for="ownerName">ชื่อผู้บริหาร</label>
+          <input class="form-control" type="text" id="ownerName"
+            name="ownerName" [(ngModel)]="model.ownerName"
+            placeholder="กรอกชื่อผู้บริหาร"
+            required #ownerName="ngModel">
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col">
+              <label for="phone">หมายเลขโทรศัพท์</label>
+              <input class="form-control" type="text" id="phone"
+                [(ngModel)]="model.phone" name="phone" placeholder="หมายเลขโทรศัพท์"> </div>
+            <div class="col">
+              <label for="email">อีเมล์</label>
+              <input class="form-control" type="email" id="email"
+                disabled="disabled" [(ngModel)]="model.email" name="email" placeholder="Email" required> </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col">
+              <label for="facebook">Facebook</label>
+              <input class="form-control" type="text" id="facebook"
+                [(ngModel)]="model.facebookId" name="facebook" placeholder="Facebook"> </div>
+            <div class="col">
+              <label for="line">Line</label>
+              <input class="form-control" type="text" id="line" [(ngModel)]="model.lineId" name="line"
+                placeholder="Line"> </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="address">ที่อยู่</label>
+          <textarea class="form-control" id="address" [(ngModel)]="model.address" name="address"
+            rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="website">เว็บไซต์</label>
+          <input class="form-control" type="text" id="website" [(ngModel)]="model.website" name="website"
+            placeholder="เว็บไซต์"> </div>
+        <div class="form-group">
+          <button type="button" class="btn" (click)="tryUpdateMember()" [disabled]="!memberInfoForm.form.valid">ยืนยันข้อมูล</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -16,17 +16,17 @@ import { HomeComponent } from './pages/home/home.component';
 import { AuthService } from '../core/auth.service';
 import { LayoutService } from './layout/layout.service';
 import { AuthGuard } from '../core/auth.guard';
-import { UserService } from '../core/user.service';
+import { MemberService } from '../core/member.service';
 import { NotifyComponent } from './notify/notify.component';
 import { NotifyService } from './notify/notify.service';
 import { IndicatorComponent } from './indicator/indicator.component';
 import { IndicatorService } from './indicator/indicator.service';
-import { UserInfoComponent } from './pages/user/user-info/user-info.component';
-import { UserWholesaleComponent } from './pages/user/user-wholesale/user-wholesale.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { UserRetailComponent } from './pages/user/user-retail/user-retail.component';
-import { UserDealerComponent } from './pages/user/user-dealer/user-dealer.component';
 import { FormatRemoveAtPipe } from '../core/pipe/format-remove-at.pipe';
+import { MemberInfoComponent } from './pages/member/member-info/member-info.component';
+import { MemberRetailComponent } from './pages/member/member-retail/member-retail.component';
+import { MemberDealerComponent } from './pages/member/member-dealer/member-dealer.component';
+import { MemberWholesaleComponent } from './pages/member/member-wholesale/member-wholesale.component';
 
 @NgModule({
   imports: [
@@ -42,11 +42,11 @@ import { FormatRemoveAtPipe } from '../core/pipe/format-remove-at.pipe';
   declarations: [
     LayoutComponent, HeaderComponent, FooterComponent, FileNotFoundComponent,
     HomeComponent, RegisterComponent, NotifyComponent, IndicatorComponent,
-    UserInfoComponent, UserWholesaleComponent, UserRetailComponent, UserDealerComponent,
+    MemberInfoComponent, MemberRetailComponent, MemberDealerComponent, MemberWholesaleComponent,
     FormatRemoveAtPipe
   ],
   providers: [
-    AuthService, LayoutService, AuthGuard, UserService, NotifyService, IndicatorService
+    AuthService, LayoutService, AuthGuard, MemberService, NotifyService, IndicatorService
   ],
   exports: [LayoutComponent]
 })

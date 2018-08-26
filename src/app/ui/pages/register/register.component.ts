@@ -16,15 +16,15 @@ export class RegisterComponent implements OnInit {
 
   choosePlan(planId: number) {
     this.registerService.setPlanId(planId);
-    this.registerService.setRegisterStep(RegisterStep.EDIT_USER_INFO);
+    this.registerService.setRegisterStep(RegisterStep.EDIT_MEMBER_INFO);
   }
 
   get showPlan() {
     return this.currentStep === RegisterStep.CHOOSE_PLAN;
   }
 
-  get showUserInfo() {
-    return this.currentStep === RegisterStep.EDIT_USER_INFO;
+  get showInfo() {
+    return this.currentStep === RegisterStep.EDIT_MEMBER_INFO;
   }
 
   get showRetail() {
