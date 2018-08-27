@@ -12,7 +12,7 @@ import { RegisterGuard } from '../core/register.guard';
 import { FileNotFoundComponent } from './pages/file-not-found/file-not-found.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LayoutService } from './layout/layout.service';
-import { PathType } from '../enum/path-type';
+import { UrlPath } from '../enum/url-path';
 import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
@@ -51,10 +51,10 @@ export class UiRoutingModule {
         }
 
         // hide google map when 'File not found'
-        this.layoutService.toggleMap(cp !== PathType.FILE_NOT_FOUND);
+        this.layoutService.toggleMap(cp !== UrlPath.FILE_NOT_FOUND);
 
         // hiee main menu when 'Register'
-        this.layoutService.toggleMenu(cp !== PathType.REGISTER);
+        this.layoutService.toggleMenu(cp !== UrlPath.REGISTER);
       });
   }
 

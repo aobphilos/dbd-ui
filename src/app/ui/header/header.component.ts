@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LayoutService } from '../layout/layout.service';
 import { NotifyService } from '../notify/notify.service';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -20,6 +21,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public signInForm: FormGroup;
   public signUpForm: FormGroup;
   public toggleMenu: boolean;
+
+  get userEmail() {
+    return this.authService.user.email;
+  }
+  get userVerified() {
+    return this.authService.hasVerified;
+  }
 
   constructor(
     private modalService: NgbModal,
@@ -45,10 +53,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.isScrollMove = ((scrollY || 0) > 0);
   }
 
-  get userVerified() {
-    return this.authService.hasVerified;
-  }
-
   createForm() {
     this.signInForm = this.fb.group({
       email: ['', Validators.required],
@@ -67,7 +71,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
           this.router.navigate(['/home']);
         },
         err => console.log('Signout failed'));
-
   }
 
   tryLogin(value) {

@@ -1,6 +1,6 @@
 import { ModelBase } from './model-base';
 
-export class MemberType {
+export class MemberGroup {
   id: string;
   desc: string;
   members: Member[];
@@ -19,9 +19,16 @@ export class Member extends ModelBase {
   facebookId: string;
   website: string;
   address: string;
+
+  // Owner
   storeIds: string[];
   productIds: string[];
   promotionIds: string[];
+
+  // Following
+  storeFollowingIds: string[];
+  productFollowingIds: string[];
+  promotionFollowingIds: string[];
 
   constructor() {
     super();
@@ -36,6 +43,9 @@ export class Member extends ModelBase {
     this.storeIds = [];
     this.productIds = [];
     this.promotionIds = [];
+    this.storeFollowingIds = [];
+    this.productFollowingIds = [];
+    this.promotionFollowingIds = [];
   }
 
 }

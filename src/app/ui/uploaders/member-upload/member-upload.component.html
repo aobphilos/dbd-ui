@@ -1,0 +1,71 @@
+<div class="uploader border rounded w-100 mb-2">
+  <div class="empty" *ngIf="!hasUploadId" (click)="openModal(uploadDetail)">
+    <label class="file-label">
+      <span class="file-cta">
+        <span class="file-icon">
+          <i class="fa fa-plus fa-5x"></i>
+        </span>
+        <br>
+        <span class="file-label"> เพิ่มข้อมูลรายการสินค้า </span>
+      </span>
+    </label>
+  </div>
+  <div class="display" *ngIf="hasUploadId">
+    <div class="media">
+      <img class="mr-3" [src]="imageUrl" alt="Generic placeholder image">
+      <div class="media-body">
+        <h5 class="mt-0">Media heading</h5> Cras sit amet nibh libero, in gravida nulla. Nulla vel
+        metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate
+        at, tempus viverra turpis. </div>
+    </div>
+  </div>
+</div>
+<ng-template #uploadDetail let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4>{{modalTitle}}</h4>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-5">
+        <app-file-upload uploaderType="uploaderType"></app-file-upload>
+      </div>
+      <div class="col-7">
+        <form [formGroup]="signUpForm" (keydown)="onKeyDownSignUp($event)">
+          <div class="form-group">
+            <p class="text-light text-center">สมัครสมาชิก
+              <span class="text-orange">เครื่อข่ายธงฟ้าชุมชน</span>
+            </p>
+          </div>
+          <div class="form-group">
+            <input type="email" formControlName="email" class="form-control text-center"
+              placeholder="Email"> </div>
+          <div class="form-group">
+            <input type="password" class="form-control text-center" formControlName="password"
+              placeholder="Password"> </div>
+          <div class="form-group">
+            <button type="button" class="btn bg-orange text-white text-center" (click)="tryRegister(signUpForm.value)">สมัครสมาชิก</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link" href="#">ลืมรหัสผ่าน</a>
+      </li>
+      <li class="nav-item">
+        <div class="seperate"></div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">ช่วยเหลือ</a>
+      </li>
+      <li class="nav-item">
+        <div class="seperate"></div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" (click)="d(signInModal)">เข้าสู่ระบบ</a>
+      </li>
+    </ul>
+  </div>
+</ng-template>

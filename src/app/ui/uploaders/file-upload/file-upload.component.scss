@@ -1,0 +1,35 @@
+.dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 12.5rem;
+  border-radius: 0.5rem;
+  background: white;
+  margin: 0.5rem 0;
+  &.frame {
+    border: 0.15rem dashed #f16624;
+  }
+  &.hovering {
+    border: 0.25rem solid #f16624;
+    color: #dadada !important;
+  }
+  .file {
+    text-align: center;
+    .file-icon {
+      .fa {
+        text-align: center;
+      }
+    }
+  }
+  .display {
+    img {
+      max-height: 11.5rem;
+      max-width: 11.5rem;
+    }
+  }
+}
+
+progress::-webkit-progress-value {
+  transition: width 0.1s ease;
+}

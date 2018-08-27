@@ -5,7 +5,8 @@ import { RegisterStep } from '../../../../enum/register-step';
 import { AuthService } from '../../../../core/auth.service';
 import { MemberService } from '../../../../core/member.service';
 import { Member } from '../../../../model/member';
-import { RegisterType } from '../../../../enum/register-type';
+import { MemberType } from '../../../../enum/member-type';
+import { IndicatorService } from '../../../indicator/indicator.service';
 
 @Component({
   selector: 'app-member-info',
@@ -20,20 +21,24 @@ export class MemberInfoComponent implements OnInit {
   constructor(private router: Router,
     private registerService: RegisterService,
     private authService: AuthService,
-    private memberService: MemberService) { }
+    private memberService: MemberService,
+    private indicatorService: IndicatorService) { }
 
   // convenience getter for easy access to form fields
   get registerForm() { return this.registerService.form; }
 
+  private showBusy = () => this.indicatorService.showBusy();
+  private hideBusy = () => this.indicatorService.hideBusy();
+
   goNext() {
     switch (this.registerForm.planId) {
-      case RegisterType.RETAIL:
+      case MemberType.RETAIL:
         this.registerService.setRegisterStep(RegisterStep.EDIT_RETAIL);
         break;
-      case RegisterType.WHOLE_SALE:
+      case MemberType.WHOLE_SALE:
         this.registerService.setRegisterStep(RegisterStep.EDIT_WHOLE_SALE);
         break;
-      case RegisterType.DEALER:
+      case MemberType.DEALER:
         this.registerService.setRegisterStep(RegisterStep.EDIT_DEALER);
         break;
     }
@@ -50,11 +55,13 @@ export class MemberInfoComponent implements OnInit {
   }
 
   async tryUpdateMember() {
+    this.showBusy();
     this.submitted = true;
-    console.log('model: ', this.model);
     await this.memberService.add(this.model, this.registerForm.planId);
     await this.authService.doVerifyEmail(this.registerForm.code);
+    this.memberService.loadCurrentMember(this.model.email);
     this.goNext();
+    this.hideBusy();
 
   }
 

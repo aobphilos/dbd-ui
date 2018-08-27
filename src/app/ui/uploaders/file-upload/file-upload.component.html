@@ -1,0 +1,26 @@
+<div class="dropzone rounded" dropZone (hovered)="toggleHover($event)" [ngClass]="{'hovering':isHovering, 'frame': !hasImage}">
+  <div class="file" [hidden]="hasImage">
+    <label class="file-label">
+      <input class="file-input" type="file" accept="image/*" [hidden]="!expression"
+        #imageUploader (change)="updateCurrentFiles($event.target.files)">
+      <span class="file-cta">
+        <span class="file-icon">
+          <i class="fa fa-image fa-5x"></i>
+        </span>
+        <br>
+        <span class="file-label"> คลิกเพื่อทำการค้าหารูป </span>
+      </span>
+    </label>
+    <div>
+      <div *ngIf="percentage | async as pct">
+        <progress class="progress is-info" [value]="pct" max="100"> </progress> {{ pct | number }}% </div>
+      <div *ngIf="snapshot | async as snap">
+      {{ snap.bytesTransferred | fileSize }} of {{ snap.totalBytes | fileSize }}
+        </div>
+    </div>
+  </div>
+  <div class="display" [hidden]="!hasImage">
+    <div *ngIf="imageURL | async as url" class="m-auto">
+      <img [src]="url" alt="คลิกเพื่อเปลี่ยนรูป" class="rounded mx-auto d-block" (click)="removeImage(imageUploader)"> </div>
+  </div>
+</div>

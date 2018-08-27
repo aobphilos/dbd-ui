@@ -24,10 +24,14 @@ import { IndicatorComponent } from './indicator/indicator.component';
 import { IndicatorService } from './indicator/indicator.service';
 import { RegisterComponent } from './pages/register/register.component';
 import { FormatRemoveAtPipe } from '../core/pipe/format-remove-at.pipe';
+import { DropZoneDirective } from '../core/directive/drop-zone.directive';
 import { MemberInfoComponent } from './pages/member/member-info/member-info.component';
 import { MemberRetailComponent } from './pages/member/member-retail/member-retail.component';
 import { MemberDealerComponent } from './pages/member/member-dealer/member-dealer.component';
 import { MemberWholesaleComponent } from './pages/member/member-wholesale/member-wholesale.component';
+import { FileUploadComponent } from './uploaders/file-upload/file-upload.component';
+import { FileSizePipe } from '../core/pipe/file-size.pipe';
+import { MemberUploadComponent } from './uploaders/member-upload/member-upload.component';
 
 @NgModule({
   imports: [
@@ -45,7 +49,7 @@ import { MemberWholesaleComponent } from './pages/member/member-wholesale/member
     LayoutComponent, HeaderComponent, FooterComponent, FileNotFoundComponent,
     HomeComponent, RegisterComponent, NotifyComponent, IndicatorComponent,
     MemberInfoComponent, MemberRetailComponent, MemberDealerComponent, MemberWholesaleComponent,
-    FormatRemoveAtPipe
+    FormatRemoveAtPipe, DropZoneDirective, FileUploadComponent, FileSizePipe, MemberUploadComponent
   ],
   providers: [
     AuthService, LayoutService, AuthGuard, MemberService, NotifyService, IndicatorService

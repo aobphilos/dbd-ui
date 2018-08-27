@@ -1,15 +1,15 @@
-import { RegisterType } from '../enum/register-type';
+import { MemberType } from '../enum/member-type';
 
-export class RegisterForm {
+export class Register {
   code: string;
   username: string;
   password: string;
-  planId: RegisterType;
+  planId: MemberType;
 
   constructor(code: string) {
     this.code = code;
     this.username = '';
     this.password = '';
-    this.planId = RegisterType.RETAIL;
+    this.planId = MemberType.RETAIL;
   }
 }

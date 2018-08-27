@@ -1,20 +1,15 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Member, MemberType } from '../model/member';
-import { Observable } from 'rxjs';
+import { Member } from '../model/member';
+import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { RegisterType } from '../enum/register-type';
+import { MemberType } from '../enum/member-type';
 import { firestore } from 'firebase';
+import { SessionType } from '../enum/session-type';
 
 @Injectable()
 export class MemberService {
-
-  private dbPath = {
-    retail: 'MemberType/C-RETAIL/Member',
-    wholesale: 'MemberType/C-WHOLESALE/Member',
-    dealer: 'MemberType/C-DEALER/Member'
-  };
 
   private memberRetailCollection: AngularFirestoreCollection<Member>;
   public memberRetails: Observable<Member[]>;
@@ -28,7 +23,21 @@ export class MemberService {
   public memberDealers: Observable<Member[]>;
   private memberDealerDoc: AngularFirestoreDocument<Member>;
 
-  private mapMember = (changes) => {
+  CurrentMember: BehaviorSubject<Member>;
+
+  private getDbPath(memberType: MemberType) {
+    return `MemberGroup/${memberType}/Member`;
+  }
+
+  private get dbPath() {
+    return {
+      retail: this.getDbPath(MemberType.RETAIL),
+      wholesale: this.getDbPath(MemberType.WHOLE_SALE),
+      dealer: this.getDbPath(MemberType.DEALER)
+    };
+  }
+
+  private mapMember = (changes): Member[] => {
     return changes.map(
       a => {
         const data = a.payload.doc.data() as Member;
@@ -37,46 +46,47 @@ export class MemberService {
       });
   }
 
+  private loadMemberFromSession() {
+    const member = JSON.parse(sessionStorage.getItem(SessionType.MEMBER)) as Member;
+    if (member) {
+      this.CurrentMember.next(member);
+    }
+  }
+
+  private setCurrentMember(member: Member) {
+    this.CurrentMember.next(member);
+    sessionStorage.setItem(SessionType.MEMBER, JSON.stringify(member));
+  }
+
   constructor(
     public db: AngularFirestore,
     public afAuth: AngularFireAuth
   ) {
+    this.memberRetailCollection = this.db.collection<Member>(
+      this.dbPath.retail, q => q.orderBy('firstName', 'asc'));
 
-    this.memberRetailCollection = this.db.collection<Member>(this.dbPath.retail, q => q.orderBy('firstName', 'asc'));
-    this.memberRetails = this.memberRetailCollection
-      .snapshotChanges()
-      .pipe(map(this.mapMember));
+    this.memberWholesaleCollection = this.db.collection<Member>(
+      this.dbPath.wholesale, q => q.orderBy('firstName', 'asc'));
 
-    this.memberWholesaleCollection = this.db.collection<Member>(this.dbPath.wholesale, q => q.orderBy('firstName', 'asc'));
-    this.memberWholesales = this.memberWholesaleCollection
-      .snapshotChanges()
-      .pipe(map((changes) => {
-        return changes.map(
-          a => {
-            const data = a.payload.doc.data() as Member;
-            data.id = a.payload.doc.id;
-            return data;
-          });
-      }));
+    this.memberDealerCollection = this.db.collection<Member>(
+      this.dbPath.dealer, q => q.orderBy('firstName', 'asc'));
 
-    this.memberDealerCollection = this.db.collection<Member>(this.dbPath.dealer, q => q.orderBy('firstName', 'asc'));
-    this.memberDealers = this.memberDealerCollection
-      .snapshotChanges()
-      .pipe(map(this.mapMember));
+    this.CurrentMember = new BehaviorSubject<Member>(null);
+    this.loadMemberFromSession();
   }
 
-  add(member: Member, registerType: RegisterType) {
+  add(member: Member, memberType: MemberType) {
     return new Promise<any>((resolve, reject) => {
 
       let deferred: Promise<firestore.DocumentReference>;
-      switch (registerType) {
-        case RegisterType.RETAIL:
+      switch (memberType) {
+        case MemberType.RETAIL:
           deferred = this.memberRetailCollection.add({ ...member });
           break;
-        case RegisterType.WHOLE_SALE:
+        case MemberType.WHOLE_SALE:
           deferred = this.memberWholesaleCollection.add({ ...member });
           break;
-        case RegisterType.DEALER:
+        case MemberType.DEALER:
           deferred = this.memberDealerCollection.add({ ...member });
           break;
       }
@@ -90,19 +100,19 @@ export class MemberService {
     });
   }
 
-  delete(member: Member, registerType: RegisterType) {
+  delete(id: string, memberType: MemberType) {
     return new Promise<any>((resolve, reject) => {
 
       let deferred: Promise<void>;
-      switch (registerType) {
-        case RegisterType.RETAIL:
-          deferred = this.db.doc(`${this.dbPath.retail}/${member['id']}`).delete();
+      switch (memberType) {
+        case MemberType.RETAIL:
+          deferred = this.db.doc(`${this.dbPath.retail}/${id}`).delete();
           break;
-        case RegisterType.WHOLE_SALE:
-          deferred = this.db.doc(`${this.dbPath.wholesale}/${member['id']}`).delete();
+        case MemberType.WHOLE_SALE:
+          deferred = this.db.doc(`${this.dbPath.wholesale}/${id}`).delete();
           break;
-        case RegisterType.DEALER:
-          deferred = this.db.doc(`${this.dbPath.dealer}/${member['id']}`).delete();
+        case MemberType.DEALER:
+          deferred = this.db.doc(`${this.dbPath.dealer}/${id}`).delete();
           break;
       }
 
@@ -114,4 +124,20 @@ export class MemberService {
 
     });
   }
+
+  loadCurrentMember(email: string) {
+    const retail = this.db.collection<Member>(this.dbPath.retail, q => q.where('email', '==', email).limit(1));
+    const wholesale = this.db.collection<Member>(this.dbPath.wholesale, q => q.where('email', '==', email).limit(1));
+    const dealer = this.db.collection<Member>(this.dbPath.dealer, q => q.where('email', '==', email).limit(1));
+
+    const retailResult = retail.snapshotChanges().pipe(map(this.mapMember));
+    const wholeSaleReult = wholesale.snapshotChanges().pipe(map(this.mapMember));
+    const dealerResult = dealer.snapshotChanges().pipe(map(this.mapMember));
+    combineLatest(retailResult, wholeSaleReult, dealerResult)
+      .pipe(
+        map(([a, b, c]) => a.pop() || b.pop() || c.pop())
+      ).subscribe(member => this.setCurrentMember(member));
+
+  }
+
 }

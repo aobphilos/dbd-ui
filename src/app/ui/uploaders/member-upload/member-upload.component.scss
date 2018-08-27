@@ -1,0 +1,30 @@
+.uploader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 10.5rem;
+  min-width: 15.5rem;
+  border-radius: 0.5rem;
+  background: white;  
+  .empty {
+    cursor: pointer;
+    text-align: center;
+    .file-icon {
+      .fa {
+        color: rgba($color: #000000, $alpha: 0.45);
+        text-align: center;
+      }
+    }
+  }
+  .display {
+    img {
+      max-height: 11.5rem;
+      max-width: 11.5rem;
+    }
+  }
+}
+
+progress::-webkit-progress-value {
+  transition: width 0.1s ease;
+}

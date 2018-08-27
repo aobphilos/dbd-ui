@@ -46,7 +46,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link text-orange" href="#" id="navbarDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" [attr.aria-expanded]="!isUserCollapsed"
-                (click)="setUserCollapsed()"> {{authService.user.email|formatRemoveAt}} </a>
+                (click)="setUserCollapsed()"> {{userEmail|formatRemoveAt}} </a>
               <div class="dropdown-menu"
                 aria-labelledby="navbarDropdown" [ngbCollapse]="isUserCollapsed">
                 <a class="nav-link text-orange" routerLinkActive="active" data-toggle="modal"
