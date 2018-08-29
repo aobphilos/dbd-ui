@@ -18,6 +18,7 @@ const gcs = new Storage();
 exports.generateThumbs = functions
     .region('asia-northeast1')
     .storage
+    .bucket('dbd-ui-blob')
     .object()
     .onFinalize((object) => __awaiter(this, void 0, void 0, function* () {
     const bucket = gcs.bucket(object.bucket);
@@ -37,7 +38,7 @@ exports.generateThumbs = functions
         destination: tmpFilePath
     });
     // 3. Resize the images and define an array of upload promises
-    const sizes = [128, 256];
+    const sizes = [256];
     const uploadPromises = sizes.map((size) => __awaiter(this, void 0, void 0, function* () {
         const thumbName = `thumb@${size}_${fileName}`;
         const thumbPath = path_1.join(workingDir, thumbName);

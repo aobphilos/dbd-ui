@@ -34,8 +34,8 @@ export class NotifyService {
 
   private setMessage(message: string, type: NotifyType = NotifyType.INFO) {
     this.notifyMessageSource.next({ message: message, type: type });
-    if (type !== NotifyType.WARNING) {
-      setTimeout(() => this.clear(), 2500);
-    }
+
+    setTimeout(() => this.clear(), (type !== NotifyType.WARNING) ? 2500 : 4500);
+
   }
 }

@@ -22,50 +22,41 @@
 </div>
 <ng-template #uploadDetail let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4>{{modalTitle}}</h4>
+    <h5>{{modalTitle}}</h5>
   </div>
   <div class="modal-body">
-    <div class="row">
+    <div class="row align-items-start">
       <div class="col-5">
-        <app-file-upload uploaderType="uploaderType"></app-file-upload>
+        <app-file-upload #fileUploader [uploaderType]="uploaderType"></app-file-upload>
       </div>
       <div class="col-7">
-        <form [formGroup]="signUpForm" (keydown)="onKeyDownSignUp($event)">
+        <form>
+          <div class="form-group" *ngIf="isProduct">
+            <div class="row">
+              <div class="col">
+                <label for="categoryName">ประเภท</label>
+                <input class="form-control" type="text" id="categoryName"
+                  [(ngModel)]="model.categoryName" name="categoryName" maxlength="100"> </div>
+              <div class="col">
+                <label for="price">ราคา</label>
+                <input class="form-control" type="number" id="price" [(ngModel)]="model.price"
+                  name="price" min="0"> </div>
+            </div>
+          </div>
+          <div class="form-group" *ngIf="isPromotion">
+            <label for="urlLink">URL</label>
+            <input class="form-control" type="url" id="urlLink" [(ngModel)]="model.urlLink"
+              name="urlLink" maxlength="200"> </div>
           <div class="form-group">
-            <p class="text-light text-center">สมัครสมาชิก
-              <span class="text-orange">เครื่อข่ายธงฟ้าชุมชน</span>
-            </p>
+            <label for="description">รายละเอียด</label>
+            <textarea class="form-control" id="description" [(ngModel)]="model.description"
+              name="description" rows="3" maxlength="2000"></textarea>
           </div>
           <div class="form-group">
-            <input type="email" formControlName="email" class="form-control text-center"
-              placeholder="Email"> </div>
-          <div class="form-group">
-            <input type="password" class="form-control text-center" formControlName="password"
-              placeholder="Password"> </div>
-          <div class="form-group">
-            <button type="button" class="btn bg-orange text-white text-center" (click)="tryRegister(signUpForm.value)">สมัครสมาชิก</button>
+            <button type="button" class="btn bg-orange text-white text-center" (click)="save()">บัญทึกข้อมูล</button>
           </div>
         </form>
       </div>
     </div>
-  </div>
-  <div class="modal-footer">
-    <ul class="nav justify-content-center">
-      <li class="nav-item">
-        <a class="nav-link" href="#">ลืมรหัสผ่าน</a>
-      </li>
-      <li class="nav-item">
-        <div class="seperate"></div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">ช่วยเหลือ</a>
-      </li>
-      <li class="nav-item">
-        <div class="seperate"></div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" (click)="d(signInModal)">เข้าสู่ระบบ</a>
-      </li>
-    </ul>
   </div>
 </ng-template>

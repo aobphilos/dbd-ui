@@ -53,4 +53,15 @@
       }
     }
   }
+  &.modal-upload {
+    .modal-content {
+      width: 120%;
+      .modal-header {
+        margin: 1rem;
+        color: rgba($color: #ffffff, $alpha: 0.85);
+        background-color: #5b2d90;
+        height: 3.8rem;
+      }
+    }
+  }
 }

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import { finalize } from 'rxjs/operators';
 import { UploaderType } from '../../../enum/uploader-type';
@@ -13,7 +13,9 @@ export class FileUploadComponent implements OnInit {
 
   @Input() uploaderType: UploaderType;
 
-  hasImage: boolean;
+  get hasImage() {
+    return (this.previewURL && this.previewURL !== '');
+  }
 
   // Main task
   task: AngularFireUploadTask;
@@ -26,8 +28,8 @@ export class FileUploadComponent implements OnInit {
   // Image URL
   imageURL: Observable<string>;
 
-  // Image Thumb URL
-  thumbURL: Observable<string>;
+  // Preview Image in Local
+  previewURL: string | ArrayBuffer;
 
   // State for dropzone CSS toggling
   isHovering: boolean;
@@ -38,6 +40,7 @@ export class FileUploadComponent implements OnInit {
 
   updateCurrentFiles(files: FileList) {
     this.currentFiles = files;
+    this.readUrl();
   }
 
   toggleHover(event: boolean) {
@@ -65,7 +68,6 @@ export class FileUploadComponent implements OnInit {
     // The storage path
     const prefix = new Date().getTime();
     const path = `test/${prefix}_${file.name}`;
-    const pathThumb = `test/thumb@128_${prefix}_${file.name}`;
 
     // Totally optional metadata
     const customMetadata = { app: 'dbd-ui' };
@@ -83,7 +85,6 @@ export class FileUploadComponent implements OnInit {
     this.snapshot.pipe(
       finalize(() => {
         this.imageURL = this.storage.ref(path).getDownloadURL();
-        this.hasImage = true;
       })
     ).subscribe();
 
@@ -94,16 +95,37 @@ export class FileUploadComponent implements OnInit {
     return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes;
   }
 
+  readUrl() {
+    // prevent click with empty
+    if (!this.currentFiles) {
+      return;
+    }
+
+    // The File object
+    const file = this.currentFiles.item(0);
+    if (!file || !file.type) {
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (event: ProgressEvent) => {
+      this.previewURL = (<FileReader>event.target).result;
+    };
+
+    reader.readAsDataURL(file);
+
+  }
+
   removeImage(image) {
-    this.hasImage = false;
+    image.value = '';
     this.imageURL = new Observable<string>();
     this.percentage = new Observable<number>();
     this.snapshot = new Observable<any>();
-    image.value = '';
+    this.previewURL = null;
+    this.currentFiles = null;
   }
 
   ngOnInit(): void {
-    console.log('upload type: ', this.uploaderType);
   }
 
 }

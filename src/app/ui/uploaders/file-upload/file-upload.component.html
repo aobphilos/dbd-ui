@@ -1,8 +1,7 @@
 <div class="dropzone rounded" dropZone (hovered)="toggleHover($event)" [ngClass]="{'hovering':isHovering, 'frame': !hasImage}">
   <div class="file" [hidden]="hasImage">
     <label class="file-label">
-      <input class="file-input" type="file" accept="image/*" [hidden]="!expression"
-        #imageUploader (change)="updateCurrentFiles($event.target.files)">
+      <input class="file-input" type="file" hidden accept="image/*" #imageUploader (change)="updateCurrentFiles($event.target.files)">
       <span class="file-cta">
         <span class="file-icon">
           <i class="fa fa-image fa-5x"></i>
@@ -19,8 +18,9 @@
         </div>
     </div>
   </div>
-  <div class="display" [hidden]="!hasImage">
-    <div *ngIf="imageURL | async as url" class="m-auto">
-      <img [src]="url" alt="คลิกเพื่อเปลี่ยนรูป" class="rounded mx-auto d-block" (click)="removeImage(imageUploader)"> </div>
+  <div class="display" *ngIf="hasImage">
+    <div class="m-auto">
+      <img [src]="previewURL" alt="คลิกเพื่อเปลี่ยนรูป" class="rounded mx-auto d-block"
+        (click)="removeImage(imageUploader)"> </div>
   </div>
 </div>
