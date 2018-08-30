@@ -54,6 +54,9 @@
     }
   }
   &.modal-upload {
+    .modal-dialog{
+      min-width: 40.5rem;
+    }
     .modal-content {
       width: 120%;
       .modal-header {

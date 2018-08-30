@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Promotion } from '../model/promotion';
 import { Member } from '../model/member';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { switchMap, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,8 @@ import { Member } from '../model/member';
 export class PromotionService {
 
   private collection: AngularFirestoreCollection<Promotion>;
+  currentItems: Observable<Promotion[]>;
+  private ownerId$ = new BehaviorSubject<string>('');
 
   private get dbPath() {
     return 'Promotion';
@@ -22,6 +26,24 @@ export class PromotionService {
     private db: AngularFirestore
   ) {
     this.collection = this.db.collection<Promotion>(this.dbPath, q => q.orderBy('createdDate', 'asc'));
+    this.currentItems = this.ownerId$.pipe(
+      switchMap(id =>
+        this.db.collection<Promotion>(this.dbPath,
+          ref => ref.where('ownerId', '==', id).orderBy('createdDate', 'asc')
+        ).snapshotChanges()
+      ),
+      map(items => items.map(
+        a => {
+          const id = a.payload.doc.id;
+          const data = a.payload.doc.data();
+          return { id, ...data } as Promotion;
+        }
+      ))
+    );
+  }
+
+  upsert(item: Promotion) {
+    return (item.id) ? this.update(item) : this.add(item);
   }
 
   add(item: Promotion) {
@@ -66,6 +88,21 @@ export class PromotionService {
     });
   }
 
+  getOrCreateItem(id: string) {
+    return new Promise<Promotion>(async (resolve, reject) => {
+      id = id || this.db.createId();
+      const itemRef = this.collection.doc(id).ref;
+      itemRef.get().then(
+        result => resolve({ id: result.id, ...result.data() } as Promotion),
+        err => reject(err)
+      );
+    });
+  }
+
+  loadCurrentItems(ownerId: string) {
+    this.ownerId$.next(ownerId);
+  }
+
   private assignOwner(ownerId: string, itemId: string) {
     return this.updateOwner(ownerId, itemId, true);
   }
@@ -85,11 +122,11 @@ export class PromotionService {
       if (original.exists) {
         const owner = original.data() as Member;
         if (isAssign) {
-          owner.storeIds.push(itemId);
+          owner.promotionIds.push(itemId);
         } else {
-          owner.storeIds = owner.storeIds.filter(id => itemId !== id);
+          owner.promotionIds = owner.promotionIds.filter(id => itemId !== id);
         }
-        ownerRef.update({ storeIds: owner.storeIds })
+        ownerRef.update({ promotionIds: owner.promotionIds })
           .then(() => resolve(), (err) => reject(err));
       } else {
         reject('This owner is not registered');

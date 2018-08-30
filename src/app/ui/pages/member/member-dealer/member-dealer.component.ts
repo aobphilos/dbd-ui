@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { StoreService } from '../../../../core/store.service';
+import { ProductService } from '../../../../core/product.service';
+import { Store } from '../../../../model/store';
+import { Product } from '../../../../model/product';
 
 @Component({
   selector: 'app-member-dealer',
@@ -7,9 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MemberDealerComponent implements OnInit {
 
-  constructor() { }
+  @Input() ownerId: string;
+
+  constructor(
+    private storeService: StoreService,
+    private productService: ProductService
+  ) { }
+
+  get storeItems() {
+    return this.storeService.currentItems;
+  }
+
+  get productItems() {
+    return this.productService.currentItems;
+  }
 
   ngOnInit() {
+    this.storeService.loadCurrentItems(this.ownerId);
+    this.productService.loadCurrentItems(this.ownerId);
   }
 
 }

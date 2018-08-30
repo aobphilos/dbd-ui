@@ -6,8 +6,14 @@ import { Product } from '../../../model/product';
 import { Promotion } from '../../../model/promotion';
 import { FileUploadComponent } from '../file-upload/file-upload.component';
 import { NotifyService } from '../../notify/notify.service';
+import { StoreService } from '../../../core/store.service';
+import { ProductService } from '../../../core/product.service';
+import { PromotionService } from '../../../core/promotion.service';
+import { IndicatorService } from '../../indicator/indicator.service';
+import { MemberService } from '../../../core/member.service';
+import { BehaviorSubject } from 'rxjs';
 
-type ImageUploadType = Store | Product | Promotion;
+type ImageUploadModel = Store | Product | Promotion;
 
 @Component({
   selector: 'app-member-upload',
@@ -17,30 +23,46 @@ type ImageUploadType = Store | Product | Promotion;
 export class MemberUploadComponent implements OnInit {
 
   @Input() uploaderType: UploaderType;
+  @Input() item: ImageUploadModel;
 
   private modalRef: NgbModalRef;
-  model: ImageUploadType;
+  model: ImageUploadModel;
 
-  showEditIcon: boolean;
-
+  private imageUrlSubject: BehaviorSubject<string>;
   imageUrl: string;
-  imageUrlSource: string;
+  showEditIcon: boolean;
+  private ownerId: string;
+
+  constructor(
+    private modalService: NgbModal,
+    private notifyService: NotifyService,
+    private storeService: StoreService,
+    private productService: ProductService,
+    private promotionService: PromotionService,
+    private indicatorService: IndicatorService,
+    private memberService: MemberService
+  ) {
+    this.imageUrlSubject = new BehaviorSubject<string>('');
+  }
+
+  private showBusy = () => this.indicatorService.showBusy();
+  private hideBusy = () => this.indicatorService.hideBusy();
 
   get modalTitle() {
     let title = '';
     switch (this.uploaderType) {
-      case UploaderType.STORE: title = 'เพิ่มภาพถ่ายร้าน'; break;
-      case UploaderType.PRODUCT: title = 'เพิ่มรายการสินค้า'; break;
-      case UploaderType.PROMOTION: title = 'เพิ่มรายการส่งเสริมการตลาด'; break;
+      case UploaderType.STORE: title = 'เพิ่มข้อมูลภาพถ่ายร้าน'; break;
+      case UploaderType.PRODUCT: title = 'เพิ่มข้อมูลรายการสินค้า'; break;
+      case UploaderType.PROMOTION: title = 'เพิ่มข้อมูลรายการส่งเสริมการตลาด'; break;
     }
     return title;
   }
 
-  get hasUploadId() {
-    return false;
+  get hasItem() {
+    return (this.item);
   }
 
-  get isStoreType() {
+  get isStore() {
     return this.uploaderType === UploaderType.STORE;
   }
 
@@ -52,31 +74,61 @@ export class MemberUploadComponent implements OnInit {
     return this.uploaderType === UploaderType.PROMOTION;
   }
 
+  private logError(err) {
+    console.log(err);
+    this.hideBusy();
+  }
+
   toggleEditIcon(flag: boolean) {
     this.showEditIcon = flag;
   }
-
-  constructor(private modalService: NgbModal, private notifyService: NotifyService) { }
 
   openModal(content) {
 
     this.modalRef = this.modalService
       .open(content, {
-        windowClass: 'modal-upload'
+        windowClass: 'modal-upload',
+        centered: true
       });
+
+    this.modalRef.result.then(
+      (reason) => {
+        this.buildModel();
+        if (reason === 'delete') {
+          this.removeItem();
+        }
+      },
+      _err => {
+        this.buildModel();
+      }
+    );
   }
 
   save(uploader: FileUploadComponent) {
 
     if (uploader.hasImage) {
-      uploader.startUpload()
-        .then(
-          result => {
-            result.subscribe(url => { this.model.imageUrl = url; console.log('url: ', url); });
-            this.modalRef.close();
-          },
-          err => console.log(err)
-        );
+      this.showBusy();
+      if (uploader.userOldImage) {
+        this.updateDb()
+          .then(() => {
+            this.modalRef.close(); this.hideBusy();
+          }, err => this.logError(err));
+      } else {
+
+        uploader.startUpload()
+          .then(
+            result => {
+              result.subscribe(url => {
+                this.model.imageUrl = url;
+                this.updateDb()
+                  .then(() => {
+                    this.modalRef.close(); this.hideBusy();
+                  }, err => this.logError(err));
+              });
+            },
+            err => this.logError(err));
+      }
+
       return;
     }
 
@@ -84,16 +136,60 @@ export class MemberUploadComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+  removeItem() {
+    return new Promise<any>((resolve, reject) => {
+
+      let deferred: Promise<any>;
+      if (this.isProduct) {
+        deferred = this.productService.delete(this.model.id, this.model.ownerId);
+      } else if (this.isPromotion) {
+        deferred = this.promotionService.delete(this.model.id, this.model.ownerId);
+      } else {
+        deferred = this.storeService.delete(this.model.id, this.model.ownerId);
+      }
+
+      deferred.then(() => resolve(), err => reject(err));
+
+    });
+  }
+
+  private updateDb() {
+    return new Promise<any>((resolve, reject) => {
+
+      let deferred: Promise<any>;
+      if (this.isProduct) {
+        deferred = this.productService.upsert(this.model as Product);
+      } else if (this.isPromotion) {
+        deferred = this.promotionService.upsert(this.model as Promotion);
+      } else {
+        deferred = this.storeService.upsert(this.model as Store);
+      }
+
+      deferred.then(() => resolve(), err => reject(err));
+
+    });
+  }
+  private buildModel() {
+
     if (this.isProduct) {
-      this.model = new Product();
+      this.model = this.item || new Product();
     } else if (this.isPromotion) {
-      this.model = new Promotion();
+      this.model = this.item || new Promotion();
     } else {
-      this.model = new Store();
+      this.model = this.item || new Store();
     }
 
-    this.imageUrlSource = '';
+    if (!this.item) {
+      this.model.ownerId = this.ownerId;
+    }
+
+    this.imageUrlSubject.next(this.model.imageUrl);
+  }
+
+  ngOnInit() {
+    this.imageUrlSubject.subscribe(url => this.imageUrl = url);
+    this.memberService.currentMember.subscribe(member => this.ownerId = member.id);
+    this.buildModel();
   }
 
 }

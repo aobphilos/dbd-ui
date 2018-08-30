@@ -12,10 +12,14 @@ import { finalize } from 'rxjs/operators';
 export class FileUploadComponent implements OnInit {
 
   @Input() uploaderType: UploaderType;
-  @Input() @Output() imageUrl: string;
+  @Input() imageUrl: string;
 
   get hasImage() {
     return (this.previewURL && this.previewURL !== '');
+  }
+
+  get userOldImage() {
+    return this.previewURL === this.imageUrl;
   }
 
   // Main task
@@ -128,6 +132,7 @@ export class FileUploadComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.previewURL = this.imageUrl;
   }
 
 }

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Product } from '../model/product';
 import { Member } from '../model/member';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { switchMap, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,8 @@ import { Member } from '../model/member';
 export class ProductService {
 
   private collection: AngularFirestoreCollection<Product>;
+  currentItems: Observable<Product[]>;
+  private ownerId$ = new BehaviorSubject<string>('');
 
   private get dbPath() {
     return 'Product';
@@ -22,6 +26,24 @@ export class ProductService {
     private db: AngularFirestore
   ) {
     this.collection = this.db.collection<Product>(this.dbPath, q => q.orderBy('createdDate', 'asc'));
+    this.currentItems = this.ownerId$.pipe(
+      switchMap(id =>
+        this.db.collection<Product>(this.dbPath,
+          ref => ref.where('ownerId', '==', id).orderBy('createdDate', 'asc')
+        ).snapshotChanges()
+      ),
+      map(items => items.map(
+        a => {
+          const id = a.payload.doc.id;
+          const data = a.payload.doc.data();
+          return { id, ...data } as Product;
+        }
+      ))
+    );
+  }
+
+  upsert(item: Product) {
+    return (item.id) ? this.update(item) : this.add(item);
   }
 
   add(item: Product) {
@@ -66,6 +88,21 @@ export class ProductService {
     });
   }
 
+  getOrCreateItem(id: string) {
+    return new Promise<Product>(async (resolve, reject) => {
+      id = id || this.db.createId();
+      const itemRef = this.collection.doc(id).ref;
+      itemRef.get().then(
+        result => resolve({ id: result.id, ...result.data() } as Product),
+        err => reject(err)
+      );
+    });
+  }
+
+  loadCurrentItems(ownerId: string) {
+    this.ownerId$.next(ownerId);
+  }
+
   private assignOwner(ownerId: string, itemId: string) {
     return this.updateOwner(ownerId, itemId, true);
   }
@@ -85,11 +122,11 @@ export class ProductService {
       if (original.exists) {
         const owner = original.data() as Member;
         if (isAssign) {
-          owner.storeIds.push(itemId);
+          owner.productIds.push(itemId);
         } else {
-          owner.storeIds = owner.storeIds.filter(id => itemId !== id);
+          owner.productIds = owner.productIds.filter(id => itemId !== id);
         }
-        ownerRef.update({ storeIds: owner.storeIds })
+        ownerRef.update({ productIds: owner.productIds })
           .then(() => resolve(), (err) => reject(err));
       } else {
         reject('This owner is not registered');

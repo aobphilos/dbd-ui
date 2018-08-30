@@ -11,7 +11,7 @@ export class MemberService {
 
   private memberCollection: AngularFirestoreCollection<Member>;
 
-  CurrentMember: BehaviorSubject<Member>;
+  currentMember: BehaviorSubject<Member>;
 
   private get dbPath() {
     return 'Member';
@@ -21,7 +21,7 @@ export class MemberService {
     private db: AngularFirestore
   ) {
     this.memberCollection = this.db.collection<Member>(this.dbPath, q => q.orderBy('storeName', 'asc'));
-    this.CurrentMember = new BehaviorSubject<Member>(null);
+    this.currentMember = new BehaviorSubject<Member>(null);
     this.loadMemberFromSession();
   }
 
@@ -64,12 +64,12 @@ export class MemberService {
   private loadMemberFromSession() {
     const member = JSON.parse(sessionStorage.getItem(SessionType.MEMBER)) as Member;
     if (member) {
-      this.CurrentMember.next(member);
+      this.currentMember.next(member);
     }
   }
 
   private setCurrentMember(member: Member) {
-    this.CurrentMember.next(member);
+    this.currentMember.next(member);
     sessionStorage.setItem(SessionType.MEMBER, JSON.stringify(member));
   }
 

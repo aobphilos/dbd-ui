@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { RegisterService } from '../../register/register.service';
-import { RegisterStep } from '../../../../enum/register-step';
-import { AuthService } from '../../../../core/auth.service';
-import { MemberService } from '../../../../core/member.service';
-import { IndicatorService } from '../../../indicator/indicator.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { StoreService } from '../../../../core/store.service';
+import { ProductService } from '../../../../core/product.service';
+import { PromotionService } from '../../../../core/promotion.service';
+import { Store } from '../../../../model/store';
+import { Product } from '../../../../model/product';
+import { Promotion } from '../../../../model/promotion';
 
 @Component({
   selector: 'app-member-wholesale',
@@ -12,12 +13,30 @@ import { IndicatorService } from '../../../indicator/indicator.service';
 })
 export class MemberWholesaleComponent implements OnInit {
 
-  constructor(private registerService: RegisterService,
-    private authService: AuthService,
-    private memberService: MemberService,
-    private indicatorService: IndicatorService) { }
+  @Input() ownerId: string;
+
+  constructor(
+    private storeService: StoreService,
+    private productService: ProductService,
+    private promotionService: PromotionService
+  ) { }
+
+  get storeItems() {
+    return this.storeService.currentItems;
+  }
+
+  get productItems() {
+    return this.productService.currentItems;
+  }
+
+  get promotionItems() {
+    return this.productService.currentItems;
+  }
 
   ngOnInit() {
+    this.storeService.loadCurrentItems(this.ownerId);
+    this.productService.loadCurrentItems(this.ownerId);
+    this.promotionService.loadCurrentItems(this.ownerId);
   }
 
 }

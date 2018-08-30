@@ -1,28 +1,31 @@
 <div class="uploader border rounded w-100 mb-2">
-  <div class="empty" *ngIf="!hasUploadId" (click)="openModal(uploadDetail)">
+  <div class="empty" *ngIf="!hasItem" (click)="openModal(uploadDetail)">
     <div>
       <span>
         <span class="file-icon">
           <i class="fa fa-plus fa-5x"></i>
         </span>
         <br>
-        <span> เพิ่มข้อมูลรายการสินค้า </span>
+        <span> {{modalTitle}} </span>
       </span>
     </div>
   </div>
-  <div class="display" *ngIf="hasUploadId" (mouseover)="toggleEditIcon(true)" (mouseleave)="toggleEditIcon(false)">
+  <div class="display" *ngIf="hasItem" (mouseover)="toggleEditIcon(true)"
+    (mouseleave)="toggleEditIcon(false)">
     <div class="display-edit" [ngClass]="{'hover': showEditIcon}">
       <span class="file-icon">
-        <i class="fa fa-pencil fa-3x" alt="แก้ไข"></i>
-        <i class="fa fa-trash fa-3x" alt="ลบข้อมูล"></i>
+        <i class="fa fa-pencil fa-3x" alt="แก้ไข" (click)="openModal(uploadDetail)"></i>
+        <i class="fa fa-trash fa-3x" alt="ลบข้อมูล" (click)="openModal(confirm)"></i>
       </span>
     </div>
-    <div class="media">
-      <img class="mr-3" [src]="imageUrl" alt="Generic placeholder image">
-      <div class="media-body">
-        <h5 class="mt-0">Media heading</h5> Cras sit amet nibh libero, in
-        gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras
-        purus odio, vestibulum in vulputate at, tempus viverra turpis.
+    <div class="display-content" [ngClass]="{'store-item': isStore, 'product-item': !isStore}">
+      <div [ngClass]="{'product-image': !isStore}">
+        <img class="rounded" [src]="imageUrl" [ngClass]="{'border': !isStore}">
+      </div>
+      <div [ngClass]="{'product-detail': !isStore}" [hidden]="isStore">
+        <div class="col">{{model.categoryName}}</div>
+        <div class="col">{{model.description}}</div>
+        <div class="col">{{model.price}}</div>
       </div>
     </div>
   </div>
@@ -34,7 +37,7 @@
   <div class="modal-body">
     <div class="row align-items-start">
       <div class="col-5">
-        <app-file-upload #fileUploader [uploaderType]="uploaderType" [(imageUrl)]="imageUrlSource"></app-file-upload>
+        <app-file-upload #fileUploader [uploaderType]="uploaderType" [imageUrl]="imageUrl"></app-file-upload>
       </div>
       <div class="col-7">
         <form>
@@ -67,5 +70,17 @@
         </form>
       </div>
     </div>
+  </div>
+</ng-template>
+<ng-template #confirm let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">ลบข้อมูล</h4>
+  </div>
+  <div class="modal-body">
+    <p>คุณต้องการลบรายการนี้หรือไม่</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-warning" (click)="c('delete')">ยืนยัน</button>
+    <button type="button" class="btn btn-light" (click)="d(false)">ยกเลิก</button>
   </div>
 </ng-template>

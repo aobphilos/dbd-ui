@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Store } from '../model/store';
 import { Member } from '../model/member';
-import { isatty } from 'tty';
-import { $ } from 'protractor';
-import { when } from 'q';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +11,8 @@ import { when } from 'q';
 export class StoreService {
 
   private collection: AngularFirestoreCollection<Store>;
+  currentItems: Observable<Store[]>;
+  private ownerId$ = new BehaviorSubject<string>('');
 
   private get dbPath() {
     return 'Store';
@@ -25,6 +26,24 @@ export class StoreService {
     private db: AngularFirestore
   ) {
     this.collection = this.db.collection<Store>(this.dbPath, q => q.orderBy('createdDate', 'asc'));
+    this.currentItems = this.ownerId$.pipe(
+      switchMap(id =>
+        this.db.collection<Store>(this.dbPath,
+          ref => ref.where('ownerId', '==', id).orderBy('createdDate', 'asc')
+        ).snapshotChanges()
+      ),
+      map(items => items.map(
+        a => {
+          const id = a.payload.doc.id;
+          const data = a.payload.doc.data();
+          return { id, ...data } as Store;
+        }
+      ))
+    );
+  }
+
+  upsert(item: Store) {
+    return (item.id) ? this.update(item) : this.add(item);
   }
 
   add(item: Store) {
@@ -67,6 +86,21 @@ export class StoreService {
           , (err) => reject(err));
 
     });
+  }
+
+  getOrCreateItem(id: string) {
+    return new Promise<Store>(async (resolve, reject) => {
+      id = id || this.db.createId();
+      const itemRef = this.collection.doc(id).ref;
+      itemRef.get().then(
+        result => resolve({ id: result.id, ...result.data() } as Store),
+        err => reject(err)
+      );
+    });
+  }
+
+  loadCurrentItems(ownerId: string) {
+    this.ownerId$.next(ownerId);
   }
 
   private assignOwner(ownerId: string, itemId: string) {
