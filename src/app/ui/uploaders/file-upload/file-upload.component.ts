@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
-import { finalize } from 'rxjs/operators';
 import { UploaderType } from '../../../enum/uploader-type';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-file-upload',
@@ -12,6 +12,7 @@ import { UploaderType } from '../../../enum/uploader-type';
 export class FileUploadComponent implements OnInit {
 
   @Input() uploaderType: UploaderType;
+  @Input() @Output() imageUrl: string;
 
   get hasImage() {
     return (this.previewURL && this.previewURL !== '');
@@ -24,9 +25,6 @@ export class FileUploadComponent implements OnInit {
   percentage: Observable<number>;
 
   snapshot: Observable<any>;
-
-  // Image URL
-  imageURL: Observable<string>;
 
   // Preview Image in Local
   previewURL: string | ArrayBuffer;
@@ -48,46 +46,51 @@ export class FileUploadComponent implements OnInit {
   }
 
   startUpload() {
-    // prevent click with empty
-    if (!this.currentFiles) {
-      return;
-    }
+    return new Promise<Observable<any>>((resolve, reject) => {
 
-    // The File object
-    const file = this.currentFiles.item(0);
-    if (!file || !file.type) {
-      return;
-    }
+      // prevent click with empty
+      if (!this.currentFiles) {
+        reject('Image has empty');
+        return;
+      }
 
-    // Client-side validation example
-    if (file.type.split('/')[0] !== 'image') {
-      console.error(`unsupported file type`);
-      return;
-    }
+      // The File object
+      const file = this.currentFiles.item(0);
+      if (!file || !file.type) {
+        reject('Image has empty');
+        return;
+      }
 
-    // The storage path
-    const prefix = new Date().getTime();
-    const path = `test/${prefix}_${file.name}`;
+      // Client-side validation example
+      if (file.type.split('/')[0] !== 'image') {
+        reject(`unsupported file type`);
+        return;
+      }
 
-    // Totally optional metadata
-    const customMetadata = { app: 'dbd-ui' };
+      // The storage path
+      const prefix = new Date().getTime();
+      const path = `${this.uploaderType}/${prefix}_${file.name}`;
 
-    // this.thumbURL = this.storage.ref(pathThumb).getDownloadURL();
+      // Totally optional metadata
+      const customMetadata = { app: 'dbd-ui' };
 
-    // The main task
-    this.task = this.storage.upload(path, file, { customMetadata });
+      // this.thumbURL = this.storage.ref(pathThumb).getDownloadURL();
 
-    // Progress monitoring
-    this.percentage = this.task.percentageChanges();
-    this.snapshot = this.task.snapshotChanges();
+      // The main task
+      this.task = this.storage.upload(path, file, { customMetadata });
 
-    // The file's download URL
-    this.snapshot.pipe(
-      finalize(() => {
-        this.imageURL = this.storage.ref(path).getDownloadURL();
-      })
-    ).subscribe();
+      // Progress monitoring
+      this.percentage = this.task.percentageChanges();
+      this.snapshot = this.task.snapshotChanges();
 
+      // The file's download URL
+      this.snapshot.pipe(
+        finalize(() => {
+          resolve(this.storage.ref(path).getDownloadURL());
+        })
+      ).subscribe();
+
+    });
   }
 
   // Determines if the upload task is active
@@ -118,7 +121,6 @@ export class FileUploadComponent implements OnInit {
 
   removeImage(image) {
     image.value = '';
-    this.imageURL = new Observable<string>();
     this.percentage = new Observable<number>();
     this.snapshot = new Observable<any>();
     this.previewURL = null;

@@ -14,12 +14,16 @@ import { HomeComponent } from './pages/home/home.component';
 import { LayoutService } from './layout/layout.service';
 import { UrlPath } from '../enum/url-path';
 import { RegisterComponent } from './pages/register/register.component';
+import { MemberEditComponent } from './pages/member/member-edit/member-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'index', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent, canActivate: [RegisterGuard] },
+  { path: 'member',  redirectTo: '/member/info', pathMatch: 'full' },
+  { path: 'member/info', component: MemberEditComponent, canActivate: [AuthGuard] },
+  { path: 'member/shop', component: MemberEditComponent, canActivate: [AuthGuard] },
   { path: '**', component: FileNotFoundComponent }
 ];
 

@@ -11,45 +11,51 @@
           </div>
         </div>
       </a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-label="Toggle navigation" [attr.aria-expanded]="!isCollapsed" (click)="setCollapsed()"
-        *ngIf="toggleMenu">
+      <button class="navbar-toggler navbar-toggler-right" type="button"
+        data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-label="Toggle navigation"
+        [attr.aria-expanded]="!isCollapsed" (click)="setCollapsed()" *ngIf="toggleMenu">
         <div class="navbar-toggler-icon"></div>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed"
-        *ngIf="toggleMenu">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent"
+        [ngbCollapse]="isCollapsed" *ngIf="toggleMenu">
         <ng-container *ngIf="userVerified; then signedIn; else needSignIn"></ng-container>
         <ng-template #signedIn>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" data-toggle="modal" routerLink="/home">หน้าหลัก</a>
+              <a class="nav-link" routerLinkActive="active" routerLink="/home">หน้าหลัก</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" data-toggle="modal" routerLink="/news">ข่าวประชาสัมพันธ์</a>
+              <a class="nav-link" routerLinkActive="active" routerLink="/news">ข่าวประชาสัมพันธ์</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" data-toggle="modal" routerLink="/product">สินค้า</a>
+              <a class="nav-link" routerLinkActive="active" routerLink="/product">สินค้า</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" data-toggle="modal" routerLink="/promotion">โปรโมชั่น</a>
+              <a class="nav-link" routerLinkActive="active" routerLink="/promotion">โปรโมชั่น</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" data-toggle="modal" routerLink="/webboard">เว็บบอร์ด</a>
+              <a class="nav-link" routerLinkActive="active" routerLink="/webboard">เว็บบอร์ด</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" data-toggle="modal" routerLink="/contact">ติดต่อเรา</a>
+              <a class="nav-link" routerLinkActive="active" routerLink="/contact">ติดต่อเรา</a>
             </li>
             <li class="nav-item d-none" [ngClass]="{'d-xl-block': userVerified,'d-lg-block': !userVerified}">
               <div class="seperate"></div>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link text-orange" href="#" id="navbarDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true" [attr.aria-expanded]="!isUserCollapsed"
-                (click)="setUserCollapsed()"> {{userEmail|formatRemoveAt}} </a>
-              <div class="dropdown-menu"
-                aria-labelledby="navbarDropdown" [ngbCollapse]="isUserCollapsed">
-                <a class="nav-link text-orange" routerLinkActive="active" data-toggle="modal"
+                data-toggle="dropdown" aria-haspopup="true"
+                [attr.aria-expanded]="!isUserCollapsed" (click)="setUserCollapsed($event)">
+                {{userEmail|formatRemoveAt}} </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown"
+                [ngbCollapse]="isUserCollapsed">
+                <a class="nav-link text-orange" routerLinkActive="active"
+                  routerLink="/member/info"> ข้อมูลส่วนตัว </a>
+                <a class="nav-link text-orange" routerLinkActive="active"
+                  routerLink="/member/shop"> ข้อมูลร้านค้า </a>
+                <div class="dropdown-divider"></div>
+                <a class="nav-link text-orange" routerLinkActive="active"
                   (click)="tryLogout()"> ออกจากระบบ </a>
               </div>
             </li>
@@ -58,13 +64,15 @@
         <ng-template #needSignIn>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" data-toggle="modal" (click)="openModal(signInModal)">เข้าสู่ระบบ</a>
+              <a class="nav-link" routerLinkActive="active" data-toggle="modal"
+                (click)="openModal(signInModal)">เข้าสู่ระบบ</a>
             </li>
             <li class="nav-item d-none d-lg-block">
               <div class="seperate"></div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" data-toggle="modal" (click)="openModal(signUpModal)">สมัครสมาชิก</a>
+              <a class="nav-link" routerLinkActive="active" data-toggle="modal"
+                (click)="openModal(signUpModal)">สมัครสมาชิก</a>
             </li>
           </ul>
         </ng-template>
@@ -81,18 +89,19 @@
       <div class="col-12">
         <form [formGroup]="signInForm" (keydown)="onKeyDownSignIn($event)">
           <div class="form-group">
-            <p class="text-light text-center">เข้าสู่ระบบ
-              <span class="text-orange">เครื่อข่ายธงฟ้าชุมชน</span>
+            <p class="text-light text-center">เข้าสู่ระบบ <span class="text-orange">เครื่อข่ายธงฟ้าชุมชน</span>
             </p>
           </div>
           <div class="form-group">
             <input type="email" formControlName="email" class="form-control text-center"
               placeholder="Email" maxlength="100"> </div>
           <div class="form-group">
-            <input type="password" class="form-control text-center" formControlName="password"
-              placeholder="Password" maxlength="100"> </div>
+            <input type="password" class="form-control text-center"
+              formControlName="password" placeholder="Password" maxlength="100">
+          </div>
           <div class="form-group">
-            <button type="button" class="btn bg-orange text-white text-center" (click)="tryLogin(signInForm.value)">เข้าสู่ระบบ</button>
+            <button type="button" class="btn bg-orange text-white text-center"
+              (click)="tryLogin(signInForm.value)">เข้าสู่ระบบ</button>
           </div>
         </form>
       </div>
@@ -127,18 +136,19 @@
       <div class="col-12">
         <form [formGroup]="signUpForm" (keydown)="onKeyDownSignUp($event)">
           <div class="form-group">
-            <p class="text-light text-center">สมัครสมาชิก
-              <span class="text-orange">เครื่อข่ายธงฟ้าชุมชน</span>
+            <p class="text-light text-center">สมัครสมาชิก <span class="text-orange">เครื่อข่ายธงฟ้าชุมชน</span>
             </p>
           </div>
           <div class="form-group">
             <input type="email" formControlName="email" class="form-control text-center"
               placeholder="Email" maxlength="100"> </div>
           <div class="form-group">
-            <input type="password" class="form-control text-center" formControlName="password"
-              placeholder="Password" maxlength="100"> </div>
+            <input type="password" class="form-control text-center"
+              formControlName="password" placeholder="Password" maxlength="100">
+          </div>
           <div class="form-group">
-            <button type="button" class="btn bg-orange text-white text-center" (click)="tryRegister(signUpForm.value)">สมัครสมาชิก</button>
+            <button type="button" class="btn bg-orange text-white text-center"
+              (click)="tryRegister(signUpForm.value)">สมัครสมาชิก</button>
           </div>
         </form>
       </div>

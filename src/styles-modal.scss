@@ -61,6 +61,9 @@
         color: rgba($color: #ffffff, $alpha: 0.85);
         background-color: #5b2d90;
         height: 3.8rem;
+        &.store {
+          background-color: #f7a600;
+        }
       }
     }
   }

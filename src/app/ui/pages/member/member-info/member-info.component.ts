@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Optional } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegisterService } from '../../register/register.service';
 import { RegisterStep } from '../../../../enum/register-step';
@@ -15,6 +15,7 @@ import { IndicatorService } from '../../../indicator/indicator.service';
 })
 export class MemberInfoComponent implements OnInit {
 
+  @Input() mode: string;
   model: Member;
   submitted = false;
 
@@ -29,6 +30,14 @@ export class MemberInfoComponent implements OnInit {
 
   private showBusy = () => this.indicatorService.showBusy();
   private hideBusy = () => this.indicatorService.hideBusy();
+
+  get isRegister() {
+    return this.mode === 'register';
+  }
+
+  get isEdit() {
+    return this.mode === 'edit';
+  }
 
   goNext() {
     switch (this.registerForm.planId) {
@@ -52,21 +61,41 @@ export class MemberInfoComponent implements OnInit {
   private buildModel() {
     this.model = new Member();
     this.model.email = this.registerForm.username;
+    this.model.memberType = this.registerForm.planId;
+  }
+
+  private loadModel() {
+    this.memberService.CurrentMember.subscribe(member => this.model = member);
   }
 
   async tryUpdateMember() {
     this.showBusy();
     this.submitted = true;
-    await this.memberService.add(this.model, this.registerForm.planId);
-    await this.authService.doVerifyEmail(this.registerForm.code);
+    if (this.isRegister) {
+      await this.addMember();
+    } else {
+      await this.updateMember();
+    }
     this.memberService.loadCurrentMember(this.model.email);
     this.goNext();
     this.hideBusy();
+  }
 
+  async addMember() {
+    await this.memberService.add(this.model);
+    await this.authService.doVerifyEmail(this.registerForm.code);
+  }
+
+  async updateMember() {
+    await this.memberService.update(this.model);
   }
 
   ngOnInit() {
-    this.buildModel();
+    if (this.isRegister) {
+      this.buildModel();
+    } else {
+      this.loadModel();
+    }
   }
 
 }

@@ -1,4 +1,5 @@
 import { ModelBase } from './model-base';
+import { MemberType } from '../enum/member-type';
 
 export class MemberGroup {
   id: string;
@@ -11,6 +12,7 @@ export class MemberGroup {
 
 export class Member extends ModelBase {
 
+  memberType: MemberType;
   storeName: string;
   ownerName: string;
   email: string;
@@ -32,6 +34,7 @@ export class Member extends ModelBase {
 
   constructor() {
     super();
+    this.memberType = MemberType.RETAIL;
     this.storeName = '';
     this.ownerName = '';
     this.email = '';

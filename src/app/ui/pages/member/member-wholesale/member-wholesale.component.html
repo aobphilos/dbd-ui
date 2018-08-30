@@ -1,3 +1,25 @@
-<p>
-  member-wholesale works!
-</p>
+<div class="d-flex justify-content-between mx-auto mb-3 line-break">
+  <div>
+    <h4>ข้อมูลร้านค้าส่ง ค้าปลีก</h4>
+  </div>
+  <div>
+  </div>
+</div>
+<div class="member-upload d-flex flex-wrap mb-3">
+  <div class="store col-12 mb-2">
+    <h5>ภาพถ่ายร้าน</h5>
+  </div>
+  <app-member-upload uploaderType="STORE" class="col-xl-4 col-lg-6"></app-member-upload>
+</div>
+<div class="member-upload d-flex flex-wrap mb-3">
+  <div class="product col-12 mb-2">
+    <h5>รายการสินค้าหลักที่จำหน่าย</h5>
+  </div>
+  <app-member-upload uploaderType="PRODUCT" class="col-xl-4 col-lg-6"></app-member-upload>
+</div>
+<div class="member-upload d-flex flex-wrap mb-3">
+  <div class="promotion col-12 mb-2">
+    <h5>รายการส่งเสริมการตลาด</h5>
+  </div>
+  <app-member-upload uploaderType="PROMOTION" class="col-xl-4 col-lg-6"></app-member-upload>
+</div>

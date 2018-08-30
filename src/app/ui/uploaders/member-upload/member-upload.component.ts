@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ContentChild, ContentChildren, QueryList, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UploaderType } from '../../../enum/uploader-type';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '../../../model/store';
@@ -14,13 +14,17 @@ type ImageUploadType = Store | Product | Promotion;
   templateUrl: './member-upload.component.html',
   styleUrls: ['./member-upload.component.scss']
 })
-export class MemberUploadComponent implements OnInit, AfterViewInit {
+export class MemberUploadComponent implements OnInit {
 
   @Input() uploaderType: UploaderType;
-  @ContentChild(FileUploadComponent) fileUploader: FileUploadComponent;
 
   private modalRef: NgbModalRef;
   model: ImageUploadType;
+
+  showEditIcon: boolean;
+
+  imageUrl: string;
+  imageUrlSource: string;
 
   get modalTitle() {
     let title = '';
@@ -36,10 +40,6 @@ export class MemberUploadComponent implements OnInit, AfterViewInit {
     return false;
   }
 
-  get imageURL() {
-    return '';
-  }
-
   get isStoreType() {
     return this.uploaderType === UploaderType.STORE;
   }
@@ -52,6 +52,10 @@ export class MemberUploadComponent implements OnInit, AfterViewInit {
     return this.uploaderType === UploaderType.PROMOTION;
   }
 
+  toggleEditIcon(flag: boolean) {
+    this.showEditIcon = flag;
+  }
+
   constructor(private modalService: NgbModal, private notifyService: NotifyService) { }
 
   openModal(content) {
@@ -62,11 +66,17 @@ export class MemberUploadComponent implements OnInit, AfterViewInit {
       });
   }
 
-  save() {
+  save(uploader: FileUploadComponent) {
 
-    if (this.fileUploader && this.fileUploader.hasImage) {
-      this.fileUploader.startUpload();
-      this.modalRef.close();
+    if (uploader.hasImage) {
+      uploader.startUpload()
+        .then(
+          result => {
+            result.subscribe(url => { this.model.imageUrl = url; console.log('url: ', url); });
+            this.modalRef.close();
+          },
+          err => console.log(err)
+        );
       return;
     }
 
@@ -82,10 +92,8 @@ export class MemberUploadComponent implements OnInit, AfterViewInit {
     } else {
       this.model = new Store();
     }
-  }
 
-  ngAfterViewInit() {
-    console.log('uploader: ', this.fileUploader);
+    this.imageUrlSource = '';
   }
 
 }

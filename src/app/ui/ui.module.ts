@@ -32,6 +32,10 @@ import { MemberWholesaleComponent } from './pages/member/member-wholesale/member
 import { FileUploadComponent } from './uploaders/file-upload/file-upload.component';
 import { FileSizePipe } from '../core/pipe/file-size.pipe';
 import { MemberUploadComponent } from './uploaders/member-upload/member-upload.component';
+import { MemberEditComponent } from './pages/member/member-edit/member-edit.component';
+import { StoreService } from '../core/store.service';
+import { ProductService } from '../core/product.service';
+import { PromotionService } from '../core/promotion.service';
 
 @NgModule({
   imports: [
@@ -48,11 +52,13 @@ import { MemberUploadComponent } from './uploaders/member-upload/member-upload.c
   declarations: [
     LayoutComponent, HeaderComponent, FooterComponent, FileNotFoundComponent,
     HomeComponent, RegisterComponent, NotifyComponent, IndicatorComponent,
-    MemberInfoComponent, MemberRetailComponent, MemberDealerComponent, MemberWholesaleComponent,
-    FormatRemoveAtPipe, DropZoneDirective, FileUploadComponent, FileSizePipe, MemberUploadComponent
+    MemberInfoComponent, MemberRetailComponent, MemberDealerComponent,
+    MemberWholesaleComponent, FormatRemoveAtPipe, DropZoneDirective,
+    FileUploadComponent, FileSizePipe, MemberUploadComponent, MemberEditComponent
   ],
   providers: [
-    AuthService, LayoutService, AuthGuard, MemberService, NotifyService, IndicatorService
+    AuthService, LayoutService, AuthGuard, MemberService, NotifyService,
+    IndicatorService, StoreService, ProductService, PromotionService
   ],
   exports: [LayoutComponent]
 })

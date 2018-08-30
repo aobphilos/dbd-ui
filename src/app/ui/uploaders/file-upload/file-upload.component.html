@@ -1,4 +1,4 @@
-<div class="dropzone rounded" dropZone (hovered)="toggleHover($event)" [ngClass]="{'hovering':isHovering, 'frame': !hasImage}">
+<div class="dropzone rounded" appDropZone  (hovered)="toggleHover($event)" (dropped)="updateCurrentFiles($event)" [ngClass]="{'hovering':isHovering, 'frame': !hasImage}">
   <div class="file" [hidden]="hasImage">
     <label class="file-label">
       <input class="file-input" type="file" hidden accept="image/*" #imageUploader (change)="updateCurrentFiles($event.target.files)">

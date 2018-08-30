@@ -4,8 +4,8 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LayoutService } from '../layout/layout.service';
 import { NotifyService } from '../notify/notify.service';
-import { Router } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -35,7 +35,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private layoutService: LayoutService,
     private notifyService: NotifyService,
-    private router: Router
+    private router: Router,
+    private activeRoute: ActivatedRoute,
   ) {
     this.createForm();
   }
@@ -101,7 +102,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.isCollapsed = !this.isCollapsed;
   }
 
-  setUserCollapsed() {
+  setUserCollapsed(event: Event) {
+    event.preventDefault();
     this.isUserCollapsed = !this.isUserCollapsed;
   }
 
@@ -136,6 +138,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.router.events
+      .pipe(
+        filter((event, index) => event instanceof NavigationEnd)
+      )
+      .subscribe(event => this.isUserCollapsed = true);
+
     this.layoutService.showMainMenu.subscribe(flag => this.toggleMenu = flag);
     window.addEventListener('scroll', (e) => this.onWindowScroll(e), true);
   }

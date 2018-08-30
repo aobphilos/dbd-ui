@@ -1,3 +1,19 @@
-<p>
-  member-dealer works!
-</p>
+<div class="d-flex justify-content-between mx-auto mb-3 line-break">
+    <div>
+      <h4>ข้อมูลผู้ผลิต / ผู้จำหน่ายสินค้า</h4>
+    </div>
+    <div>
+    </div>
+  </div>
+  <div class="member-upload d-flex flex-wrap mb-3">
+    <div class="store col-12 mb-2">
+      <h5>ภาพถ่ายบริษัท / โรงงาน</h5>
+    </div>
+    <app-member-upload uploaderType="STORE" class="col-xl-4 col-lg-6"></app-member-upload>
+  </div>
+  <div class="member-upload d-flex flex-wrap mb-3">
+    <div class="product col-12 mb-2">
+      <h5>รายการสินค้าหลักที่จำหน่าย</h5>
+    </div>
+    <app-member-upload uploaderType="PRODUCT" class="col-xl-4 col-lg-6"></app-member-upload>
+  </div>
