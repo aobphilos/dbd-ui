@@ -41,6 +41,11 @@ export class RegisterService {
     this.updateStorage();
   }
 
+  setMemberId(memberId: string) {
+    this.registerForm.memberId = memberId;
+    this.updateStorage();
+  }
+
   private updateStorage() {
     sessionStorage.setItem(SessionType.REGISTER, JSON.stringify(this.registerForm));
   }

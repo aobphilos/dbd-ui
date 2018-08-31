@@ -82,7 +82,8 @@ export class MemberInfoComponent implements OnInit {
   }
 
   async addMember() {
-    await this.memberService.add(this.model);
+    const memberId = await this.memberService.add(this.model);
+    this.registerService.setMemberId(memberId);
     await this.authService.doVerifyEmail(this.registerForm.code);
   }
 

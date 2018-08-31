@@ -42,12 +42,12 @@
     <app-member-info mode="register"></app-member-info>
   </div>
   <div *ngIf="showRetail">
-    <app-member-retail></app-member-retail>
+    <app-member-retail [ownerId]="memberId"></app-member-retail>
   </div>
   <div *ngIf="showWholesale">
-    <app-member-wholesale></app-member-wholesale>
+    <app-member-wholesale [ownerId]="memberId"></app-member-wholesale>
   </div>
   <div *ngIf="showDealer">
-    <app-member-dealer></app-member-dealer>
+    <app-member-dealer [ownerId]="memberId"></app-member-dealer>
   </div>
 </div>

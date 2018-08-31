@@ -81,6 +81,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
         if (!res.user.emailVerified) {
           this.notifyService.setWarningMessage('Please verify your email address');
           this.tryLogout();
+        } else {
+          this.router.navigateByUrl('/member/shop');
         }
       }, err => {
         this.notifyService.setWarningMessage(err.message);

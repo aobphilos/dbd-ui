@@ -10,8 +10,11 @@ import { SessionType } from '../enum/session-type';
 export class MemberService {
 
   private memberCollection: AngularFirestoreCollection<Member>;
+  model: BehaviorSubject<Member>;
 
-  currentMember: BehaviorSubject<Member>;
+  get currentMember() {
+    return this.model.asObservable();
+  }
 
   private get dbPath() {
     return 'Member';
@@ -21,7 +24,7 @@ export class MemberService {
     private db: AngularFirestore
   ) {
     this.memberCollection = this.db.collection<Member>(this.dbPath, q => q.orderBy('storeName', 'asc'));
-    this.currentMember = new BehaviorSubject<Member>(null);
+    this.model = new BehaviorSubject<Member>(null);
     this.loadMemberFromSession();
   }
 
@@ -30,7 +33,7 @@ export class MemberService {
       if (!member) { reject('Missing Member Data'); return; }
 
       this.memberCollection.add({ ...member })
-        .then(() => resolve(), (err) => reject(err));
+        .then((m) => resolve(m.id), (err) => reject(err));
     });
   }
 
@@ -64,12 +67,12 @@ export class MemberService {
   private loadMemberFromSession() {
     const member = JSON.parse(sessionStorage.getItem(SessionType.MEMBER)) as Member;
     if (member) {
-      this.currentMember.next(member);
+      this.model.next(member);
     }
   }
 
   private setCurrentMember(member: Member) {
-    this.currentMember.next(member);
+    this.model.next(member);
     sessionStorage.setItem(SessionType.MEMBER, JSON.stringify(member));
   }
 

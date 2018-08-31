@@ -30,7 +30,7 @@ export class MemberWholesaleComponent implements OnInit {
   }
 
   get promotionItems() {
-    return this.productService.currentItems;
+    return this.promotionService.currentItems;
   }
 
   ngOnInit() {
