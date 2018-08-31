@@ -31,6 +31,7 @@ export class MemberUploadComponent implements OnInit {
   private imageUrlSubject: BehaviorSubject<string>;
   imageUrl: string;
   showEditIcon: boolean;
+  // backup current owner id for local use.
   private ownerId: string;
 
   constructor(
@@ -188,8 +189,13 @@ export class MemberUploadComponent implements OnInit {
 
   ngOnInit() {
     this.imageUrlSubject.subscribe(url => this.imageUrl = url);
-    this.memberService.currentMember.subscribe(member => this.ownerId = member.id);
     this.buildModel();
+    this.memberService.currentMember.subscribe(member => {
+      if (member) {
+        this.ownerId = member.id;
+        this.model.ownerId = member.id;
+      }
+    });
   }
 
 }

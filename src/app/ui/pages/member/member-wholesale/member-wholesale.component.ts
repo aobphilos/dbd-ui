@@ -2,9 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { StoreService } from '../../../../core/store.service';
 import { ProductService } from '../../../../core/product.service';
 import { PromotionService } from '../../../../core/promotion.service';
-import { Store } from '../../../../model/store';
-import { Product } from '../../../../model/product';
-import { Promotion } from '../../../../model/promotion';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-member-wholesale',
@@ -13,7 +11,7 @@ import { Promotion } from '../../../../model/promotion';
 })
 export class MemberWholesaleComponent implements OnInit {
 
-  @Input() ownerId: string;
+  @Input() ownerId: Observable<string>;
 
   constructor(
     private storeService: StoreService,
@@ -34,9 +32,13 @@ export class MemberWholesaleComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.storeService.loadCurrentItems(this.ownerId);
-    this.productService.loadCurrentItems(this.ownerId);
-    this.promotionService.loadCurrentItems(this.ownerId);
+    this.ownerId.subscribe(id => {
+      if (id) {
+        this.storeService.loadCurrentItems(id);
+        this.productService.loadCurrentItems(id);
+        this.promotionService.loadCurrentItems(id);
+      }
+    });
   }
 
 }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { RegisterService } from './register.service';
 import { Router } from '@angular/router';
 import { RegisterStep } from '../../../enum/register-step';
-import { MemberService } from '../../../core/member.service';
 
 @Component({
   selector: 'app-register',
@@ -12,11 +11,10 @@ import { MemberService } from '../../../core/member.service';
 export class RegisterComponent implements OnInit {
 
   private currentStep: RegisterStep;
-  private _memberId: string;
 
   constructor(private router: Router,
-    private registerService: RegisterService,
-    private memberService: MemberService) { }
+    private registerService: RegisterService
+  ) { }
 
   choosePlan(planId: number) {
     this.registerService.setPlanId(planId);
@@ -44,7 +42,11 @@ export class RegisterComponent implements OnInit {
   }
 
   get memberId() {
-    return this.registerService.form.memberId;
+    return this.registerService.memberId;
+  }
+
+  goHome() {
+    this.router.navigate(['/home']);
   }
 
   ngOnInit() {

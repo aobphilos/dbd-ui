@@ -13,9 +13,12 @@ export class RegisterService {
   private registerForm: Register;
   private registerStepSource = new BehaviorSubject<RegisterStep>(RegisterStep.CHOOSE_PLAN);
 
+  private memberIdSource: BehaviorSubject<string>;
+
   constructor() {
     const form = JSON.parse(sessionStorage.getItem(SessionType.REGISTER)) as Register;
     this.registerForm = form || new Register('');
+    this.memberIdSource = new BehaviorSubject<string>('');
   }
 
   get registerStep() {
@@ -24,6 +27,10 @@ export class RegisterService {
 
   get form() {
     return this.registerForm;
+  }
+
+  get memberId() {
+    return this.memberIdSource.asObservable();
   }
 
   setPlanId(id: number) {
@@ -42,6 +49,7 @@ export class RegisterService {
   }
 
   setMemberId(memberId: string) {
+    this.memberIdSource.next(memberId);
     this.registerForm.memberId = memberId;
     this.updateStorage();
   }

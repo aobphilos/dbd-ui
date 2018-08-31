@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { StoreService } from '../../../../core/store.service';
 import { ProductService } from '../../../../core/product.service';
-import { Store } from '../../../../model/store';
-import { Product } from '../../../../model/product';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-member-dealer',
@@ -11,7 +10,7 @@ import { Product } from '../../../../model/product';
 })
 export class MemberDealerComponent implements OnInit {
 
-  @Input() ownerId: string;
+  @Input() ownerId: Observable<string>;
 
   constructor(
     private storeService: StoreService,
@@ -27,8 +26,12 @@ export class MemberDealerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.storeService.loadCurrentItems(this.ownerId);
-    this.productService.loadCurrentItems(this.ownerId);
+    this.ownerId.subscribe(id => {
+      if (id) {
+        this.storeService.loadCurrentItems(id);
+        this.productService.loadCurrentItems(id);
+      }
+    });
   }
 
 }

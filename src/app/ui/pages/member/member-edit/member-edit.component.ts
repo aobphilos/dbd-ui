@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MemberService } from '../../../../core/member.service';
 import { Member } from '../../../../model/member';
 import { MemberType } from '../../../../enum/member-type';
 import { IndicatorService } from '../../../indicator/indicator.service';
+import { BehaviorSubject, of, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-member-edit',
@@ -15,7 +16,10 @@ export class MemberEditComponent implements OnInit {
   private mode = 'info';
   private member: Member;
 
-  constructor(private activatedRoute: ActivatedRoute,
+  private memberIdSource: Observable<string>;
+
+  constructor(private router: Router,
+    private activatedRoute: ActivatedRoute,
     private memberService: MemberService,
     private indicatorService: IndicatorService
   ) {
@@ -45,15 +49,22 @@ export class MemberEditComponent implements OnInit {
   }
 
   get memberId() {
-    return this.member.id;
+    return this.memberIdSource;
+  }
+
+  goHome() {
+    this.router.navigate(['/home']);
   }
 
   ngOnInit() {
     this.showBusy();
     this.activatedRoute.url.subscribe(url => this.mode = (url && url.length === 2) ? url[1].path : 'info');
     this.memberService.currentMember.subscribe(member => {
-      this.member = member;
-      this.hideBusy();
+      if (member) {
+        this.member = member;
+        this.memberIdSource = of(member.id);
+        this.hideBusy();
+      }
     });
   }
 

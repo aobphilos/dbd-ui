@@ -65,7 +65,11 @@ export class MemberInfoComponent implements OnInit {
   }
 
   private loadModel() {
-    this.memberService.currentMember.subscribe(member => this.model = member);
+    this.memberService.currentMember.subscribe(member => {
+      if (member) {
+        this.model = member;
+      }
+    });
   }
 
   async tryUpdateMember() {

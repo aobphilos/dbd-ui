@@ -67,6 +67,7 @@ export class MemberService {
   private loadMemberFromSession() {
     const member = JSON.parse(sessionStorage.getItem(SessionType.MEMBER)) as Member;
     if (member) {
+      console.log('load member from session: ', member);
       this.model.next(member);
     }
   }
@@ -82,7 +83,7 @@ export class MemberService {
 
     if (!members.empty) {
       const member = members.docs.pop();
-      this.setCurrentMember({ id: member.id, ...member.data() as Member } as Member);
+      this.setCurrentMember({ id: member.id, ...member.data() } as Member);
     }
 
   }

@@ -13,4 +13,7 @@
   <div *ngIf="showDealer">
     <app-member-dealer [ownerId]="memberId"></app-member-dealer>
   </div>
+  <div *ngIf="!showInfo" class="my-4 pt-4 text-center">
+    <button type="button" class="btn w-25" (click)="goHome()">กลับสู่เมนูหลัก</button>
+  </div>
 </div>
