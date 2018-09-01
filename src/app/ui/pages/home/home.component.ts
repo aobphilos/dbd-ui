@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../core/auth.service';
+import { MemberService } from '../../../core/member.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authService: AuthService, private memberService: MemberService) { }
 
-  ngOnInit() {
+  get userVerified() {
+    return this.authService.hasVerified;
   }
+
+  ngOnInit() { }
 
 }

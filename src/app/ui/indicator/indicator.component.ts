@@ -7,14 +7,14 @@ import { IndicatorService } from './indicator.service';
   styleUrls: ['./indicator.component.scss']
 })
 export class IndicatorComponent implements OnInit {
-  showBusy: boolean;
 
   constructor(private indicatorService: IndicatorService) {
-    this.showBusy = false;
   }
 
-  ngOnInit() {
-    this.indicatorService.busyIndicator.subscribe(flag => this.showBusy = flag);
+  get showBusy() {
+    return this.indicatorService.busyIndicator;
   }
+
+  ngOnInit() { }
 
 }

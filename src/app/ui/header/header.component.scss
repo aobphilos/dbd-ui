@@ -31,6 +31,19 @@
       a {
         color: rgba(255, 255, 255, 0.85);
         text-decoration: none;
+        &.text-orange {
+          color: #f7a600;
+        }
+      }
+      .dropdown-menu {
+        text-align: center;
+        padding: 0;
+        a {
+          margin: 0.2rem;
+          &.text-orange {
+            color: #5b2d90;
+          }
+        }
       }
       a:hover {
         color: #ffe699;
@@ -52,9 +65,22 @@
     background: #5b2d90;
     border-bottom: 0.4rem outset #f7a600;
   }
+  button {
+    &.navbar-toggler {
+      width: 3.8rem;
+    }
+  }
   @include media-breakpoint-down(md) {
-    background: #5b2d90;
-    border-bottom: 0.4rem outset #f7a600;
+    &.move-md {
+      background: #5b2d90;
+      border-bottom: 0.4rem outset #f7a600;
+    }
+  }
+  @include media-breakpoint-down(lg) {
+    &.move-lg {
+      background: #5b2d90;
+      border-bottom: 0.4rem outset #f7a600;
+    }
   }
 }
 

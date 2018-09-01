@@ -4,7 +4,8 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LayoutService } from '../layout/layout.service';
 import { NotifyService } from '../notify/notify.service';
-import { IndicatorService } from '../indicator/indicator.service';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -14,11 +15,19 @@ import { IndicatorService } from '../indicator/indicator.service';
 export class HeaderComponent implements OnInit, OnDestroy {
   private modalRef: NgbModalRef;
   public isCollapsed = true;
+  public isUserCollapsed = true;
   public isScrollMove = false;
   public errorMessage: string;
   public signInForm: FormGroup;
   public signUpForm: FormGroup;
   public toggleMenu: boolean;
+
+  get userEmail() {
+    return this.authService.user.email;
+  }
+  get userVerified() {
+    return this.authService.hasVerified;
+  }
 
   constructor(
     private modalService: NgbModal,
@@ -26,7 +35,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private layoutService: LayoutService,
     private notifyService: NotifyService,
-    private indicatorService: IndicatorService
+    private router: Router,
+    private activeRoute: ActivatedRoute,
   ) {
     this.createForm();
   }
@@ -50,14 +60,30 @@ export class HeaderComponent implements OnInit, OnDestroy {
       password: ['', Validators.required]
     });
     this.signUpForm = this.fb.group({
-      email: ['', Validators.required]
+      email: ['', Validators.required],
+      password: ['', Validators.required]
     });
+  }
+
+  tryLogout() {
+    this.authService.doLogout()
+      .then(
+        res => {
+          this.router.navigate(['/home']);
+        },
+        err => console.log('Signout failed'));
   }
 
   tryLogin(value) {
     this.authService.doLogin(value)
       .then(res => {
         this.modalRef.close();
+        if (!res.user.emailVerified) {
+          this.notifyService.setWarningMessage('Please verify your email address');
+          this.tryLogout();
+        } else {
+          this.router.navigateByUrl('/member/shop');
+        }
       }, err => {
         this.notifyService.setWarningMessage(err.message);
       });
@@ -78,14 +104,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.isCollapsed = !this.isCollapsed;
   }
 
+  setUserCollapsed(event: Event) {
+    event.preventDefault();
+    this.isUserCollapsed = !this.isUserCollapsed;
+  }
+
   openModal(content) {
     this.signUpForm.reset();
     this.signInForm.reset();
 
     this.modalRef = this.modalService
       .open(content, {
-        windowClass: 'modal-signin',
-        backdrop: 'static'
+        windowClass: 'modal-signin'
       });
 
     this.modalRef.result.then(
@@ -110,8 +140,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.layoutService.showMainMenu.subscribe(flag => this.toggleMenu = flag);
+    this.router.events
+      .pipe(
+        filter((event, index) => event instanceof NavigationEnd)
+      )
+      .subscribe(event => this.isUserCollapsed = true);
 
+    this.layoutService.showMainMenu.subscribe(flag => this.toggleMenu = flag);
     window.addEventListener('scroll', (e) => this.onWindowScroll(e), true);
   }
 

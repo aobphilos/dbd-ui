@@ -11,15 +11,19 @@ import { RegisterGuard } from '../core/register.guard';
 
 import { FileNotFoundComponent } from './pages/file-not-found/file-not-found.component';
 import { HomeComponent } from './pages/home/home.component';
-import { RegisterMainComponent } from './pages/register/register-main/register-main.component';
 import { LayoutService } from './layout/layout.service';
-import { PathType } from '../enum/path-type';
+import { UrlPath } from '../enum/url-path';
+import { RegisterComponent } from './pages/register/register.component';
+import { MemberEditComponent } from './pages/member/member-edit/member-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'index', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'register', component: RegisterMainComponent, canActivate: [RegisterGuard] },
+  { path: 'register', component: RegisterComponent, canActivate: [RegisterGuard] },
+  { path: 'member',  redirectTo: '/member/info', pathMatch: 'full' },
+  { path: 'member/info', component: MemberEditComponent, canActivate: [AuthGuard] },
+  { path: 'member/shop', component: MemberEditComponent, canActivate: [AuthGuard] },
   { path: '**', component: FileNotFoundComponent }
 ];
 
@@ -51,10 +55,10 @@ export class UiRoutingModule {
         }
 
         // hide google map when 'File not found'
-        this.layoutService.toggleMap(cp !== PathType.FILE_NOT_FOUND);
+        this.layoutService.toggleMap(cp !== UrlPath.FILE_NOT_FOUND);
 
         // hiee main menu when 'Register'
-        this.layoutService.toggleMenu(cp !== PathType.REGISTER);
+        this.layoutService.toggleMenu(cp !== UrlPath.REGISTER);
       });
   }
 

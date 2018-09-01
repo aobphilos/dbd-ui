@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../../environments/environment';
 
@@ -14,17 +15,27 @@ import { FooterComponent } from './footer/footer.component';
 import { FileNotFoundComponent } from './pages/file-not-found/file-not-found.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AuthService } from '../core/auth.service';
-import { RegisterDealerComponent } from './pages/register/register-dealer/register-dealer.component';
-import { RegisterMainComponent } from './pages/register/register-main/register-main.component';
-import { RegisterRetailComponent } from './pages/register/register-retail/register-retail.component';
-import { RegisterWholesaleComponent } from './pages/register/register-wholesale/register-wholesale.component';
 import { LayoutService } from './layout/layout.service';
 import { AuthGuard } from '../core/auth.guard';
-import { UserService } from '../core/user.service';
+import { MemberService } from '../core/member.service';
 import { NotifyComponent } from './notify/notify.component';
 import { NotifyService } from './notify/notify.service';
 import { IndicatorComponent } from './indicator/indicator.component';
 import { IndicatorService } from './indicator/indicator.service';
+import { RegisterComponent } from './pages/register/register.component';
+import { FormatRemoveAtPipe } from '../core/pipe/format-remove-at.pipe';
+import { DropZoneDirective } from '../core/directive/drop-zone.directive';
+import { MemberInfoComponent } from './pages/member/member-info/member-info.component';
+import { MemberRetailComponent } from './pages/member/member-retail/member-retail.component';
+import { MemberDealerComponent } from './pages/member/member-dealer/member-dealer.component';
+import { MemberWholesaleComponent } from './pages/member/member-wholesale/member-wholesale.component';
+import { FileUploadComponent } from './uploaders/file-upload/file-upload.component';
+import { FileSizePipe } from '../core/pipe/file-size.pipe';
+import { MemberUploadComponent } from './uploaders/member-upload/member-upload.component';
+import { MemberEditComponent } from './pages/member/member-edit/member-edit.component';
+import { StoreService } from '../core/store.service';
+import { ProductService } from '../core/product.service';
+import { PromotionService } from '../core/promotion.service';
 
 @NgModule({
   imports: [
@@ -32,6 +43,7 @@ import { IndicatorService } from './indicator/indicator.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    AngularFireStorageModule,
     CommonModule,
     UiRoutingModule,
     FormsModule,
@@ -39,11 +51,14 @@ import { IndicatorService } from './indicator/indicator.service';
   ],
   declarations: [
     LayoutComponent, HeaderComponent, FooterComponent, FileNotFoundComponent,
-    HomeComponent, RegisterDealerComponent, RegisterMainComponent,
-    RegisterRetailComponent, RegisterWholesaleComponent, NotifyComponent, IndicatorComponent
+    HomeComponent, RegisterComponent, NotifyComponent, IndicatorComponent,
+    MemberInfoComponent, MemberRetailComponent, MemberDealerComponent,
+    MemberWholesaleComponent, FormatRemoveAtPipe, DropZoneDirective,
+    FileUploadComponent, FileSizePipe, MemberUploadComponent, MemberEditComponent
   ],
   providers: [
-    AuthService, LayoutService, AuthGuard, UserService, NotifyService, IndicatorService
+    AuthService, LayoutService, AuthGuard, MemberService, NotifyService,
+    IndicatorService, StoreService, ProductService, PromotionService
   ],
   exports: [LayoutComponent]
 })

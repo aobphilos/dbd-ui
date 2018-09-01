@@ -1,0 +1,113 @@
+.uploader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 10.5rem;
+  min-width: 15.5rem;
+  border-radius: 0.5rem;
+  background: white;
+
+  .file-icon {
+    .fa {
+      color: rgba($color: #000000, $alpha: 0.45);
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+
+  .empty {
+    text-align: center;
+    margin-top: 1.5rem;
+    cursor: pointer;
+    color: rgba($color: #000000, $alpha: 0.85)
+  }
+
+  .display {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    .display-edit {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      background-color: rgba($color: #000000, $alpha: 0.65);
+      display: none;
+      margin: 0 1rem 0.5rem 1rem;
+      border-radius: 0.3rem;
+      z-index: 100;
+
+      .file-icon {
+        position: absolute;
+        top: 31%;
+        width: 100%;
+        text-align: center;
+
+        .fa {
+          color: white;
+          padding: 0 2rem;
+          cursor: pointer;
+        }
+      }
+
+      &.hover {
+        display: block;
+      }
+    }
+
+    .display-content {
+      color: rgba($color: #000000, $alpha: 0.85);
+
+      &.product-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        .product-image {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 66%;
+          bottom: 0;
+          padding: 0 1rem;
+
+          img {
+            max-height: 9.5rem;
+            max-width: 9.5rem;
+            padding: 0.35rem;
+            margin: 0.45rem 0 0 0.45rem;
+          }
+        }
+
+        .product-detail {
+          position: absolute;
+          top: 0;
+          left: 33%;
+          right: 0;
+          bottom: 0;
+        }
+      }
+
+      &.store-item {
+        text-align: center;
+
+        img {
+          max-height: 10.5rem;
+          max-width: 100%;
+          padding: 0 1rem;
+        }
+      }
+    }
+  }
+}
+
+progress::-webkit-progress-value {
+  transition: width 0.1s ease;
+}

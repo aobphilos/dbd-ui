@@ -1,0 +1,25 @@
+@import "~bootstrap/scss/bootstrap";
+.card-columns {
+  column-count: 3;
+  @include media-breakpoint-down(sm) {
+    column-count: 1;
+  }
+  .card {
+    padding: 1rem;
+    img {
+      margin: 0 auto;
+      width: 9rem;
+    }
+    .card-title {
+      color: #f7a600;
+    }
+    .card-text {
+      text-align: justify;
+    }
+    button {
+      width: 100%;
+      color: rgba(255, 255, 255, 0.85);
+      background-color: #f7a600;
+    }
+  }
+}

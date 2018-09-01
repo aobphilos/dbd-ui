@@ -1,0 +1,86 @@
+<div class="uploader border rounded w-100 mb-2">
+  <div class="empty" *ngIf="!hasItem" (click)="openModal(uploadDetail)">
+    <div>
+      <span>
+        <span class="file-icon">
+          <i class="fa fa-plus fa-5x"></i>
+        </span>
+        <br>
+        <span> {{modalTitle}} </span>
+      </span>
+    </div>
+  </div>
+  <div class="display" *ngIf="hasItem" (mouseover)="toggleEditIcon(true)"
+    (mouseleave)="toggleEditIcon(false)">
+    <div class="display-edit" [ngClass]="{'hover': showEditIcon}">
+      <span class="file-icon">
+        <i class="fa fa-pencil fa-3x" alt="แก้ไข" (click)="openModal(uploadDetail)"></i>
+        <i class="fa fa-trash fa-3x" alt="ลบข้อมูล" (click)="openModal(confirm)"></i>
+      </span>
+    </div>
+    <div class="display-content" [ngClass]="{'store-item': isStore, 'product-item': !isStore}">
+      <div [ngClass]="{'product-image': !isStore}">
+        <img class="rounded" [src]="imageUrl" [ngClass]="{'border': !isStore}">
+      </div>
+      <div [ngClass]="{'product-detail': !isStore}" [hidden]="isStore">
+        <div class="col">{{model.categoryName}}</div>
+        <div class="col">{{model.description}}</div>
+        <div class="col">{{model.price}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #uploadDetail let-c="close" let-d="dismiss">
+  <div class="modal-header" [ngClass]="{'store': isStore}">
+    <h5>{{modalTitle}}</h5>
+  </div>
+  <div class="modal-body">
+    <div class="row align-items-start">
+      <div class="col-5">
+        <app-file-upload #fileUploader [uploaderType]="uploaderType" [imageUrl]="imageUrl"></app-file-upload>
+      </div>
+      <div class="col-7">
+        <form>
+          <div class="form-group" *ngIf="isProduct">
+            <div class="row">
+              <div class="col">
+                <label for="categoryName">ประเภท</label>
+                <input class="form-control" type="text" id="categoryName"
+                  [(ngModel)]="model.categoryName" name="categoryName"
+                  maxlength="100"> </div>
+              <div class="col">
+                <label for="price">ราคา</label>
+                <input class="form-control" type="number" id="price"
+                  [(ngModel)]="model.price" name="price" min="0"> </div>
+            </div>
+          </div>
+          <div class="form-group" *ngIf="isPromotion">
+            <label for="urlLink">URL</label>
+            <input class="form-control" type="url" id="urlLink" [(ngModel)]="model.urlLink"
+              name="urlLink" maxlength="200"> </div>
+          <div class="form-group">
+            <label for="description">รายละเอียด</label>
+            <textarea class="form-control" id="description" [(ngModel)]="model.description"
+              name="description" rows="3" maxlength="2000"></textarea>
+          </div>
+          <div class="form-group">
+            <button type="button" class="btn bg-orange text-white text-center"
+              (click)="save(fileUploader)">บันทึกข้อมูล</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #confirm let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">ลบข้อมูล</h4>
+  </div>
+  <div class="modal-body">
+    <p>คุณต้องการลบรายการนี้หรือไม่</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-warning" (click)="c('delete')">ยืนยัน</button>
+    <button type="button" class="btn btn-light" (click)="d(false)">ยกเลิก</button>
+  </div>
+</ng-template>

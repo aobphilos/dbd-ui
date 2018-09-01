@@ -3,13 +3,14 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { VerifyType } from '../enum/verify-type';
+import { RegisterService } from '../ui/pages/register/register.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterGuard implements CanActivate {
 
-  constructor(private afAuth: AngularFireAuth, private router: Router) {
+  constructor(private afAuth: AngularFireAuth, private router: Router, private registerService: RegisterService) {
   }
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -21,6 +22,7 @@ export class RegisterGuard implements CanActivate {
         .then(
           (res) => {
             if (res.operation === VerifyType.VERIFY_EMAIL) {
+              this.registerService.setProfile(res.data.email, code);
               resolve(true);
             } else {
               this.router.navigate(['/home']);

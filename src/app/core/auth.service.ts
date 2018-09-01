@@ -1,19 +1,43 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase/app';
-import { environment } from '../../environments/environment';
 import { IndicatorService } from '../ui/indicator/indicator.service';
+import { Observable } from 'rxjs';
+import { MemberService } from './member.service';
 
 @Injectable()
 export class AuthService {
 
+  private authState: Observable<firebase.User>;
+  private currentUser: firebase.User;
+  private userVerified: boolean;
+
   constructor(
     public afAuth: AngularFireAuth,
-    private indicatorService: IndicatorService
-  ) { }
+    private indicatorService: IndicatorService,
+    private memberService: MemberService
+  ) {
+    this.authState = this.afAuth.authState;
+    this.authState
+      .subscribe(user => {
+        this.currentUser = user;
+        this.userVerified = (user && user.emailVerified);
+        if (this.userVerified) {
+          this.memberService.loadCurrentMember(user.email);
+        }
+      });
+  }
 
   private showBusy = () => this.indicatorService.showBusy();
   private hideBusy = () => this.indicatorService.hideBusy();
+
+  get user() {
+    return this.currentUser || {} as firebase.User;
+  }
+
+  get hasVerified() {
+    return this.userVerified;
+  }
 
   doFacebookLogin() {
     return new Promise<any>((resolve, reject) => {
@@ -62,7 +86,7 @@ export class AuthService {
   doRegister(value) {
     return new Promise<any>((resolve, reject) => {
       this.showBusy();
-      auth().createUserWithEmailAndPassword(value.email, environment.masterPassword)
+      auth().createUserWithEmailAndPassword(value.email, value.password)
         .then(res => {
           if (res) {
             res.user.sendEmailVerification()
@@ -86,9 +110,9 @@ export class AuthService {
     });
   }
 
-  doLogin(value) {
+  doVerifyEmail(code: string) {
     return new Promise<any>((resolve, reject) => {
-      auth().signInWithEmailAndPassword(value.email, value.password)
+      auth().applyActionCode(code)
         .then(
           res => resolve(res),
           err => reject(err)
@@ -96,10 +120,28 @@ export class AuthService {
     });
   }
 
+  doLogin(value) {
+    return new Promise<any>((resolve, reject) => {
+      this.showBusy();
+      auth().signInWithEmailAndPassword(value.email, value.password)
+        .then(
+          res => {
+            this.hideBusy();
+            resolve(res);
+          },
+          err => {
+            this.hideBusy();
+            reject(err);
+          }
+        );
+    });
+  }
+
   doLogout() {
     return new Promise((resolve, reject) => {
-      if (auth().currentUser) {
+      if (this.hasVerified) {
         this.afAuth.auth.signOut();
+        sessionStorage.clear();
         resolve();
       } else {
         reject();

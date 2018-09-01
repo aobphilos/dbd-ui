@@ -9,7 +9,7 @@ export const environment = {
     authDomain: 'dbd-ui.firebaseapp.com',
     databaseURL: 'https://dbd-ui.firebaseio.com',
     projectId: 'dbd-ui',
-    storageBucket: 'dbd-ui.appspot.com',
+    storageBucket: 'dbd-ui-blob',
     messagingSenderId: '401525491596'
   },
   masterPassword: 'DBD@2018!T'

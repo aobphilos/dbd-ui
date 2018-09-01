@@ -1,11 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import "styles-variables";
 @import "~bootstrap/scss/bootstrap";
 @import "~font-awesome/scss/font-awesome";
 @import "styles-modal";
-/* ====== Import From P'Boy ====== */
+@import "styles-form";
 
+/* ====== Import From P'Boy ====== */
 @font-face {
   font-family: 'rsuregular';
   src: url('../fonts/rsu_regular/rsu_regular_0-webfont.eot');
@@ -51,6 +51,15 @@ a:hover {
   text-decoration: none;
 }
 
+a.link-dark {
+  color: #333333;
+  text-decoration: none;
+
+  &:hover {
+    color: #f7a600;
+  }
+}
+
 a.Link01 {
   text-decoration: underline
 }
@@ -82,6 +91,10 @@ h4 {
   margin: 0px;
   padding: 0px;
   width: inherit;
+}
+
+.text-black {
+  color: #333333;
 }
 
 .text-orange {
@@ -125,11 +138,11 @@ h4 {
 }
 
 /* ====== Import From P'Boy ====== */
-
 header {
   nav {
     width: 100%;
   }
+
   @media (min-width: map-get($grid-breakpoints,
   sm)) {
     nav {
@@ -143,14 +156,46 @@ i.fa::before {
 }
 
 .btn {
+  &.btn-primary {
+    color: rgba(255, 255, 255, 0.85);
+    background-color: #f7a600;
+  }
+
   &.btn-calendar {
     width: 3rem;
     text-align: center;
     background-color: transparent;
     border: 0.05rem dashed #8c9692;
+
     i.fa {
       left: 0.15rem;
       position: relative;
     }
+  }
+}
+
+button {
+  width: 100%;
+  color: rgba(255, 255, 255, 0.85);
+  background-color: #f7a600;
+}
+
+.line-break {
+  border-bottom: 0.05rem solid #f7a600;
+}
+
+.member-upload {
+  color: rgba(255, 255, 255, 0.85);
+
+  .store {
+    background-color: #f7a600;
+    color: black;
+    padding: 1rem 0 0 2rem;
+  }
+
+  .product,
+  .promotion {
+    background-color: #5b2d90;
+    padding: 1rem 0 0 2rem;
   }
 }
