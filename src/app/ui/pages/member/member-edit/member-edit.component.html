@@ -4,13 +4,13 @@
   <div *ngIf="showInfo">
     <app-member-info [mode]="edit"></app-member-info>
   </div>
-  <div *ngIf="showRetail">
+  <div *ngIf="showRetail | async">
     <app-member-retail [ownerId]="memberId"></app-member-retail>
   </div>
-  <div *ngIf="showWholesale">
+  <div *ngIf="showWholesale | async">
     <app-member-wholesale [ownerId]="memberId"></app-member-wholesale>
   </div>
-  <div *ngIf="showDealer">
+  <div *ngIf="showDealer | async">
     <app-member-dealer [ownerId]="memberId"></app-member-dealer>
   </div>
   <div *ngIf="!showInfo" class="my-4 pt-4 text-center">

@@ -1,4 +1,5 @@
 export enum UrlPath {
   FILE_NOT_FOUND = '**',
-  REGISTER = 'register'
+  REGISTER = 'register',
+  WELCOME = 'welcome'
 }

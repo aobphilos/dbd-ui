@@ -36,6 +36,9 @@ import { MemberEditComponent } from './pages/member/member-edit/member-edit.comp
 import { StoreService } from '../core/store.service';
 import { ProductService } from '../core/product.service';
 import { PromotionService } from '../core/promotion.service';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { EventCarouselComponent } from './pages/events/event-carousel/event-carousel.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 @NgModule({
   imports: [
@@ -54,7 +57,8 @@ import { PromotionService } from '../core/promotion.service';
     HomeComponent, RegisterComponent, NotifyComponent, IndicatorComponent,
     MemberInfoComponent, MemberRetailComponent, MemberDealerComponent,
     MemberWholesaleComponent, FormatRemoveAtPipe, DropZoneDirective,
-    FileUploadComponent, FileSizePipe, MemberUploadComponent, MemberEditComponent
+    FileUploadComponent, FileSizePipe, MemberUploadComponent, MemberEditComponent,
+    WelcomeComponent, EventCarouselComponent, SearchBarComponent
   ],
   providers: [
     AuthService, LayoutService, AuthGuard, MemberService, NotifyService,

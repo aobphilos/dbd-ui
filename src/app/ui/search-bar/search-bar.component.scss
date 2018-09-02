@@ -1,0 +1,29 @@
+.search-bar {
+  clear: both;
+
+  .frame {
+    width: 65%;
+
+    .text {
+      width: 55%;
+    }
+
+    .list {
+      width: 35%;
+    }
+
+    .icon {
+      width: 10%;
+
+      span {
+        cursor: pointer;
+        width: 100%;
+
+        .fa {
+          color: #5b2d90;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}

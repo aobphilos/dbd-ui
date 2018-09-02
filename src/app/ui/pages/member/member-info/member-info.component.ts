@@ -80,7 +80,6 @@ export class MemberInfoComponent implements OnInit {
     } else {
       await this.updateMember();
     }
-    this.memberService.loadCurrentMember(this.model.email);
     this.goNext();
     this.hideBusy();
   }

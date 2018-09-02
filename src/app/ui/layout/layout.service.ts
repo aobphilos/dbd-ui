@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class LayoutService {
   private toggleMapSource = new BehaviorSubject<boolean>(true);
   private toggleMenuSource = new BehaviorSubject<boolean>(true);
+  private toggleSearchBarSource = new BehaviorSubject<boolean>(false);
 
   constructor() { }
 
@@ -18,6 +19,10 @@ export class LayoutService {
     return this.toggleMenuSource.asObservable();
   }
 
+  get showSearchBar() {
+    return this.toggleSearchBarSource.asObservable();
+  }
+
   toggleMap(flag: boolean) {
     this.toggleMapSource.next(flag);
   }
@@ -26,4 +31,7 @@ export class LayoutService {
     this.toggleMenuSource.next(flag);
   }
 
+  toggleSearchBar(flag: boolean) {
+    this.toggleSearchBarSource.next(flag);
+  }
 }

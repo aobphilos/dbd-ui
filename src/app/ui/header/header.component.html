@@ -1,7 +1,7 @@
 <div id="navbar-main" [class.scroll-move]="isScrollMove">
-  <nav class="navbar navbar-dark mb-3 fixed-top" [ngClass]="{'navbar-expand-xl move-lg': userVerified,'navbar-expand-lg move-md': !userVerified, 'shadow-lg': isScrollMove }">
+  <nav class="navbar navbar-dark mb-3 fixed-top" [ngClass]="{'navbar-expand-xl move-lg': userVerified | async,'navbar-expand-lg move-md': !(userVerified | async), 'shadow-lg': isScrollMove }">
     <div class="container">
-      <a class="navbar-brand" routerLink="/home" routerLinkActive="active">
+      <a class="navbar-brand" routerLink="/welcome" routerLinkActive="active">
         <div class="logo">
           <div>
             <img src="../../../assets/logo/main-logo.png" alt=""> </div>
@@ -19,11 +19,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent"
         [ngbCollapse]="isCollapsed" *ngIf="toggleMenu">
-        <ng-container *ngIf="userVerified; then signedIn; else needSignIn"></ng-container>
+        <ng-container *ngIf="userVerified | async; then signedIn; else needSignIn"></ng-container>
         <ng-template #signedIn>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" routerLink="/home">หน้าหลัก</a>
+              <a class="nav-link" routerLinkActive="active" routerLink="/welcome">หน้าหลัก</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" routerLink="/news">ข่าวประชาสัมพันธ์</a>
@@ -40,14 +40,14 @@
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" routerLink="/contact">ติดต่อเรา</a>
             </li>
-            <li class="nav-item d-none" [ngClass]="{'d-xl-block': userVerified,'d-lg-block': !userVerified}">
+            <li class="nav-item d-none" [ngClass]="{'d-xl-block': userVerified | async,'d-lg-block': !(userVerified | async)}">
               <div class="seperate"></div>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link text-orange" href="#" id="navbarDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true"
                 [attr.aria-expanded]="!isUserCollapsed" (click)="setUserCollapsed($event)">
-                {{userEmail|formatRemoveAt}} </a>
+                {{userEmail | async | formatRemoveAt}} </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown"
                 [ngbCollapse]="isUserCollapsed">
                 <a class="nav-link text-orange" routerLinkActive="active"
