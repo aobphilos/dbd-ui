@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { SessionType } from '../enum/session-type';
 import { BeSubject } from '../model/beSubject';
 import { filter, map } from 'rxjs/operators';
+import { firestore } from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
@@ -55,6 +56,8 @@ export class MemberService {
       if (oriMember.exists) {
         const id = member.id;
         delete member.id;
+
+        member.updatedDate = firestore.Timestamp.now();
         memberRef.update({ ...member })
           .then(() => {
             this.setCurrentMember({ id: id, ...member } as Member);

@@ -4,6 +4,7 @@ import { Store } from '../model/store';
 import { Member } from '../model/member';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
+import { firestore } from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,10 @@ export class StoreService {
 
   private collection: AngularFirestoreCollection<Store>;
   currentItems: Observable<Store[]>;
+
+  private latestCollection: AngularFirestoreCollection<Store>;
+  latestItems: Observable<Store[]>;
+
   private ownerId$ = new BehaviorSubject<string>('');
 
   private get dbPath() {
@@ -22,24 +27,26 @@ export class StoreService {
     return `Member/${id}`;
   }
 
+  private mapStore = actions => actions.map(a => {
+    const data = a.payload.doc.data();
+    const id = a.payload.doc.id;
+    return { id, ...data } as Store;
+  })
+
   constructor(
     private db: AngularFirestore
   ) {
-    this.collection = this.db.collection<Store>(this.dbPath, q => q.orderBy('createdDate', 'asc'));
+    this.collection = this.db.collection<Store>(this.dbPath, q => q.orderBy('updatedDate', 'desc'));
     this.currentItems = this.ownerId$.pipe(
       switchMap(id =>
         this.db.collection<Store>(this.dbPath,
           ref => ref.where('ownerId', '==', id).orderBy('createdDate', 'asc')
         ).snapshotChanges()
       ),
-      map(items => items.map(
-        a => {
-          const id = a.payload.doc.id;
-          const data = a.payload.doc.data();
-          return { id, ...data } as Store;
-        }
-      ))
+      map(this.mapStore)
     );
+
+    this.loadLatestItems();
   }
 
   upsert(item: Store) {
@@ -67,6 +74,8 @@ export class StoreService {
       const original = await itemRef.get();
       if (original.exists) {
         delete item.id;
+
+        item.updatedDate = firestore.Timestamp.now();
         itemRef.update({ ...item })
           .then(() => resolve(), (err) => reject(err));
       } else {
@@ -101,6 +110,11 @@ export class StoreService {
 
   loadCurrentItems(ownerId: string) {
     this.ownerId$.next(ownerId);
+  }
+
+  loadLatestItems() {
+    this.latestCollection = this.db.collection<Store>(this.dbPath, q => q.orderBy('updatedDate', 'desc').limit(4));
+    this.latestItems = this.latestCollection.snapshotChanges().pipe(map(this.mapStore));
   }
 
   private assignOwner(ownerId: string, itemId: string) {

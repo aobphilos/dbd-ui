@@ -14,7 +14,7 @@ export class EventCarouselComponent implements OnInit {
   private carousel: NgbCarousel;
 
   constructor(config: NgbCarouselConfig) {
-    config.interval = 60000;
+    config.interval = 5000;
   }
 
   ngOnInit() {

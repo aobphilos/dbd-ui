@@ -1,9 +1,9 @@
 .event-carousel {
-  
+  background-color: rgba(99, 99, 99, 0.3);
   img {
     &.item {
       max-width: 60%;
-      max-height: 11.5rem;
+      max-height: 9.5rem;
     }
   }
 }

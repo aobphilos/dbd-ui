@@ -4,6 +4,7 @@ import { Promotion } from '../model/promotion';
 import { Member } from '../model/member';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
+import { firestore } from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,10 @@ export class PromotionService {
 
   private collection: AngularFirestoreCollection<Promotion>;
   currentItems: Observable<Promotion[]>;
+
+  private latestCollection: AngularFirestoreCollection<Promotion>;
+  latestItems: Observable<Promotion[]>;
+
   private ownerId$ = new BehaviorSubject<string>('');
 
   private get dbPath() {
@@ -21,6 +26,12 @@ export class PromotionService {
   private getOwnerPath(id: string) {
     return `Member/${id}`;
   }
+
+  private mapStore = actions => actions.map(a => {
+    const data = a.payload.doc.data();
+    const id = a.payload.doc.id;
+    return { id, ...data } as Promotion;
+  })
 
   constructor(
     private db: AngularFirestore
@@ -32,14 +43,10 @@ export class PromotionService {
           ref => ref.where('ownerId', '==', id).orderBy('createdDate', 'asc')
         ).snapshotChanges()
       ),
-      map(items => items.map(
-        a => {
-          const id = a.payload.doc.id;
-          const data = a.payload.doc.data();
-          return { id, ...data } as Promotion;
-        }
-      ))
+      map(this.mapStore)
     );
+
+    this.loadLatestItems();
   }
 
   upsert(item: Promotion) {
@@ -67,6 +74,8 @@ export class PromotionService {
       const original = await itemRef.get();
       if (original.exists) {
         delete item.id;
+
+        item.updatedDate = firestore.Timestamp.now();
         itemRef.update({ ...item })
           .then(() => resolve(), (err) => reject(err));
       } else {
@@ -101,6 +110,11 @@ export class PromotionService {
 
   loadCurrentItems(ownerId: string) {
     this.ownerId$.next(ownerId);
+  }
+
+  loadLatestItems() {
+    this.latestCollection = this.db.collection<Promotion>(this.dbPath, q => q.orderBy('updatedDate', 'desc').limit(4));
+    this.latestItems = this.latestCollection.snapshotChanges().pipe(map(this.mapStore));
   }
 
   private assignOwner(ownerId: string, itemId: string) {

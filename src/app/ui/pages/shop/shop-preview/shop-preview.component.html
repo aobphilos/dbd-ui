@@ -1,0 +1,8 @@
+<div class="preview-section d-flex flex-wrap mb-3">
+  <div class="store col-12 mb-2">
+    <h5>ร้านค้าล่าสุด</h5>
+  </div>
+  <ng-template ngFor let-item [ngForOf]="storeItems | async" let-i="index">
+    <app-preview-item uploaderType="STORE" class="col-6" [item]="item"></app-preview-item>
+  </ng-template>
+</div>

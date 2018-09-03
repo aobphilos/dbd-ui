@@ -39,6 +39,13 @@ import { PromotionService } from '../core/promotion.service';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { EventCarouselComponent } from './pages/events/event-carousel/event-carousel.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { ShopPreviewComponent } from './pages/shop/shop-preview/shop-preview.component';
+import { ShopListComponent } from './pages/shop/shop-list/shop-list.component';
+import { ProductPreviewComponent } from './pages/product/product-preview/product-preview.component';
+import { ProductListComponent } from './pages/product/product-list/product-list.component';
+import { PromotionPreviewComponent } from './pages/promotion/promotion-preview/promotion-preview.component';
+import { PromotionListComponent } from './pages/promotion/promotion-list/promotion-list.component';
+import { PreviewItemComponent } from './preview/preview-item/preview-item.component';
 
 @NgModule({
   imports: [
@@ -58,7 +65,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     MemberInfoComponent, MemberRetailComponent, MemberDealerComponent,
     MemberWholesaleComponent, FormatRemoveAtPipe, DropZoneDirective,
     FileUploadComponent, FileSizePipe, MemberUploadComponent, MemberEditComponent,
-    WelcomeComponent, EventCarouselComponent, SearchBarComponent
+    WelcomeComponent, EventCarouselComponent, SearchBarComponent, ShopPreviewComponent, ShopListComponent, ProductPreviewComponent, ProductListComponent, PromotionPreviewComponent, PromotionListComponent, PreviewItemComponent
   ],
   providers: [
     AuthService, LayoutService, AuthGuard, MemberService, NotifyService,
