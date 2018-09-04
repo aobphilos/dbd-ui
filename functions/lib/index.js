@@ -1,59 +1,13 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const functions = require("firebase-functions");
-const Storage = require("@google-cloud/storage");
-const os_1 = require("os");
-const path_1 = require("path");
-const sharp = require("sharp");
-const fs = require("fs-extra");
-const gcs = new Storage();
-exports.generateThumbs = functions
-    .region('asia-northeast1')
-    .storage
-    .bucket('dbd-ui-blob')
-    .object()
-    .onFinalize((object) => __awaiter(this, void 0, void 0, function* () {
-    const bucket = gcs.bucket(object.bucket);
-    const filePath = object.name;
-    const fileName = filePath.split('/').pop();
-    const bucketDir = path_1.dirname(filePath);
-    const workingDir = path_1.join(os_1.tmpdir(), 'thumbs');
-    const tmpFilePath = path_1.join(workingDir, 'source.png');
-    if (fileName.includes('thumb@') || !object.contentType.includes('image')) {
-        console.log('exiting function');
-        return false;
-    }
-    // 1. Ensure thumbnail dir exists
-    yield fs.ensureDir(workingDir);
-    // 2. Download Source File
-    yield bucket.file(filePath).download({
-        destination: tmpFilePath
-    });
-    // 3. Resize the images and define an array of upload promises
-    const sizes = [256];
-    const uploadPromises = sizes.map((size) => __awaiter(this, void 0, void 0, function* () {
-        const thumbName = `thumb@${size}_${fileName}`;
-        const thumbPath = path_1.join(workingDir, thumbName);
-        // Resize source image
-        yield sharp(tmpFilePath)
-            .resize(size, size)
-            .toFile(thumbPath);
-        // Upload to GCS
-        return bucket.upload(thumbPath, {
-            destination: path_1.join(bucketDir, thumbName)
-        });
-    }));
-    // 4. Run the upload operations
-    yield Promise.all(uploadPromises);
-    // 5. Cleanup remove the tmp/thumbs from the filesystem
-    return fs.remove(workingDir);
-}));
+const generateThumbs_1 = require("./generateThumbs");
+const syncMembers_1 = require("./syncMembers");
+const syncStores_1 = require("./syncStores");
+const syncProducts_1 = require("./syncProducts");
+const syncPromotions_1 = require("./syncPromotions");
+exports.generateThumbs = generateThumbs_1.generateThumbs;
+exports.syncMembers = syncMembers_1.syncMembers;
+exports.syncStores = syncStores_1.syncStores;
+exports.syncProducts = syncProducts_1.syncProducts;
+exports.syncPromotions = syncPromotions_1.syncPromotions;
 //# sourceMappingURL=index.js.map
