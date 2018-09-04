@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShopPreviewComponent } from './shop-preview.component';
+import { PromotionSearchComponent } from './promotion-search.component';
 
-describe('ShopPreviewComponent', () => {
-  let component: ShopPreviewComponent;
-  let fixture: ComponentFixture<ShopPreviewComponent>;
+describe('PromotionSearchComponent', () => {
+  let component: PromotionSearchComponent;
+  let fixture: ComponentFixture<PromotionSearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShopPreviewComponent ]
+      declarations: [ PromotionSearchComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ShopPreviewComponent);
+    fixture = TestBed.createComponent(PromotionSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

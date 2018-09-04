@@ -1,0 +1,14 @@
+.preview-section {
+  .sort-option {
+    background-color: transparent;
+    color: white;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+
+    select {
+      option {
+        color: rgba($color: #000000, $alpha: 0.85);
+      }
+    }
+  }
+}

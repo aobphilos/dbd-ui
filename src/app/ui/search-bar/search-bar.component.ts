@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LayoutService } from '../layout/layout.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -16,11 +17,13 @@ export class SearchBarComponent implements OnInit {
     return this.toggleSerchBarSource;
   }
 
-  constructor(private layoutService: LayoutService) { }
+  constructor(
+    private route: Router,
+    private layoutService: LayoutService
+  ) { }
 
   doSearch() {
-    console.log('key: ', this.keyword);
-    console.log('type: ', this.searchType);
+    this.route.navigate([`/list/${this.searchType}/`], { queryParams: { keyword: this.keyword } });
   }
 
   ngOnInit() {

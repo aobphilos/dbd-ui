@@ -5,17 +5,19 @@ import {
 } from '@angular/router';
 
 import { filter, map } from 'rxjs/operators';
-
 import { AuthGuard } from '../core/auth.guard';
 import { RegisterGuard } from '../core/register.guard';
-
-import { FileNotFoundComponent } from './pages/file-not-found/file-not-found.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LayoutService } from './layout/layout.service';
 import { UrlPath } from '../enum/url-path';
-import { RegisterComponent } from './pages/register/register.component';
+import { FileNotFoundComponent } from './pages/file-not-found/file-not-found.component';
 import { MemberEditComponent } from './pages/member/member-edit/member-edit.component';
+import { RegisterComponent } from './pages/register/register.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
+
+import { StoreSearchComponent } from './pages/store/store-search/store-search.component';
+import { ProductSearchComponent } from './pages/product/product-search/product-search.component';
+import { PromotionSearchComponent } from './pages/promotion/promotion-search/promotion-search.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -26,6 +28,12 @@ const routes: Routes = [
   { path: 'member', redirectTo: '/member/info', pathMatch: 'full' },
   { path: 'member/info', component: MemberEditComponent, canActivate: [AuthGuard] },
   { path: 'member/shop', component: MemberEditComponent, canActivate: [AuthGuard] },
+  { path: 'list/shop/:keyword', component: StoreSearchComponent, canActivate: [AuthGuard] },
+  { path: 'list/shop', component: StoreSearchComponent, canActivate: [AuthGuard] },
+  { path: 'list/product/:keyword', component: ProductSearchComponent, canActivate: [AuthGuard] },
+  { path: 'list/product', component: ProductSearchComponent, canActivate: [AuthGuard] },
+  { path: 'list/promotion/:keyword', component: PromotionSearchComponent, canActivate: [AuthGuard] },
+  { path: 'list/promotion', component: PromotionSearchComponent, canActivate: [AuthGuard] },
   { path: '**', component: FileNotFoundComponent }
 ];
 

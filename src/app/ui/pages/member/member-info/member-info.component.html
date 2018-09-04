@@ -15,21 +15,21 @@
           <input class="form-control" type="text" id="storeName"
             required name="storeName" [(ngModel)]="model.storeName"
             placeholder="กรอกชื่อร้านค้า / บริษัท"
-            #storeName="ngModel" maxlength="100">
+            #storeName="ngModel" maxlength="100" autocomplete="off">
         </div>
         <div class="form-group">
           <label for="ownerName">ชื่อผู้บริหาร</label>
           <input class="form-control" type="text" id="ownerName"
             name="ownerName" [(ngModel)]="model.ownerName"
             placeholder="กรอกชื่อผู้บริหาร"
-            required #ownerName="ngModel" maxlength="100">
+            required #ownerName="ngModel" maxlength="100" autocomplete="off">
         </div>
         <div class="form-group">
           <div class="row">
             <div class="col">
               <label for="phone">หมายเลขโทรศัพท์</label>
               <input class="form-control" type="tel" id="phone"
-                [(ngModel)]="model.phone" name="phone" placeholder="หมายเลขโทรศัพท์" maxlength="10"> </div>
+                [(ngModel)]="model.phone" name="phone" placeholder="หมายเลขโทรศัพท์" maxlength="10" autocomplete="off"> </div>
             <div class="col">
               <label for="email">อีเมล์</label>
               <input class="form-control" type="email" id="email"
@@ -41,11 +41,11 @@
             <div class="col">
               <label for="facebook">Facebook</label>
               <input class="form-control" type="text" id="facebook"
-                [(ngModel)]="model.facebookId" name="facebook" placeholder="Facebook" maxlength="100"> </div>
+                [(ngModel)]="model.facebookId" name="facebook" placeholder="Facebook" maxlength="100" autocomplete="off"> </div>
             <div class="col">
               <label for="line">Line</label>
               <input class="form-control" type="text" id="line" [(ngModel)]="model.lineId" name="line"
-                placeholder="Line" maxlength="50"> </div>
+                placeholder="Line" maxlength="50" autocomplete="off"> </div>
           </div>
         </div>
         <div class="form-group">
@@ -56,7 +56,7 @@
         <div class="form-group">
           <label for="website">เว็บไซต์</label>
           <input class="form-control" type="text" id="website" [(ngModel)]="model.website" name="website"
-            placeholder="เว็บไซต์" maxlength="500"> </div>
+            placeholder="เว็บไซต์" maxlength="500" autocomplete="off"> </div>
         <div class="form-group">
           <button type="button" class="btn" (click)="tryUpdateMember()" [disabled]="!memberInfoForm.form.valid">ยืนยันข้อมูล</button>
         </div>

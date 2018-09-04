@@ -5,6 +5,7 @@ import { Member } from '../model/member';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { firestore } from 'firebase/app';
+import { SearchCriteria } from '../model/searchCriteria';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,11 @@ export class ProductService {
   private latestCollection: AngularFirestoreCollection<Product>;
   latestItems: Observable<Product[]>;
 
-  private ownerId$ = new BehaviorSubject<string>('');
+  private searchCollection: AngularFirestoreCollection<Product>;
+  searchItems: Observable<Product[]>;
+
+  private ownerIdSource = new BehaviorSubject<string>('');
+  private searchCriteriaSource = new BehaviorSubject<SearchCriteria>(new SearchCriteria());
 
   private get dbPath() {
     return 'Product';
@@ -37,15 +42,8 @@ export class ProductService {
     private db: AngularFirestore
   ) {
     this.collection = this.db.collection<Product>(this.dbPath, q => q.orderBy('createdDate', 'asc'));
-    this.currentItems = this.ownerId$.pipe(
-      switchMap(id =>
-        this.db.collection<Product>(this.dbPath,
-          ref => ref.where('ownerId', '==', id).orderBy('createdDate', 'asc')
-        ).snapshotChanges()
-      ),
-      map(this.mapStore)
-    );
 
+    this.initCurrentItems();
     this.loadLatestItems();
   }
 
@@ -108,8 +106,19 @@ export class ProductService {
     });
   }
 
+  initCurrentItems() {
+    this.currentItems = this.ownerIdSource.pipe(
+      switchMap(id =>
+        this.db.collection<Product>(this.dbPath,
+          ref => ref.where('ownerId', '==', id).orderBy('createdDate', 'asc')
+        ).snapshotChanges()
+      ),
+      map(this.mapStore)
+    );
+  }
+
   loadCurrentItems(ownerId: string) {
-    this.ownerId$.next(ownerId);
+    this.ownerIdSource.next(ownerId);
   }
 
   loadLatestItems() {

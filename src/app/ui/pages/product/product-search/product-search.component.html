@@ -1,0 +1,17 @@
+<div class="preview-section d-flex flex-wrap mb-3">
+  <div class="product col-12 mb-2">
+    <div class="float-left">
+      <h5>สินค้า</h5>
+    </div>
+    <div class="float-right">
+      <select class="sort-option" [(ngModel)]="sortDirection" (change)="onSortDirectionChange()">
+        <option value="asc">เรียงตามตัวอักษร</option>
+      </select>
+    </div>
+  </div>
+  <ng-template ngFor let-item [ngForOf]="productItems | async" let-i="index">
+    <app-preview-item uploaderType="PRODUCT" class="col-6" [item]="item"></app-preview-item>
+  </ng-template>
+  <ngb-pagination class="d-flex justify-content-end" [collectionSize]="10"
+    [(page)]="currentPage"></ngb-pagination>
+</div>

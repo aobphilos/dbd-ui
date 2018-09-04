@@ -13,6 +13,7 @@ export class ProductPreviewComponent implements OnInit {
   get productItems() {
     return this.productService.latestItems;
   }
+
   ngOnInit() {
   }
 

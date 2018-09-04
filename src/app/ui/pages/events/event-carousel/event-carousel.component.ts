@@ -15,6 +15,7 @@ export class EventCarouselComponent implements OnInit {
 
   constructor(config: NgbCarouselConfig) {
     config.interval = 5000;
+    config.showNavigationArrows = false;
   }
 
   ngOnInit() {
