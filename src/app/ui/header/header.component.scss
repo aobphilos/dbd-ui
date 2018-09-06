@@ -88,6 +88,10 @@
     }
   }
 
+  .dropdown-toggle::after {
+    content: none;
+  }
+
   @include media-breakpoint-down(md) {
     &.move-md {
       background: #5b2d90;
@@ -120,7 +124,7 @@
   &.dropdown {
     max-width: 14.5rem;
 
-    .display-name {
+    .dropdown-name {
       max-width: 14.5rem;
       text-align: center;
     }

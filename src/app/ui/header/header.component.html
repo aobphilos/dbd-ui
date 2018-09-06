@@ -43,14 +43,14 @@
             <li class="nav-item d-none" [ngClass]="{'d-xl-block': userVerified | async,'d-lg-block': !(userVerified | async)}">
               <div class="seperate"></div>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link text-orange" href="#" id="navbarDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true"
-                [attr.aria-expanded]="!isUserCollapsed" (click)="setUserCollapsed($event)">
-                <span class="d-inline-block text-truncate display-name"> {{displayName | async}} </span>
+            <li ngbDropdown class="nav-item dropdown">
+              <a class="nav-link text-orange dropdown-link" href="#" id="navbarDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" ngbDropdownToggle
+                (click)="$event.preventDefault()">
+                <span class="d-inline-block text-truncate dropdown-name">
+                  {{displayName | async}} </span>
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown"
-                [ngbCollapse]="isUserCollapsed">
+              <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="nav-link text-orange" routerLinkActive="active"
                   routerLink="/member/info"> ข้อมูลส่วนตัว </a>
                 <a class="nav-link text-orange" routerLinkActive="active"
