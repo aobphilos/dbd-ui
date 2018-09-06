@@ -26,13 +26,13 @@
               <a class="nav-link" routerLinkActive="active" routerLink="/welcome">หน้าหลัก</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" routerLink="/news">ข่าวประชาสัมพันธ์</a>
+              <a class="nav-link" routerLinkActive="active" routerLink="/list/events">ข่าวประชาสัมพันธ์</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" routerLink="/product">สินค้า</a>
+              <a class="nav-link" routerLinkActive="active" routerLink="/list/product">สินค้า</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" routerLink="/promotion">โปรโมชั่น</a>
+              <a class="nav-link" routerLinkActive="active" routerLink="/list/promotion">โปรโมชั่น</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" routerLink="/webboard">เว็บบอร์ด</a>
@@ -43,17 +43,18 @@
             <li class="nav-item d-none" [ngClass]="{'d-xl-block': userVerified | async,'d-lg-block': !(userVerified | async)}">
               <div class="seperate"></div>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link text-orange" href="#" id="navbarDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true"
-                [attr.aria-expanded]="!isUserCollapsed" (click)="setUserCollapsed($event)">
-                {{userEmail | async | formatRemoveAt}} </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown"
-                [ngbCollapse]="isUserCollapsed">
+            <li ngbDropdown class="nav-item dropdown">
+              <a class="nav-link text-orange dropdown-link" href="#" id="navbarDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" ngbDropdownToggle
+                (click)="$event.preventDefault()">
+                <span class="d-inline-block text-truncate dropdown-name">
+                  {{displayName | async}} </span>
+              </a>
+              <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="nav-link text-orange" routerLinkActive="active"
-                  routerLink="/member/info"> ข้อมูลส่วนตัว </a>
+                  routerLink="/member/info"> ข้อมูลทั่วไป </a>
                 <a class="nav-link text-orange" routerLinkActive="active"
-                  routerLink="/member/shop"> ข้อมูลร้านค้า </a>
+                  routerLink="/member/shop"> {{shopTypName | async}} </a>
                 <div class="dropdown-divider"></div>
                 <a class="nav-link text-orange" routerLinkActive="active"
                   (click)="tryLogout()"> ออกจากระบบ </a>
@@ -116,12 +117,6 @@
         <div class="seperate"></div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">ช่วยเหลือ</a>
-      </li>
-      <li class="nav-item">
-        <div class="seperate"></div>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="#" (click)="d(signUpModal)">สมัครสมาชิกใหม่</a>
       </li>
     </ul>
@@ -158,12 +153,6 @@
     <ul class="nav justify-content-center">
       <li class="nav-item">
         <a class="nav-link" href="#">ลืมรหัสผ่าน</a>
-      </li>
-      <li class="nav-item">
-        <div class="seperate"></div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">ช่วยเหลือ</a>
       </li>
       <li class="nav-item">
         <div class="seperate"></div>

@@ -4,10 +4,11 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LayoutService } from '../layout/layout.service';
 import { NotifyService } from '../notify/notify.service';
-import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { IndicatorService } from '../indicator/indicator.service';
+import { MemberService } from '../../core/member.service';
+import { MemberType } from '../../enum/member-type';
 
 @Component({
   selector: 'app-header',
@@ -17,40 +18,59 @@ import { IndicatorService } from '../indicator/indicator.service';
 export class HeaderComponent implements OnInit, OnDestroy {
   private modalRef: NgbModalRef;
   isCollapsed = true;
-  isUserCollapsed = true;
   isScrollMove = false;
   errorMessage: string;
   signInForm: FormGroup;
   signUpForm: FormGroup;
   toggleMenu: boolean;
 
-  private email: string;
+  private memberName: string;
+  private memberType: MemberType;
   private hasVerified: boolean;
 
-  get userEmail() {
-    return of(this.email);
+  get displayName() {
+    return of(this.memberName);
   }
+
+  get shopTypName() {
+    let name = '';
+    switch (this.memberType) {
+      case MemberType.RETAIL: name = 'ข้อมูลร้านค้าปลีก'; break;
+      case MemberType.WHOLE_SALE: name = 'ข้อมูลร้านค้าส่ง ค้าปลีก'; break;
+      case MemberType.DEALER: name = 'ข้อมูลผู้ผลิต ผู้จำหน่าย'; break;
+    }
+    return of(name);
+  }
+
   get userVerified() {
     return of(this.hasVerified);
   }
 
   constructor(
+    private fb: FormBuilder,
+    private router: Router,
     private authService: AuthService,
     private modalService: NgbModal,
-    private fb: FormBuilder,
     private layoutService: LayoutService,
     private notifyService: NotifyService,
-    private router: Router,
     private indicatorService: IndicatorService,
+    private memberService: MemberService
   ) {
     this.createForm();
     this.authService.user.subscribe(user => {
       if (user) {
-        this.email = user.email;
         this.hasVerified = user.emailVerified;
       } else {
-        this.email = '';
         this.hasVerified = false;
+      }
+    });
+    this.memberService.currentMember.subscribe(member => {
+      if (member) {
+        this.memberName = member.storeName;
+        this.memberType = member.memberType;
+      } else {
+        this.memberName = '';
+        this.memberType = null;
       }
     });
   }
@@ -129,11 +149,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.isCollapsed = !this.isCollapsed;
   }
 
-  setUserCollapsed(event: Event) {
-    event.preventDefault();
-    this.isUserCollapsed = !this.isUserCollapsed;
-  }
-
   openModal(content) {
     this.signUpForm.reset();
     this.signInForm.reset();
@@ -165,13 +180,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.router.events
-      .pipe(
-        filter((event, index) => event instanceof NavigationEnd)
-      )
-      .subscribe(event => this.isUserCollapsed = true);
-
     this.layoutService.showMainMenu.subscribe(flag => this.toggleMenu = flag);
+    this.layoutService.collapseMainMenu.subscribe(flag => this.isCollapsed = flag);
     window.addEventListener('scroll', (e) => this.onWindowScroll(e), true);
   }
 

@@ -53,10 +53,6 @@ export class MemberEditComponent implements OnInit {
     return this.memberIdSource;
   }
 
-  goHome() {
-    this.router.navigate(['/welcome']);
-  }
-
   ngOnInit() {
     this.showBusy();
     this.activatedRoute.url.subscribe(url => this.mode = (url && url.length === 2) ? url[1].path : 'info');
