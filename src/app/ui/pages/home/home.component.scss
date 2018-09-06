@@ -1,6 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
 .qoute {
   color: white;
+  h5{
+    font-size: 1.75rem;
+  }
   @include media-breakpoint-down(md) {
     &.move-md {
       color: black;
