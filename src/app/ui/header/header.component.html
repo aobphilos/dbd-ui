@@ -52,9 +52,9 @@
               </a>
               <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="nav-link text-orange" routerLinkActive="active"
-                  routerLink="/member/info"> ข้อมูลส่วนตัว </a>
+                  routerLink="/member/info"> ข้อมูลทั่วไป </a>
                 <a class="nav-link text-orange" routerLinkActive="active"
-                  routerLink="/member/shop"> ข้อมูลร้านค้า </a>
+                  routerLink="/member/shop"> {{shopTypName | async}} </a>
                 <div class="dropdown-divider"></div>
                 <a class="nav-link text-orange" routerLinkActive="active"
                   (click)="tryLogout()"> ออกจากระบบ </a>

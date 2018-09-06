@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { IndicatorService } from '../indicator/indicator.service';
 import { MemberService } from '../../core/member.service';
+import { MemberType } from '../../enum/member-type';
 
 @Component({
   selector: 'app-header',
@@ -24,10 +25,21 @@ export class HeaderComponent implements OnInit, OnDestroy {
   toggleMenu: boolean;
 
   private memberName: string;
+  private memberType: MemberType;
   private hasVerified: boolean;
 
   get displayName() {
     return of(this.memberName);
+  }
+
+  get shopTypName() {
+    let name = '';
+    switch (this.memberType) {
+      case MemberType.RETAIL: name = 'ข้อมูลร้านค้าปลีก'; break;
+      case MemberType.WHOLE_SALE: name = 'ข้อมูลร้านค้าส่ง ค้าปลีก'; break;
+      case MemberType.DEALER: name = 'ข้อมูลผู้ผลิต ผู้จำหน่าย'; break;
+    }
+    return of(name);
   }
 
   get userVerified() {
@@ -55,8 +67,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.memberService.currentMember.subscribe(member => {
       if (member) {
         this.memberName = member.storeName;
+        this.memberType = member.memberType;
       } else {
         this.memberName = '';
+        this.memberType = null;
       }
     });
   }
