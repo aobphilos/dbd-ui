@@ -8,6 +8,7 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { IndicatorService } from '../indicator/indicator.service';
+import { MemberService } from '../../core/member.service';
 
 @Component({
   selector: 'app-header',
@@ -24,33 +25,40 @@ export class HeaderComponent implements OnInit, OnDestroy {
   signUpForm: FormGroup;
   toggleMenu: boolean;
 
-  private email: string;
+  private memberName: string;
   private hasVerified: boolean;
 
-  get userEmail() {
-    return of(this.email);
+  get displayName() {
+    return of(this.memberName);
   }
+
   get userVerified() {
     return of(this.hasVerified);
   }
 
   constructor(
+    private fb: FormBuilder,
+    private router: Router,
     private authService: AuthService,
     private modalService: NgbModal,
-    private fb: FormBuilder,
     private layoutService: LayoutService,
     private notifyService: NotifyService,
-    private router: Router,
     private indicatorService: IndicatorService,
+    private memberService: MemberService
   ) {
     this.createForm();
     this.authService.user.subscribe(user => {
       if (user) {
-        this.email = user.email;
         this.hasVerified = user.emailVerified;
       } else {
-        this.email = '';
         this.hasVerified = false;
+      }
+    });
+    this.memberService.currentMember.subscribe(member => {
+      if (member) {
+        this.memberName = member.storeName;
+      } else {
+        this.memberName = '';
       }
     });
   }
