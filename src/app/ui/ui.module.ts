@@ -47,6 +47,7 @@ import { ProductSearchComponent } from './pages/product/product-search/product-s
 import { PromotionPreviewComponent } from './pages/promotion/promotion-preview/promotion-preview.component';
 import { PromotionSearchComponent } from './pages/promotion/promotion-search/promotion-search.component';
 import { AlgoliaService } from '../core/algolia.service';
+import { AutofocusDirective } from '../core/directive/autofocus.directive';
 
 @NgModule({
   imports: [
@@ -68,7 +69,8 @@ import { AlgoliaService } from '../core/algolia.service';
     FileUploadComponent, FileSizePipe, MemberUploadComponent, MemberEditComponent,
     WelcomeComponent, EventCarouselComponent, SearchBarComponent, PreviewItemComponent,
     StorePreviewComponent, StoreSearchComponent, ProductSearchComponent,
-    ProductPreviewComponent, PromotionPreviewComponent, PromotionSearchComponent
+    ProductPreviewComponent, PromotionPreviewComponent, PromotionSearchComponent,
+    AutofocusDirective
   ],
   providers: [
     AuthService, LayoutService, AuthGuard, NotifyService, AlgoliaService,
