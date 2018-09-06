@@ -1,7 +1,7 @@
 <div class="search-bar" *ngIf="toogleSearchBar">
   <div class="d-flex-fluid mt-2 mb-4">
     <div class="input-group mx-auto frame">
-      <input type="search" aria-label="search" [(ngModel)]="keyword" placeholder="พิมพ์ข้อมูลที่ต้องการค้าหา" class="form-control text">
+      <input type="search" aria-label="search" [(ngModel)]="keyword" placeholder="พิมพ์ข้อมูลที่ต้องการค้าหา" class="form-control text" (keydown)="onKeyDownSearch($event)">
       <select class="form-control list" [(ngModel)]="searchType">
         <option value="shop">ร้านค้า: ทั้งหมด</option>
         <option value="product">สินค้า: ทั้งหมด</option>

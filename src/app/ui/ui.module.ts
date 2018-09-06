@@ -39,11 +39,14 @@ import { PromotionService } from '../core/promotion.service';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { EventCarouselComponent } from './pages/events/event-carousel/event-carousel.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
-import { ProductPreviewComponent } from './pages/product/product-preview/product-preview.component';
-import { PromotionPreviewComponent } from './pages/promotion/promotion-preview/promotion-preview.component';
 import { PreviewItemComponent } from './preview/preview-item/preview-item.component';
-import { ProductSearchComponent } from './pages/product/product-search/product-search.component';
 import { StorePreviewComponent } from './pages/store/store-preview/store-preview.component';
+import { StoreSearchComponent } from './pages/store/store-search/store-search.component';
+import { ProductPreviewComponent } from './pages/product/product-preview/product-preview.component';
+import { ProductSearchComponent } from './pages/product/product-search/product-search.component';
+import { PromotionPreviewComponent } from './pages/promotion/promotion-preview/promotion-preview.component';
+import { PromotionSearchComponent } from './pages/promotion/promotion-search/promotion-search.component';
+import { AlgoliaService } from '../core/algolia.service';
 
 @NgModule({
   imports: [
@@ -63,13 +66,13 @@ import { StorePreviewComponent } from './pages/store/store-preview/store-preview
     MemberInfoComponent, MemberRetailComponent, MemberDealerComponent,
     MemberWholesaleComponent, FormatRemoveAtPipe, DropZoneDirective,
     FileUploadComponent, FileSizePipe, MemberUploadComponent, MemberEditComponent,
-    WelcomeComponent, EventCarouselComponent, SearchBarComponent,
-    ProductPreviewComponent, PromotionPreviewComponent, PreviewItemComponent,
-    ProductSearchComponent, StorePreviewComponent, StorePreviewComponent
+    WelcomeComponent, EventCarouselComponent, SearchBarComponent, PreviewItemComponent,
+    StorePreviewComponent, StoreSearchComponent, ProductSearchComponent,
+    ProductPreviewComponent, PromotionPreviewComponent, PromotionSearchComponent
   ],
   providers: [
-    AuthService, LayoutService, AuthGuard, MemberService, NotifyService,
-    IndicatorService, StoreService, ProductService, PromotionService
+    AuthService, LayoutService, AuthGuard, NotifyService, AlgoliaService,
+    MemberService, IndicatorService, StoreService, ProductService, PromotionService
   ],
   exports: [LayoutComponent]
 })

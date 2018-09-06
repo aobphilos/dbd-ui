@@ -1,3 +1,35 @@
-<p>
-  store-search works!
-</p>
+<div class="p-3 bg-white table-bordered">
+  <div class="preview-section d-flex flex-wrap mb-3">
+    <div class="store col-12 mb-2">
+      <div class="float-left">
+        <h5>ร้านค้าสมาชิก</h5>
+      </div>
+      <div class="float-right">
+        <select class="sort-option" [(ngModel)]="sortDirection" (change)="onSortDirectionChange()">
+          <option value="asc">เรียงตามตัวอักษร</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-12 my-3">
+      <div class="input-group mx-auto">
+        <select class="form-control mr-3">
+          <option>ร้านค้าส่ง ค้าปลีก</option>
+        </select>
+        <select class="form-control mr-3">
+          <option>ประเภทสินค้า</option>
+        </select>
+        <div class="form-check my-auto">
+          <input class="form-check-input" type="checkbox" id="followingCheck">
+          <label class="form-check-label" for="followingCheck"> ถูกใจ </label>
+        </div>
+      </div>
+    </div>
+    <ng-template ngFor let-item [ngForOf]="storeItems | async" let-i="index">
+      <app-preview-item uploaderType="PRODUCT" class="col-6" [item]="item"></app-preview-item>
+    </ng-template>
+    <div class="col-12 mt-3">
+      <ngb-pagination class="d-flex justify-content-end" [collectionSize]="(storeItems | async).length"
+        [(page)]="currentPage" [pageSize]="10" (pageChange)="onPageChange($event)"></ngb-pagination>
+    </div>
+  </div>
+</div>

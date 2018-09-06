@@ -26,6 +26,12 @@ export class SearchBarComponent implements OnInit {
     this.route.navigate([`/list/${this.searchType}/`], { queryParams: { keyword: this.keyword } });
   }
 
+  onKeyDownSearch(event) {
+    if (event.keyCode === 13) {
+      this.doSearch();
+    }
+  }
+
   ngOnInit() {
     this.layoutService.showSearchBar.subscribe(flag => this.toggleSerchBarSource = flag);
   }

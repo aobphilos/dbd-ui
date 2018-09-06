@@ -2,10 +2,13 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Product } from '../model/product';
 import { Member } from '../model/member';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { firestore } from 'firebase/app';
+
 import { SearchCriteria } from '../model/searchCriteria';
+import * as algoliasearch from 'algoliasearch';
+import { AlgoliaService } from './algolia.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +21,7 @@ export class ProductService {
   private latestCollection: AngularFirestoreCollection<Product>;
   latestItems: Observable<Product[]>;
 
-  private searchCollection: AngularFirestoreCollection<Product>;
-  searchItems: Observable<Product[]>;
+  private algoliaIndex: algoliasearch.Index;
 
   private ownerIdSource = new BehaviorSubject<string>('');
   private searchCriteriaSource = new BehaviorSubject<SearchCriteria>(new SearchCriteria());
@@ -39,9 +41,11 @@ export class ProductService {
   })
 
   constructor(
-    private db: AngularFirestore
+    private db: AngularFirestore,
+    algoliaService: AlgoliaService
   ) {
     this.collection = this.db.collection<Product>(this.dbPath, q => q.orderBy('createdDate', 'asc'));
+    this.algoliaIndex = algoliaService.productIndex;
 
     this.initCurrentItems();
     this.loadLatestItems();
@@ -106,15 +110,27 @@ export class ProductService {
     });
   }
 
-  initCurrentItems() {
-    this.currentItems = this.ownerIdSource.pipe(
-      switchMap(id =>
-        this.db.collection<Product>(this.dbPath,
-          ref => ref.where('ownerId', '==', id).orderBy('createdDate', 'asc')
-        ).snapshotChanges()
-      ),
-      map(this.mapStore)
-    );
+  searchItems(query: string) {
+    return new Promise<Product[]>(async (resolve, reject) => {
+      this.algoliaIndex.search({ query })
+        .then(
+          response => {
+            const results = response.hits;
+            if (results) {
+              const items = results.map(
+                item => {
+                  const id = item['objectID'];
+                  delete item['objectID'];
+                  return { id, ...item } as Product;
+                });
+              resolve(items);
+            } else {
+              resolve([]);
+            }
+          },
+          err => reject(err)
+        );
+    });
   }
 
   loadCurrentItems(ownerId: string) {
@@ -124,6 +140,17 @@ export class ProductService {
   loadLatestItems() {
     this.latestCollection = this.db.collection<Product>(this.dbPath, q => q.orderBy('updatedDate', 'desc').limit(4));
     this.latestItems = this.latestCollection.snapshotChanges().pipe(map(this.mapStore));
+  }
+
+  private initCurrentItems() {
+    this.currentItems = this.ownerIdSource.pipe(
+      switchMap(id =>
+        this.db.collection<Product>(this.dbPath,
+          ref => ref.where('ownerId', '==', id).orderBy('createdDate', 'asc')
+        ).snapshotChanges()
+      ),
+      map(this.mapStore)
+    );
   }
 
   private assignOwner(ownerId: string, itemId: string) {

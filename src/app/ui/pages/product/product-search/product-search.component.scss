@@ -4,11 +4,15 @@
     color: white;
     margin-right: 1rem;
     margin-bottom: 1rem;
+  }
 
-    select {
-      option {
-        color: rgba($color: #000000, $alpha: 0.85);
-      }
+  select {
+    option {
+      color: rgba($color: #000000, $alpha: 0.85);
     }
+  }
+
+  label {
+    color: rgba($color: #000000, $alpha: 0.85);
   }
 }

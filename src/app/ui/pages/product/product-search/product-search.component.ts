@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../../../core/product.service';
-import { filter, map } from 'rxjs/operators';
+import { BehaviorSubject, of } from 'rxjs';
+import { map, combineLatest } from 'rxjs/operators';
+import { Product } from '../../../../model/product';
 
 @Component({
   selector: 'app-product-search',
@@ -10,27 +12,60 @@ import { filter, map } from 'rxjs/operators';
 })
 export class ProductSearchComponent implements OnInit {
 
-  private keyword: string;
-  private sortDirection = 'asc';
+  private keyword = '';
+  sortDirection = 'asc';
 
   currentPage: number;
+
+  private products: Product[] = [];
+  private keywordSource = new BehaviorSubject<string>('');
 
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService
   ) {
-
+    this.currentPage = 1;
   }
 
   get productItems() {
-    return this.productService.searchItems;
+    return of(this.products);
+  }
+
+  onSortDirectionChange() {
+
+  }
+
+  onPageChange(event) {
+    console.log(event);
   }
 
   ngOnInit() {
-    this.route.paramMap.pipe(
-      filter(r => r.has('keyword')),
-      map(r => r.get('keyword'))
-    ).subscribe(key => this.keyword = key);
+    this.keywordSource.pipe(
+      combineLatest(
+        this.route.paramMap,
+        this.route.queryParamMap
+      ),
+      map(
+        (params) => {
+          if (params[1].has('keyword')) {
+            return params[1].get('keyword');
+          } else if (params[2].has('keyword')) {
+            return params[2].get('keyword');
+          } else {
+            return '';
+          }
+        }
+      )
+    ).subscribe((key) => {
+      this.keyword = key;
+      this.productService.searchItems(this.keyword)
+        .then(
+          result => {
+            this.products.splice(0, this.products.length, ...result);
+          },
+          err => console.log(err)
+        );
+    });
   }
 
 }
