@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './core/auth.service';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +10,16 @@ import { AuthService } from './core/auth.service';
 export class AppComponent {
   title = 'dbd-ui';
 
+  private hasVerified: boolean;
+
   constructor(public authService: AuthService) {
+    this.authService.user.subscribe(user => {
+      this.hasVerified = (user && user.emailVerified);
+    });
   }
 
   get userVerified() {
-    return this.authService.hasVerified;
+    return of(this.hasVerified);
   }
 
 }

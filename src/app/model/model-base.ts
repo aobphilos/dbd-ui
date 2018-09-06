@@ -10,6 +10,7 @@ export abstract class ModelBase {
 
   constructor() {
     this.createdDate = firestore.Timestamp.now();
+    this.updatedDate = firestore.Timestamp.now();
   }
 }
 

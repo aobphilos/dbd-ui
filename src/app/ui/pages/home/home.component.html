@@ -1,4 +1,4 @@
-<div class="qoute d-flex flex-column text-center" [ngClass]="{'move-lg': userVerified,'move-md': !userVerified}">
+<div class="qoute d-flex flex-column text-center" [ngClass]="{'move-lg': userVerified | async,'move-md': !(userVerified | async)}">
   <div class="my-2 mx-auto">
     <h5>เครื่อข่ายร้านค้าปลีกชุมชน ร้านค้าส่งค้าปลีก</h5>
   </div>

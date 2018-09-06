@@ -3,6 +3,9 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { Member } from '../model/member';
 import { BehaviorSubject } from 'rxjs';
 import { SessionType } from '../enum/session-type';
+import { BeSubject } from '../model/beSubject';
+import { filter, map } from 'rxjs/operators';
+import { firestore } from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +13,13 @@ import { SessionType } from '../enum/session-type';
 export class MemberService {
 
   private memberCollection: AngularFirestoreCollection<Member>;
-  model: BehaviorSubject<Member>;
+  private model: BehaviorSubject<BeSubject<Member>>;
 
   get currentMember() {
-    return this.model.asObservable();
+    return this.model.pipe(
+      filter(subject => !subject.isInit),
+      map(subject => subject.source)
+    );
   }
 
   private get dbPath() {
@@ -24,7 +30,7 @@ export class MemberService {
     private db: AngularFirestore
   ) {
     this.memberCollection = this.db.collection<Member>(this.dbPath, q => q.orderBy('storeName', 'asc'));
-    this.model = new BehaviorSubject<Member>(null);
+    this.model = new BehaviorSubject<BeSubject<Member>>(new BeSubject(null, true));
     this.loadMemberFromSession();
   }
 
@@ -33,7 +39,10 @@ export class MemberService {
       if (!member) { reject('Missing Member Data'); return; }
 
       this.memberCollection.add({ ...member })
-        .then((m) => resolve(m.id), (err) => reject(err));
+        .then((m) => {
+          this.setCurrentMember({ id: m.id, ...member } as Member);
+          resolve(m.id);
+        }, (err) => reject(err));
     });
   }
 
@@ -45,9 +54,15 @@ export class MemberService {
       const memberRef = this.db.doc(`${this.dbPath}/${member.id}`).ref;
       const oriMember = await memberRef.get();
       if (oriMember.exists) {
+        const id = member.id;
         delete member.id;
+
+        member.updatedDate = firestore.Timestamp.now();
         memberRef.update({ ...member })
-          .then(() => resolve(), (err) => reject(err));
+          .then(() => {
+            this.setCurrentMember({ id: id, ...member } as Member);
+            resolve();
+          }, (err) => reject(err));
       } else {
         reject('This member is not registered');
       }
@@ -67,13 +82,12 @@ export class MemberService {
   private loadMemberFromSession() {
     const member = JSON.parse(sessionStorage.getItem(SessionType.MEMBER)) as Member;
     if (member) {
-      console.log('load member from session: ', member);
-      this.model.next(member);
+      this.model.next(new BeSubject(member));
     }
   }
 
   private setCurrentMember(member: Member) {
-    this.model.next(member);
+    this.model.next(new BeSubject(member));
     sessionStorage.setItem(SessionType.MEMBER, JSON.stringify(member));
   }
 

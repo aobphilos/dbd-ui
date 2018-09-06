@@ -8,12 +8,15 @@ import { LayoutService } from './layout.service';
 })
 export class LayoutComponent implements OnInit {
 
-  toggleMap: boolean;
+  private toggleMapSource: boolean;
+  get toggleMap() {
+    return this.toggleMapSource;
+  }
 
   constructor(private layoutService: LayoutService) { }
 
   ngOnInit() {
-    this.layoutService.showGoogleMap.subscribe(flag => this.toggleMap = flag);
+    this.layoutService.showGoogleMap.subscribe(flag => this.toggleMapSource = flag);
   }
 
 }

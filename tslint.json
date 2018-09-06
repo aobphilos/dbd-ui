@@ -3,6 +3,7 @@
     "node_modules/codelyzer"
   ],
   "rules": {
+    "jsEnable": false,
     "arrow-return-shorthand": true,
     "callable-types": true,
     "class-name": true,

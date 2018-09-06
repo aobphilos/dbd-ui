@@ -4,6 +4,11 @@ import { Promotion } from '../model/promotion';
 import { Member } from '../model/member';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
+import { firestore } from 'firebase/app';
+
+import { SearchCriteria } from '../model/searchCriteria';
+import * as algoliasearch from 'algoliasearch';
+import { AlgoliaService } from './algolia.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +17,15 @@ export class PromotionService {
 
   private collection: AngularFirestoreCollection<Promotion>;
   currentItems: Observable<Promotion[]>;
-  private ownerId$ = new BehaviorSubject<string>('');
+
+  private latestCollection: AngularFirestoreCollection<Promotion>;
+  latestItems: Observable<Promotion[]>;
+
+  private algoliaIndex: algoliasearch.Index;
+
+  private ownerIdSource = new BehaviorSubject<string>('');
+  private searchCriteriaSource = new BehaviorSubject<SearchCriteria>(new SearchCriteria());
+
 
   private get dbPath() {
     return 'Promotion';
@@ -22,24 +35,21 @@ export class PromotionService {
     return `Member/${id}`;
   }
 
+  private mapStore = actions => actions.map(a => {
+    const data = a.payload.doc.data();
+    const id = a.payload.doc.id;
+    return { id, ...data } as Promotion;
+  })
+
   constructor(
-    private db: AngularFirestore
+    private db: AngularFirestore,
+    algoliaService: AlgoliaService
   ) {
     this.collection = this.db.collection<Promotion>(this.dbPath, q => q.orderBy('createdDate', 'asc'));
-    this.currentItems = this.ownerId$.pipe(
-      switchMap(id =>
-        this.db.collection<Promotion>(this.dbPath,
-          ref => ref.where('ownerId', '==', id).orderBy('createdDate', 'asc')
-        ).snapshotChanges()
-      ),
-      map(items => items.map(
-        a => {
-          const id = a.payload.doc.id;
-          const data = a.payload.doc.data();
-          return { id, ...data } as Promotion;
-        }
-      ))
-    );
+    this.algoliaIndex = algoliaService.promotionIndex;
+
+    this.initCurrentItems();
+    this.loadLatestItems();
   }
 
   upsert(item: Promotion) {
@@ -67,6 +77,8 @@ export class PromotionService {
       const original = await itemRef.get();
       if (original.exists) {
         delete item.id;
+
+        item.updatedDate = firestore.Timestamp.now();
         itemRef.update({ ...item })
           .then(() => resolve(), (err) => reject(err));
       } else {
@@ -99,8 +111,47 @@ export class PromotionService {
     });
   }
 
+  searchItems(query: string) {
+    return new Promise<Promotion[]>(async (resolve, reject) => {
+      this.algoliaIndex.search({ query })
+        .then(
+          response => {
+            const results = response.hits;
+            if (results) {
+              const items = results.map(
+                item => {
+                  const id = item['objectID'];
+                  delete item['objectID'];
+                  return { id, ...item } as Promotion;
+                });
+              resolve(items);
+            } else {
+              resolve([]);
+            }
+          },
+          err => reject(err)
+        );
+    });
+  }
+
   loadCurrentItems(ownerId: string) {
-    this.ownerId$.next(ownerId);
+    this.ownerIdSource.next(ownerId);
+  }
+
+  loadLatestItems() {
+    this.latestCollection = this.db.collection<Promotion>(this.dbPath, q => q.orderBy('updatedDate', 'desc').limit(4));
+    this.latestItems = this.latestCollection.snapshotChanges().pipe(map(this.mapStore));
+  }
+
+  private initCurrentItems() {
+    this.currentItems = this.ownerIdSource.pipe(
+      switchMap(id =>
+        this.db.collection<Promotion>(this.dbPath,
+          ref => ref.where('ownerId', '==', id).orderBy('createdDate', 'asc')
+        ).snapshotChanges()
+      ),
+      map(this.mapStore)
+    );
   }
 
   private assignOwner(ownerId: string, itemId: string) {

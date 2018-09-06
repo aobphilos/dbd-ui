@@ -1,42 +1,52 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase/app';
-import { IndicatorService } from '../ui/indicator/indicator.service';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs';
 import { MemberService } from './member.service';
+import { tap } from 'rxjs/operators';
+import { SessionType } from '../enum/session-type';
 
 @Injectable()
 export class AuthService {
 
   private authState: Observable<firebase.User>;
-  private currentUser: firebase.User;
-  private userVerified: boolean;
+  private signedState: boolean;
 
   constructor(
     public afAuth: AngularFireAuth,
-    private indicatorService: IndicatorService,
     private memberService: MemberService
   ) {
-    this.authState = this.afAuth.authState;
-    this.authState
-      .subscribe(user => {
-        this.currentUser = user;
-        this.userVerified = (user && user.emailVerified);
-        if (this.userVerified) {
+    this.authState = this.afAuth.authState.pipe(
+      tap(user => {
+        if (user) {
+          this.signedState = true;
           this.memberService.loadCurrentMember(user.email);
+        } else {
+          this.signedState = false;
         }
-      });
+      })
+    );
   }
-
-  private showBusy = () => this.indicatorService.showBusy();
-  private hideBusy = () => this.indicatorService.hideBusy();
 
   get user() {
-    return this.currentUser || {} as firebase.User;
+    return this.authState;
   }
 
-  get hasVerified() {
-    return this.userVerified;
+  getUserSignedState() {
+    return new Promise<any>((resolve, reject) => {
+      if (this.signedState) {
+        resolve();
+      } else if (sessionStorage.getItem(SessionType.MEMBER)) {
+        resolve();
+      } else {
+        const user = this.afAuth.auth.currentUser;
+        if (user && user.emailVerified) {
+          resolve();
+        } else {
+          reject();
+        }
+      }
+    });
   }
 
   doFacebookLogin() {
@@ -85,61 +95,37 @@ export class AuthService {
 
   doRegister(value) {
     return new Promise<any>((resolve, reject) => {
-      this.showBusy();
       auth().createUserWithEmailAndPassword(value.email, value.password)
         .then(res => {
           if (res) {
             res.user.sendEmailVerification()
-              .then(() => {
-                this.hideBusy();
-                resolve();
-              })
-              .catch(() => {
-                this.hideBusy();
-                reject();
-              });
+              .then(() => resolve())
+              .catch(() => reject());
           } else {
             console.log('failed to create user');
-            this.hideBusy();
             reject();
           }
-        }, err => {
-          this.hideBusy();
-          reject(err);
-        });
+        }, err => reject(err));
     });
   }
 
   doVerifyEmail(code: string) {
     return new Promise<any>((resolve, reject) => {
       auth().applyActionCode(code)
-        .then(
-          res => resolve(res),
-          err => reject(err)
-        );
+        .then(res => resolve(res), err => reject(err));
     });
   }
 
   doLogin(value) {
     return new Promise<any>((resolve, reject) => {
-      this.showBusy();
       auth().signInWithEmailAndPassword(value.email, value.password)
-        .then(
-          res => {
-            this.hideBusy();
-            resolve(res);
-          },
-          err => {
-            this.hideBusy();
-            reject(err);
-          }
-        );
+        .then(res => resolve(res), err => reject(err));
     });
   }
 
   doLogout() {
     return new Promise((resolve, reject) => {
-      if (this.hasVerified) {
+      if (this.signedState) {
         this.afAuth.auth.signOut();
         sessionStorage.clear();
         resolve();

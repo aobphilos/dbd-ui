@@ -1,0 +1,14 @@
+<div class="preview border rounded w-100 mb-2">
+  <div class="display" *ngIf="hasItem">
+    <div class="display-content" [ngClass]="{'store-item': isStore, 'product-item': !isStore}">
+      <div [ngClass]="{'product-image': !isStore}">
+        <img class="rounded" [src]="item.imageUrl" [ngClass]="{'border': !isStore}">
+      </div>
+      <div [ngClass]="{'product-detail': !isStore}" [hidden]="isStore">
+        <div class="col">{{item.categoryName}}</div>
+        <div class="col">{{item.description}}</div>
+        <div class="col">{{item.price}}</div>
+      </div>
+    </div>
+  </div>
+</div>

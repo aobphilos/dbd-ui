@@ -14,9 +14,10 @@ import { BehaviorSubject, of, Observable } from 'rxjs';
 export class MemberEditComponent implements OnInit {
 
   private mode = 'info';
-  private member: Member;
-
   private memberIdSource: Observable<string>;
+  private showRetailSource: Observable<boolean>;
+  private showWholesaleSource: Observable<boolean>;
+  private showDealerSource: Observable<boolean>;
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -32,20 +33,20 @@ export class MemberEditComponent implements OnInit {
     return this.mode === 'info';
   }
 
+  get isShop() {
+    return this.mode === 'shop';
+  }
+
   get showRetail() {
-    return this.mode === 'shop' && this.memberType === MemberType.RETAIL;
+    return this.showRetailSource;
   }
 
   get showWholesale() {
-    return this.mode === 'shop' && this.memberType === MemberType.WHOLE_SALE;
+    return this.showWholesaleSource;
   }
 
   get showDealer() {
-    return this.mode === 'shop' && this.memberType === MemberType.DEALER;
-  }
-
-  get memberType() {
-    return this.member.memberType;
+    return this.showDealerSource;
   }
 
   get memberId() {
@@ -53,7 +54,7 @@ export class MemberEditComponent implements OnInit {
   }
 
   goHome() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/welcome']);
   }
 
   ngOnInit() {
@@ -61,8 +62,10 @@ export class MemberEditComponent implements OnInit {
     this.activatedRoute.url.subscribe(url => this.mode = (url && url.length === 2) ? url[1].path : 'info');
     this.memberService.currentMember.subscribe(member => {
       if (member) {
-        this.member = member;
         this.memberIdSource = of(member.id);
+        this.showRetailSource = of(this.isShop && member.memberType === MemberType.RETAIL);
+        this.showWholesaleSource = of(this.isShop && member.memberType === MemberType.WHOLE_SALE);
+        this.showDealerSource = of(this.isShop && member.memberType === MemberType.DEALER);
         this.hideBusy();
       }
     });

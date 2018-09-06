@@ -6,6 +6,8 @@ import { LayoutService } from '../layout/layout.service';
 import { NotifyService } from '../notify/notify.service';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { IndicatorService } from '../indicator/indicator.service';
 
 @Component({
   selector: 'app-header',
@@ -14,32 +16,47 @@ import { filter } from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   private modalRef: NgbModalRef;
-  public isCollapsed = true;
-  public isUserCollapsed = true;
-  public isScrollMove = false;
-  public errorMessage: string;
-  public signInForm: FormGroup;
-  public signUpForm: FormGroup;
-  public toggleMenu: boolean;
+  isCollapsed = true;
+  isUserCollapsed = true;
+  isScrollMove = false;
+  errorMessage: string;
+  signInForm: FormGroup;
+  signUpForm: FormGroup;
+  toggleMenu: boolean;
+
+  private email: string;
+  private hasVerified: boolean;
 
   get userEmail() {
-    return this.authService.user.email;
+    return of(this.email);
   }
   get userVerified() {
-    return this.authService.hasVerified;
+    return of(this.hasVerified);
   }
 
   constructor(
+    private authService: AuthService,
     private modalService: NgbModal,
-    public authService: AuthService,
     private fb: FormBuilder,
     private layoutService: LayoutService,
     private notifyService: NotifyService,
     private router: Router,
-    private activeRoute: ActivatedRoute,
+    private indicatorService: IndicatorService,
   ) {
     this.createForm();
+    this.authService.user.subscribe(user => {
+      if (user) {
+        this.email = user.email;
+        this.hasVerified = user.emailVerified;
+      } else {
+        this.email = '';
+        this.hasVerified = false;
+      }
+    });
   }
+
+  private showBusy = () => this.indicatorService.showBusy();
+  private hideBusy = () => this.indicatorService.hideBusy();
 
   private onWindowScroll(e) {
     let scrollY = 0;
@@ -66,36 +83,44 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   tryLogout() {
+    this.showBusy();
     this.authService.doLogout()
       .then(
         res => {
           this.router.navigate(['/home']);
+          this.hideBusy();
         },
-        err => console.log('Signout failed'));
+        err => this.hideBusy());
   }
 
   tryLogin(value) {
+    this.showBusy();
     this.authService.doLogin(value)
       .then(res => {
         this.modalRef.close();
+        this.hideBusy();
         if (!res.user.emailVerified) {
           this.notifyService.setWarningMessage('Please verify your email address');
           this.tryLogout();
         } else {
-          this.router.navigateByUrl('/member/shop');
+          this.router.navigate(['/member/shop']);
         }
       }, err => {
+        this.hideBusy();
         this.notifyService.setWarningMessage(err.message);
       });
   }
 
   tryRegister(value) {
+    this.showBusy();
     this.authService.doRegister(value)
       .then(res => {
-        this.notifyService.setSuccessMessage('Your account has been created');
         this.modalRef.close();
         this.errorMessage = '';
+        this.hideBusy();
+        this.notifyService.setSuccessMessage('Your account has been created');
       }, err => {
+        this.hideBusy();
         this.notifyService.setWarningMessage(err.message);
       });
   }

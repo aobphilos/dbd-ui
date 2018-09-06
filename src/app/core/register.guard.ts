@@ -30,7 +30,6 @@ export class RegisterGuard implements CanActivate {
             }
           },
           (err) => {
-
             this.router.navigate(['/home']);
             resolve(false);
           }
