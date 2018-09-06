@@ -21,6 +21,6 @@
   <div class="display" *ngIf="hasImage">
     <div class="m-auto">
       <img [src]="previewURL" alt="คลิกเพื่อเปลี่ยนรูป" class="rounded mx-auto d-block"
-        (click)="removeImage(imageUploader)"> </div>
+        (click)="imageUploader.click()"> </div>
   </div>
 </div>

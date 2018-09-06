@@ -81,10 +81,10 @@
 </ng-template>
 <ng-template #confirm let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title">ลบข้อมูล</h4>
+    <h4 class="modal-title">{{modalDeleteTitle}}</h4>
   </div>
   <div class="modal-body">
-    <p>คุณต้องการลบรายการนี้หรือไม่</p>
+    <p class="ml-4">ยืนยันการลบข้อมูลหรือไม่</p>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-warning" (click)="c('delete')">ยืนยัน</button>

@@ -50,11 +50,19 @@ export class MemberUploadComponent implements OnInit {
   private hideBusy = () => this.indicatorService.hideBusy();
 
   get modalTitle() {
-    let title = '';
+    return this.getModalTitle(false);
+  }
+
+  get modalDeleteTitle() {
+    return this.getModalTitle(true);
+  }
+
+  private getModalTitle(isDelete: boolean) {
+    let title = isDelete ? 'ลบ' : ((this.hasItem) ? 'แก้ไข' : 'เพิ่ม');
     switch (this.uploaderType) {
-      case UploaderType.STORE: title = 'เพิ่มข้อมูลภาพถ่ายร้าน'; break;
-      case UploaderType.PRODUCT: title = 'เพิ่มข้อมูลรายการสินค้า'; break;
-      case UploaderType.PROMOTION: title = 'เพิ่มข้อมูลรายการส่งเสริมการตลาด'; break;
+      case UploaderType.STORE: title += 'ข้อมูลภาพถ่ายร้าน'; break;
+      case UploaderType.PRODUCT: title += 'ข้อมูลรายการสินค้า'; break;
+      case UploaderType.PROMOTION: title += 'ข้อมูลรายการส่งเสริมการตลาด'; break;
     }
     return title;
   }
