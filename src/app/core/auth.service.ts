@@ -1,22 +1,24 @@
 import { Injectable } from '@angular/core';
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { MemberService } from './member.service';
-import { tap } from 'rxjs/operators';
+import { tap, filter, map } from 'rxjs/operators';
 import { SessionType } from '../enum/session-type';
+import { BeSubject } from '../model/beSubject';
 
 @Injectable()
 export class AuthService {
 
-  private authState: Observable<firebase.User>;
+  private authState: BehaviorSubject<BeSubject<firebase.User>>;
   private signedState: boolean;
 
   constructor(
     public afAuth: AngularFireAuth,
     private memberService: MemberService
   ) {
-    this.authState = this.afAuth.authState.pipe(
+    this.authState = new BehaviorSubject<BeSubject<firebase.User>>(new BeSubject(null, true));
+    this.afAuth.authState.pipe(
       tap(user => {
         if (user) {
           this.signedState = true;
@@ -25,26 +27,29 @@ export class AuthService {
           this.signedState = false;
         }
       })
-    );
+    ).subscribe(user => this.authState.next(new BeSubject(user)));
   }
 
   get user() {
-    return this.authState;
+    return this.authState.pipe(
+      filter(subject => !subject.isInit),
+      map(subject => subject.source)
+    );
   }
 
   getUserSignedState() {
     return new Promise<any>((resolve, reject) => {
       if (this.signedState) {
-        resolve();
-      } else if (sessionStorage.getItem(SessionType.MEMBER)) {
-        resolve();
-      } else {
         const user = this.afAuth.auth.currentUser;
         if (user && user.emailVerified) {
           resolve();
         } else {
           reject();
         }
+      } else if (sessionStorage.getItem(SessionType.MEMBER)) {
+        this.user.subscribe(user => resolve());
+      } else {
+        reject();
       }
     });
   }
@@ -111,14 +116,27 @@ export class AuthService {
 
   doVerifyEmail(code: string) {
     return new Promise<any>((resolve, reject) => {
-      auth().applyActionCode(code)
-        .then(res => resolve(res), err => reject(err));
+      this.afAuth.auth.applyActionCode(code)
+        .then(res => {
+          const user = this.afAuth.auth.currentUser;
+          if (user) {
+            user.reload()
+              .then(() => {
+                this.authState.next(new BeSubject(user));
+                resolve(res);
+              })
+              .catch((err) => reject(err));
+          } else {
+            reject();
+          }
+        }
+          , err => reject(err));
     });
   }
 
   doLogin(value) {
     return new Promise<any>((resolve, reject) => {
-      auth().signInWithEmailAndPassword(value.email, value.password)
+      this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password)
         .then(res => resolve(res), err => reject(err));
     });
   }
@@ -147,9 +165,8 @@ export class AuthService {
 
   doUpdatePassword(code: string, newPassword: string) {
     return new Promise<any>((resolve, reject) => {
-      auth().confirmPasswordReset(code, newPassword)
+      this.afAuth.auth.confirmPasswordReset(code, newPassword)
         .then(res => resolve(res), err => reject(err));
     });
   }
-
 }

@@ -78,7 +78,7 @@ export class RegisterComponent implements OnInit {
       .then(res => {
         this.hideBusy();
         this.notifyService.setSuccessMessage('New password has been apply');
-        this.router.navigate(['/home']);
+        this.router.navigate(['/welcome']);
       }, err => {
         this.hideBusy();
         this.notifyService.setWarningMessage(err.message);
