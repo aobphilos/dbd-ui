@@ -10,7 +10,8 @@
         <img class="card-img-top" src="../../../../assets/home/shop-1.png" alt="Card image cap">
         <div class="card-body">
           <h4 class="card-title">ร้านค้าปลีก</h4>
-          <p class="card-text">การสร้างเครือข่ายทางธุรกิจระหว่างผู้ผลิตสินค้าอุปโภคบริโภค ร้านค้าส่งค้าปลีก และร้านค้าชุมชน เพื่อให้เกิดการซื้อขายสินค้าที่สะดวกรวดเร็วในต้นทุนที่ต่ำ
+          <p class="card-text">การสร้างเครือข่ายทางธุรกิจระหว่างผู้ผลิตสินค้าอุปโภคบริโภค ร้านค้าส่งค้าปลีก
+            และร้านค้าชุมชน เพื่อให้เกิดการซื้อขายสินค้าที่สะดวกรวดเร็วในต้นทุนที่ต่ำ
             อันเป็นการส่งเสริมร้านค้าปลีกชุมชนให้เข้มแข็ง กรมพัฒนาธุรกิจการค้าจึงได้พัฒนาเว็บไซด์ เครื่อข่ายธงฟ้าชุมชน
           </p>
           <button class="btn" (click)="choosePlan(1)">สมัครสมาชิก ร้านค้าปลีก</button>
@@ -20,7 +21,8 @@
         <img class="card-img-top" src="../../../../assets/home/shop-2.png" alt="Card image cap">
         <div class="card-body">
           <h4 class="card-title">ร้านค้าส่ง ค้าปลีก</h4>
-          <p class="card-text">การสร้างเครือข่ายทางธุรกิจระหว่างผู้ผลิตสินค้าอุปโภคบริโภค ร้านค้าส่งค้าปลีก และร้านค้าชุมชน เพื่อให้เกิดการซื้อขายสินค้าที่สะดวกรวดเร็วในต้นทุนที่ต่ำ
+          <p class="card-text">การสร้างเครือข่ายทางธุรกิจระหว่างผู้ผลิตสินค้าอุปโภคบริโภค ร้านค้าส่งค้าปลีก
+            และร้านค้าชุมชน เพื่อให้เกิดการซื้อขายสินค้าที่สะดวกรวดเร็วในต้นทุนที่ต่ำ
             อันเป็นการส่งเสริมร้านค้าปลีกชุมชนให้เข้มแข็ง กรมพัฒนาธุรกิจการค้าจึงได้พัฒนาเว็บไซด์ เครื่อข่ายธงฟ้าชุมชน
           </p>
           <button class="btn" (click)="choosePlan(2)">สมัครสมาชิก ร้านค้าส่ง ค้าปลีก</button>
@@ -30,7 +32,8 @@
         <img class="card-img-top" src="../../../../assets/home/shop-3.png" alt="Card image cap">
         <div class="card-body">
           <h4 class="card-title">ผู้ผลิต ผู้จำหน่าย</h4>
-          <p class="card-text">การสร้างเครือข่ายทางธุรกิจระหว่างผู้ผลิตสินค้าอุปโภคบริโภค ร้านค้าส่งค้าปลีก และร้านค้าชุมชน เพื่อให้เกิดการซื้อขายสินค้าที่สะดวกรวดเร็วในต้นทุนที่ต่ำ
+          <p class="card-text">การสร้างเครือข่ายทางธุรกิจระหว่างผู้ผลิตสินค้าอุปโภคบริโภค ร้านค้าส่งค้าปลีก
+            และร้านค้าชุมชน เพื่อให้เกิดการซื้อขายสินค้าที่สะดวกรวดเร็วในต้นทุนที่ต่ำ
             อันเป็นการส่งเสริมร้านค้าปลีกชุมชนให้เข้มแข็ง กรมพัฒนาธุรกิจการค้าจึงได้พัฒนาเว็บไซด์ เครื่อข่ายธงฟ้าชุมชน
           </p>
           <button class="btn" (click)="choosePlan(3)">สมัครสมาชิก ผู้ผลิต ผู้จำหน่าย</button>
@@ -50,7 +53,24 @@
   <div *ngIf="showDealer">
     <app-member-dealer [ownerId]="memberId"></app-member-dealer>
   </div>
-  <div *ngIf="!showInfo && !showPlan" class="my-4 pt-4 text-center">
+  <div *ngIf="showReset">
+    <div class="mx-auto mb-3 line-break">
+      <h4>เปลี่ยนรหัสผ่านใหม่</h4>
+    </div>
+    <div class="d-flex mb-3">
+      <form [formGroup]="resetPasswordForm" (keydown)="onKeyDownResetPassword($event)" class="col-4">
+        <div class="form-group">
+          <label for="password"></label>
+          <input type="password" class="form-control text-center" id="password" formControlName="password" placeholder="Password"
+            maxlength="100">
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn bg-orange text-white text-center" (click)="tryResetPassword(resetPasswordForm.value)">ยืนยัน</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="!showInfo && !showPlan && !showReset" class="my-4 pt-4 text-center">
     <button type="button" class="btn w-25" (click)="goHome()">กลับสู่เมนูหลัก</button>
   </div>
 </div>

@@ -1,5 +1,6 @@
 <div id="navbar-main" [class.scroll-move]="isScrollMove">
-  <nav class="navbar navbar-dark mb-3 fixed-top" [ngClass]="{'navbar-expand-xl move-lg': userVerified | async,'navbar-expand-lg move-md': !(userVerified | async), 'shadow-lg': isScrollMove }">
+  <nav class="navbar navbar-dark mb-3 fixed-top" [ngClass]="{'navbar-expand-xl move-lg': userVerified |
+    async,'navbar-expand-lg move-md': !(userVerified | async), 'shadow-lg': isScrollMove }">
     <div class="container">
       <a class="navbar-brand" routerLink="/welcome" routerLinkActive="active">
         <div class="logo">
@@ -40,13 +41,14 @@
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" routerLink="/contact">ติดต่อเรา</a>
             </li>
-            <li class="nav-item d-none" [ngClass]="{'d-xl-block': userVerified | async,'d-lg-block': !(userVerified | async)}">
+            <li class="nav-item d-none" [ngClass]="{'d-xl-block': userVerified | async,'d-lg-block': !(userVerified |
+              async)}">
               <div class="seperate"></div>
             </li>
             <li ngbDropdown class="nav-item dropdown">
-              <a class="nav-link text-orange dropdown-link" href="#" id="navbarDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true" ngbDropdownToggle
-                (click)="$event.preventDefault()">
+              <a class="nav-link text-orange dropdown-link" href="#" id="navbarDropdown"
+                role="button" data-toggle="dropdown" aria-haspopup="true"
+                ngbDropdownToggle (click)="$event.preventDefault()">
                 <span class="d-inline-block text-truncate dropdown-name">
                   {{displayName | async}} </span>
               </a>
@@ -88,17 +90,17 @@
   <div class="modal-body">
     <div class="row w-45 float-right">
       <div class="col-12">
-        <form [formGroup]="signInForm" (keydown)="onKeyDownSignIn($event)">
+        <form [formGroup]="signInForm">
           <div class="form-group">
             <p class="text-light text-center">เข้าสู่ระบบ <span class="text-orange">เครื่อข่ายธงฟ้าชุมชน</span>
             </p>
           </div>
           <div class="form-group">
             <input type="email" formControlName="email" class="form-control text-center"
-              placeholder="Email" maxlength="100" appAutofocus> </div>
+              placeholder="Email" maxlength="100" (keydown)="onKeyDownSignIn($event)" appAutofocus> </div>
           <div class="form-group">
             <input type="password" class="form-control text-center"
-              formControlName="password" placeholder="Password" maxlength="100">
+              formControlName="password" placeholder="Password" maxlength="100" (keydown)="onKeyDownSignIn($event)">
           </div>
           <div class="form-group">
             <button type="button" class="btn bg-orange text-white text-center"
@@ -111,7 +113,7 @@
   <div class="modal-footer">
     <ul class="nav justify-content-center">
       <li class="nav-item">
-        <a class="nav-link" href="#">ลืมรหัสผ่าน</a>
+        <a class="nav-link" href="#" (click)="d(forgotPasswordModal)">ลืมรหัสผ่าน</a>
       </li>
       <li class="nav-item">
         <div class="seperate"></div>
@@ -129,17 +131,17 @@
   <div class="modal-body">
     <div class="row w-45 float-right">
       <div class="col-12">
-        <form [formGroup]="signUpForm" (keydown)="onKeyDownSignUp($event)">
+        <form [formGroup]="signUpForm">
           <div class="form-group">
             <p class="text-light text-center">สมัครสมาชิก <span class="text-orange">เครื่อข่ายธงฟ้าชุมชน</span>
             </p>
           </div>
           <div class="form-group">
             <input type="email" formControlName="email" class="form-control text-center"
-              placeholder="Email" maxlength="100" appAutofocus> </div>
+              placeholder="Email" maxlength="100" (keydown)="onKeyDownSignUp($event)" appAutofocus> </div>
           <div class="form-group">
             <input type="password" class="form-control text-center"
-              formControlName="password" placeholder="Password" maxlength="100">
+              formControlName="password" placeholder="Password" maxlength="100" (keydown)="onKeyDownSignUp($event)">
           </div>
           <div class="form-group">
             <button type="button" class="btn bg-orange text-white text-center"
@@ -152,13 +154,49 @@
   <div class="modal-footer">
     <ul class="nav justify-content-center">
       <li class="nav-item">
-        <a class="nav-link" href="#">ลืมรหัสผ่าน</a>
+        <a class="nav-link" href="#" (click)="d(forgotPasswordModal)">ลืมรหัสผ่าน</a>
       </li>
       <li class="nav-item">
         <div class="seperate"></div>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#" (click)="d(signInModal)">เข้าสู่ระบบ</a>
+      </li>
+    </ul>
+  </div>
+</ng-template>
+<ng-template #forgotPasswordModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <ngb-alert type="warning" class="d-none">{{ errorMessage }}</ngb-alert>
+  </div>
+  <div class="modal-body">
+    <div class="row w-45 float-right">
+      <div class="col-12">
+        <form [formGroup]="forgotPasswordForm">
+          <div class="form-group">
+            <p class="text-light text-center">รีเซ็ทรหัสผ่าน </p>
+          </div>
+          <div class="form-group">
+            <input type="email" formControlName="email" class="form-control text-center"
+              placeholder="Email" maxlength="100" (keydown)="onKeyDownForgotPassword($event)" appAutofocus> </div>
+          <div class="form-group">
+            <button type="button" class="btn bg-orange text-white text-center"
+              (click)="tryResetPassword(forgotPasswordForm.value)">รีเซ็ทรหัสผ่าน</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link" href="#" (click)="d(signInModal)">เข้าสู่ระบบ</a>
+      </li>
+      <li class="nav-item">
+        <div class="seperate"></div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" (click)="d(signUpModal)">สมัครสมาชิกใหม่</a>
       </li>
     </ul>
   </div>

@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   errorMessage: string;
   signInForm: FormGroup;
   signUpForm: FormGroup;
+  forgotPasswordForm: FormGroup;
   toggleMenu: boolean;
 
   private memberName: string;
@@ -100,6 +101,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
+    this.forgotPasswordForm = this.fb.group({
+      email: ['', Validators.required]
+    });
   }
 
   tryLogout() {
@@ -145,6 +149,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
       });
   }
 
+  tryResetPassword(value) {
+    this.showBusy();
+    this.authService.doResetPassword(value.email)
+      .then(res => {
+        this.modalRef.close();
+        this.errorMessage = '';
+        this.hideBusy();
+        this.notifyService.setSuccessMessage('Check your inbox for the reset password');
+      }, err => {
+        this.hideBusy();
+        this.notifyService.setWarningMessage(err.message);
+      });
+  }
+
   setCollapsed() {
     this.isCollapsed = !this.isCollapsed;
   }
@@ -152,6 +170,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   openModal(content) {
     this.signUpForm.reset();
     this.signInForm.reset();
+    this.forgotPasswordForm.reset();
 
     this.modalRef = this.modalService
       .open(content, {
@@ -176,6 +195,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onKeyDownSignUp(event) {
     if (event.keyCode === 13) {
       this.tryRegister(this.signUpForm.value);
+    }
+  }
+
+  onKeyDownForgotPassword(event) {
+    if (event.keyCode === 13) {
+      this.tryResetPassword(this.forgotPasswordForm.value);
     }
   }
 

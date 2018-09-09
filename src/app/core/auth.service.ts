@@ -145,4 +145,11 @@ export class AuthService {
     });
   }
 
+  doUpdatePassword(code: string, newPassword: string) {
+    return new Promise<any>((resolve, reject) => {
+      auth().confirmPasswordReset(code, newPassword)
+        .then(res => resolve(res), err => reject(err));
+    });
+  }
+
 }
