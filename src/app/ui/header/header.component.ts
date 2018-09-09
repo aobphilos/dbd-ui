@@ -9,6 +9,7 @@ import { of } from 'rxjs';
 import { IndicatorService } from '../indicator/indicator.service';
 import { MemberService } from '../../core/member.service';
 import { MemberType } from '../../enum/member-type';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -27,7 +28,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private memberName: string;
   private memberType: MemberType;
-  private hasVerified: boolean;
 
   get displayName() {
     return of(this.memberName);
@@ -44,7 +44,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   get userVerified() {
-    return of(this.hasVerified);
+    return this.authService.user.pipe(
+      map(user => (user && user.emailVerified))
+    );
   }
 
   constructor(
@@ -58,22 +60,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private memberService: MemberService
   ) {
     this.createForm();
-    this.authService.user.subscribe(user => {
-      if (user) {
-        this.hasVerified = user.emailVerified;
-      } else {
-        this.hasVerified = false;
-      }
-    });
-    this.memberService.currentMember.subscribe(member => {
-      if (member) {
-        this.memberName = member.storeName;
-        this.memberType = member.memberType;
-      } else {
-        this.memberName = '';
-        this.memberType = null;
-      }
-    });
   }
 
   private showBusy = () => this.indicatorService.showBusy();
@@ -205,6 +191,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.memberService.currentMember.subscribe(member => {
+      if (member) {
+        this.memberName = member.storeName;
+        this.memberType = member.memberType;
+      } else {
+        this.memberName = '';
+        this.memberType = null;
+      }
+    });
     this.layoutService.showMainMenu.subscribe(flag => this.toggleMenu = flag);
     this.layoutService.collapseMainMenu.subscribe(flag => this.isCollapsed = flag);
     window.addEventListener('scroll', (e) => this.onWindowScroll(e), true);
