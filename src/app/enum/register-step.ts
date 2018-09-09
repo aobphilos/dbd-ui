@@ -4,4 +4,5 @@ export enum RegisterStep {
     EDIT_RETAIL = 3,
     EDIT_WHOLE_SALE = 4,
     EDIT_DEALER = 5,
+    RESET_PASSWORD = 6
 }
