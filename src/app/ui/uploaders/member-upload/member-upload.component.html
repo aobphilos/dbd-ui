@@ -78,10 +78,10 @@
                   name="urlLink" maxlength="200">
               </div>
               <div class="col-12 mt-3">
-                  <label for="period">ช่วงเวลา</label>
-                  <input class="form-control" type="text" id="period" [(ngModel)]="model.period"
-                    name="period" maxlength="200">
-                </div>
+                <label for="period">ช่วงเวลา</label>
+                <input class="form-control" type="text" id="period" [(ngModel)]="model.period"
+                  name="period" maxlength="200">
+              </div>
             </div>
           </div>
           <div class="form-group">
@@ -92,6 +92,12 @@
                   name="description" rows="3" maxlength="2000"></textarea>
               </div>
             </div>
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="isPublished"
+              name="isPublished" [(ngModel)]="model.isPublished">
+            <label class="form-check-label" for="isPublished">แสดงให้ร้านค้าอื่นๆ
+              เห็น</label>
           </div>
           <div class="form-group">
             <button type="button" class="btn bg-orange text-white text-center"
