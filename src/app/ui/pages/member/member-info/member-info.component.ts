@@ -19,8 +19,7 @@ export class MemberInfoComponent implements OnInit {
   model: Member;
   submitted = false;
 
-  constructor(private router: Router,
-    private registerService: RegisterService,
+  constructor(private registerService: RegisterService,
     private authService: AuthService,
     private memberService: MemberService,
     private indicatorService: IndicatorService) { }
