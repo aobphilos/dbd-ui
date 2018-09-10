@@ -14,6 +14,7 @@ export class Member extends ModelBase {
 
   memberType: MemberType;
   storeName: string;
+  storeDescription: string;
   ownerName: string;
   email: string;
   phone: string;
@@ -36,6 +37,7 @@ export class Member extends ModelBase {
     super();
     this.memberType = MemberType.RETAIL;
     this.storeName = '';
+    this.storeDescription = '';
     this.ownerName = '';
     this.email = '';
     this.phone = '';

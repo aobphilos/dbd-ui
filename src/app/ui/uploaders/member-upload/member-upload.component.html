@@ -59,16 +59,39 @@
                 <label for="price">ราคา</label>
                 <input class="form-control" type="number" id="price"
                   [(ngModel)]="model.price" name="price" min="0"> </div>
+              <div class="col-12 mt-3">
+                <label for="name">ชื่อสินค้า</label>
+                <input class="form-control" type="text" id="name" [(ngModel)]="model.name"
+                  name="name" maxlength="500"> </div>
             </div>
           </div>
           <div class="form-group" *ngIf="isPromotion">
-            <label for="urlLink">URL</label>
-            <input class="form-control" type="url" id="urlLink" [(ngModel)]="model.urlLink"
-              name="urlLink" maxlength="200"> </div>
+            <div class="row">
+              <div class="col-12">
+                <label for="name">ชื่อรายการส่งเสริมการตลาด</label>
+                <input class="form-control" type="text" id="name" [(ngModel)]="model.name"
+                  name="name" maxlength="500">
+              </div>
+              <div class="col-12 mt-3">
+                <label for="urlLink">URL</label>
+                <input class="form-control" type="url" id="urlLink" [(ngModel)]="model.urlLink"
+                  name="urlLink" maxlength="200">
+              </div>
+              <div class="col-12 mt-3">
+                  <label for="period">ช่วงเวลา</label>
+                  <input class="form-control" type="text" id="period" [(ngModel)]="model.period"
+                    name="period" maxlength="200">
+                </div>
+            </div>
+          </div>
           <div class="form-group">
-            <label for="description">รายละเอียด</label>
-            <textarea class="form-control" id="description" [(ngModel)]="model.description"
-              name="description" rows="3" maxlength="2000"></textarea>
+            <div class="row">
+              <div class="col">
+                <label for="description">รายละเอียด</label>
+                <textarea class="form-control" id="description" [(ngModel)]="model.description"
+                  name="description" rows="3" maxlength="2000"></textarea>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <button type="button" class="btn bg-orange text-white text-center"
