@@ -16,9 +16,11 @@ export class MemberService {
   private model: BehaviorSubject<BeSubject<Member>>;
 
   get currentMember() {
-    return this.model.pipe(
+    return this.model.asObservable().pipe(
       filter(subject => !subject.isInit),
-      map(subject => subject.source)
+      map(subject => {
+        return { ...subject.source } as Member;
+      })
     );
   }
 

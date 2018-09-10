@@ -25,6 +25,11 @@
             required #ownerName="ngModel" maxlength="100" autocomplete="off">
         </div>
         <div class="form-group">
+          <label for="storeDescription">คำบรรยายร้านค้า</label>
+          <textarea class="form-control" id="storeDescription" [(ngModel)]="model.storeDescription" name="storeDescription"
+            rows="3" maxlength="2000"></textarea>
+        </div>
+        <div class="form-group">
           <div class="row">
             <div class="col">
               <label for="phone">หมายเลขโทรศัพท์</label>

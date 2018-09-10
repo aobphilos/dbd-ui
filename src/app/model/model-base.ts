@@ -20,19 +20,26 @@ export abstract class ModelRelatedImageBase
 
   isPublished: boolean;
 
+  name: string;
+
   ownerId: string;
   followerIds: string[];
 
   imageUrl: string;
   description: string;
 
+  // ref to owner
+  storeName: string;
+
   constructor() {
     super();
     this.isPublished = true;
+    this.name = '';
     this.ownerId = '';
     this.followerIds = [];
     this.imageUrl = '';
     this.description = '';
+    this.storeName = '';
   }
 
 }

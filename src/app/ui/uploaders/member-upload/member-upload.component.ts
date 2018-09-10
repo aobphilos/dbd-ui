@@ -181,11 +181,11 @@ export class MemberUploadComponent implements OnInit {
   private buildModel() {
 
     if (this.isProduct) {
-      this.model = this.item || new Product();
+      this.model = (this.item) ? { ...this.item } as Product : new Product();
     } else if (this.isPromotion) {
-      this.model = this.item || new Promotion();
+      this.model = (this.item) ? { ...this.item } as Promotion : new Promotion();
     } else {
-      this.model = this.item || new Store();
+      this.model = (this.item) ? { ...this.item } as Store : new Store();
     }
 
     if (!this.item) {
