@@ -1,0 +1,16 @@
+.favorite-icon {
+  margin: 0.5rem 1.25rem;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  z-index: 100;
+
+  i.fa {
+    color: rgba($color: #000000, $alpha: 0.85);
+    font-size: 1.5rem;
+
+    &.fa-heart {
+      color: rgba($color: #fa78aa, $alpha: 1.0);
+    }
+  }
+}

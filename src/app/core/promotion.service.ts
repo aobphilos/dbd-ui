@@ -9,6 +9,8 @@ import { firestore } from 'firebase/app';
 import { SearchCriteria } from '../model/searchCriteria';
 import * as algoliasearch from 'algoliasearch';
 import { AlgoliaService } from './algolia.service';
+import { MemberService } from './member.service';
+import { PromotionView } from '../model/views/promotion-view';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +20,8 @@ export class PromotionService {
   private collection: AngularFirestoreCollection<Promotion>;
   currentItems: Observable<Promotion[]>;
 
-  private latestCollection: AngularFirestoreCollection<Promotion>;
-  latestItems: Observable<Promotion[]>;
+  private previewCollection: AngularFirestoreCollection<Promotion>;
+  previewItems: Observable<PromotionView[]>;
 
   private algoliaIndex: algoliasearch.Index;
 
@@ -35,21 +37,29 @@ export class PromotionService {
     return `Member/${id}`;
   }
 
-  private mapStore = actions => actions.map(a => {
+  private mapItem = actions => actions.map(a => {
     const data = a.payload.doc.data();
     const id = a.payload.doc.id;
     return { id, ...data } as Promotion;
   })
 
+  private mapItemView = actions => actions.map(a => {
+    const data = a.payload.doc.data();
+    const id = a.payload.doc.id;
+    const isFavorite = this.memberService.checkIsFavorite(data['followerIds']);
+    return { id, isFavorite, ...data } as PromotionView;
+  })
+
   constructor(
+    algoliaService: AlgoliaService,
     private db: AngularFirestore,
-    algoliaService: AlgoliaService
+    private memberService: MemberService
   ) {
     this.collection = this.db.collection<Promotion>(this.dbPath, q => q.orderBy('createdDate', 'asc'));
     this.algoliaIndex = algoliaService.promotionIndex;
 
     this.initCurrentItems();
-    this.loadLatestItems();
+    this.loadPreviewItems();
   }
 
   upsert(item: Promotion) {
@@ -138,9 +148,12 @@ export class PromotionService {
     this.ownerIdSource.next(ownerId);
   }
 
-  loadLatestItems() {
-    this.latestCollection = this.db.collection<Promotion>(this.dbPath, q => q.orderBy('updatedDate', 'desc').limit(4));
-    this.latestItems = this.latestCollection.snapshotChanges().pipe(map(this.mapStore));
+  loadPreviewItems() {
+    this.previewCollection = this.db.collection<Promotion>(this.dbPath, q => q.orderBy('updatedDate', 'desc').limit(4));
+    this.previewItems = this.previewCollection.snapshotChanges().pipe(map(this.mapItemView));
+  }
+
+  updateFavorite(item: PromotionView, flag: boolean) {
   }
 
   private initCurrentItems() {
@@ -150,7 +163,7 @@ export class PromotionService {
           ref => ref.where('ownerId', '==', id).orderBy('createdDate', 'asc')
         ).snapshotChanges()
       ),
-      map(this.mapStore)
+      map(this.mapItem)
     );
   }
 

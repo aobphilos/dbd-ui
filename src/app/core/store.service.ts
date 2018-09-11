@@ -9,6 +9,8 @@ import { firestore } from 'firebase/app';
 import { SearchCriteria } from '../model/searchCriteria';
 import * as algoliasearch from 'algoliasearch';
 import { AlgoliaService } from './algolia.service';
+import { StoreView } from '../model/views/store-view';
+import { MemberService } from './member.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +20,8 @@ export class StoreService {
   private collection: AngularFirestoreCollection<Store>;
   currentItems: Observable<Store[]>;
 
-  private latestCollection: AngularFirestoreCollection<Store>;
-  latestItems: Observable<Store[]>;
+  private previewCollection: AngularFirestoreCollection<Store>;
+  previewItems: Observable<StoreView[]>;
 
   private algoliaIndex: algoliasearch.Index;
 
@@ -34,21 +36,29 @@ export class StoreService {
     return `Member/${id}`;
   }
 
-  private mapStore = actions => actions.map(a => {
+  private mapItem = actions => actions.map(a => {
     const data = a.payload.doc.data();
     const id = a.payload.doc.id;
     return { id, ...data } as Store;
   })
 
+  private mapItemView = actions => actions.map(a => {
+    const data = a.payload.doc.data();
+    const id = a.payload.doc.id;
+    const isFavorite = this.memberService.checkIsFavorite(data['followerIds']);
+    return { id, isFavorite, ...data } as StoreView;
+  })
+
   constructor(
+    algoliaService: AlgoliaService,
     private db: AngularFirestore,
-    algoliaService: AlgoliaService
+    private memberService: MemberService
   ) {
     this.collection = this.db.collection<Store>(this.dbPath, q => q.orderBy('updatedDate', 'desc'));
     this.algoliaIndex = algoliaService.storeIndex;
 
     this.initCurrentItems();
-    this.loadLatestItems();
+    this.loadPreviewItems();
   }
 
   upsert(item: Store) {
@@ -137,9 +147,12 @@ export class StoreService {
     this.ownerIdSource.next(ownerId);
   }
 
-  loadLatestItems() {
-    this.latestCollection = this.db.collection<Store>(this.dbPath, q => q.orderBy('updatedDate', 'desc').limit(4));
-    this.latestItems = this.latestCollection.snapshotChanges().pipe(map(this.mapStore));
+  loadPreviewItems() {
+    this.previewCollection = this.db.collection<Store>(this.dbPath, q => q.orderBy('updatedDate', 'desc').limit(4));
+    this.previewItems = this.previewCollection.snapshotChanges().pipe(map(this.mapItemView));
+  }
+
+  updateFavorite(item: StoreView, flag: boolean) {
   }
 
   private initCurrentItems() {
@@ -149,7 +162,7 @@ export class StoreService {
           ref => ref.where('ownerId', '==', id).orderBy('createdDate', 'asc')
         ).snapshotChanges()
       ),
-      map(this.mapStore)
+      map(this.mapItem)
     );
   }
 

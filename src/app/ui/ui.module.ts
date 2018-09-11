@@ -48,6 +48,7 @@ import { PromotionPreviewComponent } from './pages/promotion/promotion-preview/p
 import { PromotionSearchComponent } from './pages/promotion/promotion-search/promotion-search.component';
 import { AlgoliaService } from '../core/algolia.service';
 import { AutofocusDirective } from '../core/directive/autofocus.directive';
+import { FavoriteComponent } from './favorite/favorite.component';
 
 @NgModule({
   imports: [
@@ -70,7 +71,7 @@ import { AutofocusDirective } from '../core/directive/autofocus.directive';
     WelcomeComponent, EventCarouselComponent, SearchBarComponent, PreviewItemComponent,
     StorePreviewComponent, StoreSearchComponent, ProductSearchComponent,
     ProductPreviewComponent, PromotionPreviewComponent, PromotionSearchComponent,
-    AutofocusDirective
+    AutofocusDirective, FavoriteComponent
   ],
   providers: [
     AuthService, LayoutService, AuthGuard, NotifyService, AlgoliaService,

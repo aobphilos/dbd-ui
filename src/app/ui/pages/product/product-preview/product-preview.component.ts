@@ -11,7 +11,7 @@ export class ProductPreviewComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   get productItems() {
-    return this.productService.latestItems;
+    return this.productService.previewItems;
   }
 
   ngOnInit() {

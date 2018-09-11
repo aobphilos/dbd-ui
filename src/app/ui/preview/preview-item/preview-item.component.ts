@@ -1,10 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Store } from '../../../model/store';
-import { Product } from '../../../model/product';
-import { Promotion } from '../../../model/promotion';
 import { UploaderType } from '../../../enum/uploader-type';
+import { StoreView } from '../../../model/views/store-view';
+import { ProductView } from '../../../model/views/product-view';
+import { PromotionView } from '../../../model/views/promotion-view';
+import { StoreService } from '../../../core/store.service';
+import { ProductService } from '../../../core/product.service';
+import { PromotionService } from '../../../core/promotion.service';
 
-type ImageUploadModel = Store | Product | Promotion;
+type ImageUploadModel = StoreView | ProductView | PromotionView;
 
 @Component({
   selector: 'app-preview-item',
@@ -16,7 +19,11 @@ export class PreviewItemComponent implements OnInit {
   @Input() uploaderType: UploaderType;
   @Input() item: ImageUploadModel;
 
-  constructor() { }
+  constructor(
+    private storeService: StoreService,
+    private productService: ProductService,
+    private promotionService: PromotionService
+  ) { }
 
   get modalTitle() {
     let title = '';
@@ -44,7 +51,17 @@ export class PreviewItemComponent implements OnInit {
     return this.uploaderType === UploaderType.PROMOTION;
   }
 
-  ngOnInit() {
+  toggleFavorite(flag: boolean) {
+    if (this.isProduct) {
+      this.productService.updateFavorite(this.item as ProductView, flag);
+    } else if (this.isPromotion) {
+      this.promotionService.updateFavorite(this.item as PromotionView, flag);
+    } else {
+      this.storeService.updateFavorite(this.item as StoreView, flag);
+    }
+
   }
+
+  ngOnInit() { }
 
 }

@@ -11,7 +11,7 @@ export class StorePreviewComponent implements OnInit {
   constructor(private storeService: StoreService) { }
 
   get storeItems() {
-    return this.storeService.latestItems;
+    return this.storeService.previewItems;
   }
 
   ngOnInit() { }

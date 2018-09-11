@@ -11,7 +11,7 @@ export class PromotionPreviewComponent implements OnInit {
   constructor(private promotionService: PromotionService) { }
 
   get promotionItems() {
-    return this.promotionService.latestItems;
+    return this.promotionService.previewItems;
   }
 
   ngOnInit() {

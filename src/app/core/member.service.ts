@@ -15,6 +15,10 @@ export class MemberService {
   private memberCollection: AngularFirestoreCollection<Member>;
   private model: BehaviorSubject<BeSubject<Member>>;
 
+  get sessionMember() {
+    return JSON.parse(sessionStorage.getItem(SessionType.MEMBER)) as Member;
+  }
+
   get currentMember() {
     return this.model.asObservable().pipe(
       filter(subject => !subject.isInit),
@@ -81,8 +85,17 @@ export class MemberService {
     });
   }
 
+  checkIsFavorite(followerIds: string[]) {
+    if (followerIds && followerIds.length > 0) {
+      const member = this.sessionMember;
+      return (member) ? followerIds.some(id => member.id === id) : false;
+    } else {
+      return false;
+    }
+  }
+
   private loadMemberFromSession() {
-    const member = JSON.parse(sessionStorage.getItem(SessionType.MEMBER)) as Member;
+    const member = this.sessionMember;
     if (member) {
       this.model.next(new BeSubject(member));
     }
