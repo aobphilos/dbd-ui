@@ -31,6 +31,7 @@ export class MemberUploadComponent implements OnInit {
   private imageUrlSubject: BehaviorSubject<string>;
   imageUrl: string;
   showEditIcon: boolean;
+
   // backup current owner id for local use.
   private ownerId: string;
 

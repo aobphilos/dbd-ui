@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "@ng-bootstrap/ng-bootstrap": "^2.2.1",
+    "@ng-select/ng-select": "^2.9.0",
     "@types/algoliasearch": "^3.27.6",
     "algoliasearch": "^3.30.0",
     "angularfire2": "^5.0.0-rc.11",
