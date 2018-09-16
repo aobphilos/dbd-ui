@@ -20,7 +20,7 @@ export class MemberService {
   }
 
   get currentMember() {
-    return this.model.asObservable().pipe(
+    return this.model.pipe(
       filter(subject => !subject.isInit),
       map(subject => {
         return { ...subject.source } as Member;
@@ -101,7 +101,7 @@ export class MemberService {
     }
   }
 
-  private setCurrentMember(member: Member) {
+  setCurrentMember(member: Member) {
     this.model.next(new BeSubject(member));
     sessionStorage.setItem(SessionType.MEMBER, JSON.stringify(member));
   }

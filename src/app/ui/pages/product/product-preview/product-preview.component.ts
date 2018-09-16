@@ -8,13 +8,15 @@ import { ProductService } from '../../../../core/product.service';
 })
 export class ProductPreviewComponent implements OnInit {
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService) {
+  }
 
   get productItems() {
     return this.productService.previewItems;
   }
 
   ngOnInit() {
+    this.productService.loadPreviewItems();
   }
 
 }

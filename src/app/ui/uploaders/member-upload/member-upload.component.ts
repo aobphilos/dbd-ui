@@ -146,6 +146,7 @@ export class MemberUploadComponent implements OnInit {
   }
 
   removeItem() {
+    this.showBusy();
     return new Promise<any>((resolve, reject) => {
 
       let deferred: Promise<any>;
@@ -157,7 +158,13 @@ export class MemberUploadComponent implements OnInit {
         deferred = this.storeService.delete(this.model.id, this.model.ownerId);
       }
 
-      deferred.then(() => resolve(), err => reject(err));
+      deferred.then(() => {
+        this.hideBusy();
+        resolve();
+      }, err => {
+        this.hideBusy();
+        reject(err);
+      });
 
     });
   }

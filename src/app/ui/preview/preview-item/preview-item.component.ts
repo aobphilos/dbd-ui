@@ -6,6 +6,7 @@ import { PromotionView } from '../../../model/views/promotion-view';
 import { StoreService } from '../../../core/store.service';
 import { ProductService } from '../../../core/product.service';
 import { PromotionService } from '../../../core/promotion.service';
+import { MemberService } from '../../../core/member.service';
 
 type ImageUploadModel = StoreView | ProductView | PromotionView;
 
@@ -22,7 +23,8 @@ export class PreviewItemComponent implements OnInit {
   constructor(
     private storeService: StoreService,
     private productService: ProductService,
-    private promotionService: PromotionService
+    private promotionService: PromotionService,
+    private memberService: MemberService
   ) { }
 
   get modalTitle() {
@@ -33,6 +35,10 @@ export class PreviewItemComponent implements OnInit {
       case UploaderType.PROMOTION: title = 'เพิ่มข้อมูลรายการส่งเสริมการตลาด'; break;
     }
     return title;
+  }
+
+  get showFavorite() {
+    return this.item.ownerId !== this.memberService.sessionMember.id;
   }
 
   get hasItem() {

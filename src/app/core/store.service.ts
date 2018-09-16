@@ -1,35 +1,35 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Store } from '../model/store';
-import { Member } from '../model/member';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 import { firestore } from 'firebase/app';
 
-import { SearchCriteria } from '../model/searchCriteria';
 import * as algoliasearch from 'algoliasearch';
 import { AlgoliaService } from './algolia.service';
-import { StoreView } from '../model/views/store-view';
 import { MemberService } from './member.service';
+
+import { Store } from '../model/store';
+import { StoreView } from '../model/views/store-view';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class StoreService {
 
-  private collection: AngularFirestoreCollection<Store>;
   currentItems: Observable<Store[]>;
-
-  private previewCollection: AngularFirestoreCollection<Store>;
   previewItems: Observable<StoreView[]>;
 
   private algoliaIndex: algoliasearch.Index;
-
   private ownerIdSource = new BehaviorSubject<string>('');
-  private searchCriteriaSource = new BehaviorSubject<SearchCriteria>(new SearchCriteria());
+  private previewCollection: AngularFirestoreCollection<Store>;
 
   private get dbPath() {
     return 'Store';
+  }
+
+  private getStorePath(id: string) {
+    return `Store/${id}`;
   }
 
   private getOwnerPath(id: string) {
@@ -49,12 +49,15 @@ export class StoreService {
     return { id, isFavorite, ...data } as StoreView;
   })
 
+  private get currentMember() {
+    return this.memberService.sessionMember;
+  }
+
   constructor(
     algoliaService: AlgoliaService,
     private db: AngularFirestore,
     private memberService: MemberService
   ) {
-    this.collection = this.db.collection<Store>(this.dbPath, q => q.orderBy('updatedDate', 'desc'));
     this.algoliaIndex = algoliaService.storeIndex;
 
     this.initCurrentItems();
@@ -69,11 +72,26 @@ export class StoreService {
     return new Promise<any>((resolve, reject) => {
       if (!item) { reject('Missing Store Data'); return; }
 
-      this.collection.add({ ...item })
-        .then(result =>
-          this.assignOwner(item.ownerId, result.id)
-            .then(() => resolve(), (err) => reject(err))
-          , (err) => reject(err));
+      const itemId = this.db.createId();
+      const memberId = item.ownerId;
+      const storeIds = this.currentMember.storeIds.filter(p => p !== itemId);
+      storeIds.push(itemId);
+
+      const itemRef = this.db.doc(`${this.dbPath}/${itemId}`).ref;
+      const memberRef = this.db.doc(this.getOwnerPath(memberId)).ref;
+
+      this.db.firestore.runTransaction(trans => {
+        trans.update(memberRef, { storeIds });
+        trans.set(itemRef, { ...item });
+        return Promise.resolve(true);
+      })
+        .then(() => {
+          // update current session
+          this.updateStoreIds(storeIds);
+          resolve();
+        }, (error) => reject(error))
+        .catch((error) => reject(error));
+
     });
   }
 
@@ -82,17 +100,15 @@ export class StoreService {
       if (!item) { reject('Missing Store Data'); return; }
 
       // found then update
-      const itemRef = this.db.doc(`${this.dbPath}/${item.id}`).ref;
-      const original = await itemRef.get();
-      if (original.exists) {
-        delete item.id;
+      const itemRef = this.db.doc(`${this.dbPath}/${item.id}`);
 
-        item.updatedDate = firestore.Timestamp.now();
-        itemRef.update({ ...item })
-          .then(() => resolve(), (err) => reject(err));
-      } else {
-        reject('This store is not registered');
-      }
+      delete item.id;
+
+      item.updatedDate = firestore.Timestamp.now();
+
+      itemRef.update({ ...item })
+        .then(() => resolve(), (err) => reject(err));
+
     });
   }
 
@@ -100,28 +116,48 @@ export class StoreService {
     return new Promise<any>((resolve, reject) => {
       if (!id) { reject('Missing Store Id'); return; }
 
-      this.db.doc(`${this.dbPath}/${id}`).delete()
-        .then(() =>
-          this.removeOwner(ownerId, id)
-            .then(() => resolve(), (err) => reject(err))
-          , (err) => reject(err));
+      const memberId = this.currentMember.id;
+      const storeIds = this.currentMember.storeIds.filter(p => p !== id);
+
+      const itemRef = this.db.doc(`${this.dbPath}/${id}`).ref;
+      const memberRef = this.db.doc(this.getOwnerPath(memberId)).ref;
+
+      this.db.firestore.runTransaction(trans => {
+
+        return trans.get(itemRef).then((storeSnap) => {
+          if (!storeSnap.exists) {
+            throw new Error('Store does not exist!');
+          }
+
+          // remove follower
+          const store = storeSnap.data() as Store;
+          store.followerIds.forEach(followerId => {
+            const followerRef = this.db.doc(this.getOwnerPath(followerId)).ref;
+            trans.update(followerRef, {
+              storeFollowingIds: firestore.FieldValue.arrayRemove(id)
+            });
+          });
+
+          trans.update(memberRef, { storeIds });
+          trans.delete(itemRef);
+        });
+
+      })
+        .then(() => {
+
+          // update current session
+          this.updateStoreIds(storeIds);
+
+          resolve();
+        }, (error) => reject(error))
+        .catch((error) => reject(error));
 
     });
-  }
 
-  getOrCreateItem(id: string) {
-    return new Promise<Store>(async (resolve, reject) => {
-      id = id || this.db.createId();
-      const itemRef = this.collection.doc(id).ref;
-      itemRef.get().then(
-        result => resolve({ id: result.id, ...result.data() } as Store),
-        err => reject(err)
-      );
-    });
   }
 
   searchItems(query: string) {
-    return new Promise<Store[]>(async (resolve, reject) => {
+    return new Promise<StoreView[]>(async (resolve, reject) => {
       this.algoliaIndex.search({ query })
         .then(
           response => {
@@ -131,7 +167,8 @@ export class StoreService {
                 item => {
                   const id = item['objectID'];
                   delete item['objectID'];
-                  return { id, ...item } as Store;
+                  const isFavorite = this.memberService.checkIsFavorite(item['followerIds']);
+                  return { id, isFavorite, ...item } as StoreView;
                 });
               resolve(items);
             } else {
@@ -148,11 +185,57 @@ export class StoreService {
   }
 
   loadPreviewItems() {
-    this.previewCollection = this.db.collection<Store>(this.dbPath, q => q.orderBy('updatedDate', 'desc').limit(4));
+    this.previewCollection = this.db.collection<Store>(this.dbPath, q => q
+      .where('isPublished', '==', true)
+      .orderBy('updatedDate', 'desc')
+      .limit(4));
     this.previewItems = this.previewCollection.snapshotChanges().pipe(map(this.mapItemView));
   }
 
   updateFavorite(item: StoreView, flag: boolean) {
+
+    return new Promise<any>((resolve, reject) => {
+      if (!item) { reject('Missing Store'); return; }
+
+      const storeId = item.id;
+      const memberId = this.currentMember.id;
+      const storeFollowingIds = this.currentMember.storeFollowingIds.filter(p => p !== storeId);
+      const followerIds = item.followerIds.filter(f => f !== memberId);
+
+      const memberRef = this.db.doc(this.getOwnerPath(memberId)).ref;
+      const storeRef = this.db.doc(this.getStorePath(storeId)).ref;
+
+      if (flag) {
+        storeFollowingIds.push(storeId);
+        followerIds.push(memberId);
+      }
+
+      this.db.firestore.runTransaction<boolean>(trans => {
+        trans.update(memberRef, { storeFollowingIds });
+        trans.update(storeRef, { followerIds });
+        return Promise.resolve(true);
+      })
+        .then(() => {
+          // update current session
+          this.updateFollowingIds(storeFollowingIds);
+
+          resolve();
+        }, (error) => reject(error))
+        .catch((error) => reject(error));
+
+    });
+  }
+
+  private updateFollowingIds(ids) {
+    const member = this.currentMember;
+    Object.assign(member, { storeFollowingIds: ids });
+    this.memberService.setCurrentMember(member);
+  }
+
+  private updateStoreIds(ids) {
+    const member = this.currentMember;
+    Object.assign(member, { storeIds: ids });
+    this.memberService.setCurrentMember(member);
   }
 
   private initCurrentItems() {
@@ -164,37 +247,6 @@ export class StoreService {
       ),
       map(this.mapItem)
     );
-  }
-
-  private assignOwner(ownerId: string, itemId: string) {
-    return this.updateOwner(ownerId, itemId, true);
-  }
-
-  private removeOwner(ownerId: string, itemId: string) {
-    return this.updateOwner(ownerId, itemId, false);
-  }
-
-  private updateOwner(ownerId: string, itemId: string, isAssign: boolean) {
-    return new Promise<any>(async (resolve, reject) => {
-      if (!ownerId) { reject('Missing Owner Id'); return; }
-      if (!itemId) { reject('Missing Item Id'); return; }
-
-      // found then update
-      const ownerRef = this.db.doc(this.getOwnerPath(ownerId)).ref;
-      const original = await ownerRef.get();
-      if (original.exists) {
-        const owner = original.data() as Member;
-        if (isAssign) {
-          owner.storeIds.push(itemId);
-        } else {
-          owner.storeIds = owner.storeIds.filter(id => itemId !== id);
-        }
-        ownerRef.update({ storeIds: owner.storeIds })
-          .then(() => resolve(), (err) => reject(err));
-      } else {
-        reject('This owner is not registered');
-      }
-    });
   }
 
 }
