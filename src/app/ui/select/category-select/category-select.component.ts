@@ -22,7 +22,7 @@ export class CategorySelectComponent implements OnInit, ControlValueAccessor {
 
   private bufferSize = 50;
   private itemBeforeFetchingMore = 10;
-  private loading = false;
+  loading = false;
 
   constructor(private categoryService: CategoryService) {
     this.categories = [];

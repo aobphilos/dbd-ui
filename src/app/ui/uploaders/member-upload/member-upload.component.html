@@ -23,9 +23,10 @@
         <img class="rounded" [src]="imageUrl" [ngClass]="{'border': !isStore}">
       </div>
       <div [ngClass]="{'product-detail': !isStore}" [hidden]="isStore">
-        <div class="col">{{model.categoryName}}</div>
-        <div class="col">{{model.description}}</div>
-        <div class="col">{{model.price}}</div>
+        <div class="top"><h4>{{model.name}}</h4></div>
+        <div class="middle">{{model.description}}</div>
+        <div class="bottom" [hidden]="isPromotion">{{model.price}}</div>
+        <div class="bottom" [hidden]="isProduct">{{model.period}}</div>
       </div>
     </div>
   </div>

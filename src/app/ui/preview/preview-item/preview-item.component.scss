@@ -47,6 +47,24 @@
           left: 33%;
           right: 0;
           bottom: 0;
+
+          .top {
+            top: 0;
+            position: inherit;
+            margin: 0.75rem;
+            margin-bottom: 1rem;
+          }
+
+          .bottom {
+            bottom: 0;
+            position: inherit;
+            margin: 0.75rem;
+          }
+
+          .middle {
+            margin: 2.5rem 0.75rem 1rem 0.75rem;
+            position: inherit;
+          }
         }
       }
 
