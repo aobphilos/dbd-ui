@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { SessionType } from '../enum/session-type';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,28 +10,28 @@ import { SessionType } from '../enum/session-type';
 export class CategoryService {
 
   private configUrl = 'assets/data/category.json';
-  private categories: string[];
+  private categories: Observable<string[]>;
 
-  get currentItems() {
-    if (this.categories && this.categories.length > 0) {
-      return this.categories;
+  get currentItems(): Observable<string[]> {
+    const catJson = sessionStorage.getItem(SessionType.CATEGORY);
+    if (catJson) {
+      console.log('load cat from session');
+      return of(JSON.parse(catJson) as string[]);
     }
 
-    return JSON.parse(sessionStorage.getItem(SessionType.CATEGORY)) as string[];
-  }
-
-  private setCurrentItems(value: string[]) {
-    sessionStorage.setItem(SessionType.CATEGORY, JSON.stringify(value));
-    this.categories.splice(0, this.categories.length, ...value);
+    console.log('user cats from server');
+    return this.categories;
   }
 
   constructor(private http: HttpClient) {
-    this.categories = [];
-    this.initCategory();
+    const catJson = sessionStorage.getItem(SessionType.CATEGORY);
+    if (!catJson) {
+      this.initCategory();
+    }
   }
 
   private initCategory() {
-    this.http.get(this.configUrl)
+    this.categories = this.http.get(this.configUrl)
       .pipe(
         map(response => {
           if (response) {
@@ -39,10 +40,16 @@ export class CategoryService {
             return [];
           }
         })
-      )
-      .subscribe(cats => {
-        this.setCurrentItems(cats);
-      });
+      );
+
+    this.categories.subscribe(cats => {
+      console.log('save cat in session');
+      this.setCurrentItems(cats);
+    });
+  }
+
+  private setCurrentItems(cats: string[]) {
+    sessionStorage.setItem(SessionType.CATEGORY, JSON.stringify(cats));
   }
 
 }

@@ -85,11 +85,12 @@ export class CategorySelectComponent implements OnInit, ControlValueAccessor {
   setDisabledState = (isDisabled: boolean): void => { };
 
   ngOnInit() {
-    const cats = this.categoryService.currentItems;
-    if (cats) {
-      this.categories.splice(0, this.categories.length, ...cats);
-      this.categoryBuffer = this.categories.slice(0, this.bufferSize);
-    }
+    this.categoryService.currentItems.subscribe(cats => {
+      if (cats) {
+        this.categories.splice(0, this.categories.length, ...cats);
+        this.categoryBuffer = this.categories.slice(0, this.bufferSize);
+      }
+    });
   }
 
 }
