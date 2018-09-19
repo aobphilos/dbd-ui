@@ -11,6 +11,7 @@ import { MemberService } from './member.service';
 import { Store } from '../model/store';
 import { StoreView } from '../model/views/store-view';
 import { Member } from '../model/member';
+import { MemberStoreService } from './member-store.service';
 
 
 @Injectable({
@@ -58,7 +59,8 @@ export class StoreService {
     constructor(
         algoliaService: AlgoliaService,
         private db: AngularFirestore,
-        private memberService: MemberService
+        private memberService: MemberService,
+        private memberStoreService: MemberStoreService
     ) {
         this.algoliaIndex = algoliaService.storeIndex;
         this.memberStore = [];
@@ -90,9 +92,12 @@ export class StoreService {
                     return Promise.resolve(true);
                 })
                 .then(() => {
-                    // update current session
-                    this.updateStoreIds(storeIds);
-                    resolve();
+                    this.memberStoreService.addByStore(item)
+                        .then(() => {
+                            // update current session
+                            this.updateStoreIds(storeIds);
+                            resolve();
+                        }, (error) => reject(error));
                 }, (error) => reject(error))
                 .catch((error) => reject(error));
 
@@ -111,7 +116,10 @@ export class StoreService {
             item.updatedDate = firestore.Timestamp.now();
 
             itemRef.update({ ...item })
-                .then(() => resolve(), (err) => reject(err));
+                .then(() => {
+                    this.memberStoreService.updateByStore(item)
+                        .then(() => resolve(), (err) => reject(err));
+                }, (err) => reject(err));
 
         });
     }

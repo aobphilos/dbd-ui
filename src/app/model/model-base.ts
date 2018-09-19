@@ -1,5 +1,5 @@
-import { IRelatedBase } from './related-base';
-import { IImageBase } from './image-base';
+import { IRelatedBase } from './interfaces/related-base';
+import { IImageBase } from './interfaces/image-base';
 import { firestore } from 'firebase/app';
 
 export abstract class ModelBase {
@@ -20,8 +20,6 @@ export abstract class ModelRelatedImageBase
 
   isPublished: boolean;
 
-  name: string;
-
   ownerId: string;
   followerIds: string[];
 
@@ -34,7 +32,6 @@ export abstract class ModelRelatedImageBase
   constructor() {
     super();
     this.isPublished = true;
-    this.name = '';
     this.ownerId = '';
     this.followerIds = [];
     this.imageUrl = '';

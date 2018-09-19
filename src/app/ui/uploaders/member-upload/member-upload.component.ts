@@ -12,6 +12,7 @@ import { PromotionService } from '../../../core/promotion.service';
 import { IndicatorService } from '../../indicator/indicator.service';
 import { MemberService } from '../../../core/member.service';
 import { BehaviorSubject } from 'rxjs';
+import { Member } from '../../../model/member';
 
 type ImageUploadModel = Store | Product | Promotion;
 
@@ -33,7 +34,7 @@ export class MemberUploadComponent implements OnInit {
   showEditIcon: boolean;
 
   // backup current owner id for local use.
-  private ownerId: string;
+  private owner: Member;
 
   constructor(
     private modalService: NgbModal,
@@ -197,7 +198,11 @@ export class MemberUploadComponent implements OnInit {
     }
 
     if (!this.item) {
-      this.model.ownerId = this.ownerId;
+      this.model.ownerId = this.owner.id;
+      this.model.storeName = this.owner.storeName;
+      if (this.isStore) {
+        this.model['storeDescription'] = this.owner.storeDescription;
+      }
     }
 
     this.imageUrlSubject.next(this.model.imageUrl);
@@ -205,11 +210,10 @@ export class MemberUploadComponent implements OnInit {
 
   ngOnInit() {
     this.imageUrlSubject.subscribe(url => this.imageUrl = url);
-    this.buildModel();
     this.memberService.currentMember.subscribe(member => {
       if (member) {
-        this.ownerId = member.id;
-        this.model.ownerId = member.id;
+        this.owner = member;
+        this.buildModel();
       }
     });
   }
