@@ -1,88 +1,86 @@
 <div id="navbar-main" [class.scroll-move]="isScrollMove">
-  <nav class="navbar navbar-dark mb-3 fixed-top" [ngClass]="{'navbar-expand-xl move-lg': userVerified |
+  <nav class="navbar navbar-dark mb-3 px-3 fixed-top" [ngClass]="{'navbar-expand-xl move-lg': userVerified |
     async,'navbar-expand-lg move-md': !(userVerified | async), 'shadow-lg': isScrollMove }">
-    <div class="container">
-      <a class="navbar-brand" routerLink="/welcome" routerLinkActive="active">
-        <div class="logo">
-          <div>
-            <img src="../../../assets/logo/main-logo.png" alt=""> </div>
-          <div class="text-left">
-            <h5> กรมพัฒนาธุรกิจการค้า กระทรวงพาณิชย์</h5>
-            <span> Department of Business Development </span>
-          </div>
+    <a class="navbar-brand" routerLink="/welcome" routerLinkActive="active">
+      <div class="logo">
+        <div>
+          <img src="../../../assets/logo/main-logo.png" alt=""> </div>
+        <div class="text-left">
+          <h5> กรมพัฒนาธุรกิจการค้า กระทรวงพาณิชย์</h5>
+          <span> Department of Business Development </span>
         </div>
-      </a>
-      <button class="navbar-toggler navbar-toggler-right" type="button"
-        data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-label="Toggle navigation"
-        [attr.aria-expanded]="!isCollapsed" (click)="setCollapsed()" *ngIf="toggleMenu">
-        <div class="navbar-toggler-icon"></div>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent"
-        [ngbCollapse]="isCollapsed" *ngIf="toggleMenu">
-        <ng-container *ngIf="userVerified | async; then signedIn; else needSignIn"></ng-container>
-        <ng-template #signedIn>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" routerLink="/welcome">หน้าหลัก</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" routerLink="/list/events">ข่าวประชาสัมพันธ์</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" routerLink="/list/shop">ร้านค้าสมาชิก</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" routerLink="/list/product">สินค้า</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" routerLink="/list/promotion">โปรโมชั่น</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" routerLink="/webboard">เว็บบอร์ด</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" routerLink="/contact">ติดต่อเรา</a>
-            </li>
-            <li class="nav-item d-none" [ngClass]="{'d-xl-block': userVerified | async,'d-lg-block': !(userVerified |
-              async)}">
-              <div class="seperate"></div>
-            </li>
-            <li ngbDropdown class="nav-item dropdown">
-              <a class="nav-link text-orange dropdown-link" href="#" id="navbarDropdown"
-                role="button" data-toggle="dropdown" aria-haspopup="true"
-                ngbDropdownToggle (click)="$event.preventDefault()">
-                <span class="d-inline-block text-truncate dropdown-name">
-                  {{displayName | async}} </span>
-              </a>
-              <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="nav-link text-orange" routerLinkActive="active"
-                  routerLink="/member/info"> ข้อมูลทั่วไป </a>
-                <a class="nav-link text-orange" routerLinkActive="active"
-                  routerLink="/member/shop"> {{shopTypName | async}} </a>
-                <div class="dropdown-divider"></div>
-                <a class="nav-link text-orange" routerLinkActive="active"
-                  (click)="tryLogout()"> ออกจากระบบ </a>
-              </div>
-            </li>
-          </ul>
-        </ng-template>
-        <ng-template #needSignIn>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" data-toggle="modal"
-                (click)="openModal(signInModal)">เข้าสู่ระบบ</a>
-            </li>
-            <li class="nav-item d-none d-lg-block">
-              <div class="seperate"></div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" data-toggle="modal"
-                (click)="openModal(signUpModal)">สมัครสมาชิก</a>
-            </li>
-          </ul>
-        </ng-template>
       </div>
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button"
+      data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-label="Toggle navigation"
+      [attr.aria-expanded]="!isCollapsed" (click)="setCollapsed()" *ngIf="toggleMenu">
+      <div class="navbar-toggler-icon"></div>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent"
+      [ngbCollapse]="isCollapsed" *ngIf="toggleMenu">
+      <ng-container *ngIf="userVerified | async; then signedIn; else needSignIn"></ng-container>
+      <ng-template #signedIn>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/welcome">หน้าหลัก</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/list/events">ข่าวประชาสัมพันธ์</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/list/shop">ร้านค้าสมาชิก</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/list/product">สินค้า</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/list/promotion">โปรโมชั่น</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/webboard">เว็บบอร์ด</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/contact">ติดต่อเรา</a>
+          </li>
+          <li class="nav-item d-none" [ngClass]="{'d-xl-block': userVerified | async,'d-lg-block': !(userVerified |
+              async)}">
+            <div class="seperate"></div>
+          </li>
+          <li ngbDropdown class="nav-item dropdown">
+            <a class="nav-link text-orange dropdown-link" href="#" id="navbarDropdown"
+              role="button" data-toggle="dropdown" aria-haspopup="true"
+              ngbDropdownToggle (click)="$event.preventDefault()">
+              <span class="d-inline-block text-truncate dropdown-name">
+                {{displayName | async}} </span>
+            </a>
+            <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="nav-link text-orange" routerLinkActive="active"
+                routerLink="/member/info"> ข้อมูลทั่วไป </a>
+              <a class="nav-link text-orange" routerLinkActive="active"
+                routerLink="/member/shop"> {{shopTypName | async}} </a>
+              <div class="dropdown-divider"></div>
+              <a class="nav-link text-orange" routerLinkActive="active" (click)="tryLogout()">
+                ออกจากระบบ </a>
+            </div>
+          </li>
+        </ul>
+      </ng-template>
+      <ng-template #needSignIn>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" data-toggle="modal"
+              (click)="openModal(signInModal)">เข้าสู่ระบบ</a>
+          </li>
+          <li class="nav-item d-none d-lg-block">
+            <div class="seperate"></div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" data-toggle="modal"
+              (click)="openModal(signUpModal)">สมัครสมาชิก</a>
+          </li>
+        </ul>
+      </ng-template>
     </div>
   </nav>
 </div>
