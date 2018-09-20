@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { StoreService } from '../../../../core/store.service';
+import { MemberStoreService } from '../../../../core/member-store.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-store-preview',
@@ -8,10 +9,17 @@ import { StoreService } from '../../../../core/store.service';
 })
 export class StorePreviewComponent implements OnInit {
 
-  constructor(private storeService: StoreService) { }
+  constructor(
+    private router: Router,
+    private memberStoreService: MemberStoreService
+  ) { }
 
   get storeItems() {
-    return this.storeService.previewItems;
+    return this.memberStoreService.previewItems;
+  }
+
+  goSearch() {
+    this.router.navigate(['list/shop']);
   }
 
   ngOnInit() { }

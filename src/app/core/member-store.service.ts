@@ -1,45 +1,65 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
-import { Member } from '../model/member';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+
+import * as algoliasearch from 'algoliasearch';
+import { AlgoliaService } from './algolia.service';
+import { MemberService } from './member.service';
+
+import { MemberStoreView } from '../model/views/member-store-view';
 import { Store } from '../model/store';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MemberStoreService {
 
+  previewItems: Observable<MemberStoreView[]>;
+
+  private algoliaIndex: algoliasearch.Index;
+  private previewCollection: AngularFirestoreCollection<Store>;
+
   private get dbPath() {
     return 'MemberStore';
   }
 
-  constructor(private db: AngularFirestore) { }
-
-  private createStoreByMember(member: Member) {
-    const store = new Store();
-    store.ownerId = member.id;
-    store.storeName = member.storeName;
-    store.storeDescription = member.storeDescription;
-    store.isPublished = true;
-    return store;
+  private getStorePath(id: string) {
+    return `MemberStore/${id}`;
   }
 
-  private getUpdateValueByMember(member: Member) {
+  private getOwnerPath(id: string) {
+    return `Member/${id}`;
+  }
+
+  private mapItemView = actions => actions.map(a => {
+    const data = a.payload.doc.data();
+    const id = a.payload.doc.id;
+    const isFavorite = this.memberService.checkIsFavorite(data['followerIds']);
+    return { id, isFavorite, ...data } as MemberStoreView;
+  })
+
+  private get currentMember() {
+    return this.memberService.sessionMember;
+  }
+
+  constructor(
+    algoliaService: AlgoliaService,
+    private db: AngularFirestore,
+    private memberService: MemberService
+  ) {
+    this.algoliaIndex = algoliaService.memberStoreIndex;
+
+    this.loadPreviewItems();
+  }
+
+  private getUpdateValueByStore(store: Store) {
     return {
-      storeName: member.storeName,
-      storeDescription: member.storeDescription
+      imageUrl: store.imageUrl,
+      description: store.description,
+      isPublished: store.isPublished,
+      updatedDate: store.updatedDate
     };
-  }
-
-  addByMember(member: Member) {
-    return new Promise<any>((resolve, reject) => {
-      if (!member) { reject('Missing Member Data'); return; }
-
-      const storeRef = this.db.doc(`${this.dbPath}/${member.id}`).ref;
-
-      const store = this.createStoreByMember(member);
-      storeRef.set({ ...store })
-        .then(() => resolve(), (err) => reject(err));
-    });
   }
 
   addByStore(store: Store) {
@@ -53,26 +73,22 @@ export class MemberStoreService {
     });
   }
 
-  updateByMember(member: Member) {
-    return new Promise<any>(async (resolve, reject) => {
-      if (!member) { reject('Missing Member Data'); return; }
-
-      const storeRef = this.db.doc(`${this.dbPath}/${member.id}`).ref;
-      const storeUpdate = this.getUpdateValueByMember(member);
-      storeRef.update({ ...storeUpdate })
-        .then(() => resolve(), (err) => reject(err));
-
-    });
-  }
-
   updateByStore(store: Store) {
     return new Promise<any>(async (resolve, reject) => {
       if (!store) { reject('Missing Store Data'); return; }
 
       const storeRef = this.db.doc(`${this.dbPath}/${store.ownerId}`).ref;
-      delete store.id;
-      storeRef.update({ ...store })
-        .then(() => resolve(), (err) => reject(err));
+      storeRef.get().then((storeDb) => {
+        if (storeDb.exists) {
+
+          const storeToUpdate = this.getUpdateValueByStore(store);
+          storeRef.update({ ...storeToUpdate })
+            .then(() => resolve(), (err) => reject(err));
+        } else {
+          resolve();
+        }
+      }, (err) => reject(err));
+
     });
   }
 
@@ -82,6 +98,81 @@ export class MemberStoreService {
       this.db.doc(`${this.dbPath}/${id}`).delete()
         .then(() => resolve(), (err) => reject(err));
     });
+  }
+
+  searchItems(query: string) {
+    return new Promise<MemberStoreView[]>(async (resolve, reject) => {
+      this.algoliaIndex.search({ query })
+        .then(
+          response => {
+            const results = response.hits;
+            if (results) {
+              const items = results
+              .filter(item => item['isPublished'] === true)
+              .map(
+                item => {
+                  const id = item['objectID'];
+                  delete item['objectID'];
+                  const isFavorite = this.memberService.checkIsFavorite(item['followerIds']);
+                  return { id, isFavorite, ...item } as MemberStoreView;
+                });
+              resolve(items);
+            } else {
+              resolve([]);
+            }
+          },
+          err => reject(err)
+        );
+    });
+  }
+
+  updateFavorite(item: MemberStoreView, flag: boolean) {
+
+    return new Promise<any>((resolve, reject) => {
+      if (!item) { reject('Missing MemberStore'); return; }
+
+      const storeId = item.id;
+      const memberId = this.currentMember.id;
+      const storeFollowingIds = this.currentMember.storeFollowingIds.filter(p => p !== storeId);
+      const followerIds = item.followerIds.filter(f => f !== memberId);
+
+      const memberRef = this.db.doc(this.getOwnerPath(memberId)).ref;
+      const storeRef = this.db.doc(this.getStorePath(storeId)).ref;
+
+      if (flag) {
+        storeFollowingIds.push(storeId);
+        followerIds.push(memberId);
+      }
+
+      this.db.firestore
+        .runTransaction<boolean>(trans => {
+          trans.update(memberRef, { storeFollowingIds });
+          trans.update(storeRef, { followerIds });
+          return Promise.resolve(true);
+        })
+        .then(() => {
+          // update current session
+          this.updateFollowingIds(storeFollowingIds);
+
+          resolve();
+        }, (error) => reject(error))
+        .catch((error) => reject(error));
+
+    });
+  }
+
+  private loadPreviewItems() {
+    this.previewCollection = this.db.collection<Store>(this.dbPath, q => q
+      .where('isPublished', '==', true)
+      .orderBy('updatedDate', 'desc')
+      .limit(4));
+    this.previewItems = this.previewCollection.snapshotChanges().pipe(map(this.mapItemView));
+  }
+
+  private updateFollowingIds(ids) {
+    const member = this.currentMember;
+    Object.assign(member, { storeFollowingIds: ids });
+    this.memberService.setCurrentMember(member);
   }
 
 }

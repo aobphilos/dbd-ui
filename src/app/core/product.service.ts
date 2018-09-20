@@ -17,13 +17,11 @@ import { ProductView } from '../model/views/product-view';
 export class ProductService {
 
   currentItems: Observable<Product[]>;
-
-  private previewCollection: AngularFirestoreCollection<Product>;
   previewItems: Observable<ProductView[]>;
 
   private algoliaIndex: algoliasearch.Index;
-
   private ownerIdSource = new BehaviorSubject<string>('');
+  private previewCollection: AngularFirestoreCollection<Product>;
 
   private get dbPath() {
     return 'Product';
@@ -113,7 +111,7 @@ export class ProductService {
     });
   }
 
-  delete(id: string, ownerId: string) {
+  delete(id: string) {
     return new Promise<any>((resolve, reject) => {
       if (!id) { reject('Missing Product Id'); return; }
 
@@ -162,13 +160,15 @@ export class ProductService {
           response => {
             const results = response.hits;
             if (results) {
-              const items = results.map(
-                item => {
-                  const id = item['objectID'];
-                  delete item['objectID'];
-                  const isFavorite = this.memberService.checkIsFavorite(item['followerIds']);
-                  return { id, isFavorite, ...item } as ProductView;
-                });
+              const items = results
+                .filter(item => item['isPublished'] === true)
+                .map(
+                  item => {
+                    const id = item['objectID'];
+                    delete item['objectID'];
+                    const isFavorite = this.memberService.checkIsFavorite(item['followerIds']);
+                    return { id, isFavorite, ...item } as ProductView;
+                  });
               resolve(items);
             } else {
               resolve([]);
@@ -183,7 +183,7 @@ export class ProductService {
     this.ownerIdSource.next(ownerId);
   }
 
-  loadPreviewItems() {
+  private loadPreviewItems() {
     this.previewCollection = this.db.collection<Product>(this.dbPath, q => q
       .where('isPublished', '==', true)
       .orderBy('updatedDate', 'desc')

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../../../core/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-preview',
@@ -8,15 +9,20 @@ import { ProductService } from '../../../../core/product.service';
 })
 export class ProductPreviewComponent implements OnInit {
 
-  constructor(private productService: ProductService) {
+  constructor(
+    private router: Router,
+    private productService: ProductService
+  ) {
   }
 
   get productItems() {
     return this.productService.previewItems;
   }
 
-  ngOnInit() {
-    this.productService.loadPreviewItems();
+  goSearch() {
+    this.router.navigate(['list/product']);
   }
+
+  ngOnInit() { }
 
 }

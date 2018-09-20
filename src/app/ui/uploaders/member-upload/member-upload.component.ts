@@ -153,11 +153,11 @@ export class MemberUploadComponent implements OnInit {
 
       let deferred: Promise<any>;
       if (this.isProduct) {
-        deferred = this.productService.delete(this.model.id, this.model.ownerId);
+        deferred = this.productService.delete(this.model.id);
       } else if (this.isPromotion) {
-        deferred = this.promotionService.delete(this.model.id, this.model.ownerId);
+        deferred = this.promotionService.delete(this.model.id);
       } else {
-        deferred = this.storeService.delete(this.model.id, this.model.ownerId);
+        deferred = this.storeService.delete(this.model.id);
       }
 
       deferred.then(() => {

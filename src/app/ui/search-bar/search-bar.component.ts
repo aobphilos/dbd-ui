@@ -26,6 +26,10 @@ export class SearchBarComponent implements OnInit {
     this.route.navigate([`/list/${this.searchType}/`], { queryParams: { keyword: this.keyword } });
   }
 
+  onChange(event) {
+    console.log('event: ', event);
+  }
+
   onKeyDownSearch(event) {
     if (event.keyCode === 13) {
       this.doSearch();

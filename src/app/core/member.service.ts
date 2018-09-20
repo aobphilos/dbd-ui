@@ -6,7 +6,7 @@ import { SessionType } from '../enum/session-type';
 import { BeSubject } from '../model/beSubject';
 import { filter, map } from 'rxjs/operators';
 import { firestore } from 'firebase/app';
-import { MemberStoreService } from './member-store.service';
+import { Store } from '../model/store';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +32,6 @@ export class MemberService {
 
   constructor(
     private db: AngularFirestore,
-    private memberStoreService: MemberStoreService
   ) {
     this.memberCollection = this.db.collection<Member>(this.dbPath, q => q.orderBy('storeName', 'asc'));
     this.memberSubject = new BehaviorSubject<BeSubject<Member>>(new BeSubject(null, true));
@@ -51,9 +50,10 @@ export class MemberService {
 
       this.memberCollection.add({ ...member })
         .then((m) => {
-          this.memberStoreService.addByMember(member)
+          const updatedMember = { id: m.id, ...member } as Member;
+          this.addStoreByMember(updatedMember)
             .then(() => {
-              this.setCurrentMember({ id: m.id, ...member } as Member);
+              this.setCurrentMember(updatedMember);
               resolve(m.id);
             }, (err) => reject(err));
         }, (err) => reject(err));
@@ -75,7 +75,7 @@ export class MemberService {
         memberRef.update({ ...member })
           .then(() => {
             const updatedMember = { id: id, ...member } as Member;
-            this.memberStoreService.updateByMember(updatedMember)
+            this.updateStoreByMember(updatedMember)
               .then(() => {
                 this.setCurrentMember(updatedMember);
                 resolve();
@@ -117,10 +117,57 @@ export class MemberService {
     }
   }
 
+  private addStoreByMember(member: Member) {
+    return new Promise<any>((resolve, reject) => {
+      if (!member) { reject('Missing Member Data'); return; }
+
+      const storeRef = this.db.doc(`${this.dbPath}/${member.id}`).ref;
+
+      const store = this.getUpdateValueByMember(member);
+      storeRef.set({ ...store })
+        .then(() => resolve(), (err) => reject(err));
+    });
+  }
+
+  private updateStoreByMember(member: Member) {
+    return new Promise<any>(async (resolve, reject) => {
+      if (!member) { reject('Missing Member Data'); return; }
+
+      const storeRef = this.db.doc(`${this.dbPath}/${member.id}`).ref;
+      const storeUpdate = this.getUpdateValueByMember(member, true);
+      storeRef.get().then((storeDb) => {
+        if (storeDb.exists) {
+          storeRef.update({ ...storeUpdate })
+            .then(() => resolve(), (err) => reject(err));
+        } else {
+          resolve();
+        }
+      }, (err) => reject(err));
+
+    });
+  }
+
   private loadMemberFromSession() {
     const member = this.sessionMember;
     if (member) {
       this.memberSubject.next(new BeSubject(member));
+    }
+  }
+
+  private getUpdateValueByMember(member: Member, isUpdate: boolean = false) {
+    if (isUpdate) {
+      return {
+        storeName: member.storeName,
+        storeDescription: member.storeDescription,
+        updatedDate: member.updatedDate
+      };
+    } else {
+      const store = new Store();
+      store.ownerId = member.id;
+      store.storeName = member.storeName;
+      store.storeDescription = member.storeDescription;
+      store.isPublished = true;
+      return store;
     }
   }
 

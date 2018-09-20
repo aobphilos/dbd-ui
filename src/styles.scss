@@ -189,6 +189,10 @@ button {
 .preview-section {
   color: rgba(255, 255, 255, 0.85);
 
+  .link:hover {
+    cursor: pointer;
+  }
+
   .store {
     background-color: #f7a600;
     color: black;

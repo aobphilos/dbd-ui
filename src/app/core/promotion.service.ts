@@ -23,7 +23,6 @@ export class PromotionService {
   private ownerIdSource = new BehaviorSubject<string>('');
   private previewCollection: AngularFirestoreCollection<Promotion>;
 
-
   private get dbPath() {
     return 'Promotion';
   }
@@ -112,7 +111,7 @@ export class PromotionService {
     });
   }
 
-  delete(id: string, ownerId: string) {
+  delete(id: string) {
     return new Promise<any>((resolve, reject) => {
       if (!id) { reject('Missing Promotion Id'); return; }
 
@@ -163,7 +162,9 @@ export class PromotionService {
           response => {
             const results = response.hits;
             if (results) {
-              const items = results.map(
+              const items = results
+              .filter(item => item['isPublished'] === true)
+              .map(
                 item => {
                   const id = item['objectID'];
                   delete item['objectID'];
@@ -184,7 +185,7 @@ export class PromotionService {
     this.ownerIdSource.next(ownerId);
   }
 
-  loadPreviewItems() {
+  private loadPreviewItems() {
     this.previewCollection = this.db.collection<Promotion>(this.dbPath, q => q
       .where('isPublished', '==', true)
       .orderBy('updatedDate', 'desc')
