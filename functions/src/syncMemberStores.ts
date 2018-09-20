@@ -7,12 +7,12 @@ const algolia = algoliasearch(
   functions.config().algolia.adminkey
 );
 
-const collectionName = 'Store';
+const collectionName = 'MemberStore';
 
 // Write to the algolia index
 const index = algolia.initIndex(collectionName);
 
-export const syncStores = functions
+export const syncMemberStores = functions
   .region('asia-northeast1')
   .firestore
   .document(`/${collectionName}/{id}`)

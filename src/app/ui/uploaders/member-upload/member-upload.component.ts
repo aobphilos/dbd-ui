@@ -12,6 +12,7 @@ import { PromotionService } from '../../../core/promotion.service';
 import { IndicatorService } from '../../indicator/indicator.service';
 import { MemberService } from '../../../core/member.service';
 import { BehaviorSubject } from 'rxjs';
+import { Member } from '../../../model/member';
 
 type ImageUploadModel = Store | Product | Promotion;
 
@@ -31,8 +32,9 @@ export class MemberUploadComponent implements OnInit {
   private imageUrlSubject: BehaviorSubject<string>;
   imageUrl: string;
   showEditIcon: boolean;
+
   // backup current owner id for local use.
-  private ownerId: string;
+  private owner: Member;
 
   constructor(
     private modalService: NgbModal,
@@ -146,18 +148,25 @@ export class MemberUploadComponent implements OnInit {
   }
 
   removeItem() {
+    this.showBusy();
     return new Promise<any>((resolve, reject) => {
 
       let deferred: Promise<any>;
       if (this.isProduct) {
-        deferred = this.productService.delete(this.model.id, this.model.ownerId);
+        deferred = this.productService.delete(this.model.id);
       } else if (this.isPromotion) {
-        deferred = this.promotionService.delete(this.model.id, this.model.ownerId);
+        deferred = this.promotionService.delete(this.model.id);
       } else {
-        deferred = this.storeService.delete(this.model.id, this.model.ownerId);
+        deferred = this.storeService.delete(this.model.id);
       }
 
-      deferred.then(() => resolve(), err => reject(err));
+      deferred.then(() => {
+        this.hideBusy();
+        resolve();
+      }, err => {
+        this.hideBusy();
+        reject(err);
+      });
 
     });
   }
@@ -189,7 +198,11 @@ export class MemberUploadComponent implements OnInit {
     }
 
     if (!this.item) {
-      this.model.ownerId = this.ownerId;
+      this.model.ownerId = this.owner.id;
+      this.model.storeName = this.owner.storeName;
+      if (this.isStore) {
+        this.model['storeDescription'] = this.owner.storeDescription;
+      }
     }
 
     this.imageUrlSubject.next(this.model.imageUrl);
@@ -197,11 +210,10 @@ export class MemberUploadComponent implements OnInit {
 
   ngOnInit() {
     this.imageUrlSubject.subscribe(url => this.imageUrl = url);
-    this.buildModel();
     this.memberService.currentMember.subscribe(member => {
       if (member) {
-        this.ownerId = member.id;
-        this.model.ownerId = member.id;
+        this.owner = member;
+        this.buildModel();
       }
     });
   }

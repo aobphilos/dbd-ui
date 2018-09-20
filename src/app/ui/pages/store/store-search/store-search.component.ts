@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { StoreService } from '../../../../core/store.service';
 import { BehaviorSubject, of } from 'rxjs';
 import { map, combineLatest } from 'rxjs/operators';
-import { Store } from '../../../../model/store';
+
+import { MemberStoreService } from '../../../../core/member-store.service';
+import { MemberStoreView } from '../../../../model/views/member-store-view';
 
 @Component({
   selector: 'app-store-search',
@@ -17,12 +18,12 @@ export class StoreSearchComponent implements OnInit {
 
   currentPage: number;
 
-  private stores: Store[] = [];
+  private stores: MemberStoreView[] = [];
   private keywordSource = new BehaviorSubject<string>('');
 
   constructor(
     private route: ActivatedRoute,
-    private productService: StoreService
+    private memberStoreService: MemberStoreService
   ) {
     this.currentPage = 1;
   }
@@ -58,7 +59,7 @@ export class StoreSearchComponent implements OnInit {
       )
     ).subscribe((key) => {
       this.keyword = key;
-      this.productService.searchItems(this.keyword)
+      this.memberStoreService.searchItems(this.keyword)
         .then(
           result => {
             this.stores.splice(0, this.stores.length, ...result);

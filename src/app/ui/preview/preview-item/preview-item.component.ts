@@ -1,10 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Store } from '../../../model/store';
-import { Product } from '../../../model/product';
-import { Promotion } from '../../../model/promotion';
 import { UploaderType } from '../../../enum/uploader-type';
+import { MemberStoreView } from '../../../model/views/member-store-view';
+import { ProductView } from '../../../model/views/product-view';
+import { PromotionView } from '../../../model/views/promotion-view';
+import { MemberStoreService } from '../../../core/member-store.service';
+import { ProductService } from '../../../core/product.service';
+import { PromotionService } from '../../../core/promotion.service';
+import { MemberService } from '../../../core/member.service';
 
-type ImageUploadModel = Store | Product | Promotion;
+type ImageUploadModel = MemberStoreView | ProductView | PromotionView;
 
 @Component({
   selector: 'app-preview-item',
@@ -16,7 +20,12 @@ export class PreviewItemComponent implements OnInit {
   @Input() uploaderType: UploaderType;
   @Input() item: ImageUploadModel;
 
-  constructor() { }
+  constructor(
+    private memberStoreService: MemberStoreService,
+    private productService: ProductService,
+    private promotionService: PromotionService,
+    private memberService: MemberService
+  ) { }
 
   get modalTitle() {
     let title = '';
@@ -26,6 +35,10 @@ export class PreviewItemComponent implements OnInit {
       case UploaderType.PROMOTION: title = 'เพิ่มข้อมูลรายการส่งเสริมการตลาด'; break;
     }
     return title;
+  }
+
+  get showFavorite() {
+    return this.item.ownerId !== this.memberService.sessionMember.id;
   }
 
   get hasItem() {
@@ -44,7 +57,16 @@ export class PreviewItemComponent implements OnInit {
     return this.uploaderType === UploaderType.PROMOTION;
   }
 
-  ngOnInit() {
+  toggleFavorite(flag: boolean) {
+    if (this.isProduct) {
+      this.productService.updateFavorite(this.item as ProductView, flag);
+    } else if (this.isPromotion) {
+      this.promotionService.updateFavorite(this.item as PromotionView, flag);
+    } else {
+      this.memberStoreService.updateFavorite(this.item as MemberStoreView, flag);
+    }
   }
+
+  ngOnInit() { }
 
 }

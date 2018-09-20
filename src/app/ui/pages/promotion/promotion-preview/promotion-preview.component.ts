@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PromotionService } from '../../../../core/promotion.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-promotion-preview',
@@ -8,10 +9,17 @@ import { PromotionService } from '../../../../core/promotion.service';
 })
 export class PromotionPreviewComponent implements OnInit {
 
-  constructor(private promotionService: PromotionService) { }
+  constructor(
+    private router: Router,
+    private promotionService: PromotionService
+  ) { }
 
   get promotionItems() {
-    return this.promotionService.latestItems;
+    return this.promotionService.previewItems;
+  }
+
+  goSearch() {
+    this.router.navigate(['list/promotion']);
   }
 
   ngOnInit() {

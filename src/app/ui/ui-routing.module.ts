@@ -59,21 +59,27 @@ export class UiRoutingModule {
         })
       )
       .subscribe((event) => {
-        let cp = '';
+        let path = '';
         if (event && event.snapshot && event.snapshot.routeConfig) {
-          cp = event.snapshot.routeConfig.path || '';
+          path = event.snapshot.routeConfig.path || '';
         }
 
         // hide google map when 'File not found'
-        this.layoutService.toggleMap(cp !== UrlPath.FILE_NOT_FOUND);
+        this.layoutService.toggleMap(path !== UrlPath.FILE_NOT_FOUND);
 
         // hide main menu when 'Register'
-        this.layoutService.toggleMenu(cp !== UrlPath.REGISTER);
+        this.layoutService.toggleMenu(path !== UrlPath.REGISTER);
 
         // show search bar when on welcome page
-        this.layoutService.toggleSearchBar(cp === UrlPath.WELCOME);
+        this.layoutService.toggleSearchBar(this.filterSearchBarZone(path));
 
       });
+  }
+
+  private filterSearchBarZone(path: string) {
+    const regPath = `^(${UrlPath.WELCOME}|${UrlPath.LIST_SHOP}|${UrlPath.LIST_PRODUCT}|${UrlPath.LIST_PROMOTION})`;
+    const reg = new RegExp(regPath, 'i');
+    return reg.test(path);
   }
 
 }

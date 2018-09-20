@@ -19,8 +19,8 @@ export class AlgoliaService {
     return this.algolia.initIndex('Member');
   }
 
-  get storeIndex() {
-    return this.algolia.initIndex('Store');
+  get memberStoreIndex() {
+    return this.algolia.initIndex('MemberStore');
   }
 
   get productIndex() {

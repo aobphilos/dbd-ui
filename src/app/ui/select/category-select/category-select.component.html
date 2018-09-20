@@ -1,0 +1,6 @@
+<ng-select [items]="categoryBuffer" [virtualScroll]="true" [loading]="loading"
+  placeholder="ประเภทสินค้า" (scroll)="scroll($event)" (scrollToEnd)="fetchMore()"
+  [(ngModel)]="categorySelected" (change)="onChange($event)">
+  <ng-template ng-option-tmp let-item="item" let-index="index"> {{item}}
+  </ng-template>
+</ng-select>

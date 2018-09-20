@@ -1,13 +1,34 @@
-<div class="preview border rounded w-100 mb-2">
+<div class="preview border rounded w-100 mb-2" [ngClass]="{'preview-store': isStore}">
   <div class="display" *ngIf="hasItem">
-    <div class="display-content" [ngClass]="{'store-item': isStore, 'product-item': !isStore}">
-      <div [ngClass]="{'product-image': !isStore}">
-        <img class="rounded" [src]="item.imageUrl" [ngClass]="{'border': !isStore}">
+    <app-favorite [(isActive)]="item.isFavorite" (changed)="toggleFavorite($event)"
+      *ngIf="showFavorite"></app-favorite>
+    <div class="display-content product-item" *ngIf="!isStore">
+      <div class="product-image">
+        <img class="rounded border" [src]="item.imageUrl">
       </div>
-      <div [ngClass]="{'product-detail': !isStore}" [hidden]="isStore">
-        <div class="col">{{item.categoryName}}</div>
-        <div class="col">{{item.description}}</div>
-        <div class="col">{{item.price}}</div>
+      <div class="product-detail">
+        <div class="top">
+          <h4>{{item.name}}</h4>
+        </div>
+        <div class="middle">{{item.description}}</div>
+        <div class="bottom" [hidden]="isPromotion">{{item.price}}</div>
+        <div class="bottom" [hidden]="isProduct">{{item.period}}</div>
+      </div>
+    </div>
+    <div class="display-content store-item" *ngIf="isStore">
+      <div class="store-image">
+        <img class="rounded" [src]="item.imageUrl">
+      </div>
+      <div class="store-detail">
+        <div class="mt-2">
+          <h4>{{item.storeName}}</h4>
+        </div>
+        <div class="text-truncate text-center px-4"><span> {{item.storeDescription}} </span>
+        </div>
+        <div class="d-flex justify-content-around my-3 px-4">
+          <div><button type="button" class="btn btn-outline-secondary text-red">ข้อมูลร้านค้า</button></div>
+          <div><button type="button" class="btn btn-outline-secondary text-red">สนใจขายสินค้า</button></div>
+        </div>
       </div>
     </div>
   </div>

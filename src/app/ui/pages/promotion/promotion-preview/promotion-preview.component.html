@@ -1,8 +1,13 @@
 <div class="preview-section d-flex flex-wrap mb-3">
-    <div class="promotion col-12 mb-2">
+  <div class="promotion col-12 mb-2 pr-3">
+    <div class="float-left">
       <h5>โปรโมชั่นล่าสุด</h5>
     </div>
-    <ng-template ngFor let-item [ngForOf]="promotionItems | async" let-i="index">
-      <app-preview-item uploaderType="PROMOTION" class="col-6" [item]="item"></app-preview-item>
-    </ng-template>
+    <div class="float-right">
+      <span class="link" (click)="goSearch()">ดูทั้งหมด</span>
+    </div>
   </div>
+  <ng-template ngFor let-item [ngForOf]="promotionItems | async" let-i="index">
+    <app-preview-item uploaderType="PROMOTION" class="col-6" [item]="item"></app-preview-item>
+  </ng-template>
+</div>

@@ -8,6 +8,11 @@
   border-radius: 0.5rem;
   background: white;
 
+  &.preview-store {
+    min-height: 17.25rem;
+    min-width: 20.5rem;
+  }
+
   .display {
     position: absolute;
     top: 0;
@@ -47,17 +52,47 @@
           left: 33%;
           right: 0;
           bottom: 0;
+
+          .top {
+            top: 0;
+            position: inherit;
+            margin: 0.75rem;
+            margin-bottom: 1rem;
+          }
+
+          .bottom {
+            bottom: 0;
+            position: inherit;
+            margin: 0.75rem;
+          }
+
+          .middle {
+            margin: 2.5rem 0.75rem 1rem 0.75rem;
+            position: inherit;
+          }
         }
       }
 
       &.store-item {
         text-align: center;
 
-        img {
-          max-height: 10.25rem;
-          max-width: 100%;
-          padding: 0.15rem 1rem;
-          margin: 0.15rem 0;
+        .store-image {
+          position: relative;
+
+          img {
+            max-height: 9rem;
+            max-width: 100%;
+            padding: 0 1rem;
+            margin: 0;
+          }
+        }
+
+        .store-detail {
+          button {
+            width: 8rem;
+            border-color: rgba($color: #000000, $alpha: 0.35);
+            border-radius: 1rem;
+          }
         }
       }
     }

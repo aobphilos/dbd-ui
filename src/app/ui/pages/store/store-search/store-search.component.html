@@ -25,7 +25,7 @@
       </div>
     </div>
     <ng-template ngFor let-item [ngForOf]="storeItems | async" let-i="index">
-      <app-preview-item uploaderType="PRODUCT" class="col-6" [item]="item"></app-preview-item>
+      <app-preview-item uploaderType="STORE" class="col-4" [item]="item"></app-preview-item>
     </ng-template>
     <div class="col-12 mt-3">
       <ngb-pagination class="d-flex justify-content-end" [collectionSize]="(storeItems | async).length"

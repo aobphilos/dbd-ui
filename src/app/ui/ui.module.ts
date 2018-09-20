@@ -48,6 +48,11 @@ import { PromotionPreviewComponent } from './pages/promotion/promotion-preview/p
 import { PromotionSearchComponent } from './pages/promotion/promotion-search/promotion-search.component';
 import { AlgoliaService } from '../core/algolia.service';
 import { AutofocusDirective } from '../core/directive/autofocus.directive';
+import { FavoriteComponent } from './favorite/favorite.component';
+import { CategoryService } from '../core/category.service';
+import { HttpClientModule } from '@angular/common/http';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { CategorySelectComponent } from './select/category-select/category-select.component';
 
 @NgModule({
   imports: [
@@ -56,10 +61,8 @@ import { AutofocusDirective } from '../core/directive/autofocus.directive';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     AngularFireStorageModule,
-    CommonModule,
-    UiRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
+    CommonModule, UiRoutingModule, FormsModule, ReactiveFormsModule,
+    HttpClientModule, NgSelectModule
   ],
   declarations: [
     LayoutComponent, HeaderComponent, FooterComponent, FileNotFoundComponent,
@@ -70,11 +73,12 @@ import { AutofocusDirective } from '../core/directive/autofocus.directive';
     WelcomeComponent, EventCarouselComponent, SearchBarComponent, PreviewItemComponent,
     StorePreviewComponent, StoreSearchComponent, ProductSearchComponent,
     ProductPreviewComponent, PromotionPreviewComponent, PromotionSearchComponent,
-    AutofocusDirective
+    AutofocusDirective, FavoriteComponent, CategorySelectComponent
   ],
   providers: [
     AuthService, LayoutService, AuthGuard, NotifyService, AlgoliaService,
-    MemberService, IndicatorService, StoreService, ProductService, PromotionService
+    MemberService, IndicatorService, StoreService, ProductService, PromotionService,
+    CategoryService
   ],
   exports: [LayoutComponent]
 })

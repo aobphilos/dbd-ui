@@ -2,6 +2,7 @@
 @import "styles-variables";
 @import "~bootstrap/scss/bootstrap";
 @import "~font-awesome/scss/font-awesome";
+@import "~@ng-select/ng-select/themes/default.theme.css";
 @import "styles-modal";
 @import "styles-form";
 
@@ -187,6 +188,10 @@ button {
 .member-upload,
 .preview-section {
   color: rgba(255, 255, 255, 0.85);
+
+  .link:hover {
+    cursor: pointer;
+  }
 
   .store {
     background-color: #f7a600;

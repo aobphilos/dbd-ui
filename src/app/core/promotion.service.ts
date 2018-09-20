@@ -1,55 +1,66 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Promotion } from '../model/promotion';
-import { Member } from '../model/member';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { firestore } from 'firebase/app';
 
-import { SearchCriteria } from '../model/searchCriteria';
 import * as algoliasearch from 'algoliasearch';
 import { AlgoliaService } from './algolia.service';
+import { MemberService } from './member.service';
+
+import { Promotion } from '../model/promotion';
+import { PromotionView } from '../model/views/promotion-view';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PromotionService {
 
-  private collection: AngularFirestoreCollection<Promotion>;
   currentItems: Observable<Promotion[]>;
-
-  private latestCollection: AngularFirestoreCollection<Promotion>;
-  latestItems: Observable<Promotion[]>;
+  previewItems: Observable<PromotionView[]>;
 
   private algoliaIndex: algoliasearch.Index;
-
   private ownerIdSource = new BehaviorSubject<string>('');
-  private searchCriteriaSource = new BehaviorSubject<SearchCriteria>(new SearchCriteria());
-
+  private previewCollection: AngularFirestoreCollection<Promotion>;
 
   private get dbPath() {
     return 'Promotion';
+  }
+
+  private getPromotionPath(id: string) {
+    return `Promotion/${id}`;
   }
 
   private getOwnerPath(id: string) {
     return `Member/${id}`;
   }
 
-  private mapStore = actions => actions.map(a => {
+  private mapItem = actions => actions.map(a => {
     const data = a.payload.doc.data();
     const id = a.payload.doc.id;
     return { id, ...data } as Promotion;
   })
 
+  private mapItemView = actions => actions.map(a => {
+    const data = a.payload.doc.data();
+    const id = a.payload.doc.id;
+    const isFavorite = this.memberService.checkIsFavorite(data['followerIds']);
+    return { id, isFavorite, ...data } as PromotionView;
+  })
+
+  private get currentMember() {
+    return this.memberService.sessionMember;
+  }
+
   constructor(
+    algoliaService: AlgoliaService,
     private db: AngularFirestore,
-    algoliaService: AlgoliaService
+    private memberService: MemberService
   ) {
-    this.collection = this.db.collection<Promotion>(this.dbPath, q => q.orderBy('createdDate', 'asc'));
     this.algoliaIndex = algoliaService.promotionIndex;
 
     this.initCurrentItems();
-    this.loadLatestItems();
+    this.loadPreviewItems();
   }
 
   upsert(item: Promotion) {
@@ -60,11 +71,26 @@ export class PromotionService {
     return new Promise<any>((resolve, reject) => {
       if (!item) { reject('Missing Promotion Data'); return; }
 
-      this.collection.add({ ...item })
-        .then(result =>
-          this.assignOwner(item.ownerId, result.id)
-            .then(() => resolve(), (err) => reject(err))
-          , (err) => reject(err));
+      const itemId = this.db.createId();
+      const memberId = item.ownerId;
+      const promotionIds = this.currentMember.promotionIds.filter(p => p !== itemId);
+      promotionIds.push(itemId);
+
+      const itemRef = this.db.doc(`${this.dbPath}/${itemId}`).ref;
+      const memberRef = this.db.doc(this.getOwnerPath(memberId)).ref;
+
+      this.db.firestore.runTransaction(trans => {
+        trans.update(memberRef, { promotionIds });
+        trans.set(itemRef, { ...item });
+        return Promise.resolve(true);
+      })
+        .then(() => {
+          // update current session
+          this.updatePromotionIds(promotionIds);
+          resolve();
+        }, (error) => reject(error))
+        .catch((error) => reject(error));
+
     });
   }
 
@@ -73,56 +99,77 @@ export class PromotionService {
       if (!item) { reject('Missing Promotion Data'); return; }
 
       // found then update
-      const itemRef = this.db.doc(`${this.dbPath}/${item.id}`).ref;
-      const original = await itemRef.get();
-      if (original.exists) {
-        delete item.id;
+      const itemRef = this.db.doc(`${this.dbPath}/${item.id}`);
 
-        item.updatedDate = firestore.Timestamp.now();
-        itemRef.update({ ...item })
-          .then(() => resolve(), (err) => reject(err));
-      } else {
-        reject('This promotion is not registered');
-      }
+      delete item.id;
+
+      item.updatedDate = firestore.Timestamp.now();
+
+      itemRef.update({ ...item })
+        .then(() => resolve(), (err) => reject(err));
+
     });
   }
 
-  delete(id: string, ownerId: string) {
+  delete(id: string) {
     return new Promise<any>((resolve, reject) => {
       if (!id) { reject('Missing Promotion Id'); return; }
 
-      this.db.doc(`${this.dbPath}/${id}`).delete()
-        .then(() =>
-          this.removeOwner(ownerId, id)
-            .then(() => resolve(), (err) => reject(err))
-          , (err) => reject(err));
+      const memberId = this.currentMember.id;
+      const promotionIds = this.currentMember.promotionIds.filter(p => p !== id);
+
+      const itemRef = this.db.doc(`${this.dbPath}/${id}`).ref;
+      const memberRef = this.db.doc(this.getOwnerPath(memberId)).ref;
+
+      this.db.firestore.runTransaction(trans => {
+
+        return trans.get(itemRef).then((promotionSnap) => {
+          if (!promotionSnap.exists) {
+            throw new Error('Promotion does not exist!');
+          }
+
+          // remove follower
+          const promotion = promotionSnap.data() as Promotion;
+          promotion.followerIds.forEach(followerId => {
+            const followerRef = this.db.doc(this.getOwnerPath(followerId)).ref;
+            trans.update(followerRef, {
+              promotionFollowingIds: firestore.FieldValue.arrayRemove(id)
+            });
+          });
+
+          trans.update(memberRef, { promotionIds });
+          trans.delete(itemRef);
+        });
+
+      })
+        .then(() => {
+
+          // update current session
+          this.updatePromotionIds(promotionIds);
+
+          resolve();
+        }, (error) => reject(error))
+        .catch((error) => reject(error));
 
     });
-  }
 
-  getOrCreateItem(id: string) {
-    return new Promise<Promotion>(async (resolve, reject) => {
-      id = id || this.db.createId();
-      const itemRef = this.collection.doc(id).ref;
-      itemRef.get().then(
-        result => resolve({ id: result.id, ...result.data() } as Promotion),
-        err => reject(err)
-      );
-    });
   }
 
   searchItems(query: string) {
-    return new Promise<Promotion[]>(async (resolve, reject) => {
+    return new Promise<PromotionView[]>(async (resolve, reject) => {
       this.algoliaIndex.search({ query })
         .then(
           response => {
             const results = response.hits;
             if (results) {
-              const items = results.map(
+              const items = results
+              .filter(item => item['isPublished'] === true)
+              .map(
                 item => {
                   const id = item['objectID'];
                   delete item['objectID'];
-                  return { id, ...item } as Promotion;
+                  const isFavorite = this.memberService.checkIsFavorite(item['followerIds']);
+                  return { id, isFavorite, ...item } as PromotionView;
                 });
               resolve(items);
             } else {
@@ -138,9 +185,58 @@ export class PromotionService {
     this.ownerIdSource.next(ownerId);
   }
 
-  loadLatestItems() {
-    this.latestCollection = this.db.collection<Promotion>(this.dbPath, q => q.orderBy('updatedDate', 'desc').limit(4));
-    this.latestItems = this.latestCollection.snapshotChanges().pipe(map(this.mapStore));
+  private loadPreviewItems() {
+    this.previewCollection = this.db.collection<Promotion>(this.dbPath, q => q
+      .where('isPublished', '==', true)
+      .orderBy('updatedDate', 'desc')
+      .limit(4));
+    this.previewItems = this.previewCollection.snapshotChanges().pipe(map(this.mapItemView));
+  }
+
+  updateFavorite(item: PromotionView, flag: boolean) {
+
+    return new Promise<any>((resolve, reject) => {
+      if (!item) { reject('Missing Promotion'); return; }
+
+      const promotionId = item.id;
+      const memberId = this.currentMember.id;
+      const promotionFollowingIds = this.currentMember.promotionFollowingIds.filter(p => p !== promotionId);
+      const followerIds = item.followerIds.filter(f => f !== memberId);
+
+      const memberRef = this.db.doc(this.getOwnerPath(memberId)).ref;
+      const promotionRef = this.db.doc(this.getPromotionPath(promotionId)).ref;
+
+      if (flag) {
+        promotionFollowingIds.push(promotionId);
+        followerIds.push(memberId);
+      }
+
+      this.db.firestore.runTransaction<boolean>(trans => {
+        trans.update(memberRef, { promotionFollowingIds });
+        trans.update(promotionRef, { followerIds });
+        return Promise.resolve(true);
+      })
+        .then(() => {
+          // update current session
+          this.updateFollowingIds(promotionFollowingIds);
+
+          resolve();
+        }, (error) => reject(error))
+        .catch((error) => reject(error));
+
+    });
+  }
+
+  private updateFollowingIds(ids) {
+    const member = this.currentMember;
+    Object.assign(member, { promotionFollowingIds: ids });
+    this.memberService.setCurrentMember(member);
+  }
+
+  private updatePromotionIds(ids) {
+    const member = this.currentMember;
+    Object.assign(member, { promotionIds: ids });
+    this.memberService.setCurrentMember(member);
   }
 
   private initCurrentItems() {
@@ -150,39 +246,8 @@ export class PromotionService {
           ref => ref.where('ownerId', '==', id).orderBy('createdDate', 'asc')
         ).snapshotChanges()
       ),
-      map(this.mapStore)
+      map(this.mapItem)
     );
-  }
-
-  private assignOwner(ownerId: string, itemId: string) {
-    return this.updateOwner(ownerId, itemId, true);
-  }
-
-  private removeOwner(ownerId: string, itemId: string) {
-    return this.updateOwner(ownerId, itemId, false);
-  }
-
-  private updateOwner(ownerId: string, itemId: string, isAssign: boolean) {
-    return new Promise<any>(async (resolve, reject) => {
-      if (!ownerId) { reject('Missing Owner Id'); return; }
-      if (!itemId) { reject('Missing Item Id'); return; }
-
-      // found then update
-      const ownerRef = this.db.doc(this.getOwnerPath(ownerId)).ref;
-      const original = await ownerRef.get();
-      if (original.exists) {
-        const owner = original.data() as Member;
-        if (isAssign) {
-          owner.promotionIds.push(itemId);
-        } else {
-          owner.promotionIds = owner.promotionIds.filter(id => itemId !== id);
-        }
-        ownerRef.update({ promotionIds: owner.promotionIds })
-          .then(() => resolve(), (err) => reject(err));
-      } else {
-        reject('This owner is not registered');
-      }
-    });
   }
 
 }
