@@ -13,7 +13,8 @@ export class AppComponent {
 
   private hasVerified: boolean;
 
-  constructor(public authService: AuthService,
+  constructor(
+    public authService: AuthService,
     private layoutService: LayoutService
   ) {
     this.authService.user.subscribe(user => {
@@ -26,11 +27,13 @@ export class AppComponent {
   }
 
   hideMainMenu(event) {
-    const regClass = event.target.className;
-    if (!regClass.match('navbar-toggler')
-      && !regClass.match('dropdown')
-    ) {
-      this.layoutService.collapseMenu(true);
+    if (event && event.target && typeof event.target.className === 'string') {
+      const regClass = event.target.className;
+      if (!regClass.match('navbar-toggler')
+        && !regClass.match('dropdown')
+      ) {
+        this.layoutService.collapseMenu(true);
+      }
     }
   }
 }

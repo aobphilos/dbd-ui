@@ -17,8 +17,9 @@
   .file {
     text-align: center;
     .file-icon {
-      .fa {
+      fa-icon {
         text-align: center;
+        color: rgba($color: #000000, $alpha: 0.45);
       }
     }
   }
