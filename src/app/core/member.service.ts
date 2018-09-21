@@ -117,6 +117,23 @@ export class MemberService {
     }
   }
 
+  getMemberById(memberId: string) {
+    return new Promise<any>((resolve, reject) => {
+      const memberRef = this.db.doc(`${this.dbPath}/${memberId}`).ref;
+      memberRef.get()
+        .then(member => {
+          if (member.exists) {
+            const id = member.id;
+            const data = member.data();
+            resolve({ id, ...data } as Member);
+          } else {
+            resolve(null);
+          }
+        }, () => resolve(null))
+        .catch(err => reject(err));
+    });
+  }
+
   private addStoreByMember(member: Member) {
     return new Promise<any>((resolve, reject) => {
       if (!member) { reject('Missing Member Data'); return; }

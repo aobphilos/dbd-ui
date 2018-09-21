@@ -53,6 +53,7 @@ import { CategoryService } from '../core/category.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CategorySelectComponent } from './select/category-select/category-select.component';
+import { MemberPreviewComponent } from './pages/member/member-preview/member-preview.component';
 
 @NgModule({
   imports: [
@@ -73,7 +74,7 @@ import { CategorySelectComponent } from './select/category-select/category-selec
     WelcomeComponent, EventCarouselComponent, SearchBarComponent, PreviewItemComponent,
     StorePreviewComponent, StoreSearchComponent, ProductSearchComponent,
     ProductPreviewComponent, PromotionPreviewComponent, PromotionSearchComponent,
-    AutofocusDirective, FavoriteComponent, CategorySelectComponent
+    AutofocusDirective, FavoriteComponent, CategorySelectComponent, MemberPreviewComponent
   ],
   providers: [
     AuthService, LayoutService, AuthGuard, NotifyService, AlgoliaService,

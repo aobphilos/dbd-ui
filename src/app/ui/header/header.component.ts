@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, TemplateRef } from '@angular/core';
 import { AuthService } from '../../core/auth.service';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef, NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LayoutService } from '../layout/layout.service';
 import { NotifyService } from '../notify/notify.service';
@@ -14,7 +14,8 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  providers: [NgbDropdownConfig]
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   private modalRef: NgbModalRef;
@@ -50,6 +51,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   constructor(
+    config: NgbDropdownConfig,
     private fb: FormBuilder,
     private router: Router,
     private authService: AuthService,
@@ -59,6 +61,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private indicatorService: IndicatorService,
     private memberService: MemberService
   ) {
+    config.placement = 'bottom-right';
+    config.autoClose = true;
+
     this.createForm();
   }
 

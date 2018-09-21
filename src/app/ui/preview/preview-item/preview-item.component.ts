@@ -7,6 +7,7 @@ import { MemberStoreService } from '../../../core/member-store.service';
 import { ProductService } from '../../../core/product.service';
 import { PromotionService } from '../../../core/promotion.service';
 import { MemberService } from '../../../core/member.service';
+import { Router } from '@angular/router';
 
 type ImageUploadModel = MemberStoreView | ProductView | PromotionView;
 
@@ -21,6 +22,7 @@ export class PreviewItemComponent implements OnInit {
   @Input() item: ImageUploadModel;
 
   constructor(
+    private router: Router,
     private memberStoreService: MemberStoreService,
     private productService: ProductService,
     private promotionService: PromotionService,
@@ -65,6 +67,10 @@ export class PreviewItemComponent implements OnInit {
     } else {
       this.memberStoreService.updateFavorite(this.item as MemberStoreView, flag);
     }
+  }
+
+  goStoreInfo(id: string) {
+    this.router.navigate(['/shop', id]);
   }
 
   ngOnInit() { }
