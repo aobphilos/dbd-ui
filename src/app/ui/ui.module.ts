@@ -10,6 +10,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../../environments/environment';
+import { EllipsisModule } from 'ngx-ellipsis';
 
 import { FileSizePipe } from '../core/pipe/file-size.pipe';
 import { FormatRemoveAtPipe } from '../core/pipe/format-remove-at.pipe';
@@ -68,7 +69,8 @@ import { LibraryIcons } from './ui.icon.module';
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     AngularFireStorageModule,
     CommonModule, UiRoutingModule, FormsModule, ReactiveFormsModule,
-    HttpClientModule, NgSelectModule, FontAwesomeModule
+    HttpClientModule, NgSelectModule, FontAwesomeModule,
+    EllipsisModule
   ],
   declarations: [
     LayoutComponent, HeaderComponent, FooterComponent, FileNotFoundComponent,

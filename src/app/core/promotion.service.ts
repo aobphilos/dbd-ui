@@ -41,9 +41,9 @@ export class PromotionService {
     return { id, ...data } as Promotion;
   })
 
-  private mapItemView = actions => actions.map(a => {
-    const data = a.payload.doc.data();
-    const id = a.payload.doc.id;
+  private mapItemView = actions => actions.docs.map(a => {
+    const data = a.data();
+    const id = a.id;
     const isFavorite = this.memberService.checkIsFavorite(data['followerIds']);
     return { id, isFavorite, ...data } as PromotionView;
   })
@@ -100,12 +100,8 @@ export class PromotionService {
 
       // found then update
       const itemRef = this.db.doc(`${this.dbPath}/${item.id}`);
-
-      delete item.id;
-
       item.updatedDate = firestore.Timestamp.now();
-
-      itemRef.update({ ...item })
+      itemRef.update({ ...this.copyDataOnly(item) })
         .then(() => resolve(), (err) => reject(err));
 
     });
@@ -163,14 +159,14 @@ export class PromotionService {
             const results = response.hits;
             if (results) {
               const items = results
-              .filter(item => item['isPublished'] === true)
-              .map(
-                item => {
-                  const id = item['objectID'];
-                  delete item['objectID'];
-                  const isFavorite = this.memberService.checkIsFavorite(item['followerIds']);
-                  return { id, isFavorite, ...item } as PromotionView;
-                });
+                .filter(item => item['isPublished'] === true)
+                .map(
+                  item => {
+                    const id = item['objectID'];
+                    delete item['objectID'];
+                    const isFavorite = this.memberService.checkIsFavorite(item['followerIds']);
+                    return { id, isFavorite, ...item } as PromotionView;
+                  });
               resolve(items);
             } else {
               resolve([]);
@@ -185,12 +181,12 @@ export class PromotionService {
     this.ownerIdSource.next(ownerId);
   }
 
-  private loadPreviewItems() {
+  public loadPreviewItems() {
     this.previewCollection = this.db.collection<Promotion>(this.dbPath, q => q
       .where('isPublished', '==', true)
       .orderBy('updatedDate', 'desc')
       .limit(4));
-    this.previewItems = this.previewCollection.snapshotChanges().pipe(map(this.mapItemView));
+    this.previewItems = this.previewCollection.get().pipe(map(this.mapItemView));
   }
 
   updateFavorite(item: PromotionView, flag: boolean) {
@@ -225,6 +221,16 @@ export class PromotionService {
         .catch((error) => reject(error));
 
     });
+  }
+
+  private copyDataOnly(promotion: Promotion) {
+    const data = Object.keys(promotion).reduce<any>((item, key) => {
+      if (key !== 'id') {
+        item[key] = promotion[key];
+      }
+      return item;
+    }, {});
+    return data;
   }
 
   private updateFollowingIds(ids) {

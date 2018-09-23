@@ -3,9 +3,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MemberService } from '../../../../core/member.service';
 import { IndicatorService } from '../../../indicator/indicator.service';
 import { BehaviorSubject, of } from 'rxjs';
-import { map, combineLatest } from 'rxjs/operators';
+import { map, combineLatest, tap, switchMap } from 'rxjs/operators';
 import { NotifyService } from '../../../notify/notify.service';
 import { Member } from '../../../../model/member';
+import { MemberType } from '../../../../enum/member-type';
 
 @Component({
   selector: 'app-member-preview',
@@ -13,7 +14,6 @@ import { Member } from '../../../../model/member';
   styleUrls: ['./member-preview.component.scss']
 })
 export class MemberPreviewComponent implements OnInit {
-
 
   private shopId = '';
   private keywordSource = new BehaviorSubject<string>('');
@@ -27,9 +27,12 @@ export class MemberPreviewComponent implements OnInit {
     return (this.currentStorePreview);
   }
 
-  goBack(e: Event) {
-    e.preventDefault();
-    this.router.navigate(['/welcome']);
+  get isWholesale() {
+    return this.currentStore.pipe(
+      map(
+        member => (member && member.memberType === MemberType.WHOLE_SALE)
+      )
+    );
   }
 
   constructor(
@@ -45,12 +48,21 @@ export class MemberPreviewComponent implements OnInit {
   private showBusy = () => this.indicatorService.showBusy();
   private hideBusy = () => this.indicatorService.hideBusy();
 
+  goBack(e: Event) {
+    e.preventDefault();
+    this.router.navigate(['/welcome']);
+  }
+
   private notFoundStore() {
     this.notifyService.setWarningMessage('Not found store !');
     this.router.navigate(['/welcome']);
   }
 
-  ngOnInit() {
+  private goMyStore() {
+    this.router.navigate(['/member/shop']);
+  }
+
+  private bindShopData() {
     this.showBusy();
     this.keywordSource.pipe(
       combineLatest(
@@ -70,24 +82,32 @@ export class MemberPreviewComponent implements OnInit {
       )
     ).subscribe((key) => {
       this.shopId = key;
-      this.memberService.getMemberById(this.shopId)
-        .then(
-          member => {
-            this.hideBusy();
-            console.log('find member: ', member);
-            if (member) {
-              this.currentStorePreview = member;
-            } else {
-              this.notFoundStore();
-            }
-          },
-          () => this.notFoundStore()
-        )
-        .catch(err => {
-          console.log(err);
-          this.notFoundStore();
-        });
+      if (this.memberService.sessionMember.id === key) {
+        this.goMyStore();
+      } else {
+        this.memberService.getMemberById(this.shopId)
+          .then(
+            member => {
+              this.hideBusy();
+              console.log('find member: ', member);
+              if (member) {
+                this.currentStorePreview = member;
+              } else {
+                this.notFoundStore();
+              }
+            },
+            () => this.notFoundStore()
+          )
+          .catch(err => {
+            console.log(err);
+            this.notFoundStore();
+          });
+      }
     });
+  }
+
+  ngOnInit() {
+    this.bindShopData();
   }
 
 }

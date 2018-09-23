@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PromotionService } from '../../../../core/promotion.service';
 import { Router } from '@angular/router';
 
@@ -9,13 +9,21 @@ import { Router } from '@angular/router';
 })
 export class PromotionPreviewComponent implements OnInit {
 
+  @Input() ownerId: string;
+
   constructor(
     private router: Router,
     private promotionService: PromotionService
   ) { }
 
   get promotionItems() {
-    return this.promotionService.previewItems;
+    return (this.ownerId)
+      ? this.promotionService.currentItems
+      : this.promotionService.previewItems;
+  }
+
+  get isPublishView() {
+    return (this.ownerId);
   }
 
   goSearch() {
@@ -23,6 +31,11 @@ export class PromotionPreviewComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.ownerId) {
+      this.promotionService.loadCurrentItems(this.ownerId);
+    } else {
+      this.promotionService.loadPreviewItems();
+    }
   }
 
 }

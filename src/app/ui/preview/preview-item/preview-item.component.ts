@@ -20,6 +20,7 @@ export class PreviewItemComponent implements OnInit {
 
   @Input() uploaderType: UploaderType;
   @Input() item: ImageUploadModel;
+  @Input() isStoreView: boolean;
 
   constructor(
     private router: Router,

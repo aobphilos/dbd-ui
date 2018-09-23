@@ -151,7 +151,7 @@ header {
   }
 }
 
-i.fa::before {
+fa-icon::before {
   padding-right: 0.35rem;
 }
 
@@ -167,7 +167,7 @@ i.fa::before {
     background-color: transparent;
     border: 0.05rem dashed #8c9692;
 
-    i.fa {
+    fa-icon {
       left: 0.15rem;
       position: relative;
     }

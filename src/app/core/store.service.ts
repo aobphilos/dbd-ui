@@ -34,9 +34,9 @@ export class StoreService {
     return { id, ...data } as Store;
   })
 
-  private mapItemView = actions => actions.map(a => {
-    const data = a.payload.doc.data();
-    const id = a.payload.doc.id;
+  private mapItemView = actions => actions.docs.map(a => {
+    const data = a.data();
+    const id = a.id;
     const isFavorite = this.memberService.checkIsFavorite(data['followerIds']);
     return { id, isFavorite, ...data } as StoreView;
   })
@@ -95,14 +95,11 @@ export class StoreService {
 
       // found then update
       const itemRef = this.db.doc(`${this.dbPath}/${item.id}`);
-
-      delete item.id;
-
       item.updatedDate = firestore.Timestamp.now();
-
-      itemRef.update({ ...item })
+      const storeData = this.copyDataOnly(item);
+      itemRef.update({ ...storeData })
         .then(() => {
-          this.memberStoreService.updateByStore(item)
+          this.memberStoreService.updateByStore(storeData)
             .then(() => resolve(), (err) => reject(err));
         }, (err) => reject(err));
 
@@ -149,12 +146,23 @@ export class StoreService {
     this.ownerIdSource.next(ownerId);
   }
 
-  private loadPreviewItems() {
+
+  private copyDataOnly(store: Store) {
+    const data = Object.keys(store).reduce<any>((item, key) => {
+      if (key !== 'id') {
+        item[key] = store[key];
+      }
+      return item;
+    }, {});
+    return data;
+  }
+
+  public loadPreviewItems() {
     this.previewCollection = this.db.collection<Store>(this.dbPath, q => q
       .where('isPublished', '==', true)
       .orderBy('updatedDate', 'desc')
       .limit(4));
-    this.previewItems = this.previewCollection.snapshotChanges().pipe(map(this.mapItemView));
+    this.previewItems = this.previewCollection.get().pipe(map(this.mapItemView));
   }
 
   private updateStoreIds(ids) {

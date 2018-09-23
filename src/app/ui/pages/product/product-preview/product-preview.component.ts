@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProductService } from '../../../../core/product.service';
 import { Router } from '@angular/router';
 
@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class ProductPreviewComponent implements OnInit {
 
+  @Input() ownerId: string;
+
   constructor(
     private router: Router,
     private productService: ProductService
@@ -16,13 +18,25 @@ export class ProductPreviewComponent implements OnInit {
   }
 
   get productItems() {
-    return this.productService.previewItems;
+    return (this.ownerId)
+      ? this.productService.currentItems
+      : this.productService.previewItems;
+  }
+
+  get isPublishView() {
+    return (this.ownerId);
   }
 
   goSearch() {
     this.router.navigate(['list/product']);
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    if (this.ownerId) {
+      this.productService.loadCurrentItems(this.ownerId);
+    } else {
+      this.productService.loadPreviewItems();
+    }
+  }
 
 }

@@ -3,7 +3,7 @@
     <div class="float-left">
       <h5>สินค้าล่าสุด</h5>
     </div>
-    <div class="float-right">
+    <div class="float-right" *ngIf="!isPublishView">
       <span class="link" (click)="goSearch()">ดูทั้งหมด</span>
     </div>
   </div>

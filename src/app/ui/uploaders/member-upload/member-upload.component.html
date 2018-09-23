@@ -10,7 +10,7 @@
       </span>
     </div>
   </div>
-  <div class="display" *ngIf="hasItem" (mouseover)="toggleEditIcon(true)"
+  <div class="d-flex align-items-center display" *ngIf="hasItem" (mouseover)="toggleEditIcon(true)"
     (mouseleave)="toggleEditIcon(false)">
     <div class="display-edit" [ngClass]="{'hover': showEditIcon}">
       <span class="file-icon">
@@ -26,7 +26,7 @@
         <div class="top">
           <h4>{{model.name}}</h4>
         </div>
-        <div class="middle">{{model.description}}</div>
+        <div class="middle" ellipsis>{{model.description}}</div>
         <div class="bottom" [hidden]="isPromotion">{{model.price}}</div>
         <div class="bottom" [hidden]="isProduct">{{model.period}}</div>
       </div>

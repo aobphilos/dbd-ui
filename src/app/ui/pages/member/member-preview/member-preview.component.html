@@ -1,5 +1,5 @@
-<div class="member-preview p-3 bg-white table-bordered">
-  <div class="mx-auto mb-3 w-100" *ngIf="currentStore | async as store">
+<div class="member-preview p-3 bg-white table-bordered" *ngIf="currentStore | async as store">
+  <div class="mx-auto mb-3 w-100">
     <div class="d-flex justify-content-between line-break">
       <div>
         <h4> {{store.storeName}} </h4>
@@ -19,7 +19,7 @@
       </div>
     </div>
   </div>
-  <app-store-preview></app-store-preview>
-  <app-product-preview></app-product-preview>
-  <app-promotion-preview></app-promotion-preview>
+  <app-store-preview [ownerId]="store.id"></app-store-preview>
+  <app-product-preview [ownerId]="store.id"></app-product-preview>
+  <app-promotion-preview [ownerId]="store.id" *ngIf="isWholesale | async"></app-promotion-preview>
 </div>

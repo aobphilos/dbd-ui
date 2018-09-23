@@ -3,11 +3,12 @@
     <div class="float-left">
       <h5>ร้านค้าล่าสุด</h5>
     </div>
-    <div class="float-right">
-        <span class="link" (click)="goSearch()">ดูทั้งหมด</span>
+    <div class="float-right" *ngIf="!isPublishView">
+      <span class="link" (click)="goSearch()">ดูทั้งหมด</span>
     </div>
   </div>
   <ng-template ngFor let-item [ngForOf]="storeItems | async" let-i="index">
-    <app-preview-item uploaderType="STORE" class="col-4" [item]="item"></app-preview-item>
+    <app-preview-item uploaderType="STORE" class="col-4" [item]="item"
+      [isStoreView]="isPublishView"></app-preview-item>
   </ng-template>
 </div>
