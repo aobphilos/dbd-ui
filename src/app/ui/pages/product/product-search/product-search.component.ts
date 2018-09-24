@@ -14,6 +14,8 @@ import { ProductView } from '../../../../model/views/product-view';
 export class ProductSearchComponent implements OnInit {
 
   private keyword = '';
+
+  isFavorite = false;
   sortDirection = 'asc';
 
   currentPage: number;
@@ -43,7 +45,7 @@ export class ProductSearchComponent implements OnInit {
   }
 
   private goSearchNextPage(pageIndex: number) {
-    this.productService.searchItems(this.keyword, pageIndex)
+    this.productService.searchItems(this.keyword, this.isFavorite, pageIndex)
       .then(
         result => {
           this.currentPage = result.currentPageIndex + 1;
@@ -63,16 +65,17 @@ export class ProductSearchComponent implements OnInit {
       map(
         (params) => {
           if (params[1].has('keyword')) {
-            return params[1].get('keyword');
+            return { keyword: params[1].get('keyword'), isFavorite: (params[1].get('isFavorite') === 'true') };
           } else if (params[2].has('keyword')) {
-            return params[2].get('keyword');
+            return { keyword: params[2].get('keyword'), isFavorite: (params[2].get('isFavorite') === 'true') };
           } else {
-            return '';
+            return {};
           }
         }
       )
-    ).subscribe((key) => {
-      this.keyword = key;
+    ).subscribe((params) => {
+      this.keyword = params.keyword;
+      this.isFavorite = params.isFavorite;
       this.goSearchNextPage(0);
     });
   }

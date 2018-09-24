@@ -19,6 +19,10 @@ export class StorePreviewComponent implements OnInit {
   ) {
   }
 
+  get barTitle() {
+    return this.isPublishView ? 'ภาพถ่ายร้าน' : 'ร้านค้าล่าสุด';
+  }
+
   get storeItems() {
     return (this.ownerId)
       ? this.storeService.currentItems

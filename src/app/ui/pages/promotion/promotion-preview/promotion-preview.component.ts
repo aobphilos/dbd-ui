@@ -16,9 +16,13 @@ export class PromotionPreviewComponent implements OnInit {
     private promotionService: PromotionService
   ) { }
 
+  get barTitle() {
+    return this.isPublishView ? 'โปรโมชั่นทั้งหมด' : 'โปรโมชั่นล่าสุด';
+  }
+
   get promotionItems() {
     return (this.ownerId)
-      ? this.promotionService.currentItems
+      ? this.promotionService.ownerItems
       : this.promotionService.previewItems;
   }
 
@@ -32,7 +36,7 @@ export class PromotionPreviewComponent implements OnInit {
 
   ngOnInit() {
     if (this.ownerId) {
-      this.promotionService.loadCurrentItems(this.ownerId);
+      this.promotionService.loadItemByOwner(this.ownerId);
     } else {
       this.promotionService.loadPreviewItems();
     }

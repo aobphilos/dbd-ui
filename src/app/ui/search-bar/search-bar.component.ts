@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class SearchBarComponent implements OnInit {
 
   keyword = '';
-  searchType = 'shop';
+  searchType = 'shop|1';
 
   private toggleSerchBarSource: boolean;
   get toogleSearchBar() {
@@ -23,11 +23,11 @@ export class SearchBarComponent implements OnInit {
   ) { }
 
   doSearch() {
-    this.route.navigate([`/list/${this.searchType}/`], { queryParams: { keyword: this.keyword } });
-  }
-
-  onChange(event) {
-    console.log('event: ', event);
+    const segments = this.searchType.split('|');
+    const fillByFavorite = segments[1] === '2'
+      ? { isFavorite: true } : {};
+    this.route.navigate([`/list/${segments[0]}/`],
+      { queryParams: { keyword: this.keyword, ...fillByFavorite } });
   }
 
   onKeyDownSearch(event) {

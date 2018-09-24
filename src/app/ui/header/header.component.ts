@@ -102,7 +102,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.doLogout()
       .then(
         res => {
-          this.router.navigate(['/home']);
+          // this.router.navigate(['/home'], );
+          window.location.href = './home';
           this.hideBusy();
         },
         err => this.hideBusy());

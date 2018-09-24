@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="col-12 mt-4 text-center text-black" *ngIf="totalHits == 0">
-      <h5>ไม่พบรายการสินค้า</h5>
+      <h5>ไม่พบโปรโมชั่นที่สอดคล้องกับเงื่อนไขในการค้นหา กรุณาระบุเงื่อนไขอื่นๆ</h5>
     </div>
     <ng-template ngFor let-item [ngForOf]="promotionItems | async" let-i="index"
       *ngIf="totalHits > 0">

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { firestore } from 'firebase/app';
@@ -19,10 +19,10 @@ export class PromotionService {
 
   currentItems: Observable<Promotion[]>;
   previewItems: Observable<PromotionView[]>;
+  ownerItems: Observable<PromotionView[]>;
 
   private algoliaIndex: algoliasearch.Index;
   private ownerIdSource = new BehaviorSubject<string>('');
-  private previewCollection: AngularFirestoreCollection<Promotion>;
 
   private get dbPath() {
     return 'Promotion';
@@ -186,12 +186,22 @@ export class PromotionService {
   }
 
   public loadPreviewItems() {
-    this.previewCollection = this.db.collection<Promotion>(this.dbPath, q => q
+    const previewCollection = this.db.collection<Promotion>(this.dbPath, q => q
       .where('isPublished', '==', true)
       .orderBy('updatedDate', 'desc')
       .limit(4));
-    this.previewItems = this.previewCollection.get().pipe(map(this.mapItemView));
+    this.previewItems = previewCollection.get().pipe(map(this.mapItemView));
   }
+
+  public loadItemByOwner(ownerId: string) {
+    const ownerCollection = this.db.collection<Promotion>(this.dbPath, q => q
+      .where('ownerId', '==', ownerId)
+      .where('isPublished', '==', true)
+      .orderBy('updatedDate', 'desc'));
+
+    this.ownerItems = ownerCollection.get().pipe(map(this.mapItemView));
+  }
+
 
   updateFavorite(item: PromotionView, flag: boolean) {
 

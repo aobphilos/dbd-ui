@@ -22,13 +22,13 @@
           <option>ช่วงราคา</option>
         </select>
         <div class="form-check my-auto">
-          <input class="form-check-input" type="checkbox" id="followingCheck">
+          <input class="form-check-input" type="checkbox" id="followingCheck" [(ngModel)]="isFavorite">
           <label class="form-check-label" for="followingCheck"> ถูกใจ </label>
         </div>
       </div>
     </div>
     <div class="col-12 mt-4 text-center text-black" *ngIf="totalHits == 0">
-      <h5>ไม่พบรายการสินค้า</h5>
+      <h5>ไม่พบสินค้าที่สอดคล้องกับเงื่อนไขในการค้นหา กรุณาระบุเงื่อนไขอื่นๆ</h5>
     </div>
     <ng-template ngFor let-item [ngForOf]="productItems | async" let-i="index"
       *ngIf="totalHits > 0">

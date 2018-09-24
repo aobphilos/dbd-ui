@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { firestore } from 'firebase/app';
@@ -19,10 +19,10 @@ export class ProductService {
 
   currentItems: Observable<Product[]>;
   previewItems: Observable<ProductView[]>;
+  ownerItems: Observable<ProductView[]>;
 
   private algoliaIndex: algoliasearch.Index;
   private ownerIdSource = new BehaviorSubject<string>('');
-  private previewCollection: AngularFirestoreCollection<Product>;
 
   private get dbPath() {
     return 'Product';
@@ -150,11 +150,17 @@ export class ProductService {
 
   }
 
-  searchItems(query: string, pageIndex: number = 0) {
+  searchItems(query: string, isFavorite: boolean = false, pageIndex: number = 0) {
     return new Promise<Pagination<ProductView>>(async (resolve, reject) => {
+      const memberId = this.currentMember.id;
+      const filters = ['isPublished = 1'];
+      if (isFavorite) {
+        filters.push(`followerIds = ${memberId}`);
+      }
+
       this.algoliaIndex.search({
         query, page: pageIndex, hitsPerPage: 10,
-        filters: 'isPublished = 1'
+        filters: filters.join(' AND ')
       })
         .then(
           response => {
@@ -165,10 +171,9 @@ export class ProductService {
                   item => {
                     const id = item['objectID'];
                     delete item['objectID'];
-                    const isFavorite = this.memberService.checkIsFavorite(item['followerIds']);
-                    return { id, isFavorite, ...item } as ProductView;
+                    const isFollow = this.memberService.checkIsFavorite(item['followerIds']);
+                    return { id, isFollow, ...item } as ProductView;
                   });
-
               resolve(new Pagination<ProductView>(items, response.nbHits, response.page));
             } else {
               resolve(new Pagination<ProductView>());
@@ -194,11 +199,20 @@ export class ProductService {
   }
 
   public loadPreviewItems() {
-    this.previewCollection = this.db.collection<Product>(this.dbPath, q => q
+    const previewCollection = this.db.collection<Product>(this.dbPath, q => q
       .where('isPublished', '==', true)
       .orderBy('updatedDate', 'desc')
       .limit(4));
-    this.previewItems = this.previewCollection.get().pipe(map(this.mapItemView));
+    this.previewItems = previewCollection.get().pipe(map(this.mapItemView));
+  }
+
+  public loadItemByOwner(ownerId: string) {
+    const ownerCollection = this.db.collection<Product>(this.dbPath, q => q
+      .where('ownerId', '==', ownerId)
+      .where('isPublished', '==', true)
+      .orderBy('updatedDate', 'desc'));
+
+    this.ownerItems = ownerCollection.get().pipe(map(this.mapItemView));
   }
 
   updateFavorite(item: ProductView, flag: boolean) {

@@ -17,9 +17,13 @@ export class ProductPreviewComponent implements OnInit {
   ) {
   }
 
+  get barTitle() {
+    return this.isPublishView ? 'สินค้าทั้งหมด' : 'สินค้าล่าสุด';
+  }
+
   get productItems() {
     return (this.ownerId)
-      ? this.productService.currentItems
+      ? this.productService.ownerItems
       : this.productService.previewItems;
   }
 
@@ -33,7 +37,7 @@ export class ProductPreviewComponent implements OnInit {
 
   ngOnInit() {
     if (this.ownerId) {
-      this.productService.loadCurrentItems(this.ownerId);
+      this.productService.loadItemByOwner(this.ownerId);
     } else {
       this.productService.loadPreviewItems();
     }

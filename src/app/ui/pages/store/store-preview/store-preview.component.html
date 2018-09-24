@@ -2,7 +2,7 @@
   <div class="preview-section d-flex flex-wrap mb-3" *ngIf="items.length > 0">
     <div class="store col-12 mb-2 pr-3">
       <div class="float-left">
-        <h5>ร้านค้าล่าสุด</h5>
+        <h5>{{ barTitle }}</h5>
       </div>
       <div class="float-right" *ngIf="!isPublishView">
         <span class="link" (click)="goSearch()">ดูทั้งหมด</span>

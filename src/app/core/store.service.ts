@@ -146,7 +146,6 @@ export class StoreService {
     this.ownerIdSource.next(ownerId);
   }
 
-
   private copyDataOnly(store: Store) {
     const data = Object.keys(store).reduce<any>((item, key) => {
       if (key !== 'id') {
