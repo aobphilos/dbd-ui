@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductService } from '../../../../core/product.service';
 import { BehaviorSubject, of } from 'rxjs';
 import { map, combineLatest } from 'rxjs/operators';
-import { Product } from '../../../../model/product';
+
+import { ProductService } from '../../../../core/product.service';
+import { ProductView } from '../../../../model/views/product-view';
 
 @Component({
   selector: 'app-product-search',
@@ -16,8 +17,9 @@ export class ProductSearchComponent implements OnInit {
   sortDirection = 'asc';
 
   currentPage: number;
+  totalHits: number;
 
-  private products: Product[] = [];
+  private products: ProductView[] = [];
   private keywordSource = new BehaviorSubject<string>('');
 
   constructor(
@@ -25,6 +27,7 @@ export class ProductSearchComponent implements OnInit {
     private productService: ProductService
   ) {
     this.currentPage = 1;
+    this.totalHits = 0;
   }
 
   get productItems() {
@@ -35,11 +38,23 @@ export class ProductSearchComponent implements OnInit {
 
   }
 
-  onPageChange(event) {
-    console.log(event);
+  onPageChange() {
+    this.goSearchNextPage(this.currentPage - 1);
   }
 
-  ngOnInit() {
+  private goSearchNextPage(pageIndex: number) {
+    this.productService.searchItems(this.keyword, pageIndex)
+      .then(
+        result => {
+          this.currentPage = result.currentPageIndex + 1;
+          this.totalHits = result.totalHits;
+          this.products.splice(0, this.products.length, ...result.hits);
+        },
+        err => console.log(err)
+      );
+  }
+
+  private initSearchItems() {
     this.keywordSource.pipe(
       combineLatest(
         this.route.paramMap,
@@ -58,14 +73,12 @@ export class ProductSearchComponent implements OnInit {
       )
     ).subscribe((key) => {
       this.keyword = key;
-      this.productService.searchItems(this.keyword)
-        .then(
-          result => {
-            this.products.splice(0, this.products.length, ...result);
-          },
-          err => console.log(err)
-        );
+      this.goSearchNextPage(0);
     });
+  }
+
+  ngOnInit() {
+    this.initSearchItems();
   }
 
 }

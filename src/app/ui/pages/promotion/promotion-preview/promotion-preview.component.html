@@ -1,13 +1,15 @@
-<div class="preview-section d-flex flex-wrap mb-3">
-  <div class="promotion col-12 mb-2 pr-3">
-    <div class="float-left">
-      <h5>โปรโมชั่นล่าสุด</h5>
+<div *ngIf="promotionItems | async as items">
+  <div class="preview-section d-flex flex-wrap mb-3" *ngIf="items.length > 0">
+    <div class="promotion col-12 mb-2 pr-3">
+      <div class="float-left">
+        <h5>โปรโมชั่นล่าสุด</h5>
+      </div>
+      <div class="float-right" *ngIf="!isPublishView">
+        <span class="link" (click)="goSearch()">ดูทั้งหมด</span>
+      </div>
     </div>
-    <div class="float-right" *ngIf="!isPublishView">
-      <span class="link" (click)="goSearch()">ดูทั้งหมด</span>
-    </div>
+    <ng-template ngFor let-item [ngForOf]="items" let-i="index">
+      <app-preview-item uploaderType="PROMOTION" class="col-6" [item]="item"></app-preview-item>
+    </ng-template>
   </div>
-  <ng-template ngFor let-item [ngForOf]="promotionItems | async" let-i="index">
-    <app-preview-item uploaderType="PROMOTION" class="col-6" [item]="item"></app-preview-item>
-  </ng-template>
 </div>

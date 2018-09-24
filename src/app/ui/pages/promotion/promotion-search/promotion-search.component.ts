@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PromotionService } from '../../../../core/promotion.service';
 import { BehaviorSubject, of } from 'rxjs';
 import { map, combineLatest } from 'rxjs/operators';
-import { Promotion } from '../../../../model/promotion';
+
+import { PromotionService } from '../../../../core/promotion.service';
+import { PromotionView } from '../../../../model/views/promotion-view';
 
 @Component({
   selector: 'app-promotion-search',
@@ -14,9 +15,11 @@ export class PromotionSearchComponent implements OnInit {
 
   private keyword = '';
   sortDirection = 'asc';
-  currentPage: number;
 
-  private promotions: Promotion[] = [];
+  currentPage: number;
+  totalHits: number;
+
+  private promotions: PromotionView[] = [];
   private keywordSource = new BehaviorSubject<string>('');
 
   constructor(
@@ -24,6 +27,7 @@ export class PromotionSearchComponent implements OnInit {
     private promotionService: PromotionService
   ) {
     this.currentPage = 1;
+    this.totalHits = 0;
   }
 
   get promotionItems() {
@@ -34,11 +38,23 @@ export class PromotionSearchComponent implements OnInit {
 
   }
 
-  onPageChange(event) {
-    console.log(event);
+  onPageChange() {
+    this.goSearchNextPage(this.currentPage - 1);
   }
 
-  ngOnInit() {
+  private goSearchNextPage(pageIndex: number) {
+    this.promotionService.searchItems(this.keyword, pageIndex)
+      .then(
+        result => {
+          this.currentPage = result.currentPageIndex + 1;
+          this.totalHits = result.totalHits;
+          this.promotions.splice(0, this.promotions.length, ...result.hits);
+        },
+        err => console.log(err)
+      );
+  }
+
+  private initSearchItems() {
     this.keywordSource.pipe(
       combineLatest(
         this.route.paramMap,
@@ -57,14 +73,11 @@ export class PromotionSearchComponent implements OnInit {
       )
     ).subscribe((key) => {
       this.keyword = key;
-      this.promotionService.searchItems(this.keyword)
-        .then(
-          result => {
-            this.promotions.splice(0, this.promotions.length, ...result);
-          },
-          err => console.log(err)
-        );
+      this.goSearchNextPage(0);
     });
+  }
+  ngOnInit() {
+    this.initSearchItems();
   }
 
 }

@@ -10,6 +10,7 @@ import { MemberService } from './member.service';
 
 import { Product } from '../model/product';
 import { ProductView } from '../model/views/product-view';
+import { Pagination } from '../model/pagination';
 
 @Injectable({
   providedIn: 'root'
@@ -149,15 +150,17 @@ export class ProductService {
 
   }
 
-  searchItems(query: string) {
-    return new Promise<ProductView[]>(async (resolve, reject) => {
-      this.algoliaIndex.search({ query })
+  searchItems(query: string, pageIndex: number = 0) {
+    return new Promise<Pagination<ProductView>>(async (resolve, reject) => {
+      this.algoliaIndex.search({
+        query, page: pageIndex, hitsPerPage: 10,
+        filters: 'isPublished = 1'
+      })
         .then(
           response => {
             const results = response.hits;
-            if (results) {
+            if (results && results.length > 0) {
               const items = results
-                .filter(item => item['isPublished'] === true)
                 .map(
                   item => {
                     const id = item['objectID'];
@@ -165,9 +168,10 @@ export class ProductService {
                     const isFavorite = this.memberService.checkIsFavorite(item['followerIds']);
                     return { id, isFavorite, ...item } as ProductView;
                   });
-              resolve(items);
+
+              resolve(new Pagination<ProductView>(items, response.nbHits, response.page));
             } else {
-              resolve([]);
+              resolve(new Pagination<ProductView>());
             }
           },
           err => reject(err)

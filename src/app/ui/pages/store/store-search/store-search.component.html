@@ -24,12 +24,16 @@
         </div>
       </div>
     </div>
-    <ng-template ngFor let-item [ngForOf]="storeItems | async" let-i="index">
+    <div class="col-12 mt-4 text-center text-black" *ngIf="totalHits == 0">
+      <h5>ไม่พบร้านค้าสมาชิก</h5>
+    </div>
+    <ng-template ngFor let-item [ngForOf]="storeItems | async" let-i="index"
+      *ngIf="totalHits > 0">
       <app-preview-item uploaderType="STORE" class="col-4" [item]="item"></app-preview-item>
     </ng-template>
-    <div class="col-12 mt-3">
-      <ngb-pagination class="d-flex justify-content-end" [collectionSize]="(storeItems | async).length"
-        [(page)]="currentPage" [pageSize]="10" (pageChange)="onPageChange($event)"></ngb-pagination>
+    <div class="col-12 mt-3" *ngIf="totalHits > 0">
+      <ngb-pagination class="d-flex justify-content-end" [collectionSize]="totalHits"
+        [(page)]="currentPage" [pageSize]="9" (pageChange)="onPageChange()"></ngb-pagination>
     </div>
   </div>
 </div>

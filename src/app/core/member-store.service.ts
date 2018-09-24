@@ -8,7 +8,8 @@ import { MemberService } from './member.service';
 import { MemberStoreView } from '../model/views/member-store-view';
 import { Store } from '../model/store';
 import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { Pagination } from '../model/pagination';
 
 @Injectable({
   providedIn: 'root'
@@ -109,15 +110,17 @@ export class MemberStoreService {
     });
   }
 
-  searchItems(query: string) {
-    return new Promise<MemberStoreView[]>(async (resolve, reject) => {
-      this.algoliaIndex.search({ query })
+  searchItems(query: string, pageIndex: number = 0) {
+    return new Promise<Pagination<MemberStoreView>>(async (resolve, reject) => {
+      this.algoliaIndex.search({
+        query, page: pageIndex, hitsPerPage: 9,
+        filters: 'isPublished = 1'
+      })
         .then(
           response => {
             const results = response.hits;
             if (results && results.length > 0) {
               const items = results
-                .filter(item => item['isPublished'] === true)
                 .map(
                   item => {
                     const id = item['objectID'];
@@ -125,9 +128,10 @@ export class MemberStoreService {
                     const isFavorite = this.memberService.checkIsFavorite(item['followerIds']);
                     return { id, isFavorite, ...item } as MemberStoreView;
                   });
-              resolve(items);
+
+              resolve(new Pagination<MemberStoreView>(items, response.nbHits, response.page));
             } else {
-              resolve([]);
+              resolve(new Pagination<MemberStoreView>());
             }
           },
           err => reject(err)

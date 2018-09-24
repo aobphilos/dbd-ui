@@ -17,6 +17,7 @@ export class StoreSearchComponent implements OnInit {
   sortDirection = 'asc';
 
   currentPage: number;
+  totalHits: number;
 
   private stores: MemberStoreView[] = [];
   private keywordSource = new BehaviorSubject<string>('');
@@ -26,6 +27,7 @@ export class StoreSearchComponent implements OnInit {
     private memberStoreService: MemberStoreService
   ) {
     this.currentPage = 1;
+    this.totalHits = 0;
   }
 
   get storeItems() {
@@ -36,11 +38,23 @@ export class StoreSearchComponent implements OnInit {
 
   }
 
-  onPageChange(event) {
-    console.log(event);
+  onPageChange() {
+    this.goSearchNextPage(this.currentPage - 1);
   }
 
-  ngOnInit() {
+  private goSearchNextPage(pageIndex: number) {
+    this.memberStoreService.searchItems(this.keyword, pageIndex)
+      .then(
+        result => {
+          this.currentPage = result.currentPageIndex + 1;
+          this.totalHits = result.totalHits;
+          this.stores.splice(0, this.stores.length, ...result.hits);
+        },
+        err => console.log(err)
+      );
+  }
+
+  private initSearchItems() {
     this.keywordSource.pipe(
       combineLatest(
         this.route.paramMap,
@@ -59,13 +73,11 @@ export class StoreSearchComponent implements OnInit {
       )
     ).subscribe((key) => {
       this.keyword = key;
-      this.memberStoreService.searchItems(this.keyword)
-        .then(
-          result => {
-            this.stores.splice(0, this.stores.length, ...result);
-          },
-          err => console.log(err)
-        );
+      this.goSearchNextPage(0);
     });
+  }
+
+  ngOnInit() {
+    this.initSearchItems();
   }
 }
