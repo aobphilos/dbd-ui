@@ -70,6 +70,11 @@
             bottom: 0;
             position: inherit;
             margin: 0.75rem;
+
+            &.right {
+              cursor: pointer;
+              right: 1rem;
+            }
           }
 
           .middle {

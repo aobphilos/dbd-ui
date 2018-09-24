@@ -2,7 +2,7 @@
   <div class="mx-auto mb-3 w-100">
     <div class="d-flex justify-content-between line-break">
       <div>
-        <h4> {{store.storeName}} </h4>
+        <h4> {{shopTypName | async}} </h4>
       </div>
       <div class="d-flex">
         <div class="icon">
@@ -15,6 +15,20 @@
         <div class="seperate"></div>
         <div>
           <a href="#" class="link-dark" (click)="goBack($event)"> ย้อนกลับ </a>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex flex-wrap owner-detail">
+      <div class="col-6"><label>ชื่อร้าน / บริษัท :</label><span>{{store.storeName}}</span></div>
+      <div class="col-6"><label>บริหารงานโดย :</label><span>{{store.ownerName}}</span></div>
+      <div class="col-6"><label>หมายเลขโทรศัพท์ :</label><span>{{store.phone}}</span></div>
+      <div class="col-6"><label>อีเมล์ :</label><span>{{store.email}}</span></div>
+      <div class="col-6"><label>Facebook :</label><span>{{store.facebookId}}</span></div>
+      <div class="col-6"><label>Line :</label><span>{{store.lineId}}</span></div>
+      <div class="col-12">
+        <div class="d-inline-flex address">
+          <div> <label>ที่อยู่ :</label></div>
+          <div ellipsis><span>{{store.address}}</span></div>
         </div>
       </div>
     </div>

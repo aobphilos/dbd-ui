@@ -35,6 +35,23 @@ export class MemberPreviewComponent implements OnInit {
     );
   }
 
+  get shopTypName() {
+    return this.currentStore.pipe(
+      map(
+        member => {
+          let name = '';
+          if (member) {
+            switch (member.memberType) {
+              case MemberType.RETAIL: name = 'ข้อมูลร้านค้าปลีก'; break;
+              case MemberType.WHOLE_SALE: name = 'ข้อมูลร้านค้าส่ง ค้าปลีก'; break;
+              case MemberType.DEALER: name = 'ข้อมูลผู้ผลิต ผู้จำหน่าย'; break;
+            }
+          }
+          return name;
+        })
+    );
+  }
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
