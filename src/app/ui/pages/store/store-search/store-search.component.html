@@ -19,7 +19,8 @@
           <option>ประเภทสินค้า</option>
         </select>
         <div class="form-check my-auto">
-          <input class="form-check-input" type="checkbox" id="followingCheck">
+          <input class="form-check-input" type="checkbox" id="followingCheck"
+            [(ngModel)]="isFavorite" (change)="doSearch()">
           <label class="form-check-label" for="followingCheck"> ถูกใจ </label>
         </div>
       </div>

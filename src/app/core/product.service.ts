@@ -11,6 +11,7 @@ import { MemberService } from './member.service';
 import { Product } from '../model/product';
 import { ProductView } from '../model/views/product-view';
 import { Pagination } from '../model/pagination';
+import { QueryParams } from '../model/queryParams';
 
 @Injectable({
   providedIn: 'root'
@@ -150,16 +151,29 @@ export class ProductService {
 
   }
 
-  searchItems(query: string, isFavorite: boolean = false, pageIndex: number = 0) {
+  searchItems(qp: QueryParams) {
     return new Promise<Pagination<ProductView>>(async (resolve, reject) => {
+
       const memberId = this.currentMember.id;
       const filters = ['isPublished = 1'];
-      if (isFavorite) {
-        filters.push(`followerIds = ${memberId}`);
+
+      if (qp.isFavorite) {
+        filters.push(`followerIds:${memberId}`);
+      }
+      if (qp.priceRange && qp.priceRange !== 'none') {
+        const prices = qp.priceRange.split('-');
+        const segments = [];
+        segments.push(`price >= ${prices[0]}`);
+        if (prices[1] !== '') {
+          segments.push(`price <= ${prices[1]}`);
+        }
+        filters.push(`( ${segments.join(' AND ')} )`);
       }
 
       this.algoliaIndex.search({
-        query, page: pageIndex, hitsPerPage: 10,
+        query: qp.query,
+        page: qp.pageIndex,
+        hitsPerPage: qp.hitsPerPage,
         filters: filters.join(' AND ')
       })
         .then(
@@ -171,8 +185,8 @@ export class ProductService {
                   item => {
                     const id = item['objectID'];
                     delete item['objectID'];
-                    const isFollow = this.memberService.checkIsFavorite(item['followerIds']);
-                    return { id, isFollow, ...item } as ProductView;
+                    const isFavorite = this.memberService.checkIsFavorite(item['followerIds']);
+                    return { id, isFavorite, ...item } as ProductView;
                   });
               resolve(new Pagination<ProductView>(items, response.nbHits, response.page));
             } else {

@@ -5,6 +5,9 @@ import { map, combineLatest } from 'rxjs/operators';
 
 import { ProductService } from '../../../../core/product.service';
 import { ProductView } from '../../../../model/views/product-view';
+import { QueryParams } from '../../../../model/queryParams';
+import { SearchBarService } from '../../../search-bar/search-bar.service';
+import { SearchType } from '../../../../enum/search-type';
 
 @Component({
   selector: 'app-product-search',
@@ -17,6 +20,7 @@ export class ProductSearchComponent implements OnInit {
 
   isFavorite = false;
   sortDirection = 'asc';
+  priceRange = 'none';
 
   currentPage: number;
   totalHits: number;
@@ -26,7 +30,8 @@ export class ProductSearchComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private serchBarService: SearchBarService
   ) {
     this.currentPage = 1;
     this.totalHits = 0;
@@ -44,8 +49,23 @@ export class ProductSearchComponent implements OnInit {
     this.goSearchNextPage(this.currentPage - 1);
   }
 
+  doSearch() {
+    this.goSearchNextPage(0);
+  }
+
+  private getQueryParams(pageIndex: number) {
+    return new QueryParams(
+      this.keyword,
+      this.isFavorite,
+      pageIndex,
+      10,
+      this.priceRange
+    );
+  }
+
   private goSearchNextPage(pageIndex: number) {
-    this.productService.searchItems(this.keyword, this.isFavorite, pageIndex)
+
+    this.productService.searchItems(this.getQueryParams(pageIndex))
       .then(
         result => {
           this.currentPage = result.currentPageIndex + 1;
@@ -76,6 +96,7 @@ export class ProductSearchComponent implements OnInit {
     ).subscribe((params) => {
       this.keyword = params.keyword;
       this.isFavorite = params.isFavorite;
+      this.serchBarService.setCriteria(SearchType.PRODUCT, this.keyword, this.isFavorite);
       this.goSearchNextPage(0);
     });
   }

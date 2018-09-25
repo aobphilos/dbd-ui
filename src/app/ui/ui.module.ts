@@ -32,6 +32,7 @@ import { StoreService } from '../core/store.service';
 import { ProductService } from '../core/product.service';
 import { PromotionService } from '../core/promotion.service';
 import { CategoryService } from '../core/category.service';
+import { SearchBarService } from './search-bar/search-bar.service';
 
 import { NotifyComponent } from './notify/notify.component';
 import { IndicatorComponent } from './indicator/indicator.component';
@@ -86,7 +87,7 @@ import { LibraryIcons } from './ui.icon.module';
   providers: [
     AuthService, LayoutService, AuthGuard, NotifyService, AlgoliaService,
     MemberService, IndicatorService, StoreService, ProductService, PromotionService,
-    CategoryService
+    CategoryService, SearchBarService
   ],
   exports: [LayoutComponent]
 })

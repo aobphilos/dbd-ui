@@ -10,6 +10,7 @@ import { Store } from '../model/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Pagination } from '../model/pagination';
+import { QueryParams } from '../model/queryParams';
 
 @Injectable({
   providedIn: 'root'
@@ -110,11 +111,21 @@ export class MemberStoreService {
     });
   }
 
-  searchItems(query: string, pageIndex: number = 0) {
+  searchItems(qp: QueryParams) {
     return new Promise<Pagination<MemberStoreView>>(async (resolve, reject) => {
+
+      const memberId = this.currentMember.id;
+      const filters = ['isPublished = 1'];
+
+      if (qp.isFavorite) {
+        filters.push(`followerIds:${memberId}`);
+      }
+
       this.algoliaIndex.search({
-        query, page: pageIndex, hitsPerPage: 9,
-        filters: 'isPublished = 1'
+        query: qp.query,
+        page: qp.pageIndex,
+        hitsPerPage: qp.hitsPerPage,
+        filters: filters.join(' AND ')
       })
         .then(
           response => {

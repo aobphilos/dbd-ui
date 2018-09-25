@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LayoutService } from '../layout/layout.service';
 import { Router } from '@angular/router';
+import { SearchBarService } from './search-bar.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -19,7 +20,8 @@ export class SearchBarComponent implements OnInit {
 
   constructor(
     private route: Router,
-    private layoutService: LayoutService
+    private layoutService: LayoutService,
+    private serchBarService: SearchBarService
   ) { }
 
   doSearch() {
@@ -38,6 +40,12 @@ export class SearchBarComponent implements OnInit {
 
   ngOnInit() {
     this.layoutService.showSearchBar.subscribe(flag => this.toggleSerchBarSource = flag);
+    this.serchBarService.searchCriteria.subscribe(options => {
+      if (options) {
+        this.keyword = options.keyword;
+        this.searchType = options.searchType;
+      }
+    });
   }
 
 }

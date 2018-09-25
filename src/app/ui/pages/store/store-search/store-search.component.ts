@@ -5,6 +5,9 @@ import { map, combineLatest } from 'rxjs/operators';
 
 import { MemberStoreService } from '../../../../core/member-store.service';
 import { MemberStoreView } from '../../../../model/views/member-store-view';
+import { QueryParams } from '../../../../model/queryParams';
+import { SearchBarService } from '../../../search-bar/search-bar.service';
+import { SearchType } from '../../../../enum/search-type';
 
 @Component({
   selector: 'app-store-search',
@@ -14,6 +17,8 @@ import { MemberStoreView } from '../../../../model/views/member-store-view';
 export class StoreSearchComponent implements OnInit {
 
   private keyword = '';
+
+  isFavorite = false;
   sortDirection = 'asc';
 
   currentPage: number;
@@ -24,7 +29,8 @@ export class StoreSearchComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private memberStoreService: MemberStoreService
+    private memberStoreService: MemberStoreService,
+    private serchBarService: SearchBarService
   ) {
     this.currentPage = 1;
     this.totalHits = 0;
@@ -42,8 +48,22 @@ export class StoreSearchComponent implements OnInit {
     this.goSearchNextPage(this.currentPage - 1);
   }
 
+  doSearch() {
+    this.goSearchNextPage(0);
+  }
+
+  private getQueryParams(pageIndex: number) {
+    return new QueryParams(
+      this.keyword,
+      this.isFavorite,
+      pageIndex,
+      9
+    );
+  }
+
   private goSearchNextPage(pageIndex: number) {
-    this.memberStoreService.searchItems(this.keyword, pageIndex)
+
+    this.memberStoreService.searchItems(this.getQueryParams(pageIndex))
       .then(
         result => {
           this.currentPage = result.currentPageIndex + 1;
@@ -63,16 +83,18 @@ export class StoreSearchComponent implements OnInit {
       map(
         (params) => {
           if (params[1].has('keyword')) {
-            return params[1].get('keyword');
+            return { keyword: params[1].get('keyword'), isFavorite: (params[1].get('isFavorite') === 'true') };
           } else if (params[2].has('keyword')) {
-            return params[2].get('keyword');
+            return { keyword: params[2].get('keyword'), isFavorite: (params[2].get('isFavorite') === 'true') };
           } else {
-            return '';
+            return {};
           }
         }
       )
-    ).subscribe((key) => {
-      this.keyword = key;
+    ).subscribe((params) => {
+      this.keyword = params.keyword;
+      this.isFavorite = params.isFavorite;
+      this.serchBarService.setCriteria(SearchType.SHOP, this.keyword, this.isFavorite);
       this.goSearchNextPage(0);
     });
   }

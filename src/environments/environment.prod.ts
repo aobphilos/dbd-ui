@@ -11,6 +11,7 @@ export const environment = {
   masterPassword: 'DBD@2018!T',
   algolia: {
     app_id: '8P08T5HQ5R',
-    search_key: '5aa623f5b2ef1a8ea52db04bc15b10cf'
+    search_key: '5aa623f5b2ef1a8ea52db04bc15b10cf',
+    admin_key: '8bdbd9337bd218425419317ad51410d7'
   }
 };

@@ -11,6 +11,7 @@ import { MemberService } from './member.service';
 import { Promotion } from '../model/promotion';
 import { PromotionView } from '../model/views/promotion-view';
 import { Pagination } from '../model/pagination';
+import { QueryParams } from '../model/queryParams';
 
 @Injectable({
   providedIn: 'root'
@@ -152,11 +153,21 @@ export class PromotionService {
 
   }
 
-  searchItems(query: string, pageIndex: number = 0) {
+  searchItems(qp: QueryParams) {
     return new Promise<Pagination<PromotionView>>(async (resolve, reject) => {
+
+      const memberId = this.currentMember.id;
+      const filters = ['isPublished = 1'];
+
+      if (qp.isFavorite) {
+        filters.push(`followerIds:${memberId}`);
+      }
+
       this.algoliaIndex.search({
-        query, page: pageIndex, hitsPerPage: 10,
-        filters: 'isPublished = 1'
+        query: qp.query,
+        page: qp.pageIndex,
+        hitsPerPage: qp.hitsPerPage,
+        filters: filters.join(' AND ')
       })
         .then(
           response => {
