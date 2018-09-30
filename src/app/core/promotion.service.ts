@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { firestore } from 'firebase/app';
@@ -10,6 +10,8 @@ import { MemberService } from './member.service';
 
 import { Promotion } from '../model/promotion';
 import { PromotionView } from '../model/views/promotion-view';
+import { Pagination } from '../model/pagination';
+import { QueryParams } from '../model/queryParams';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +20,10 @@ export class PromotionService {
 
   currentItems: Observable<Promotion[]>;
   previewItems: Observable<PromotionView[]>;
+  ownerItems: Observable<PromotionView[]>;
 
   private algoliaIndex: algoliasearch.Index;
   private ownerIdSource = new BehaviorSubject<string>('');
-  private previewCollection: AngularFirestoreCollection<Promotion>;
 
   private get dbPath() {
     return 'Promotion';
@@ -41,9 +43,9 @@ export class PromotionService {
     return { id, ...data } as Promotion;
   })
 
-  private mapItemView = actions => actions.map(a => {
-    const data = a.payload.doc.data();
-    const id = a.payload.doc.id;
+  private mapItemView = actions => actions.docs.map(a => {
+    const data = a.data();
+    const id = a.id;
     const isFavorite = this.memberService.checkIsFavorite(data['followerIds']);
     return { id, isFavorite, ...data } as PromotionView;
   })
@@ -100,12 +102,8 @@ export class PromotionService {
 
       // found then update
       const itemRef = this.db.doc(`${this.dbPath}/${item.id}`);
-
-      delete item.id;
-
       item.updatedDate = firestore.Timestamp.now();
-
-      itemRef.update({ ...item })
+      itemRef.update({ ...this.copyDataOnly(item) })
         .then(() => resolve(), (err) => reject(err));
 
     });
@@ -155,25 +153,38 @@ export class PromotionService {
 
   }
 
-  searchItems(query: string) {
-    return new Promise<PromotionView[]>(async (resolve, reject) => {
-      this.algoliaIndex.search({ query })
+  searchItems(qp: QueryParams) {
+    return new Promise<Pagination<PromotionView>>(async (resolve, reject) => {
+
+      const memberId = this.currentMember.id;
+      const filters = ['isPublished = 1'];
+
+      if (qp.isFavorite) {
+        filters.push(`followerIds:${memberId}`);
+      }
+
+      this.algoliaIndex.search({
+        query: qp.query,
+        page: qp.pageIndex,
+        hitsPerPage: qp.hitsPerPage,
+        filters: filters.join(' AND ')
+      })
         .then(
           response => {
             const results = response.hits;
-            if (results) {
+            if (results && results.length > 0) {
               const items = results
-              .filter(item => item['isPublished'] === true)
-              .map(
-                item => {
-                  const id = item['objectID'];
-                  delete item['objectID'];
-                  const isFavorite = this.memberService.checkIsFavorite(item['followerIds']);
-                  return { id, isFavorite, ...item } as PromotionView;
-                });
-              resolve(items);
+                .map(
+                  item => {
+                    const id = item['objectID'];
+                    delete item['objectID'];
+                    const isFavorite = this.memberService.checkIsFavorite(item['followerIds']);
+                    return { id, isFavorite, ...item } as PromotionView;
+                  });
+
+              resolve(new Pagination<PromotionView>(items, response.nbHits, response.page));
             } else {
-              resolve([]);
+              resolve(new Pagination<PromotionView>());
             }
           },
           err => reject(err)
@@ -185,13 +196,23 @@ export class PromotionService {
     this.ownerIdSource.next(ownerId);
   }
 
-  private loadPreviewItems() {
-    this.previewCollection = this.db.collection<Promotion>(this.dbPath, q => q
+  public loadPreviewItems() {
+    const previewCollection = this.db.collection<Promotion>(this.dbPath, q => q
       .where('isPublished', '==', true)
       .orderBy('updatedDate', 'desc')
       .limit(4));
-    this.previewItems = this.previewCollection.snapshotChanges().pipe(map(this.mapItemView));
+    this.previewItems = previewCollection.get().pipe(map(this.mapItemView));
   }
+
+  public loadItemByOwner(ownerId: string) {
+    const ownerCollection = this.db.collection<Promotion>(this.dbPath, q => q
+      .where('ownerId', '==', ownerId)
+      .where('isPublished', '==', true)
+      .orderBy('updatedDate', 'desc'));
+
+    this.ownerItems = ownerCollection.get().pipe(map(this.mapItemView));
+  }
+
 
   updateFavorite(item: PromotionView, flag: boolean) {
 
@@ -225,6 +246,16 @@ export class PromotionService {
         .catch((error) => reject(error));
 
     });
+  }
+
+  private copyDataOnly(promotion: Promotion) {
+    const data = Object.keys(promotion).reduce<any>((item, key) => {
+      if (key !== 'id') {
+        item[key] = promotion[key];
+      }
+      return item;
+    }, {});
+    return data;
   }
 
   private updateFollowingIds(ids) {

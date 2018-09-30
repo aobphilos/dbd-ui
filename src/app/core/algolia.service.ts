@@ -8,27 +8,81 @@ import * as algoliasearch from 'algoliasearch';
 export class AlgoliaService {
   private algolia: algoliasearch.Client;
 
+  memberIndex: algoliasearch.Index;
+  memberStoreIndex: algoliasearch.Index;
+  productIndex: algoliasearch.Index;
+  promotionIndex: algoliasearch.Index;
+
   constructor() {
     this.algolia = algoliasearch(
       environment.algolia.app_id,
-      environment.algolia.search_key
+      environment.algolia.admin_key
     );
+
+    this.initMemberIndex();
+    this.initMemberStoreIndex();
+    this.initProductIndex();
+    this.initPromotionIndex();
+
   }
 
-  get memberIndex() {
-    return this.algolia.initIndex('Member');
+  private initMemberIndex() {
+    this.memberIndex = this.algolia.initIndex('Member');
+    // this.memberIndex.setSettings({
+    //   attributesForFaceting: [
+    //     'storeIds',
+    //     'productIds',
+    //     'promotionIds',
+    //     'storeFollowingIds',
+    //     'productFollowingIds',
+    //     'promotionFollowingIds'
+    //   ]
+    // });
   }
 
-  get memberStoreIndex() {
-    return this.algolia.initIndex('MemberStore');
+  private initMemberStoreIndex() {
+    this.memberStoreIndex = this.algolia.initIndex('MemberStore');
+    this.memberStoreIndex.setSettings({
+      attributesForFaceting: ['followerIds'],
+      searchableAttributes: [
+        'isPublished',
+        'followerIds',
+        'storeName',
+        'storeDescription',
+        'description'
+      ]
+    });
   }
 
-  get productIndex() {
-    return this.algolia.initIndex('Product');
+  private initProductIndex() {
+    this.productIndex = this.algolia.initIndex('Product');
+    this.productIndex.setSettings({
+      attributesForFaceting: ['followerIds'],
+      searchableAttributes: [
+        'isPublished',
+        'followerIds',
+        'name',
+        'categoryName',
+        'description',
+        'price'
+      ]
+    });
   }
 
-  get promotionIndex() {
-    return this.algolia.initIndex('Promotion');
+  private initPromotionIndex() {
+    this.promotionIndex = this.algolia.initIndex('Promotion');
+    this.promotionIndex.setSettings({
+      attributesForFaceting: ['followerIds'],
+      searchableAttributes: [
+        'isPublished',
+        'followerIds',
+        'name',
+        'storeName',
+        'description',
+        'period',
+        'urlLink'
+      ]
+    });
   }
 
 }

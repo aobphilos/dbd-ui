@@ -21,6 +21,10 @@ export class MemberService {
     return 'Member';
   }
 
+  private getStorePath(id: string) {
+    return `MemberStore/${id}`;
+  }
+
   get sessionMember() {
     return JSON.parse(sessionStorage.getItem(SessionType.MEMBER)) as Member;
   }
@@ -69,12 +73,11 @@ export class MemberService {
       const oriMember = await memberRef.get();
       if (oriMember.exists) {
         const id = member.id;
-        delete member.id;
-
         member.updatedDate = firestore.Timestamp.now();
-        memberRef.update({ ...member })
+        const memberToUpdate = this.copyDataOnly(member);
+        memberRef.update({ ...memberToUpdate })
           .then(() => {
-            const updatedMember = { id: id, ...member } as Member;
+            const updatedMember = { id: id, ...memberToUpdate } as Member;
             this.updateStoreByMember(updatedMember)
               .then(() => {
                 this.setCurrentMember(updatedMember);
@@ -117,12 +120,38 @@ export class MemberService {
     }
   }
 
+  getMemberById(memberId: string) {
+    return new Promise<any>((resolve, reject) => {
+      const memberRef = this.db.doc(`${this.dbPath}/${memberId}`).ref;
+      memberRef.get()
+        .then(member => {
+          if (member.exists) {
+            const id = member.id;
+            const data = member.data();
+            resolve({ id, ...data } as Member);
+          } else {
+            resolve(null);
+          }
+        }, () => resolve(null))
+        .catch(err => reject(err));
+    });
+  }
+
+  private copyDataOnly(member: Member) {
+    const data = Object.keys(member).reduce<any>((item, key) => {
+      if (key !== 'id') {
+        item[key] = member[key];
+      }
+      return item;
+    }, {});
+    return data;
+  }
+
   private addStoreByMember(member: Member) {
     return new Promise<any>((resolve, reject) => {
       if (!member) { reject('Missing Member Data'); return; }
 
-      const storeRef = this.db.doc(`${this.dbPath}/${member.id}`).ref;
-
+      const storeRef = this.db.doc(this.getStorePath(member.id)).ref;
       const store = this.getUpdateValueByMember(member);
       storeRef.set({ ...store })
         .then(() => resolve(), (err) => reject(err));
@@ -133,11 +162,11 @@ export class MemberService {
     return new Promise<any>(async (resolve, reject) => {
       if (!member) { reject('Missing Member Data'); return; }
 
-      const storeRef = this.db.doc(`${this.dbPath}/${member.id}`).ref;
-      const storeUpdate = this.getUpdateValueByMember(member, true);
+      const storeRef = this.db.doc(this.getStorePath(member.id)).ref;
+      const store = this.getUpdateValueByMember(member, true);
       storeRef.get().then((storeDb) => {
         if (storeDb.exists) {
-          storeRef.update({ ...storeUpdate })
+          storeRef.update({ ...store })
             .then(() => resolve(), (err) => reject(err));
         } else {
           resolve();

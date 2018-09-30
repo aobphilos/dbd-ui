@@ -1,5 +1,10 @@
 nav {
   &.navbar {
     border-top: 0.4rem outset #f7a600;
+
+    fa-icon {
+      padding-right: 0.35rem;
+      color: white;
+    }
   }
 }

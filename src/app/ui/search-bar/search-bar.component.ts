@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LayoutService } from '../layout/layout.service';
 import { Router } from '@angular/router';
+import { SearchBarService } from './search-bar.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class SearchBarComponent implements OnInit {
 
   keyword = '';
-  searchType = 'shop';
+  searchType = 'shop|1';
 
   private toggleSerchBarSource: boolean;
   get toogleSearchBar() {
@@ -19,15 +20,16 @@ export class SearchBarComponent implements OnInit {
 
   constructor(
     private route: Router,
-    private layoutService: LayoutService
+    private layoutService: LayoutService,
+    private serchBarService: SearchBarService
   ) { }
 
   doSearch() {
-    this.route.navigate([`/list/${this.searchType}/`], { queryParams: { keyword: this.keyword } });
-  }
-
-  onChange(event) {
-    console.log('event: ', event);
+    const segments = this.searchType.split('|');
+    const fillByFavorite = segments[1] === '2'
+      ? { isFavorite: true } : {};
+    this.route.navigate([`/list/${segments[0]}/`],
+      { queryParams: { keyword: this.keyword, ...fillByFavorite } });
   }
 
   onKeyDownSearch(event) {
@@ -38,6 +40,12 @@ export class SearchBarComponent implements OnInit {
 
   ngOnInit() {
     this.layoutService.showSearchBar.subscribe(flag => this.toggleSerchBarSource = flag);
+    this.serchBarService.searchCriteria.subscribe(options => {
+      if (options) {
+        this.keyword = options.keyword;
+        this.searchType = options.searchType;
+      }
+    });
   }
 
 }

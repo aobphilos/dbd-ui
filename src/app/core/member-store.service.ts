@@ -9,6 +9,8 @@ import { MemberStoreView } from '../model/views/member-store-view';
 import { Store } from '../model/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Pagination } from '../model/pagination';
+import { QueryParams } from '../model/queryParams';
 
 @Injectable({
   providedIn: 'root'
@@ -32,9 +34,9 @@ export class MemberStoreService {
     return `Member/${id}`;
   }
 
-  private mapItemView = actions => actions.map(a => {
-    const data = a.payload.doc.data();
-    const id = a.payload.doc.id;
+  private mapItemView = actions => actions.docs.map(a => {
+    const data = a.data();
+    const id = a.id;
     const isFavorite = this.memberService.checkIsFavorite(data['followerIds']);
     return { id, isFavorite, ...data } as MemberStoreView;
   })
@@ -62,13 +64,22 @@ export class MemberStoreService {
     };
   }
 
+  private copyDataOnly(store: Store) {
+    const data = Object.keys(store).reduce<any>((item, key) => {
+      if (key !== 'id') {
+        item[key] = store[key];
+      }
+      return item;
+    }, {});
+    return data;
+  }
+
   addByStore(store: Store) {
     return new Promise<any>((resolve, reject) => {
       if (!store) { reject('Missing Store Data'); return; }
 
       const storeRef = this.db.doc(`${this.dbPath}/${store.ownerId}`).ref;
-      delete store.id;
-      storeRef.set({ ...store })
+      storeRef.set({ ...this.copyDataOnly(store) })
         .then(() => resolve(), (err) => reject(err));
     });
   }
@@ -100,25 +111,38 @@ export class MemberStoreService {
     });
   }
 
-  searchItems(query: string) {
-    return new Promise<MemberStoreView[]>(async (resolve, reject) => {
-      this.algoliaIndex.search({ query })
+  searchItems(qp: QueryParams) {
+    return new Promise<Pagination<MemberStoreView>>(async (resolve, reject) => {
+
+      const memberId = this.currentMember.id;
+      const filters = ['isPublished = 1'];
+
+      if (qp.isFavorite) {
+        filters.push(`followerIds:${memberId}`);
+      }
+
+      this.algoliaIndex.search({
+        query: qp.query,
+        page: qp.pageIndex,
+        hitsPerPage: qp.hitsPerPage,
+        filters: filters.join(' AND ')
+      })
         .then(
           response => {
             const results = response.hits;
-            if (results) {
+            if (results && results.length > 0) {
               const items = results
-              .filter(item => item['isPublished'] === true)
-              .map(
-                item => {
-                  const id = item['objectID'];
-                  delete item['objectID'];
-                  const isFavorite = this.memberService.checkIsFavorite(item['followerIds']);
-                  return { id, isFavorite, ...item } as MemberStoreView;
-                });
-              resolve(items);
+                .map(
+                  item => {
+                    const id = item['objectID'];
+                    delete item['objectID'];
+                    const isFavorite = this.memberService.checkIsFavorite(item['followerIds']);
+                    return { id, isFavorite, ...item } as MemberStoreView;
+                  });
+
+              resolve(new Pagination<MemberStoreView>(items, response.nbHits, response.page));
             } else {
-              resolve([]);
+              resolve(new Pagination<MemberStoreView>());
             }
           },
           err => reject(err)
@@ -161,12 +185,43 @@ export class MemberStoreService {
     });
   }
 
-  private loadPreviewItems() {
+  getOwnerItems(ownerId: string) {
+    return new Promise<MemberStoreView[]>(async (resolve, reject) => {
+      this.algoliaIndex.search(
+        {
+          query: '',
+          filters: `ownerId:"${ownerId}"`
+        }
+      )
+        .then(
+          response => {
+            const results = response.hits;
+            if (results && results.length > 0) {
+              const items = results
+                .filter(item => item['isPublished'] === true)
+                .map(
+                  item => {
+                    const id = item['objectID'];
+                    delete item['objectID'];
+                    const isFavorite = this.memberService.checkIsFavorite(item['followerIds']);
+                    return { id, isFavorite, ...item } as MemberStoreView;
+                  });
+              resolve(items);
+            } else {
+              resolve([]);
+            }
+          },
+          err => reject(err)
+        );
+    });
+  }
+
+  public loadPreviewItems() {
     this.previewCollection = this.db.collection<Store>(this.dbPath, q => q
       .where('isPublished', '==', true)
       .orderBy('updatedDate', 'desc')
-      .limit(4));
-    this.previewItems = this.previewCollection.snapshotChanges().pipe(map(this.mapItemView));
+      .limit(3));
+    this.previewItems = this.previewCollection.get().pipe(map(this.mapItemView));
   }
 
   private updateFollowingIds(ids) {

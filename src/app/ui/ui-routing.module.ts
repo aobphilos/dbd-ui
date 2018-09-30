@@ -18,11 +18,13 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { StoreSearchComponent } from './pages/store/store-search/store-search.component';
 import { ProductSearchComponent } from './pages/product/product-search/product-search.component';
 import { PromotionSearchComponent } from './pages/promotion/promotion-search/promotion-search.component';
+import { MemberPreviewComponent } from './pages/member/member-preview/member-preview.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
   { path: 'index', redirectTo: '/welcome', pathMatch: 'full' },
   { path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuard] },
+  { path: 'shop/:shopId', component: MemberPreviewComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent, canActivate: [RegisterGuard] },
   { path: 'member', redirectTo: '/member/info', pathMatch: 'full' },
@@ -77,7 +79,7 @@ export class UiRoutingModule {
   }
 
   private filterSearchBarZone(path: string) {
-    const regPath = `^(${UrlPath.WELCOME}|${UrlPath.LIST_SHOP}|${UrlPath.LIST_PRODUCT}|${UrlPath.LIST_PROMOTION})`;
+    const regPath = `^(${UrlPath.WELCOME}|${UrlPath.SHOP}|${UrlPath.LIST_SHOP}|${UrlPath.LIST_PRODUCT}|${UrlPath.LIST_PROMOTION})`;
     const reg = new RegExp(regPath, 'i');
     return reg.test(path);
   }

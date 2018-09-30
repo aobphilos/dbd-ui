@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "styles-variables";
 @import "~bootstrap/scss/bootstrap";
-@import "~font-awesome/scss/font-awesome";
 @import "~@ng-select/ng-select/themes/default.theme.css";
 @import "styles-modal";
 @import "styles-form";
@@ -152,7 +151,7 @@ header {
   }
 }
 
-i.fa::before {
+fa-icon::before {
   padding-right: 0.35rem;
 }
 
@@ -168,7 +167,7 @@ i.fa::before {
     background-color: transparent;
     border: 0.05rem dashed #8c9692;
 
-    i.fa {
+    fa-icon {
       left: 0.15rem;
       position: relative;
     }

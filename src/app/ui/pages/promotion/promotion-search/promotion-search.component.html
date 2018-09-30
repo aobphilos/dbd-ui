@@ -13,17 +13,22 @@
     <div class="col-12 my-3 mr-auto">
       <div class="input-group justify-content-end">
         <div class="form-check my-auto">
-          <input class="form-check-input" type="checkbox" id="followingCheck">
+          <input class="form-check-input" type="checkbox" id="followingCheck"
+            [(ngModel)]="isFavorite" (change)="doSearch()">
           <label class="form-check-label" for="followingCheck"> ถูกใจ </label>
         </div>
       </div>
     </div>
-    <ng-template ngFor let-item [ngForOf]="promotionItems | async" let-i="index">
+    <div class="col-12 mt-4 text-center text-black" *ngIf="totalHits == 0">
+      <h5>ไม่พบโปรโมชั่นที่สอดคล้องกับเงื่อนไขในการค้นหา กรุณาระบุเงื่อนไขอื่นๆ</h5>
+    </div>
+    <ng-template ngFor let-item [ngForOf]="promotionItems | async" let-i="index"
+      *ngIf="totalHits > 0">
       <app-preview-item uploaderType="PROMOTION" class="col-6" [item]="item"></app-preview-item>
     </ng-template>
-    <div class="col-12 mt-3">
-      <ngb-pagination class="d-flex justify-content-end" [collectionSize]="(promotionItems | async).length"
-        [(page)]="currentPage" [pageSize]="10" (pageChange)="onPageChange($event)"></ngb-pagination>
+    <div class="col-12 mt-3" *ngIf="totalHits > 0">
+      <ngb-pagination class="d-flex justify-content-end" [collectionSize]="totalHits"
+        [(page)]="currentPage" [pageSize]="10" (pageChange)="onPageChange()"></ngb-pagination>
     </div>
   </div>
 </div>

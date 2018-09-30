@@ -18,21 +18,29 @@
         <select class="form-control mr-3">
           <option>ประเภทสินค้า</option>
         </select>
-        <select class="form-control mr-3">
-          <option>ช่วงราคา</option>
+        <select class="form-control mr-3" [(ngModel)]="priceRange" (change)="doSearch()">
+          <option value="none">ช่วงราคา</option>
+          <option value="0-500">ไม่เกิน 500 บาท</option>
+          <option value="500-1000">ตั้งแต่ 500 ถึง 1000 บาท</option>
+          <option value="1000-">ตั้งแต่ 1000 บาทขึ้นไป</option>
         </select>
         <div class="form-check my-auto">
-          <input class="form-check-input" type="checkbox" id="followingCheck">
+          <input class="form-check-input" type="checkbox" id="followingCheck"
+            [(ngModel)]="isFavorite" (change)="doSearch()">
           <label class="form-check-label" for="followingCheck"> ถูกใจ </label>
         </div>
       </div>
     </div>
-    <ng-template ngFor let-item [ngForOf]="productItems | async" let-i="index">
+    <div class="col-12 mt-4 text-center text-black" *ngIf="totalHits == 0">
+      <h5>ไม่พบสินค้าที่สอดคล้องกับเงื่อนไขในการค้นหา กรุณาระบุเงื่อนไขอื่นๆ</h5>
+    </div>
+    <ng-template ngFor let-item [ngForOf]="productItems | async" let-i="index"
+      *ngIf="totalHits > 0">
       <app-preview-item uploaderType="PRODUCT" class="col-6" [item]="item"></app-preview-item>
     </ng-template>
-    <div class="col-12 mt-3">
-      <ngb-pagination class="d-flex justify-content-end" [collectionSize]="(productItems | async).length"
-        [(page)]="currentPage" [pageSize]="10" (pageChange)="onPageChange($event)"></ngb-pagination>
+    <div class="col-12 mt-3" *ngIf="totalHits > 0">
+      <ngb-pagination class="d-flex justify-content-end" [collectionSize]="totalHits"
+        [(page)]="currentPage" [pageSize]="10" (pageChange)="onPageChange()"></ngb-pagination>
     </div>
   </div>
 </div>

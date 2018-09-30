@@ -4,17 +4,17 @@
       <input type="search" aria-label="search" [(ngModel)]="keyword"
         placeholder="พิมพ์ข้อมูลที่ต้องการค้นหา" class="form-control text"
         (keydown)="onKeyDownSearch($event)">
-      <select class="form-control list" [(ngModel)]="searchType" (change)="onChange($event)">
-        <option value="shop">ร้านค้า: ทั้งหมด</option>
-        <option value="shop">ร้านค้า: เฉพาะที่ถูกใจ</option>
-        <option value="product">สินค้า: ทั้งหมด</option>
-        <option value="product">สินค้า: เฉพาะที่ถูกใจ</option>
-        <option value="promotion">โปรโมชั่น: ทั้งหมด</option>
-        <option value="promotion">โปรโมชั่น: เฉพาะที่ถูกใจ</option>
+      <select class="form-control list" [(ngModel)]="searchType">
+        <option value="shop|1">ร้านค้า: ทั้งหมด</option>
+        <option value="shop|2">ร้านค้า: เฉพาะที่ถูกใจ</option>
+        <option value="product|1">สินค้า: ทั้งหมด</option>
+        <option value="product|2">สินค้า: เฉพาะที่ถูกใจ</option>
+        <option value="promotion|1">โปรโมชั่น: ทั้งหมด</option>
+        <option value="promotion|2">โปรโมชั่น: เฉพาะที่ถูกใจ</option>
       </select>
       <div class="input-group-append icon">
         <span class="input-group-text" (click)="doSearch()">
-          <i class="fa fa-search" alt="ค้นหา"></i>
+          <fa-icon alt="ค้นหา" [icon]="['fas', 'search']" size="2x" transform="shrink-4"></fa-icon>
         </span>
       </div>
     </div>

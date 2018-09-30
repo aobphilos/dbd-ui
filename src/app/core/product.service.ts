@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { firestore } from 'firebase/app';
@@ -10,6 +10,8 @@ import { MemberService } from './member.service';
 
 import { Product } from '../model/product';
 import { ProductView } from '../model/views/product-view';
+import { Pagination } from '../model/pagination';
+import { QueryParams } from '../model/queryParams';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +20,10 @@ export class ProductService {
 
   currentItems: Observable<Product[]>;
   previewItems: Observable<ProductView[]>;
+  ownerItems: Observable<ProductView[]>;
 
   private algoliaIndex: algoliasearch.Index;
   private ownerIdSource = new BehaviorSubject<string>('');
-  private previewCollection: AngularFirestoreCollection<Product>;
 
   private get dbPath() {
     return 'Product';
@@ -41,9 +43,9 @@ export class ProductService {
     return { id, ...data } as Product;
   })
 
-  private mapItemView = actions => actions.map(a => {
-    const data = a.payload.doc.data();
-    const id = a.payload.doc.id;
+  private mapItemView = actions => actions.docs.map(a => {
+    const data = a.data();
+    const id = a.id;
     const isFavorite = this.memberService.checkIsFavorite(data['followerIds']);
     return { id, isFavorite, ...data } as ProductView;
   })
@@ -100,12 +102,8 @@ export class ProductService {
 
       // found then update
       const itemRef = this.db.doc(`${this.dbPath}/${item.id}`);
-
-      delete item.id;
-
       item.updatedDate = firestore.Timestamp.now();
-
-      itemRef.update({ ...item })
+      itemRef.update({ ...this.copyDataOnly(item) })
         .then(() => resolve(), (err) => reject(err));
 
     });
@@ -153,15 +151,36 @@ export class ProductService {
 
   }
 
-  searchItems(query: string) {
-    return new Promise<ProductView[]>(async (resolve, reject) => {
-      this.algoliaIndex.search({ query })
+  searchItems(qp: QueryParams) {
+    return new Promise<Pagination<ProductView>>(async (resolve, reject) => {
+
+      const memberId = this.currentMember.id;
+      const filters = ['isPublished = 1'];
+
+      if (qp.isFavorite) {
+        filters.push(`followerIds:${memberId}`);
+      }
+      if (qp.priceRange && qp.priceRange !== 'none') {
+        const prices = qp.priceRange.split('-');
+        const segments = [];
+        segments.push(`price >= ${prices[0]}`);
+        if (prices[1] !== '') {
+          segments.push(`price <= ${prices[1]}`);
+        }
+        filters.push(`( ${segments.join(' AND ')} )`);
+      }
+
+      this.algoliaIndex.search({
+        query: qp.query,
+        page: qp.pageIndex,
+        hitsPerPage: qp.hitsPerPage,
+        filters: filters.join(' AND ')
+      })
         .then(
           response => {
             const results = response.hits;
-            if (results) {
+            if (results && results.length > 0) {
               const items = results
-                .filter(item => item['isPublished'] === true)
                 .map(
                   item => {
                     const id = item['objectID'];
@@ -169,9 +188,9 @@ export class ProductService {
                     const isFavorite = this.memberService.checkIsFavorite(item['followerIds']);
                     return { id, isFavorite, ...item } as ProductView;
                   });
-              resolve(items);
+              resolve(new Pagination<ProductView>(items, response.nbHits, response.page));
             } else {
-              resolve([]);
+              resolve(new Pagination<ProductView>());
             }
           },
           err => reject(err)
@@ -183,12 +202,31 @@ export class ProductService {
     this.ownerIdSource.next(ownerId);
   }
 
-  private loadPreviewItems() {
-    this.previewCollection = this.db.collection<Product>(this.dbPath, q => q
+  private copyDataOnly(product: Product) {
+    const data = Object.keys(product).reduce<any>((item, key) => {
+      if (key !== 'id') {
+        item[key] = product[key];
+      }
+      return item;
+    }, {});
+    return data;
+  }
+
+  public loadPreviewItems() {
+    const previewCollection = this.db.collection<Product>(this.dbPath, q => q
       .where('isPublished', '==', true)
       .orderBy('updatedDate', 'desc')
       .limit(4));
-    this.previewItems = this.previewCollection.snapshotChanges().pipe(map(this.mapItemView));
+    this.previewItems = previewCollection.get().pipe(map(this.mapItemView));
+  }
+
+  public loadItemByOwner(ownerId: string) {
+    const ownerCollection = this.db.collection<Product>(this.dbPath, q => q
+      .where('ownerId', '==', ownerId)
+      .where('isPublished', '==', true)
+      .orderBy('updatedDate', 'desc'));
+
+    this.ownerItems = ownerCollection.get().pipe(map(this.mapItemView));
   }
 
   updateFavorite(item: ProductView, flag: boolean) {

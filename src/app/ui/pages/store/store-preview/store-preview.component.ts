@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MemberStoreService } from '../../../../core/member-store.service';
 import { Router } from '@angular/router';
+import { StoreService } from '../../../../core/store.service';
 
 @Component({
   selector: 'app-store-preview',
@@ -9,19 +10,39 @@ import { Router } from '@angular/router';
 })
 export class StorePreviewComponent implements OnInit {
 
+  @Input() ownerId: string;
+
   constructor(
     private router: Router,
-    private memberStoreService: MemberStoreService
-  ) { }
+    private memberStoreService: MemberStoreService,
+    private storeService: StoreService
+  ) {
+  }
+
+  get barTitle() {
+    return this.isPublishView ? 'ภาพถ่ายร้าน' : 'ร้านค้าล่าสุด';
+  }
 
   get storeItems() {
-    return this.memberStoreService.previewItems;
+    return (this.ownerId)
+      ? this.storeService.currentItems
+      : this.memberStoreService.previewItems;
+  }
+
+  get isPublishView() {
+    return (this.ownerId);
   }
 
   goSearch() {
     this.router.navigate(['list/shop']);
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    if (this.ownerId) {
+      this.storeService.loadCurrentItems(this.ownerId);
+    } else {
+      this.memberStoreService.loadPreviewItems();
+    }
+  }
 
 }
