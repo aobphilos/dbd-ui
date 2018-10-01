@@ -1,0 +1,1440 @@
+{
+  "provinces": [{
+    "name": "กรุงเทพมหานคร",
+    "districts": [{
+      "name": "เขตพระนคร",
+      "subDistricts": [{
+        "name": "พระบรมมหาราชวัง",
+        "postalCode": "10200",
+        "locationCode": "100101"
+      }, {
+        "name": "วังบูรพาภิรมย์",
+        "postalCode": "10200",
+        "locationCode": "100102"
+      }, {
+        "name": "วัดราชบพิธ",
+        "postalCode": "10200",
+        "locationCode": "100103"
+      }, {
+        "name": "สำราญราษฎร์",
+        "postalCode": "10200",
+        "locationCode": "100104"
+      }, {
+        "name": "ศาลเจ้าพ่อเสือ",
+        "postalCode": "10200",
+        "locationCode": "100105"
+      }, {
+        "name": "เสาชิงช้า",
+        "postalCode": "10200",
+        "locationCode": "100106"
+      }, {
+        "name": "บวรนิเวศ",
+        "postalCode": "10200",
+        "locationCode": "100107"
+      }, {
+        "name": "ตลาดยอด",
+        "postalCode": "10200",
+        "locationCode": "100108"
+      }, {
+        "name": "ชนะสงคราม",
+        "postalCode": "10200",
+        "locationCode": "100109"
+      }, {
+        "name": "บ้านพานถม",
+        "postalCode": "10200",
+        "locationCode": "100110"
+      }, {
+        "name": "บางขุนพรหม",
+        "postalCode": "10200",
+        "locationCode": "100111"
+      }, {
+        "name": "วัดสามพระยา",
+        "postalCode": "10200",
+        "locationCode": "100112"
+      }]
+    }, {
+      "name": "เขตดุสิต",
+      "subDistricts": [{
+        "name": "ดุสิต",
+        "postalCode": "10300",
+        "locationCode": "100201"
+      }, {
+        "name": "วชิรพยาบาล",
+        "postalCode": "10300",
+        "locationCode": "100202"
+      }, {
+        "name": "สวนจิตรลดา",
+        "postalCode": "10300",
+        "locationCode": "100203"
+      }, {
+        "name": "สี่แยกมหานาค",
+        "postalCode": "10300",
+        "locationCode": "100204"
+      }, {
+        "name": "ถนนนครไชยศรี",
+        "postalCode": "10300",
+        "locationCode": "100206"
+      }]
+    }, {
+      "name": "เขตหนองจอก",
+      "subDistricts": [{
+        "name": "กระทุ่มราย",
+        "postalCode": "10530",
+        "locationCode": "100301"
+      }, {
+        "name": "หนองจอก",
+        "postalCode": "10530",
+        "locationCode": "100302"
+      }, {
+        "name": "คลองสิบ",
+        "postalCode": "10530",
+        "locationCode": "100303"
+      }, {
+        "name": "คลองสิบสอง",
+        "postalCode": "10530",
+        "locationCode": "100304"
+      }, {
+        "name": "โคกแฝด",
+        "postalCode": "10530",
+        "locationCode": "100305"
+      }, {
+        "name": "คู้ฝั่งเหนือ",
+        "postalCode": "10530",
+        "locationCode": "100306"
+      }, {
+        "name": "ลำผักชี",
+        "postalCode": "10530",
+        "locationCode": "100307"
+      }, {
+        "name": "ลำต้อยติ่ง",
+        "postalCode": "10530",
+        "locationCode": "100308"
+      }]
+    }, {
+      "name": "เขตบางรัก",
+      "subDistricts": [{
+        "name": "มหาพฤฒาราม",
+        "postalCode": "10500",
+        "locationCode": "100401"
+      }, {
+        "name": "สีลม",
+        "postalCode": "10500",
+        "locationCode": "100402"
+      }, {
+        "name": "สุริยวงศ์",
+        "postalCode": "10500",
+        "locationCode": "100403"
+      }, {
+        "name": "บางรัก",
+        "postalCode": "10500",
+        "locationCode": "100404"
+      }, {
+        "name": "สี่พระยา",
+        "postalCode": "10500",
+        "locationCode": "100405"
+      }]
+    }, {
+      "name": "เขตบางเขน",
+      "subDistricts": [{
+        "name": "อนุสาวรีย์",
+        "postalCode": "10220",
+        "locationCode": "100502"
+      }, {
+        "name": "ท่าแร้ง",
+        "postalCode": "10220",
+        "locationCode": "100508"
+      }]
+    }, {
+      "name": "เขตบางกะปิ",
+      "subDistricts": [{
+        "name": "คลองจั่น",
+        "postalCode": "10240",
+        "locationCode": "100601"
+      }, {
+        "name": "หัวหมาก",
+        "postalCode": "10240",
+        "locationCode": "100608"
+      }]
+    }, {
+      "name": "เขตปทุมวัน",
+      "subDistricts": [{
+        "name": "รองเมือง",
+        "postalCode": "10330",
+        "locationCode": "100701"
+      }, {
+        "name": "วังใหม่",
+        "postalCode": "10330",
+        "locationCode": "100702"
+      }, {
+        "name": "ปทุมวัน",
+        "postalCode": "10330",
+        "locationCode": "100703"
+      }, {
+        "name": "ลุมพินี",
+        "postalCode": "10330",
+        "locationCode": "100704"
+      }]
+    }, {
+      "name": "เขตป้อมปราบศัตรูพ่าย",
+      "subDistricts": [{
+        "name": "ป้อมปราบ",
+        "postalCode": "10100",
+        "locationCode": "100801"
+      }, {
+        "name": "วัดเทพศิรินทร์",
+        "postalCode": "10100",
+        "locationCode": "100802"
+      }, {
+        "name": "คลองมหานาค",
+        "postalCode": "10100",
+        "locationCode": "100803"
+      }, {
+        "name": "บ้านบาตร",
+        "postalCode": "10100",
+        "locationCode": "100804"
+      }, {
+        "name": "วัดโสมนัส",
+        "postalCode": "10100",
+        "locationCode": "100805"
+      }]
+    }, {
+      "name": "เขตพระโขนง",
+      "subDistricts": [{
+        "name": "บางจาก",
+        "postalCode": "10260",
+        "locationCode": "100905"
+      }]
+    }, {
+      "name": "เขตมีนบุรี",
+      "subDistricts": [{
+        "name": "มีนบุรี",
+        "postalCode": "10510",
+        "locationCode": "101001"
+      }, {
+        "name": "แสนแสบ",
+        "postalCode": "10510",
+        "locationCode": "101002"
+      }]
+    }, {
+      "name": "เขตลาดกระบัง",
+      "subDistricts": [{
+        "name": "ลาดกระบัง",
+        "postalCode": "10520",
+        "locationCode": "101101"
+      }, {
+        "name": "คลองสองต้นนุ่น",
+        "postalCode": "10520",
+        "locationCode": "101102"
+      }, {
+        "name": "คลองสามประเวศ",
+        "postalCode": "10520",
+        "locationCode": "101103"
+      }, {
+        "name": "ลำปลาทิว",
+        "postalCode": "10520",
+        "locationCode": "101104"
+      }, {
+        "name": "ทับยาว",
+        "postalCode": "10520",
+        "locationCode": "101105"
+      }, {
+        "name": "ขุมทอง",
+        "postalCode": "10520",
+        "locationCode": "101106"
+      }]
+    }, {
+      "name": "เขตยานนาวา",
+      "subDistricts": [{
+        "name": "ช่องนนทรี",
+        "postalCode": "10120",
+        "locationCode": "101203"
+      }, {
+        "name": "บางโพงพาง",
+        "postalCode": "10120",
+        "locationCode": "101204"
+      }]
+    }, {
+      "name": "เขตสัมพันธวงศ์",
+      "subDistricts": [{
+        "name": "จักรวรรดิ",
+        "postalCode": "10100",
+        "locationCode": "101301"
+      }, {
+        "name": "สัมพันธวงศ์",
+        "postalCode": "10100",
+        "locationCode": "101302"
+      }, {
+        "name": "ตลาดน้อย",
+        "postalCode": "10100",
+        "locationCode": "101303"
+      }]
+    }, {
+      "name": "เขตพญาไท",
+      "subDistricts": [{
+        "name": "สามเสนใน",
+        "postalCode": "10400",
+        "locationCode": "101401"
+      }]
+    }, {
+      "name": "เขตธนบุรี",
+      "subDistricts": [{
+        "name": "วัดกัลยาณ์",
+        "postalCode": "10600",
+        "locationCode": "101501"
+      }, {
+        "name": "หิรัญรูจี",
+        "postalCode": "10600",
+        "locationCode": "101502"
+      }, {
+        "name": "บางยี่เรือ",
+        "postalCode": "10600",
+        "locationCode": "101503"
+      }, {
+        "name": "บุคคโล",
+        "postalCode": "10600",
+        "locationCode": "101504"
+      }, {
+        "name": "ตลาดพลู",
+        "postalCode": "10600",
+        "locationCode": "101505"
+      }, {
+        "name": "ดาวคะนอง",
+        "postalCode": "10600",
+        "locationCode": "101506"
+      }, {
+        "name": "สำเหร่",
+        "postalCode": "10600",
+        "locationCode": "101507"
+      }]
+    }, {
+      "name": "เขตบางกอกใหญ่",
+      "subDistricts": [{
+        "name": "วัดอรุณ",
+        "postalCode": "10600",
+        "locationCode": "101601"
+      }, {
+        "name": "วัดท่าพระ",
+        "postalCode": "10600",
+        "locationCode": "101602"
+      }]
+    }, {
+      "name": "เขตห้วยขวาง",
+      "subDistricts": [{
+        "name": "ห้วยขวาง",
+        "postalCode": "10310",
+        "locationCode": "101701"
+      }, {
+        "name": "บางกะปิ",
+        "postalCode": "10310",
+        "locationCode": "101702"
+      }, {
+        "name": "สามเสนนอก",
+        "postalCode": "10310",
+        "locationCode": "101704"
+      }]
+    }, {
+      "name": "เขตคลองสาน",
+      "subDistricts": [{
+        "name": "สมเด็จเจ้าพระยา",
+        "postalCode": "10600",
+        "locationCode": "101801"
+      }, {
+        "name": "คลองสาน",
+        "postalCode": "10600",
+        "locationCode": "101802"
+      }, {
+        "name": "บางลำภูล่าง",
+        "postalCode": "10600",
+        "locationCode": "101803"
+      }, {
+        "name": "คลองต้นไทร",
+        "postalCode": "10600",
+        "locationCode": "101804"
+      }]
+    }, {
+      "name": "เขตตลิ่งชัน",
+      "subDistricts": [{
+        "name": "คลองชักพระ",
+        "postalCode": "10170",
+        "locationCode": "101901"
+      }, {
+        "name": "ตลิ่งชัน",
+        "postalCode": "10170",
+        "locationCode": "101902"
+      }, {
+        "name": "ฉิมพลี",
+        "postalCode": "10170",
+        "locationCode": "101903"
+      }, {
+        "name": "บางพรม",
+        "postalCode": "10170",
+        "locationCode": "101904"
+      }, {
+        "name": "บางระมาด",
+        "postalCode": "10170",
+        "locationCode": "101905"
+      }, {
+        "name": "บางเชือกหนัง",
+        "postalCode": "10170",
+        "locationCode": "101907"
+      }]
+    }, {
+      "name": "เขตบางกอกน้อย",
+      "subDistricts": [{
+        "name": "ศิริราช",
+        "postalCode": "10700",
+        "locationCode": "102004"
+      }, {
+        "name": "บ้านช่างหล่อ",
+        "postalCode": "10700",
+        "locationCode": "102005"
+      }, {
+        "name": "บางขุนนนท์",
+        "postalCode": "10700",
+        "locationCode": "102006"
+      }, {
+        "name": "บางขุนศรี",
+        "postalCode": "10700",
+        "locationCode": "102007"
+      }, {
+        "name": "อรุณอมรินทร์",
+        "postalCode": "10700",
+        "locationCode": "102009"
+      }]
+    }, {
+      "name": "เขตบางขุนเทียน",
+      "subDistricts": [{
+        "name": "ท่าข้าม",
+        "postalCode": "10150",
+        "locationCode": "102105"
+      }, {
+        "name": "แสมดำ",
+        "postalCode": "10150",
+        "locationCode": "102107"
+      }]
+    }, {
+      "name": "เขตภาษีเจริญ",
+      "subDistricts": [{
+        "name": "บางหว้า",
+        "postalCode": "10160",
+        "locationCode": "102201"
+      }, {
+        "name": "บางด้วน",
+        "postalCode": "10160",
+        "locationCode": "102202"
+      }, {
+        "name": "บางจาก",
+        "postalCode": "10160",
+        "locationCode": "102206"
+      }, {
+        "name": "บางแวก",
+        "postalCode": "10160",
+        "locationCode": "102207"
+      }, {
+        "name": "คลองขวาง",
+        "postalCode": "10160",
+        "locationCode": "102208"
+      }, {
+        "name": "ปากคลองภาษีเจริญ",
+        "postalCode": "10160",
+        "locationCode": "102209"
+      }, {
+        "name": "คูหาสวรรค์",
+        "postalCode": "10160",
+        "locationCode": "102210"
+      }]
+    }, {
+      "name": "เขตหนองแขม",
+      "subDistricts": [{
+        "name": "หนองแขม",
+        "postalCode": "10160",
+        "locationCode": "102302"
+      }, {
+        "name": "หนองค้างพลู",
+        "postalCode": "10160",
+        "locationCode": "102303"
+      }]
+    }, {
+      "name": "เขตราษฎร์บูรณะ",
+      "subDistricts": [{
+        "name": "ราษฎร์บูรณะ",
+        "postalCode": "10140",
+        "locationCode": "102401"
+      }, {
+        "name": "บางปะกอก",
+        "postalCode": "10140",
+        "locationCode": "102402"
+      }]
+    }, {
+      "name": "เขตบางพลัด",
+      "subDistricts": [{
+        "name": "บางพลัด",
+        "postalCode": "10700",
+        "locationCode": "102501"
+      }, {
+        "name": "บางอ้อ",
+        "postalCode": "10700",
+        "locationCode": "102502"
+      }, {
+        "name": "บางบำหรุ",
+        "postalCode": "10700",
+        "locationCode": "102503"
+      }, {
+        "name": "บางยี่ขัน",
+        "postalCode": "10700",
+        "locationCode": "102504"
+      }]
+    }, {
+      "name": "เขตดินแดง",
+      "subDistricts": [{
+        "name": "ดินแดง",
+        "postalCode": "10400",
+        "locationCode": "102601"
+      }]
+    }, {
+      "name": "เขตบึงกุ่ม",
+      "subDistricts": [{
+        "name": "คลองกุ่ม",
+        "postalCode": "10240",
+        "locationCode": "102701"
+      }, {
+        "name": "นวมินทร์",
+        "postalCode": "10240",
+        "locationCode": "102704"
+      }, {
+        "name": "นวลจันทร์",
+        "postalCode": "10240",
+        "locationCode": "102705"
+      }]
+    }, {
+      "name": "เขตสาทร",
+      "subDistricts": [{
+        "name": "ทุ่งวัดดอน",
+        "postalCode": "10120",
+        "locationCode": "102801"
+      }, {
+        "name": "ยานนาวา",
+        "postalCode": "10120",
+        "locationCode": "102802"
+      }, {
+        "name": "ทุ่งมหาเมฆ",
+        "postalCode": "10120",
+        "locationCode": "102803"
+      }]
+    }, {
+      "name": "เขตบางซื่อ",
+      "subDistricts": [{
+        "name": "บางซื่อ",
+        "postalCode": "10800",
+        "locationCode": "102901"
+      }, {
+        "name": "วงศ์สว่าง",
+        "postalCode": "10800",
+        "locationCode": "102902"
+      }]
+    }, {
+      "name": "เขตจตุจักร",
+      "subDistricts": [{
+        "name": "ลาดยาว",
+        "postalCode": "10900",
+        "locationCode": "103001"
+      }, {
+        "name": "เสนานิคม",
+        "postalCode": "10900",
+        "locationCode": "103002"
+      }, {
+        "name": "จันทรเกษม",
+        "postalCode": "10900",
+        "locationCode": "103003"
+      }, {
+        "name": "จอมพล",
+        "postalCode": "10900",
+        "locationCode": "103004"
+      }, {
+        "name": "จตุจักร",
+        "postalCode": "10900",
+        "locationCode": "103005"
+      }]
+    }, {
+      "name": "เขตบางคอแหลม",
+      "subDistricts": [{
+        "name": "บางคอแหลม",
+        "postalCode": "10120",
+        "locationCode": "103101"
+      }, {
+        "name": "วัดพระยาไกร",
+        "postalCode": "10120",
+        "locationCode": "103102"
+      }, {
+        "name": "บางโคล่",
+        "postalCode": "10120",
+        "locationCode": "103103"
+      }]
+    }, {
+      "name": "เขตประเวศ",
+      "subDistricts": [{
+        "name": "ประเวศ",
+        "postalCode": "10250",
+        "locationCode": "103201"
+      }, {
+        "name": "หนองบอน",
+        "postalCode": "10250",
+        "locationCode": "103202"
+      }, {
+        "name": "ดอกไม้",
+        "postalCode": "10250",
+        "locationCode": "103203"
+      }]
+    }, {
+      "name": "เขตคลองเตย",
+      "subDistricts": [{
+        "name": "คลองเตย",
+        "postalCode": "10110",
+        "locationCode": "103301"
+      }, {
+        "name": "คลองตัน",
+        "postalCode": "10110",
+        "locationCode": "103302"
+      }, {
+        "name": "พระโขนง",
+        "postalCode": "10110",
+        "locationCode": "103303"
+      }]
+    }, {
+      "name": "เขตสวนหลวง",
+      "subDistricts": [{
+        "name": "สวนหลวง",
+        "postalCode": "10250",
+        "locationCode": "103401"
+      }]
+    }, {
+      "name": "เขตจอมทอง",
+      "subDistricts": [{
+        "name": "บางขุนเทียน",
+        "postalCode": "10150",
+        "locationCode": "103501"
+      }, {
+        "name": "บางค้อ",
+        "postalCode": "10150",
+        "locationCode": "103502"
+      }, {
+        "name": "บางมด",
+        "postalCode": "10150",
+        "locationCode": "103503"
+      }, {
+        "name": "จอมทอง",
+        "postalCode": "10150",
+        "locationCode": "103504"
+      }]
+    }, {
+      "name": "เขตดอนเมือง",
+      "subDistricts": [{
+        "name": "สีกัน",
+        "postalCode": "10210",
+        "locationCode": "103602"
+      }, {
+        "name": "ดอนเมือง",
+        "postalCode": "10210",
+        "locationCode": "103604"
+      }, {
+        "name": "สนามบิน",
+        "postalCode": "10210",
+        "locationCode": "103605"
+      }]
+    }, {
+      "name": "เขตราชเทวี",
+      "subDistricts": [{
+        "name": "ทุ่งพญาไท",
+        "postalCode": "10400",
+        "locationCode": "103701"
+      }, {
+        "name": "ถนนพญาไท",
+        "postalCode": "10400",
+        "locationCode": "103702"
+      }, {
+        "name": "ถนนเพชรบุรี",
+        "postalCode": "10400",
+        "locationCode": "103703"
+      }, {
+        "name": "มักกะสัน",
+        "postalCode": "10400",
+        "locationCode": "103704"
+      }]
+    }, {
+      "name": "เขตลาดพร้าว",
+      "subDistricts": [{
+        "name": "ลาดพร้าว",
+        "postalCode": "10230",
+        "locationCode": "103801"
+      }, {
+        "name": "จรเข้บัว",
+        "postalCode": "10230",
+        "locationCode": "103802"
+      }]
+    }, {
+      "name": "เขตวัฒนา",
+      "subDistricts": [{
+        "name": "คลองเตยเหนือ",
+        "postalCode": "10110",
+        "locationCode": "103901"
+      }, {
+        "name": "คลองตันเหนือ",
+        "postalCode": "10110",
+        "locationCode": "103902"
+      }, {
+        "name": "พระโขนงเหนือ",
+        "postalCode": "10110",
+        "locationCode": "103903"
+      }]
+    }, {
+      "name": "เขตบางแค",
+      "subDistricts": [{
+        "name": "บางแค",
+        "postalCode": "10160",
+        "locationCode": "104001"
+      }, {
+        "name": "บางแคเหนือ",
+        "postalCode": "10160",
+        "locationCode": "104002"
+      }, {
+        "name": "บางไผ่",
+        "postalCode": "10160",
+        "locationCode": "104003"
+      }, {
+        "name": "หลักสอง",
+        "postalCode": "10160",
+        "locationCode": "104004"
+      }]
+    }, {
+      "name": "เขตหลักสี่",
+      "subDistricts": [{
+        "name": "ทุ่งสองห้อง",
+        "postalCode": "10210",
+        "locationCode": "104101"
+      }, {
+        "name": "ตลาดบางเขน",
+        "postalCode": "10210",
+        "locationCode": "104102"
+      }]
+    }, {
+      "name": "เขตสายไหม",
+      "subDistricts": [{
+        "name": "สายไหม",
+        "postalCode": "10220",
+        "locationCode": "104201"
+      }, {
+        "name": "ออเงิน",
+        "postalCode": "10220",
+        "locationCode": "104202"
+      }, {
+        "name": "คลองถนน",
+        "postalCode": "10220",
+        "locationCode": "104203"
+      }]
+    }, {
+      "name": "เขตคันนายาว",
+      "subDistricts": [{
+        "name": "คันนายาว",
+        "postalCode": "10230",
+        "locationCode": "104301"
+      }, {
+        "name": "รามอินทรา",
+        "postalCode": "10230",
+        "locationCode": "104302"
+      }]
+    }, {
+      "name": "เขตสะพานสูง",
+      "subDistricts": [{
+        "name": "สะพานสูง",
+        "postalCode": "10240",
+        "locationCode": "104401"
+      }]
+    }, {
+      "name": "เขตวังทองหลาง",
+      "subDistricts": [{
+        "name": "วังทองหลาง",
+        "postalCode": "10310",
+        "locationCode": "104501"
+      }, {
+        "name": "สะพานสอง",
+        "postalCode": "10310",
+        "locationCode": "104502"
+      }, {
+        "name": "คลองเจ้าคุณสิงห์",
+        "postalCode": "10310",
+        "locationCode": "104503"
+      }, {
+        "name": "พลับพลา",
+        "postalCode": "10310",
+        "locationCode": "104504"
+      }]
+    }, {
+      "name": "เขตคลองสามวา",
+      "subDistricts": [{
+        "name": "สามวาตะวันตก",
+        "postalCode": "10510",
+        "locationCode": "104601"
+      }, {
+        "name": "สามวาตะวันออก",
+        "postalCode": "10510",
+        "locationCode": "104602"
+      }, {
+        "name": "บางชัน",
+        "postalCode": "10510",
+        "locationCode": "104603"
+      }, {
+        "name": "ทรายกองดิน",
+        "postalCode": "10510",
+        "locationCode": "104604"
+      }, {
+        "name": "ทรายกองดินใต้",
+        "postalCode": "10510",
+        "locationCode": "104605"
+      }]
+    }, {
+      "name": "เขตบางนา",
+      "subDistricts": [{
+        "name": "บางนา",
+        "postalCode": "10260",
+        "locationCode": "104701"
+      }]
+    }, {
+      "name": "เขตทวีวัฒนา",
+      "subDistricts": [{
+        "name": "ทวีวัฒนา",
+        "postalCode": "10170",
+        "locationCode": "104801"
+      }, {
+        "name": "ศาลาธรรมสพน์",
+        "postalCode": "10170",
+        "locationCode": "104802"
+      }]
+    }, {
+      "name": "เขตทุ่งครุ",
+      "subDistricts": [{
+        "name": "บางมด",
+        "postalCode": "10140",
+        "locationCode": "104901"
+      }, {
+        "name": "ทุ่งครุ",
+        "postalCode": "10140",
+        "locationCode": "104902"
+      }]
+    }, {
+      "name": "เขตบางบอน",
+      "subDistricts": [{
+        "name": "บางบอน",
+        "postalCode": "10150",
+        "locationCode": "105001"
+      }]
+    }]
+  }, {
+    "name": "สมุทรปราการ",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "นนทบุรี",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ปทุมธานี",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "พระนครศรีอยุธยา",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "อ่างทอง",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ลพบุรี",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "สิงห์บุรี",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ชัยนาท",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "สระบุรี",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ชลบุรี",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ระยอง",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "จันทบุรี",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ตราด",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ฉะเชิงเทรา",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ปราจีนบุรี",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "นครนายก",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "สระแก้ว",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "นครราชสีมา",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "บุรีรัมย์",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "สุรินทร์",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ศรีสะเกษ",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "อุบลราชธานี",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ยโสธร",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ชัยภูมิ",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "อำนาจเจริญ",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "บึงกาฬ",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "หนองบัวลำภู",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ขอนแก่น",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "อุดรธานี",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "เลย",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "หนองคาย",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "มหาสารคาม",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ร้อยเอ็ด",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "กาฬสินธุ์",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "สกลนคร",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "นครพนม",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "มุกดาหาร",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "เชียงใหม่",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ลำพูน",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ลำปาง",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "อุตรดิตถ์",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "แพร่",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "น่าน",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "พะเยา",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "เชียงราย",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "แม่ฮ่องสอน",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "นครสวรรค์",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "อุทัยธานี",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "กำแพงเพชร",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ตาก",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "สุโขทัย",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "พิษณุโลก",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "พิจิตร",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "เพชรบูรณ์",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ราชบุรี",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "กาญจนบุรี",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "สุพรรณบุรี",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "นครปฐม",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "สมุทรสาคร",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "สมุทรสงคราม",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "เพชรบุรี",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ประจวบคีรีขันธ์",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "นครศรีธรรมราช",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "กระบี่",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "พังงา",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ภูเก็ต",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "สุราษฎร์ธานี",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ระนอง",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ชุมพร",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "สงขลา",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "สตูล",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ตรัง",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "พัทลุง",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ปัตตานี",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "ยะลา",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }, {
+    "name": "นราธิวาส",
+    "districts": [{
+      "name": "",
+      "subDistricts": [{
+        "name": ""
+      }]
+    }]
+  }]
+}
