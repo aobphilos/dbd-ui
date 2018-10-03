@@ -22,6 +22,10 @@ export class Member extends ModelBase {
   facebookId: string;
   website: string;
   address: string;
+  province: string;
+  district: string;
+  subDistrict: string;
+  postalCode: string;
 
   // Owner
   storeIds: string[];

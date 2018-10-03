@@ -17,8 +17,8 @@ export class CategoryService {
   }
 
   get currentItems(): Observable<string[]> {
-    const cats = this.sessionCategory;
-    return (cats) ? of(cats) : this.categories;
+    const items = this.sessionCategory;
+    return (items) ? of(items) : this.categories;
   }
 
   constructor(private http: HttpClient) {
@@ -39,13 +39,13 @@ export class CategoryService {
         })
       );
 
-    this.categories.subscribe(cats => {
-      this.setCurrentItems(cats);
+    this.categories.subscribe(items => {
+      this.setCurrentItems(items);
     });
   }
 
-  private setCurrentItems(cats: string[]) {
-    sessionStorage.setItem(SessionType.CATEGORY, JSON.stringify(cats));
+  private setCurrentItems(items: string[]) {
+    sessionStorage.setItem(SessionType.CATEGORY, JSON.stringify(items));
   }
 
 }

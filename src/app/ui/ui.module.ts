@@ -32,6 +32,7 @@ import { StoreService } from '../core/store.service';
 import { ProductService } from '../core/product.service';
 import { PromotionService } from '../core/promotion.service';
 import { CategoryService } from '../core/category.service';
+import { LocationService } from '../core/location.service';
 import { SearchBarService } from './search-bar/search-bar.service';
 
 import { NotifyComponent } from './notify/notify.component';
@@ -61,6 +62,7 @@ import { FavoriteComponent } from './favorite/favorite.component';
 import { CategorySelectComponent } from './select/category-select/category-select.component';
 import { MemberPreviewComponent } from './pages/member/member-preview/member-preview.component';
 import { LibraryIcons } from './ui.icon.module';
+import { LocationSelectComponent } from './select/location-select/location-select.component';
 
 @NgModule({
   imports: [
@@ -82,12 +84,12 @@ import { LibraryIcons } from './ui.icon.module';
     WelcomeComponent, EventCarouselComponent, SearchBarComponent, PreviewItemComponent,
     StorePreviewComponent, StoreSearchComponent, ProductSearchComponent,
     ProductPreviewComponent, PromotionPreviewComponent, PromotionSearchComponent,
-    AutofocusDirective, FavoriteComponent, CategorySelectComponent, MemberPreviewComponent
+    AutofocusDirective, FavoriteComponent, CategorySelectComponent, MemberPreviewComponent, LocationSelectComponent
   ],
   providers: [
     AuthService, LayoutService, AuthGuard, NotifyService, AlgoliaService,
     MemberService, IndicatorService, StoreService, ProductService, PromotionService,
-    CategoryService, SearchBarService
+    CategoryService, SearchBarService, LocationService
   ],
   exports: [LayoutComponent]
 })

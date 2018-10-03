@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MemberService } from '../../../../core/member.service';
-import { Member } from '../../../../model/member';
 import { MemberType } from '../../../../enum/member-type';
 import { IndicatorService } from '../../../indicator/indicator.service';
-import { BehaviorSubject, of, Observable } from 'rxjs';
+import { of, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-member-edit',
