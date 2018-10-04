@@ -37,6 +37,9 @@ export class LocationSelectComponent implements OnInit, ControlValueAccessor {
 
   writeValue(item: ILocationSelected): void {
     this.locationSelected = item;
+    if (item) {
+      this.bindLocationData();
+    }
   }
 
   registerOnChange = (fn: any): void => this.onStateChanged = fn;
@@ -75,6 +78,35 @@ export class LocationSelectComponent implements OnInit, ControlValueAccessor {
 
   onPostalCodeChange(item: string) {
     this.onStateChanged(this.locationSelected);
+  }
+
+  private bindLocationData() {
+    const province = this.locationSelected.provinceSelected;
+    if (province && province !== '') {
+      this.provinces.subscribe(
+        provinces => {
+          const foundProvince = provinces.find(e => e.name === province);
+          if (foundProvince) {
+            const districts = foundProvince.districts;
+            this.districts = of(districts);
+
+            const district = this.locationSelected.districtSelected;
+            if (district && district !== '') {
+              const foundDistrict = districts.find(e => e.name === district);
+              if (foundDistrict) {
+                const subDistricts = foundDistrict.subDistricts;
+                this.subDistricts = of(subDistricts);
+
+                const posts = {};
+                subDistricts.forEach(sub => posts[sub.postalCode] = 1);
+                this.postalCodes = of(Object.keys(posts));
+
+              }
+            }
+          }
+        }
+      );
+    }
   }
 
   private onStateChanged = (location: ILocationSelected) => { };
