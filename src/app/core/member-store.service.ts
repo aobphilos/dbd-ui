@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Pagination } from '../model/pagination';
 import { QueryParams } from '../model/queryParams';
+import { copyDataOnly } from './utils';
 
 @Injectable({
   providedIn: 'root'
@@ -64,22 +65,12 @@ export class MemberStoreService {
     };
   }
 
-  private copyDataOnly(store: Store) {
-    const data = Object.keys(store).reduce<any>((item, key) => {
-      if (key !== 'id') {
-        item[key] = store[key];
-      }
-      return item;
-    }, {});
-    return data;
-  }
-
   addByStore(store: Store) {
     return new Promise<any>((resolve, reject) => {
       if (!store) { reject('Missing Store Data'); return; }
 
       const storeRef = this.db.doc(`${this.dbPath}/${store.ownerId}`).ref;
-      storeRef.set({ ...this.copyDataOnly(store) })
+      storeRef.set({ ...copyDataOnly(store) })
         .then(() => resolve(), (err) => reject(err));
     });
   }

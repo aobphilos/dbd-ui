@@ -7,6 +7,8 @@ import { BeSubject } from '../model/beSubject';
 import { filter, map } from 'rxjs/operators';
 import { firestore } from 'firebase/app';
 import { Store } from '../model/store';
+import { OwnerView } from '../model/views/owner-view';
+import { copyDataOnly } from './utils';
 
 @Injectable({
   providedIn: 'root'
@@ -74,7 +76,7 @@ export class MemberService {
       if (oriMember.exists) {
         const id = member.id;
         member.updatedDate = firestore.Timestamp.now();
-        const memberToUpdate = this.copyDataOnly(member);
+        const memberToUpdate = copyDataOnly(member);
         memberRef.update({ ...memberToUpdate })
           .then(() => {
             const updatedMember = { id: id, ...memberToUpdate } as Member;
@@ -137,16 +139,6 @@ export class MemberService {
     });
   }
 
-  private copyDataOnly(member: Member) {
-    const data = Object.keys(member).reduce<any>((item, key) => {
-      if (key !== 'id') {
-        item[key] = member[key];
-      }
-      return item;
-    }, {});
-    return data;
-  }
-
   private addStoreByMember(member: Member) {
     return new Promise<any>((resolve, reject) => {
       if (!member) { reject('Missing Member Data'); return; }
@@ -186,15 +178,13 @@ export class MemberService {
   private getUpdateValueByMember(member: Member, isUpdate: boolean = false) {
     if (isUpdate) {
       return {
-        storeName: member.storeName,
-        storeDescription: member.storeDescription,
+        owner: OwnerView.create(member),
         updatedDate: member.updatedDate
       };
     } else {
       const store = new Store();
       store.ownerId = member.id;
-      store.storeName = member.storeName;
-      store.storeDescription = member.storeDescription;
+      store.owner = OwnerView.create(member);
       store.isPublished = true;
       return store;
     }

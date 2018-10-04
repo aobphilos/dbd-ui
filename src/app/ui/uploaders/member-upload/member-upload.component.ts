@@ -13,6 +13,7 @@ import { IndicatorService } from '../../indicator/indicator.service';
 import { MemberService } from '../../../core/member.service';
 import { BehaviorSubject } from 'rxjs';
 import { Member } from '../../../model/member';
+import { OwnerView } from '../../../model/views/owner-view';
 
 type ImageUploadModel = Store | Product | Promotion;
 
@@ -199,10 +200,7 @@ export class MemberUploadComponent implements OnInit {
 
     if (!this.item) {
       this.model.ownerId = this.owner.id;
-      this.model.storeName = this.owner.storeName;
-      if (this.isStore) {
-        this.model['storeDescription'] = this.owner.storeDescription;
-      }
+      this.model.owner = OwnerView.create(this.owner);
     }
 
     this.imageUrlSubject.next(this.model.imageUrl);
@@ -212,7 +210,7 @@ export class MemberUploadComponent implements OnInit {
     this.imageUrlSubject.subscribe(url => this.imageUrl = url);
     this.memberService.currentMember.subscribe(member => {
       if (member) {
-        this.owner = member;
+        this.owner =  member;
         this.buildModel();
       }
     });

@@ -8,6 +8,7 @@ import { MemberService } from './member.service';
 import { MemberStoreService } from './member-store.service';
 import { Store } from '../model/store';
 import { StoreView } from '../model/views/store-view';
+import { copyDataOnly } from './utils';
 
 @Injectable({
   providedIn: 'root'
@@ -73,7 +74,7 @@ export class StoreService {
       this.db.firestore
         .runTransaction(trans => {
           trans.update(memberRef, { storeIds });
-          trans.set(itemRef, { ...item });
+          trans.set(itemRef, { ...copyDataOnly(item) });
           return Promise.resolve(true);
         })
         .then(() => {
@@ -96,7 +97,7 @@ export class StoreService {
       // found then update
       const itemRef = this.db.doc(`${this.dbPath}/${item.id}`);
       item.updatedDate = firestore.Timestamp.now();
-      const storeData = this.copyDataOnly(item);
+      const storeData = copyDataOnly(item);
       itemRef.update({ ...storeData })
         .then(() => {
           this.memberStoreService.updateByStore(storeData)
@@ -144,16 +145,6 @@ export class StoreService {
 
   loadCurrentItems(ownerId: string) {
     this.ownerIdSource.next(ownerId);
-  }
-
-  private copyDataOnly(store: Store) {
-    const data = Object.keys(store).reduce<any>((item, key) => {
-      if (key !== 'id') {
-        item[key] = store[key];
-      }
-      return item;
-    }, {});
-    return data;
   }
 
   public loadPreviewItems() {

@@ -12,6 +12,7 @@ import { Product } from '../model/product';
 import { ProductView } from '../model/views/product-view';
 import { Pagination } from '../model/pagination';
 import { QueryParams } from '../model/queryParams';
+import { copyDataOnly } from './utils';
 
 @Injectable({
   providedIn: 'root'
@@ -83,7 +84,7 @@ export class ProductService {
 
       this.db.firestore.runTransaction(trans => {
         trans.update(memberRef, { productIds });
-        trans.set(itemRef, { ...item });
+        trans.set(itemRef, { ...copyDataOnly(item) });
         return Promise.resolve(true);
       })
         .then(() => {
@@ -103,7 +104,7 @@ export class ProductService {
       // found then update
       const itemRef = this.db.doc(`${this.dbPath}/${item.id}`);
       item.updatedDate = firestore.Timestamp.now();
-      itemRef.update({ ...this.copyDataOnly(item) })
+      itemRef.update({ ...copyDataOnly(item) })
         .then(() => resolve(), (err) => reject(err));
 
     });
@@ -200,16 +201,6 @@ export class ProductService {
 
   loadCurrentItems(ownerId: string) {
     this.ownerIdSource.next(ownerId);
-  }
-
-  private copyDataOnly(product: Product) {
-    const data = Object.keys(product).reduce<any>((item, key) => {
-      if (key !== 'id') {
-        item[key] = product[key];
-      }
-      return item;
-    }, {});
-    return data;
   }
 
   public loadPreviewItems() {
