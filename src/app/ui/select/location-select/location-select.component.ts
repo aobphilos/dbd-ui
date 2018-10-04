@@ -1,4 +1,4 @@
-import { Component, OnInit, forwardRef } from '@angular/core';
+import { Component, OnInit, forwardRef, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { LocationService } from '../../../core/location.service';
 import { Province, District, SubDistrict } from '../../../model/location';
@@ -19,6 +19,8 @@ const CUSTOM_VALUE_ACCESSOR: any = {
 })
 export class LocationSelectComponent implements OnInit, ControlValueAccessor {
 
+  @Input() isSearchMode: boolean;
+
   locationSelected: ILocationSelected;
 
   provinces: Observable<Province[]>;
@@ -36,8 +38,8 @@ export class LocationSelectComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue(item: ILocationSelected): void {
-    this.locationSelected = item;
     if (item) {
+      this.locationSelected = item;
       this.bindLocationData();
     }
   }
