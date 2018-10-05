@@ -27,7 +27,7 @@
           <h4>{{model.name}}</h4>
         </div>
         <div class="middle" ellipsis>{{model.description}}</div>
-        <div class="bottom" [hidden]="isPromotion">{{model.price}}</div>
+        <div class="bottom text-red" [hidden]="isPromotion">{{item.price |  number:'1.2'}} บาท</div>
         <div class="bottom" [hidden]="isProduct">{{model.period}}</div>
       </div>
     </div>

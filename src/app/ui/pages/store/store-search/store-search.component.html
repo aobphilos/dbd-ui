@@ -5,15 +5,17 @@
         <h5>ร้านค้าสมาชิก</h5>
       </div>
       <div class="float-right">
-        <select class="sort-option" [(ngModel)]="sortDirection" (change)="onSortDirectionChange()">
+        <!-- <select class="sort-option" [(ngModel)]="sortDirection" (change)="onSortDirectionChange()">
           <option value="asc">เรียงตามตัวอักษร</option>
-        </select>
+        </select> -->
       </div>
     </div>
     <div class="col-12 my-2">
       <div class="input-group mx-auto">
         <select class="form-control col-5 mr-4">
-          <option>ร้านค้าส่ง ค้าปลีก</option>
+          <option value="C-RETAIL">ร้านค้าปลีก</option>
+          <option value="C-WHOLESALE">ร้านค้าส่ง ค้าปลีก</option>
+          <option value="C-DEALER">ผู้ผลิต ผู้จำหน่าย</option>
         </select>
         <app-category-select class="col-5 mr-4"></app-category-select>
         <div class="form-check my-auto">

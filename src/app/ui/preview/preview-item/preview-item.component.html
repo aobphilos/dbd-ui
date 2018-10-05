@@ -11,7 +11,7 @@
           <h4>{{item.name}}</h4>
         </div>
         <div class="middle" ellipsis>{{item.description}}</div>
-        <div class="bottom text-red" [hidden]="isPromotion">{{item.price}}</div>
+        <div class="bottom text-red" [hidden]="isPromotion">{{item.price |  number:'1.2'}} บาท</div>
         <div class="bottom text-gray" [hidden]="isProduct">{{item.period}}</div>
         <div class="bottom right text-red" (click)="goStoreInfo(item.ownerId)">{{item.owner.storeName}}</div>
       </div>

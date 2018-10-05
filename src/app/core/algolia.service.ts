@@ -47,9 +47,14 @@ export class AlgoliaService {
       searchableAttributes: [
         'isPublished',
         'followerIds',
-        'storeName',
-        'storeDescription',
-        'description'
+        'description',
+        'owner.storeName',
+        'owner.storeDescription',
+        'owner.address',
+        'owner.province',
+        'owner.district',
+        'owner.subDistrict',
+        'owner.postalCode'
       ]
     });
   }
@@ -64,7 +69,14 @@ export class AlgoliaService {
         'name',
         'categoryName',
         'description',
-        'price'
+        'price',
+        'owner.storeName',
+        'owner.storeDescription',
+        'owner.address',
+        'owner.province',
+        'owner.district',
+        'owner.subDistrict',
+        'owner.postalCode'
       ]
     });
   }
@@ -77,10 +89,16 @@ export class AlgoliaService {
         'isPublished',
         'followerIds',
         'name',
-        'storeName',
         'description',
         'period',
-        'urlLink'
+        'urlLink',
+        'owner.storeName',
+        'owner.storeDescription',
+        'owner.address',
+        'owner.province',
+        'owner.district',
+        'owner.subDistrict',
+        'owner.postalCode'
       ]
     });
   }
