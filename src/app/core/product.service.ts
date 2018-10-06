@@ -161,6 +161,7 @@ export class ProductService {
       if (qp.isFavorite) {
         filters.push(`followerIds:${memberId}`);
       }
+
       if (qp.priceRange && qp.priceRange !== 'none') {
         const prices = qp.priceRange.split('-');
         const segments = [];
@@ -169,6 +170,13 @@ export class ProductService {
           segments.push(`price <= ${prices[1]}`);
         }
         filters.push(`( ${segments.join(' AND ')} )`);
+      }
+
+      if (qp.location) {
+        if (qp.location.provinceSelected) { qp.query += ` ${qp.location.provinceSelected}`; }
+        if (qp.location.districtSelected) { qp.query += ` ${qp.location.districtSelected}`; }
+        if (qp.location.subDistrictSelected) { qp.query += ` ${qp.location.subDistrictSelected}`; }
+        if (qp.location.postalCodeSelected) { qp.query += ` ${qp.location.postalCodeSelected}`; }
       }
 
       this.algoliaIndex.search({

@@ -5,29 +5,28 @@
         <h5>ร้านค้าสมาชิก</h5>
       </div>
       <div class="float-right">
-        <!-- <select class="sort-option" [(ngModel)]="sortDirection" (change)="onSortDirectionChange()">
-          <option value="asc">เรียงตามตัวอักษร</option>
-        </select> -->
       </div>
     </div>
-    <div class="col-12 my-2">
+    <div class="col-7 mb-4">
       <div class="input-group mx-auto">
-        <select class="form-control col-5 mr-4">
+        <app-location-select id="locationSelected" name="locationSelected"
+          [isSearchMode]="false" class="w-100" (ngModelChange)="doSearch()"
+          [(ngModel)]="locationSelected"></app-location-select>
+      </div>
+    </div>
+    <div class="col-5 mt-2 mb-4">
+      <div class="input-group mx-auto">
+        <select class="form-control mr-4" [(ngModel)]="memberType" (change)="doSearch()">
+          <option value="NONE">ประเภทร้านค้า</option>
           <option value="C-RETAIL">ร้านค้าปลีก</option>
           <option value="C-WHOLESALE">ร้านค้าส่ง ค้าปลีก</option>
           <option value="C-DEALER">ผู้ผลิต ผู้จำหน่าย</option>
         </select>
-        <app-category-select class="col-5 mr-4"></app-category-select>
         <div class="form-check my-auto">
           <input class="form-check-input" type="checkbox" id="followingCheck"
             [(ngModel)]="isFavorite" (change)="doSearch()">
           <label class="form-check-label" for="followingCheck"> ถูกใจ </label>
         </div>
-      </div>
-    </div>
-    <div class="col-12 mb-2">
-      <div class="input-group mx-auto">
-        <app-location-select [isSearchMode]="true" class="w-100"></app-location-select>
       </div>
     </div>
     <div class="col-12 mt-4 text-center text-black" *ngIf="totalHits == 0">

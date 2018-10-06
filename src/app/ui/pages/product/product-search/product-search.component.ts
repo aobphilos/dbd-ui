@@ -8,6 +8,7 @@ import { ProductView } from '../../../../model/views/product-view';
 import { QueryParams } from '../../../../model/queryParams';
 import { SearchBarService } from '../../../search-bar/search-bar.service';
 import { SearchType } from '../../../../enum/search-type';
+import { ILocationSelected } from '../../../../model/interfaces/location-selected';
 
 @Component({
   selector: 'app-product-search',
@@ -21,6 +22,7 @@ export class ProductSearchComponent implements OnInit {
   isFavorite = false;
   sortDirection = 'asc';
   priceRange = 'none';
+  locationSelected: ILocationSelected;
 
   currentPage: number;
   totalHits: number;
@@ -35,14 +37,17 @@ export class ProductSearchComponent implements OnInit {
   ) {
     this.currentPage = 1;
     this.totalHits = 0;
+
+    this.locationSelected = {
+      provinceSelected: null,
+      districtSelected: null,
+      subDistrictSelected: null,
+      postalCodeSelected: null
+    };
   }
 
   get productItems() {
     return of(this.products);
-  }
-
-  onSortDirectionChange() {
-
   }
 
   onPageChange() {
@@ -54,13 +59,15 @@ export class ProductSearchComponent implements OnInit {
   }
 
   private getQueryParams(pageIndex: number) {
-    return new QueryParams(
+    const qp = new QueryParams(
       this.keyword,
       this.isFavorite,
       pageIndex,
-      10,
-      this.priceRange
+      10
     );
+    qp.priceRange = this.priceRange;
+    qp.location = this.locationSelected;
+    return qp;
   }
 
   private goSearchNextPage(pageIndex: number) {

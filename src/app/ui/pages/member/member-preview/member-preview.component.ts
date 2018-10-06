@@ -106,7 +106,6 @@ export class MemberPreviewComponent implements OnInit {
           .then(
             member => {
               this.hideBusy();
-              console.log('find member: ', member);
               if (member) {
                 this.currentStorePreview = member;
               } else {

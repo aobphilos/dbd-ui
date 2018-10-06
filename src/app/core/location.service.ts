@@ -41,7 +41,9 @@ export class LocationService {
       );
 
     this.locations.subscribe(items => {
-      this.setCurrentItems(items);
+      if (items && items.length > 0) {
+        this.setCurrentItems(items);
+      }
     });
   }
 

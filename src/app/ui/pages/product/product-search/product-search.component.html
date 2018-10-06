@@ -5,20 +5,18 @@
         <h5>รายการสินค้า</h5>
       </div>
       <div class="float-right">
-        <select class="sort-option" [(ngModel)]="sortDirection" (change)="onSortDirectionChange()">
-          <option value="asc">เรียงตามชื่อสินค้า</option>
-          <option value="asc">เรียงตามประเภทสินค้า</option>
-          <option value="asc">เรียงตามราคาจากน้อยไปมาก</option>
-          <option value="asc">เรียงตามราคาจากมากไปน้อย</option>
-        </select>
       </div>
     </div>
-    <div class="col-12 my-3">
+    <div class="col-7 mb-4">
       <div class="input-group mx-auto">
-        <select class="form-control mr-3">
-          <option>ประเภทสินค้า</option>
-        </select>
-        <select class="form-control mr-3" [(ngModel)]="priceRange" (change)="doSearch()">
+        <app-location-select id="locationSelected" name="locationSelected"
+          [isSearchMode]="false" class="w-100" (ngModelChange)="doSearch()"
+          [(ngModel)]="locationSelected"></app-location-select>
+      </div>
+    </div>
+    <div class="col-5 mt-2 mb-4">
+      <div class="input-group mx-auto">
+        <select class="form-control mr-4" [(ngModel)]="priceRange" (change)="doSearch()">
           <option value="none">ช่วงราคา</option>
           <option value="0-500">ไม่เกิน 500 บาท</option>
           <option value="500-1000">ตั้งแต่ 500 ถึง 1000 บาท</option>

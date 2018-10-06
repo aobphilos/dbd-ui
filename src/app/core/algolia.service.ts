@@ -28,16 +28,6 @@ export class AlgoliaService {
 
   private initMemberIndex() {
     this.memberIndex = this.algolia.initIndex('Member');
-    // this.memberIndex.setSettings({
-    //   attributesForFaceting: [
-    //     'storeIds',
-    //     'productIds',
-    //     'promotionIds',
-    //     'storeFollowingIds',
-    //     'productFollowingIds',
-    //     'promotionFollowingIds'
-    //   ]
-    // });
   }
 
   private initMemberStoreIndex() {
@@ -48,6 +38,7 @@ export class AlgoliaService {
         'isPublished',
         'followerIds',
         'description',
+        'owner.memberType',
         'owner.storeName',
         'owner.storeDescription',
         'owner.address',
