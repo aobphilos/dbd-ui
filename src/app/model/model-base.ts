@@ -1,6 +1,7 @@
 import { IRelatedBase } from './interfaces/related-base';
 import { IImageBase } from './interfaces/image-base';
 import { firestore } from 'firebase/app';
+import { OwnerView } from './views/owner-view';
 
 export abstract class ModelBase {
 
@@ -27,7 +28,7 @@ export abstract class ModelRelatedImageBase
   description: string;
 
   // ref to owner
-  storeName: string;
+  owner: OwnerView;
 
   constructor() {
     super();
@@ -36,7 +37,6 @@ export abstract class ModelRelatedImageBase
     this.followerIds = [];
     this.imageUrl = '';
     this.description = '';
-    this.storeName = '';
   }
 
 }

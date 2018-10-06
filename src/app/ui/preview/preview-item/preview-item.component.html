@@ -11,9 +11,9 @@
           <h4>{{item.name}}</h4>
         </div>
         <div class="middle" ellipsis>{{item.description}}</div>
-        <div class="bottom text-red" [hidden]="isPromotion">{{item.price}}</div>
+        <div class="bottom text-red" [hidden]="isPromotion">{{item.price |  number:'1.2'}} บาท</div>
         <div class="bottom text-gray" [hidden]="isProduct">{{item.period}}</div>
-        <div class="bottom right text-red" (click)="goStoreInfo(item.ownerId)">{{item.storeName}}</div>
+        <div class="bottom right text-red" (click)="goStoreInfo(item.ownerId)">{{item.owner.storeName}}</div>
       </div>
     </div>
     <div class="display-content store-item" *ngIf="isStore">
@@ -22,13 +22,13 @@
       </div>
       <div class="store-detail" *ngIf="!isStoreView">
         <div class="mt-2">
-          <h4>{{item.storeName}}</h4>
+          <h4>{{item.owner.storeName}}</h4>
         </div>
-        <div class="detail" ellipsis> {{item.storeDescription}} </div>
+        <div class="detail" ellipsis> {{item.owner.storeDescription}} </div>
         <div class="store-button d-flex justify-content-around my-3 px-4">
           <div><button type="button" class="btn btn-outline-secondary text-red"
               (click)="goStoreInfo(item.id)">ข้อมูลร้านค้า</button></div>
-          <div><button type="button" class="btn btn-outline-secondary text-red">สนใจขายสินค้า</button></div>
+          <!-- <div><button type="button" class="btn btn-outline-secondary text-red">สนใจขายสินค้า</button></div> -->
         </div>
       </div>
     </div>

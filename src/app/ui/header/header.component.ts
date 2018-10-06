@@ -103,7 +103,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .then(
         res => {
           // this.router.navigate(['/home'], );
-          window.location.href = './home';
+          window.location.href = '/';
           this.hideBusy();
         },
         err => this.hideBusy());

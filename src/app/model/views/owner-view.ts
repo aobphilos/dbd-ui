@@ -1,17 +1,7 @@
-import { ModelBase } from './model-base';
-import { MemberType } from '../enum/member-type';
+import { MemberType } from '../../enum/member-type';
+import { Member } from '../member';
 
-export class MemberGroup {
-  id: string;
-  desc: string;
-  members: Member[];
-  constructor() {
-
-  }
-}
-
-export class Member extends ModelBase {
-
+export class OwnerView {
   memberType: MemberType;
   storeName: string;
   storeDescription: string;
@@ -27,18 +17,7 @@ export class Member extends ModelBase {
   subDistrict: string;
   postalCode: string;
 
-  // Owner
-  storeIds: string[];
-  productIds: string[];
-  promotionIds: string[];
-
-  // Following
-  storeFollowingIds: string[];
-  productFollowingIds: string[];
-  promotionFollowingIds: string[];
-
   constructor() {
-    super();
     this.memberType = MemberType.RETAIL;
     this.storeName = '';
     this.storeDescription = '';
@@ -53,13 +32,25 @@ export class Member extends ModelBase {
     this.district = '';
     this.subDistrict = '';
     this.postalCode = '';
+  }
 
-    this.storeIds = [];
-    this.productIds = [];
-    this.promotionIds = [];
-    this.storeFollowingIds = [];
-    this.productFollowingIds = [];
-    this.promotionFollowingIds = [];
+  public static create(member: Member) {
+    return {
+      memberType: member.memberType,
+      storeName: member.storeName,
+      storeDescription: member.storeDescription,
+      ownerName: member.ownerName,
+      email: member.email,
+      phone: member.phone,
+      lineId: member.lineId,
+      facebookId: member.facebookId,
+      website: member.website,
+      address: member.address,
+      province: member.province,
+      district: member.district,
+      subDistrict: member.subDistrict,
+      postalCode: member.postalCode
+    };
   }
 
 }

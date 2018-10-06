@@ -12,6 +12,7 @@ import { Promotion } from '../model/promotion';
 import { PromotionView } from '../model/views/promotion-view';
 import { Pagination } from '../model/pagination';
 import { QueryParams } from '../model/queryParams';
+import { copyDataOnly } from './utils';
 
 @Injectable({
   providedIn: 'root'
@@ -83,7 +84,7 @@ export class PromotionService {
 
       this.db.firestore.runTransaction(trans => {
         trans.update(memberRef, { promotionIds });
-        trans.set(itemRef, { ...item });
+        trans.set(itemRef, { ...copyDataOnly(item) });
         return Promise.resolve(true);
       })
         .then(() => {
@@ -103,7 +104,7 @@ export class PromotionService {
       // found then update
       const itemRef = this.db.doc(`${this.dbPath}/${item.id}`);
       item.updatedDate = firestore.Timestamp.now();
-      itemRef.update({ ...this.copyDataOnly(item) })
+      itemRef.update({ ...copyDataOnly(item) })
         .then(() => resolve(), (err) => reject(err));
 
     });
@@ -246,16 +247,6 @@ export class PromotionService {
         .catch((error) => reject(error));
 
     });
-  }
-
-  private copyDataOnly(promotion: Promotion) {
-    const data = Object.keys(promotion).reduce<any>((item, key) => {
-      if (key !== 'id') {
-        item[key] = promotion[key];
-      }
-      return item;
-    }, {});
-    return data;
   }
 
   private updateFollowingIds(ids) {

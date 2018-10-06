@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MemberService } from '../../../../core/member.service';
 import { IndicatorService } from '../../../indicator/indicator.service';
 import { BehaviorSubject, of } from 'rxjs';
-import { map, combineLatest, tap, switchMap } from 'rxjs/operators';
+import { map, combineLatest } from 'rxjs/operators';
 import { NotifyService } from '../../../notify/notify.service';
 import { Member } from '../../../../model/member';
 import { MemberType } from '../../../../enum/member-type';
@@ -106,7 +106,6 @@ export class MemberPreviewComponent implements OnInit {
           .then(
             member => {
               this.hideBusy();
-              console.log('find member: ', member);
               if (member) {
                 this.currentStorePreview = member;
               } else {

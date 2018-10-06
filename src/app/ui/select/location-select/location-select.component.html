@@ -1,0 +1,25 @@
+<div class="row mt-2">
+  <div class="mb-2" [ngClass]="{'col-6': !isSearchMode, 'col-3': isSearchMode}">
+    <ng-select [items]="provinces | async" bindLabel="name" bindValue="name"
+      placeholder="จังหวัด" (change)="onProvinceChange($event)" [(ngModel)]="locationSelected.provinceSelected">
+    </ng-select>
+  </div>
+  <div class="mb-2" [ngClass]="{'col-6': !isSearchMode, 'col-3': isSearchMode}">
+    <ng-select [items]="districts | async" bindLabel="name" bindValue="name"
+      placeholder="เขต/อำเภอ" (change)="onDistrictChange($event)" [(ngModel)]="locationSelected.districtSelected"
+      [disabled]="!(locationSelected.provinceSelected)">
+    </ng-select>
+  </div>
+  <div class="mb-2" [ngClass]="{'col-6': !isSearchMode, 'col-3': isSearchMode}">
+    <ng-select [items]="subDistricts | async" placeholder="แขวง/ตำบล" bindLabel="name"
+      bindValue="name" (change)="onSubDistrictChange($event)" [(ngModel)]="locationSelected.subDistrictSelected"
+      [disabled]="!(locationSelected.districtSelected)">
+    </ng-select>
+  </div>
+  <div class="mb-2" [ngClass]="{'col-6': !isSearchMode, 'col-3': isSearchMode}">
+    <ng-select [items]="postalCodes | async" placeholder="รหัสไปรษณีย์"
+      bindLabel="postalCode" (change)="onPostalCodeChange($event)" bindValue="postalCode"
+      [(ngModel)]="locationSelected.postalCodeSelected" [disabled]="!(locationSelected.subDistrictSelected)">
+    </ng-select>
+  </div>
+</div>

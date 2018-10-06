@@ -12,58 +12,64 @@
       <form #memberInfoForm="ngForm">
         <div class="form-group">
           <label for="storeName">ชื่อร้านค้า / บริษัท</label>
-          <input class="form-control" type="text" id="storeName"
-            required name="storeName" [(ngModel)]="model.storeName"
-            placeholder="กรอกชื่อร้านค้า / บริษัท"
+          <input class="form-control" type="text" id="storeName" required name="storeName"
+            [(ngModel)]="model.storeName" placeholder="กรอกชื่อร้านค้า / บริษัท"
             #storeName="ngModel" maxlength="100" autocomplete="off">
         </div>
         <div class="form-group">
           <label for="ownerName">ชื่อผู้บริหาร</label>
-          <input class="form-control" type="text" id="ownerName"
-            name="ownerName" [(ngModel)]="model.ownerName"
-            placeholder="กรอกชื่อผู้บริหาร"
+          <input class="form-control" type="text" id="ownerName" name="ownerName"
+            [(ngModel)]="model.ownerName" placeholder="กรอกชื่อผู้บริหาร"
             required #ownerName="ngModel" maxlength="100" autocomplete="off">
         </div>
         <div class="form-group">
           <label for="storeDescription">คำบรรยายร้านค้า</label>
-          <textarea class="form-control" id="storeDescription" [(ngModel)]="model.storeDescription" name="storeDescription"
-            rows="3" maxlength="2000"></textarea>
+          <textarea class="form-control" id="storeDescription" [(ngModel)]="model.storeDescription"
+            name="storeDescription" rows="3" maxlength="2000"></textarea>
         </div>
         <div class="form-group">
           <div class="row">
             <div class="col">
               <label for="phone">หมายเลขโทรศัพท์</label>
-              <input class="form-control" type="tel" id="phone"
-                [(ngModel)]="model.phone" name="phone" placeholder="หมายเลขโทรศัพท์" maxlength="10" autocomplete="off"> </div>
+              <input class="form-control" type="tel" id="phone" [(ngModel)]="model.phone"
+                name="phone" placeholder="หมายเลขโทรศัพท์" maxlength="100"
+                autocomplete="off"> </div>
             <div class="col">
               <label for="email">อีเมล์</label>
-              <input class="form-control" type="email" id="email"
-                disabled="disabled" [(ngModel)]="model.email" name="email" placeholder="Email" required maxlength="100"> </div>
+              <input class="form-control" type="email" id="email" disabled="disabled"
+                [(ngModel)]="model.email" name="email" placeholder="Email"
+                required maxlength="100"> </div>
           </div>
         </div>
         <div class="form-group">
           <div class="row">
             <div class="col">
               <label for="facebook">Facebook</label>
-              <input class="form-control" type="text" id="facebook"
-                [(ngModel)]="model.facebookId" name="facebook" placeholder="Facebook" maxlength="100" autocomplete="off"> </div>
+              <input class="form-control" type="text" id="facebook" [(ngModel)]="model.facebookId"
+                name="facebook" placeholder="Facebook" maxlength="100"
+                autocomplete="off"> </div>
             <div class="col">
               <label for="line">Line</label>
-              <input class="form-control" type="text" id="line" [(ngModel)]="model.lineId" name="line"
-                placeholder="Line" maxlength="50" autocomplete="off"> </div>
+              <input class="form-control" type="text" id="line" [(ngModel)]="model.lineId"
+                name="line" placeholder="Line" maxlength="50" autocomplete="off">
+            </div>
           </div>
         </div>
         <div class="form-group">
           <label for="address">ที่อยู่</label>
-          <textarea class="form-control" id="address" [(ngModel)]="model.address" name="address"
-            rows="3" maxlength="800"></textarea>
+          <input class="form-control" type="text" id="address" [(ngModel)]="model.address"
+            name="address" placeholder="เลขที่" maxlength="100" autocomplete="off">
+          <app-location-select [(ngModel)]="locationSelected" id="locationSelected"
+            name="locationSelected"></app-location-select>
         </div>
         <div class="form-group">
           <label for="website">เว็บไซต์</label>
-          <input class="form-control" type="text" id="website" [(ngModel)]="model.website" name="website"
-            placeholder="เว็บไซต์" maxlength="500" autocomplete="off"> </div>
+          <input class="form-control" type="text" id="website" [(ngModel)]="model.website"
+            name="website" placeholder="เว็บไซต์" maxlength="500" autocomplete="off">
+        </div>
         <div class="form-group">
-          <button type="button" class="btn" (click)="tryUpdateMember()" [disabled]="!memberInfoForm.form.valid">บันทึกข้อมูล</button>
+          <button type="button" class="btn" (click)="tryUpdateMember()"
+            [disabled]="!memberInfoForm.form.valid">บันทึกข้อมูล</button>
         </div>
       </form>
     </div>

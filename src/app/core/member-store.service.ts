@@ -11,6 +11,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Pagination } from '../model/pagination';
 import { QueryParams } from '../model/queryParams';
+import { copyDataOnly } from './utils';
+import { MemberType } from '../enum/member-type';
 
 @Injectable({
   providedIn: 'root'
@@ -64,22 +66,12 @@ export class MemberStoreService {
     };
   }
 
-  private copyDataOnly(store: Store) {
-    const data = Object.keys(store).reduce<any>((item, key) => {
-      if (key !== 'id') {
-        item[key] = store[key];
-      }
-      return item;
-    }, {});
-    return data;
-  }
-
   addByStore(store: Store) {
     return new Promise<any>((resolve, reject) => {
       if (!store) { reject('Missing Store Data'); return; }
 
       const storeRef = this.db.doc(`${this.dbPath}/${store.ownerId}`).ref;
-      storeRef.set({ ...this.copyDataOnly(store) })
+      storeRef.set({ ...copyDataOnly(store) })
         .then(() => resolve(), (err) => reject(err));
     });
   }
@@ -119,6 +111,17 @@ export class MemberStoreService {
 
       if (qp.isFavorite) {
         filters.push(`followerIds:${memberId}`);
+      }
+
+      if (qp.memberType && qp.memberType !== MemberType.NONE) {
+        qp.query += ` ${qp.memberType}`;
+      }
+
+      if (qp.location) {
+        if (qp.location.provinceSelected) { qp.query += ` ${qp.location.provinceSelected}`; }
+        if (qp.location.districtSelected) { qp.query += ` ${qp.location.districtSelected}`; }
+        if (qp.location.subDistrictSelected) { qp.query += ` ${qp.location.subDistrictSelected}`; }
+        if (qp.location.postalCodeSelected) { qp.query += ` ${qp.location.postalCodeSelected}`; }
       }
 
       this.algoliaIndex.search({

@@ -8,6 +8,8 @@ import { MemberStoreView } from '../../../../model/views/member-store-view';
 import { QueryParams } from '../../../../model/queryParams';
 import { SearchBarService } from '../../../search-bar/search-bar.service';
 import { SearchType } from '../../../../enum/search-type';
+import { ILocationSelected } from '../../../../model/interfaces/location-selected';
+import { MemberType } from '../../../../enum/member-type';
 
 @Component({
   selector: 'app-store-search',
@@ -20,6 +22,8 @@ export class StoreSearchComponent implements OnInit {
 
   isFavorite = false;
   sortDirection = 'asc';
+  memberType = MemberType.NONE;
+  locationSelected: ILocationSelected;
 
   currentPage: number;
   totalHits: number;
@@ -34,14 +38,17 @@ export class StoreSearchComponent implements OnInit {
   ) {
     this.currentPage = 1;
     this.totalHits = 0;
+
+    this.locationSelected = {
+      provinceSelected: null,
+      districtSelected: null,
+      subDistrictSelected: null,
+      postalCodeSelected: null
+    };
   }
 
   get storeItems() {
     return of(this.stores);
-  }
-
-  onSortDirectionChange() {
-
   }
 
   onPageChange() {
@@ -53,12 +60,15 @@ export class StoreSearchComponent implements OnInit {
   }
 
   private getQueryParams(pageIndex: number) {
-    return new QueryParams(
+    const qp = new QueryParams(
       this.keyword,
       this.isFavorite,
       pageIndex,
       9
     );
+    qp.memberType = this.memberType;
+    qp.location = this.locationSelected;
+    return qp;
   }
 
   private goSearchNextPage(pageIndex: number) {
