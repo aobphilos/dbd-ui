@@ -164,6 +164,7 @@ export class PromotionService {
         filters.push(`followerIds:${memberId}`);
       }
 
+      this.algoliaIndex.clearCache();
       this.algoliaIndex.search({
         query: qp.query,
         page: qp.pageIndex,
