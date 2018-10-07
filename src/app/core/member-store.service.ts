@@ -124,6 +124,7 @@ export class MemberStoreService {
         if (qp.location.postalCodeSelected) { qp.query += ` ${qp.location.postalCodeSelected}`; }
       }
 
+      this.algoliaIndex.clearCache();
       this.algoliaIndex.search({
         query: qp.query,
         page: qp.pageIndex,
@@ -185,37 +186,6 @@ export class MemberStoreService {
         }, (error) => reject(error))
         .catch((error) => reject(error));
 
-    });
-  }
-
-  getOwnerItems(ownerId: string) {
-    return new Promise<MemberStoreView[]>(async (resolve, reject) => {
-      this.algoliaIndex.search(
-        {
-          query: '',
-          filters: `ownerId:"${ownerId}"`
-        }
-      )
-        .then(
-          response => {
-            const results = response.hits;
-            if (results && results.length > 0) {
-              const items = results
-                .filter(item => item['isPublished'] === true)
-                .map(
-                  item => {
-                    const id = item['objectID'];
-                    delete item['objectID'];
-                    const isFavorite = this.memberService.checkIsFavorite(item['followerIds']);
-                    return { id, isFavorite, ...item } as MemberStoreView;
-                  });
-              resolve(items);
-            } else {
-              resolve([]);
-            }
-          },
-          err => reject(err)
-        );
     });
   }
 

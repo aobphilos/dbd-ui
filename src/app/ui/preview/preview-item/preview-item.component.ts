@@ -30,16 +30,6 @@ export class PreviewItemComponent implements OnInit {
     private memberService: MemberService
   ) { }
 
-  get modalTitle() {
-    let title = '';
-    switch (this.uploaderType) {
-      case UploaderType.STORE: title = 'เพิ่มข้อมูลภาพถ่ายร้าน'; break;
-      case UploaderType.PRODUCT: title = 'เพิ่มข้อมูลรายการสินค้า'; break;
-      case UploaderType.PROMOTION: title = 'เพิ่มข้อมูลรายการส่งเสริมการตลาด'; break;
-    }
-    return title;
-  }
-
   get showFavorite() {
     return this.item.ownerId !== this.memberService.sessionMember.id;
   }
@@ -58,6 +48,10 @@ export class PreviewItemComponent implements OnInit {
 
   get isPromotion() {
     return this.uploaderType === UploaderType.PROMOTION;
+  }
+
+  get isNews() {
+    return this.uploaderType === UploaderType.NEWS;
   }
 
   toggleFavorite(flag: boolean) {

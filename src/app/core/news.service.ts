@@ -8,8 +8,8 @@ import * as algoliasearch from 'algoliasearch';
 import { AlgoliaService } from './algolia.service';
 import { MemberService } from './member.service';
 
-import { Promotion } from '../model/promotion';
-import { PromotionView } from '../model/views/promotion-view';
+import { News } from '../model/news';
+import { NewsView } from '../model/views/news-view';
 import { Pagination } from '../model/pagination';
 import { QueryParams } from '../model/queryParams';
 import { copyDataOnly } from './utils';
@@ -17,21 +17,21 @@ import { copyDataOnly } from './utils';
 @Injectable({
   providedIn: 'root'
 })
-export class PromotionService {
+export class NewsService {
 
-  currentItems: Observable<Promotion[]>;
-  previewItems: Observable<PromotionView[]>;
-  ownerItems: Observable<PromotionView[]>;
+  currentItems: Observable<News[]>;
+  previewItems: Observable<NewsView[]>;
+  ownerItems: Observable<NewsView[]>;
 
   private algoliaIndex: algoliasearch.Index;
   private ownerIdSource = new BehaviorSubject<string>('');
 
   private get dbPath() {
-    return 'Promotion';
+    return 'News';
   }
 
-  private getPromotionPath(id: string) {
-    return `Promotion/${id}`;
+  private getNewsPath(id: string) {
+    return `News/${id}`;
   }
 
   private getOwnerPath(id: string) {
@@ -41,14 +41,14 @@ export class PromotionService {
   private mapItem = actions => actions.map(a => {
     const data = a.payload.doc.data();
     const id = a.payload.doc.id;
-    return { id, ...data } as Promotion;
+    return { id, ...data } as News;
   })
 
   private mapItemView = actions => actions.docs.map(a => {
     const data = a.data();
     const id = a.id;
     const isFavorite = this.memberService.checkIsFavorite(data['followerIds']);
-    return { id, isFavorite, ...data } as PromotionView;
+    return { id, isFavorite, ...data } as NewsView;
   })
 
   private get currentMember() {
@@ -60,36 +60,36 @@ export class PromotionService {
     private db: AngularFirestore,
     private memberService: MemberService
   ) {
-    this.algoliaIndex = algoliaService.promotionIndex;
+    this.algoliaIndex = algoliaService.newsIndex;
 
     this.initCurrentItems();
     this.loadPreviewItems();
   }
 
-  upsert(item: Promotion) {
+  upsert(item: News) {
     return (item.id) ? this.update(item) : this.add(item);
   }
 
-  add(item: Promotion) {
+  add(item: News) {
     return new Promise<any>((resolve, reject) => {
-      if (!item) { reject('Missing Promotion Data'); return; }
+      if (!item) { reject('Missing News Data'); return; }
 
       const itemId = this.db.createId();
       const memberId = item.ownerId;
-      const promotionIds = this.currentMember.promotionIds.filter(p => p !== itemId);
-      promotionIds.push(itemId);
+      const newsIds = this.currentMember.newsIds.filter(p => p !== itemId);
+      newsIds.push(itemId);
 
       const itemRef = this.db.doc(`${this.dbPath}/${itemId}`).ref;
       const memberRef = this.db.doc(this.getOwnerPath(memberId)).ref;
 
       this.db.firestore.runTransaction(trans => {
-        trans.update(memberRef, { promotionIds });
+        trans.update(memberRef, { newsIds });
         trans.set(itemRef, { ...copyDataOnly(item) });
         return Promise.resolve(true);
       })
         .then(() => {
           // update current session
-          this.updatePromotionIds(promotionIds);
+          this.updateNewsIds(newsIds);
           resolve();
         }, (error) => reject(error))
         .catch((error) => reject(error));
@@ -97,9 +97,9 @@ export class PromotionService {
     });
   }
 
-  update(item: Promotion) {
+  update(item: News) {
     return new Promise<any>(async (resolve, reject) => {
-      if (!item) { reject('Missing Promotion Data'); return; }
+      if (!item) { reject('Missing News Data'); return; }
 
       // found then update
       const itemRef = this.db.doc(`${this.dbPath}/${item.id}`);
@@ -112,31 +112,29 @@ export class PromotionService {
 
   delete(id: string) {
     return new Promise<any>((resolve, reject) => {
-      if (!id) { reject('Missing Promotion Id'); return; }
+      if (!id) { reject('Missing News Id'); return; }
 
       const memberId = this.currentMember.id;
-      const promotionIds = this.currentMember.promotionIds.filter(p => p !== id);
+      const newsIds = this.currentMember.newsIds.filter(p => p !== id);
 
       const itemRef = this.db.doc(`${this.dbPath}/${id}`).ref;
       const memberRef = this.db.doc(this.getOwnerPath(memberId)).ref;
 
       this.db.firestore.runTransaction(trans => {
 
-        return trans.get(itemRef).then((promotionSnap) => {
-          if (!promotionSnap.exists) {
-            throw new Error('Promotion does not exist!');
+        return trans.get(itemRef).then((newsSnap) => {
+          if (!newsSnap.exists) {
+            throw new Error('Owner does not exist!');
           }
 
           // remove follower
-          const promotion = promotionSnap.data() as Promotion;
-          promotion.followerIds.forEach(followerId => {
+          const news = newsSnap.data() as News;
+          news.followerIds.forEach(followerId => {
             const followerRef = this.db.doc(this.getOwnerPath(followerId)).ref;
-            trans.update(followerRef, {
-              promotionFollowingIds: firestore.FieldValue.arrayRemove(id)
-            });
+            trans.update(followerRef, { newsFollowingIds: firestore.FieldValue.arrayRemove(id) });
           });
 
-          trans.update(memberRef, { promotionIds });
+          trans.update(memberRef, { newsIds });
           trans.delete(itemRef);
         });
 
@@ -144,18 +142,17 @@ export class PromotionService {
         .then(() => {
 
           // update current session
-          this.updatePromotionIds(promotionIds);
+          this.updateNewsIds(newsIds);
 
           resolve();
         }, (error) => reject(error))
         .catch((error) => reject(error));
 
     });
-
   }
 
   searchItems(qp: QueryParams) {
-    return new Promise<Pagination<PromotionView>>(async (resolve, reject) => {
+    return new Promise<Pagination<NewsView>>(async (resolve, reject) => {
 
       const memberId = this.currentMember.id;
       const filters = ['isPublished = 1'];
@@ -181,12 +178,11 @@ export class PromotionService {
                     const id = item['objectID'];
                     delete item['objectID'];
                     const isFavorite = this.memberService.checkIsFavorite(item['followerIds']);
-                    return { id, isFavorite, ...item } as PromotionView;
+                    return { id, isFavorite, ...item } as NewsView;
                   });
-
-              resolve(new Pagination<PromotionView>(items, response.nbHits, response.page));
+              resolve(new Pagination<NewsView>(items, response.nbHits, response.page));
             } else {
-              resolve(new Pagination<PromotionView>());
+              resolve(new Pagination<NewsView>());
             }
           },
           err => reject(err)
@@ -199,15 +195,15 @@ export class PromotionService {
   }
 
   public loadPreviewItems() {
-    const previewCollection = this.db.collection<Promotion>(this.dbPath, q => q
+    const previewCollection = this.db.collection<News>(this.dbPath, q => q
       .where('isPublished', '==', true)
       .orderBy('updatedDate', 'desc')
-      .limit(4));
+      .limit(8));
     this.previewItems = previewCollection.get().pipe(map(this.mapItemView));
   }
 
   public loadItemByOwner(ownerId: string) {
-    const ownerCollection = this.db.collection<Promotion>(this.dbPath, q => q
+    const ownerCollection = this.db.collection<News>(this.dbPath, q => q
       .where('ownerId', '==', ownerId)
       .where('isPublished', '==', true)
       .orderBy('updatedDate', 'desc'));
@@ -215,33 +211,32 @@ export class PromotionService {
     this.ownerItems = ownerCollection.get().pipe(map(this.mapItemView));
   }
 
-
-  updateFavorite(item: PromotionView, flag: boolean) {
+  updateFavorite(item: NewsView, flag: boolean) {
 
     return new Promise<any>((resolve, reject) => {
-      if (!item) { reject('Missing Promotion'); return; }
+      if (!item) { reject('Missing News'); return; }
 
-      const promotionId = item.id;
+      const newstId = item.id;
       const memberId = this.currentMember.id;
-      const promotionFollowingIds = this.currentMember.promotionFollowingIds.filter(p => p !== promotionId);
+      const newstFollowingIds = this.currentMember.newsFollowingIds.filter(p => p !== newstId);
       const followerIds = item.followerIds.filter(f => f !== memberId);
 
       const memberRef = this.db.doc(this.getOwnerPath(memberId)).ref;
-      const promotionRef = this.db.doc(this.getPromotionPath(promotionId)).ref;
+      const newstRef = this.db.doc(this.getNewsPath(newstId)).ref;
 
       if (flag) {
-        promotionFollowingIds.push(promotionId);
+        newstFollowingIds.push(newstId);
         followerIds.push(memberId);
       }
 
       this.db.firestore.runTransaction<boolean>(trans => {
-        trans.update(memberRef, { promotionFollowingIds });
-        trans.update(promotionRef, { followerIds });
+        trans.update(memberRef, { newstFollowingIds });
+        trans.update(newstRef, { followerIds });
         return Promise.resolve(true);
       })
         .then(() => {
           // update current session
-          this.updateFollowingIds(promotionFollowingIds);
+          this.updateFollowingIds(newstFollowingIds);
 
           resolve();
         }, (error) => reject(error))
@@ -252,20 +247,20 @@ export class PromotionService {
 
   private updateFollowingIds(ids) {
     const member = this.currentMember;
-    Object.assign(member, { promotionFollowingIds: ids });
+    Object.assign(member, { newsFollowingIds: ids });
     this.memberService.setCurrentMember(member);
   }
 
-  private updatePromotionIds(ids) {
+  private updateNewsIds(ids) {
     const member = this.currentMember;
-    Object.assign(member, { promotionIds: ids });
+    Object.assign(member, { newsIds: ids });
     this.memberService.setCurrentMember(member);
   }
 
   private initCurrentItems() {
     this.currentItems = this.ownerIdSource.pipe(
       switchMap(id =>
-        this.db.collection<Promotion>(this.dbPath,
+        this.db.collection<News>(this.dbPath,
           ref => ref.where('ownerId', '==', id).orderBy('createdDate', 'asc')
         ).snapshotChanges()
       ),

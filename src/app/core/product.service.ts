@@ -179,6 +179,7 @@ export class ProductService {
         if (qp.location.postalCodeSelected) { qp.query += ` ${qp.location.postalCodeSelected}`; }
       }
 
+      this.algoliaIndex.clearCache();
       this.algoliaIndex.search({
         query: qp.query,
         page: qp.pageIndex,

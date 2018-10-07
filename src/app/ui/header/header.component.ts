@@ -37,6 +37,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   get shopTypName() {
     let name = '';
     switch (this.memberType) {
+      case MemberType.ADMIN: name = 'ข้อมูลข่าวประชาสัมพันธ์'; break;
       case MemberType.RETAIL: name = 'ข้อมูลร้านค้าปลีก'; break;
       case MemberType.WHOLE_SALE: name = 'ข้อมูลร้านค้าส่ง ค้าปลีก'; break;
       case MemberType.DEALER: name = 'ข้อมูลผู้ผลิต ผู้จำหน่าย'; break;
@@ -102,7 +103,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.doLogout()
       .then(
         res => {
-          // this.router.navigate(['/home'], );
           window.location.href = '/';
           this.hideBusy();
         },
@@ -119,7 +119,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
           this.notifyService.setWarningMessage('Please verify your email address');
           this.tryLogout();
         } else {
-          this.router.navigate(['/member/shop']);
+          this.router.navigate(['/welcome']);
         }
       }, err => {
         this.hideBusy();

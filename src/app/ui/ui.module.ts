@@ -50,7 +50,6 @@ import { MemberUploadComponent } from './uploaders/member-upload/member-upload.c
 import { MemberEditComponent } from './pages/member/member-edit/member-edit.component';
 import { FileNotFoundComponent } from './pages/file-not-found/file-not-found.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
-import { EventCarouselComponent } from './pages/events/event-carousel/event-carousel.component';
 import { PreviewItemComponent } from './preview/preview-item/preview-item.component';
 import { StorePreviewComponent } from './pages/store/store-preview/store-preview.component';
 import { StoreSearchComponent } from './pages/store/store-search/store-search.component';
@@ -63,6 +62,9 @@ import { CategorySelectComponent } from './select/category-select/category-selec
 import { MemberPreviewComponent } from './pages/member/member-preview/member-preview.component';
 import { LibraryIcons } from './ui.icon.module';
 import { LocationSelectComponent } from './select/location-select/location-select.component';
+import { NewsCarouselComponent } from './pages/news/news-carousel/news-carousel.component';
+import { NewsSearchComponent } from './pages/news/news-search/news-search.component';
+import { MemberNewsComponent } from './pages/member/member-news/member-news.component';
 
 @NgModule({
   imports: [
@@ -81,10 +83,11 @@ import { LocationSelectComponent } from './select/location-select/location-selec
     MemberInfoComponent, MemberRetailComponent, MemberDealerComponent,
     MemberWholesaleComponent, FormatRemoveAtPipe, DropZoneDirective,
     FileUploadComponent, FileSizePipe, MemberUploadComponent, MemberEditComponent,
-    WelcomeComponent, EventCarouselComponent, SearchBarComponent, PreviewItemComponent,
+    WelcomeComponent, SearchBarComponent, PreviewItemComponent,
     StorePreviewComponent, StoreSearchComponent, ProductSearchComponent,
     ProductPreviewComponent, PromotionPreviewComponent, PromotionSearchComponent,
-    AutofocusDirective, FavoriteComponent, CategorySelectComponent, MemberPreviewComponent, LocationSelectComponent
+    AutofocusDirective, FavoriteComponent, CategorySelectComponent, MemberPreviewComponent,
+    LocationSelectComponent, NewsCarouselComponent, NewsSearchComponent, MemberNewsComponent
   ],
   providers: [
     AuthService, LayoutService, AuthGuard, NotifyService, AlgoliaService,

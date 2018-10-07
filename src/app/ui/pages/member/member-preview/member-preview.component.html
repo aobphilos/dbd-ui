@@ -5,14 +5,6 @@
         <h4> {{shopTypName | async}} </h4>
       </div>
       <div class="d-flex">
-        <!-- <div class="icon">
-          <input type="checkbox" name="isWantTrade" id="isWantTrade">
-          <label for="isWantTrade">
-            <fa-icon [icon]="['fas', 'store-alt']" transform="shrink-4"></fa-icon>
-            สนใจขายสินค้า
-          </label>
-        </div>
-        <div class="seperate"></div> -->
         <div>
           <a href="#" class="link-dark" (click)="goBack($event)"> ย้อนกลับ </a>
         </div>
@@ -31,6 +23,16 @@
       <div class="col-6"><label>เขต/อำเภอ :</label><span>{{store.district}}</span></div>
       <div class="col-6"><label>จังหวัด :</label><span>{{store.province}}</span></div>
       <div class="col-6"><label>รหัสไปรษณีย์ :</label><span>{{store.postalCode}}</span></div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-between line-break ">
+    <div>
+      <h4>คำบรรยายร้านค้า</h4>
+    </div>
+  </div>
+  <div class="d-flex mt-2 mb-4">
+    <div class="px-5">
+      <span ellipsis>{{store.storeDescription}}</span>
     </div>
   </div>
   <app-store-preview [ownerId]="store.id"></app-store-preview>

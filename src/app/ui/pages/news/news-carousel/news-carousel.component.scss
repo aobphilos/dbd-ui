@@ -1,0 +1,45 @@
+.news-carousel {
+  background-color: rgba(150, 150, 150, 0.3);
+  height: 9.5rem;
+
+  .link {
+    color: #f7a600;
+  }
+
+  img {
+    &.item {
+      max-width: 26rem;
+      max-height: 9.5rem;
+    }
+  }
+
+  .top {
+    top: 0;
+    position: inherit;
+    margin: 0.5rem;
+    width: 95%;
+    height: 2rem;
+    font-family: 'rsubold';
+    font-size: 18px;
+  }
+
+  .bottom {
+    bottom: 0;
+    position: fixed;
+    float: right;
+    margin: 0;
+    font-size: 16px;
+
+    &.right {
+      cursor: pointer;
+      right: 2.25rem;
+    }
+  }
+
+  .middle {
+    position: inherit;
+    margin: 0 1.35rem 0 0.5rem;
+    height: 5.5rem;
+    font-size: 16px;
+  }
+}

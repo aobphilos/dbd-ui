@@ -1,0 +1,22 @@
+<div class="p-3 bg-white table-bordered">
+  <div class="preview-section d-flex flex-wrap mb-3">
+    <div class="product col-12 mb-4">
+      <div class="float-left">
+        <h5>ข่าวประชาสัมพันธ์</h5>
+      </div>
+      <div class="float-right">
+      </div>
+    </div>
+    <div class="col-12 mt-4 text-center text-black" *ngIf="totalHits == 0">
+      <h5>ไม่พบ ข้อมูลข่าวประชาสัมพันธ์</h5>
+    </div>
+    <ng-template ngFor let-item [ngForOf]="newsItems | async" let-i="index"
+      *ngIf="totalHits > 0">
+      <app-preview-item uploaderType="NEWS" class="col-12" [item]="item"></app-preview-item>
+    </ng-template>
+    <div class="col-12 mt-3" *ngIf="totalHits > 0">
+      <ngb-pagination class="d-flex justify-content-end" [collectionSize]="totalHits"
+        [(page)]="currentPage" [pageSize]="10" (pageChange)="onPageChange()"></ngb-pagination>
+    </div>
+  </div>
+</div>

@@ -1,19 +1,46 @@
-<div class="preview rounded w-100 mb-2" [ngClass]="{'border': !isStoreView, 'preview-store': isStore, 'view': isStoreView}">
+<div class="preview rounded w-100 mb-2" [ngClass]="{'border': !isStoreView, 'preview-store': isStore, 'preview-news': isNews, 'view': isStoreView}">
   <div class="d-flex align-items-center display" *ngIf="hasItem">
     <app-favorite class="favorite" [(isActive)]="item.isFavorite" (changed)="toggleFavorite($event)"
       *ngIf="showFavorite && !isStoreView"></app-favorite>
-    <div class="display-content product-item" *ngIf="!isStore">
+    <div class="display-content product-item" *ngIf="isProduct">
       <div class="product-image">
         <img class="rounded border" [src]="item.imageUrl">
       </div>
       <div class="product-detail">
-        <div class="top">
-          <h4>{{item.name}}</h4>
+        <div class="top" placement="top" ngbTooltip="{{item.name}}" ellipsis>
+          {{item.name}} </div>
+        <div class="middle" ellipsis>{{item.description}}</div>
+        <div class="bottom">
+          <div class="text-red">{{item.price | number:'1.2'}} บาท</div>
+          <div class="link text-red" (click)="goStoreInfo(item.ownerId)">{{item.owner.storeName}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="display-content product-item" *ngIf="isPromotion">
+      <div class="product-image">
+        <img class="rounded border" [src]="item.imageUrl">
+      </div>
+      <div class="product-detail">
+        <div class="top" placement="top" ngbTooltip="{{item.name}}" ellipsis>{{item.name}}
         </div>
         <div class="middle" ellipsis>{{item.description}}</div>
-        <div class="bottom text-red" [hidden]="isPromotion">{{item.price |  number:'1.2'}} บาท</div>
-        <div class="bottom text-gray" [hidden]="isProduct">{{item.period}}</div>
-        <div class="bottom right text-red" (click)="goStoreInfo(item.ownerId)">{{item.owner.storeName}}</div>
+        <div class="bottom">
+          <div class="text-gray">{{item.period}}</div>
+          <div class="right text-right text-red" (click)="goStoreInfo(item.ownerId)">{{item.owner.storeName}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="display-content news-item" *ngIf="isNews">
+      <div class="news-image">
+        <img class="rounded" [src]="item.imageUrl">
+      </div>
+      <div class="news-detail">
+        <div class="top" placement="top" ngbTooltip="{{item.topic}}" ellipsis>{{item.topic}}
+        </div>
+        <div class="middle" ellipsis>{{item.description}}</div>        
+        <div class="bottom right" >
+          <a [href]="item.moreDetailUrl" class="link" target="_blank">อ่านเพิ่มเติม</a>
+        </div>
       </div>
     </div>
     <div class="display-content store-item" *ngIf="isStore">
@@ -28,7 +55,6 @@
         <div class="store-button d-flex justify-content-around my-3 px-4">
           <div><button type="button" class="btn btn-outline-secondary text-red"
               (click)="goStoreInfo(item.id)">ข้อมูลร้านค้า</button></div>
-          <!-- <div><button type="button" class="btn btn-outline-secondary text-red">สนใจขายสินค้า</button></div> -->
         </div>
       </div>
     </div>

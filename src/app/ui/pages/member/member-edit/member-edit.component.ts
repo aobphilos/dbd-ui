@@ -17,6 +17,7 @@ export class MemberEditComponent implements OnInit {
   private showRetailSource: Observable<boolean>;
   private showWholesaleSource: Observable<boolean>;
   private showDealerSource: Observable<boolean>;
+  private showNewsSource: Observable<boolean>;
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -48,6 +49,10 @@ export class MemberEditComponent implements OnInit {
     return this.showDealerSource;
   }
 
+  get showNews() {
+    return this.showNewsSource;
+  }
+
   get memberId() {
     return this.memberIdSource;
   }
@@ -61,6 +66,7 @@ export class MemberEditComponent implements OnInit {
         this.showRetailSource = of(this.isShop && member.memberType === MemberType.RETAIL);
         this.showWholesaleSource = of(this.isShop && member.memberType === MemberType.WHOLE_SALE);
         this.showDealerSource = of(this.isShop && member.memberType === MemberType.DEALER);
+        this.showNewsSource = of(this.isShop && member.memberType === MemberType.ADMIN);
         this.hideBusy();
       }
     });

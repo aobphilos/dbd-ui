@@ -1,5 +1,6 @@
 export enum UploaderType {
   STORE = 'STORE',
   PRODUCT = 'PRODUCT',
-  PROMOTION = 'PROMOTION'
+  PROMOTION = 'PROMOTION',
+  NEWS = 'NEWS'
 }
