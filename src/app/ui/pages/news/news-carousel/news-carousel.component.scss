@@ -1,0 +1,28 @@
+.news-carousel {
+  background-color: rgba(150, 150, 150, 0.3);
+  height: 9.5rem;
+
+
+  img {
+    &.item {
+      max-width: 26rem;
+      max-height: 9.5rem;
+    }
+  }
+
+  .top {
+    top: 0;
+    position: inherit;
+    margin: 0.5rem;
+    width: 95%;
+    height: 2.25rem;
+    font-family: 'rsubold';
+    font-size: 20px;
+  }
+
+  .middle {
+    position: inherit;
+    margin: 0 1.35rem 0 0.5rem;
+    height: 5.5rem;
+  }
+}

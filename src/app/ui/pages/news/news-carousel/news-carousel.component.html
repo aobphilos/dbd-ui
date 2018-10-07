@@ -1,0 +1,15 @@
+<div class="news-carousel" *ngIf="newsItems | async as items">
+  <ngb-carousel>
+    <ng-template ngbSlide *ngFor="let item of items">
+      <div class="d-flex">
+        <div class="col-5">
+          <img class="item" [src]="item.imageUrl">
+        </div>
+        <div class="col-7 my-auto">
+          <div class="top line-break" ellipsis> {{item.topic}} </div>
+          <div class="middle" ellipsis> {{item.description}} </div>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>

@@ -13,4 +13,7 @@
   <div *ngIf="showDealer | async">
     <app-member-dealer [ownerId]="memberId"></app-member-dealer>
   </div>
+  <div *ngIf="showNews | async">
+      <app-member-news [ownerId]="memberId"></app-member-news>
+    </div>
 </div>

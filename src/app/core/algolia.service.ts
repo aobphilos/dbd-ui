@@ -12,6 +12,7 @@ export class AlgoliaService {
   memberStoreIndex: algoliasearch.Index;
   productIndex: algoliasearch.Index;
   promotionIndex: algoliasearch.Index;
+  newsIndex: algoliasearch.Index;
 
   constructor() {
     this.algolia = algoliasearch(
@@ -23,7 +24,7 @@ export class AlgoliaService {
     this.initMemberStoreIndex();
     this.initProductIndex();
     this.initPromotionIndex();
-
+    this.initNewsIndex();
   }
 
   private initMemberIndex() {
@@ -83,6 +84,26 @@ export class AlgoliaService {
         'description',
         'period',
         'urlLink',
+        'owner.storeName',
+        'owner.storeDescription',
+        'owner.address',
+        'owner.province',
+        'owner.district',
+        'owner.subDistrict',
+        'owner.postalCode'
+      ]
+    });
+  }
+
+  private initNewsIndex() {
+    this.newsIndex = this.algolia.initIndex('News');
+    this.newsIndex.setSettings({
+      attributesForFaceting: ['followerIds'],
+      searchableAttributes: [
+        'isPublished',
+        'followerIds',
+        'topic',
+        'description',
         'owner.storeName',
         'owner.storeDescription',
         'owner.address',

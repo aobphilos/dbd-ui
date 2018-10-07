@@ -1,0 +1,11 @@
+<div class="d-flex justify-content-between mx-auto mb-3 line-break">
+  <div>
+    <h4>ข่าวประชาสัมพันธ์</h4>
+  </div>
+</div>
+<div class="member-upload d-flex flex-wrap mb-3">
+  <ng-template ngFor let-item [ngForOf]="newsItems | async" let-i="index">
+    <app-member-upload uploaderType="NEWS" class="col-6" [item]="item"></app-member-upload>
+  </ng-template>
+  <app-member-upload uploaderType="NEWS" class="col-6"></app-member-upload>
+</div>

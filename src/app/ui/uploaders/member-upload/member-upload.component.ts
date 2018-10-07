@@ -4,18 +4,20 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '../../../model/store';
 import { Product } from '../../../model/product';
 import { Promotion } from '../../../model/promotion';
+import { News } from '../../../model/news';
 import { FileUploadComponent } from '../file-upload/file-upload.component';
 import { NotifyService } from '../../notify/notify.service';
 import { StoreService } from '../../../core/store.service';
 import { ProductService } from '../../../core/product.service';
 import { PromotionService } from '../../../core/promotion.service';
+import { NewsService } from '../../../core/news.service';
 import { IndicatorService } from '../../indicator/indicator.service';
 import { MemberService } from '../../../core/member.service';
 import { BehaviorSubject } from 'rxjs';
 import { Member } from '../../../model/member';
 import { OwnerView } from '../../../model/views/owner-view';
 
-type ImageUploadModel = Store | Product | Promotion;
+type ImageUploadModel = Store | Product | Promotion | News;
 
 @Component({
   selector: 'app-member-upload',
@@ -43,6 +45,7 @@ export class MemberUploadComponent implements OnInit {
     private storeService: StoreService,
     private productService: ProductService,
     private promotionService: PromotionService,
+    private newsService: NewsService,
     private indicatorService: IndicatorService,
     private memberService: MemberService
   ) {
@@ -66,6 +69,7 @@ export class MemberUploadComponent implements OnInit {
       case UploaderType.STORE: title += 'ข้อมูลภาพถ่ายร้าน'; break;
       case UploaderType.PRODUCT: title += 'ข้อมูลรายการสินค้า'; break;
       case UploaderType.PROMOTION: title += 'ข้อมูลรายการส่งเสริมการตลาด'; break;
+      case UploaderType.NEWS: title += 'ข้อมูลข่าวประชาสัมพันธ์'; break;
     }
     return title;
   }
@@ -84,6 +88,10 @@ export class MemberUploadComponent implements OnInit {
 
   get isPromotion() {
     return this.uploaderType === UploaderType.PROMOTION;
+  }
+
+  get isNews() {
+    return this.uploaderType === UploaderType.NEWS;
   }
 
   private logError(err) {
@@ -157,6 +165,8 @@ export class MemberUploadComponent implements OnInit {
         deferred = this.productService.delete(this.model.id);
       } else if (this.isPromotion) {
         deferred = this.promotionService.delete(this.model.id);
+      } else if (this.isNews) {
+        deferred = this.newsService.delete(this.model.id);
       } else {
         deferred = this.storeService.delete(this.model.id);
       }
@@ -180,6 +190,8 @@ export class MemberUploadComponent implements OnInit {
         deferred = this.productService.upsert(this.model as Product);
       } else if (this.isPromotion) {
         deferred = this.promotionService.upsert(this.model as Promotion);
+      } else if (this.isNews) {
+        deferred = this.newsService.upsert(this.model as News);
       } else {
         deferred = this.storeService.upsert(this.model as Store);
       }
@@ -194,6 +206,8 @@ export class MemberUploadComponent implements OnInit {
       this.model = (this.item) ? { ...this.item } as Product : new Product();
     } else if (this.isPromotion) {
       this.model = (this.item) ? { ...this.item } as Promotion : new Promotion();
+    } else if (this.isNews) {
+      this.model = (this.item) ? { ...this.item } as News : new News();
     } else {
       this.model = (this.item) ? { ...this.item } as Store : new Store();
     }
@@ -210,7 +224,7 @@ export class MemberUploadComponent implements OnInit {
     this.imageUrlSubject.subscribe(url => this.imageUrl = url);
     this.memberService.currentMember.subscribe(member => {
       if (member) {
-        this.owner =  member;
+        this.owner = member;
         this.buildModel();
       }
     });

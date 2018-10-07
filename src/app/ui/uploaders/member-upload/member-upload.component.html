@@ -1,4 +1,4 @@
-<div class="uploader border rounded w-100 mb-2">
+<div class="uploader border rounded w-100 mb-2" [ngClass]="{'news': isNews}">
   <div class="empty" *ngIf="!hasItem" (click)="openModal(uploadDetail)">
     <div>
       <span>
@@ -18,17 +18,26 @@
         <fa-icon alt="ลบข้อมูล" [icon]="['fas', 'trash-alt']" size="3x" (click)="openModal(confirm)"></fa-icon>
       </span>
     </div>
-    <div class="display-content" [ngClass]="{'store-item': isStore, 'product-item': !isStore}">
+    <div class="display-content" [ngClass]="{'store-item': isStore, 'product-item': !isStore}"
+      *ngIf="!isNews">
       <div [ngClass]="{'product-image': !isStore}">
         <img class="rounded" [src]="imageUrl" [ngClass]="{'border': !isStore}">
       </div>
       <div [ngClass]="{'product-detail': !isStore}" [hidden]="isStore">
-        <div class="top">
-          <h4>{{model.name}}</h4>
-        </div>
+        <div class="top" ellipsis> {{model.name}} </div>
         <div class="middle" ellipsis>{{model.description}}</div>
-        <div class="bottom text-red" [hidden]="isPromotion">{{item.price |  number:'1.2'}} บาท</div>
+        <div class="bottom text-red" [hidden]="isPromotion">{{model.price |
+          number:'1.2'}} บาท</div>
         <div class="bottom" [hidden]="isProduct">{{model.period}}</div>
+      </div>
+    </div>
+    <div class="display-content news-item" *ngIf="isNews">
+      <div class="news-image">
+        <img class="rounded" [src]="imageUrl">
+      </div>
+      <div class="news-detail">
+        <div class="top" ellipsis>{{model.topic}} </div>
+        <div class="middle" ellipsis>{{model.description}}</div>
       </div>
     </div>
   </div>
@@ -79,12 +88,27 @@
               <div class="col-12 mt-3">
                 <label for="urlLink">URL</label>
                 <input class="form-control" type="url" id="urlLink" [(ngModel)]="model.urlLink"
-                  name="urlLink" maxlength="200">
+                  name="urlLink" maxlength="500">
               </div>
               <div class="col-12 mt-3">
                 <label for="period">ช่วงเวลา</label>
                 <input class="form-control" type="text" id="period" [(ngModel)]="model.period"
                   name="period" maxlength="200">
+              </div>
+            </div>
+          </div>
+          <div class="form-group" *ngIf="isNews">
+            <div class="row">
+              <div class="col-12">
+                <label for="name">หัวข้อข่าว</label>
+                <input class="form-control" type="text" id="topic" [(ngModel)]="model.topic"
+                  name="topic" maxlength="250">
+              </div>
+              <div class="col-12 mt-3">
+                <label for="moreDetailUrl">URL</label>
+                <input class="form-control" type="url" id="moreDetailUrl"
+                  [(ngModel)]="model.moreDetailUrl" name="moreDetailUrl"
+                  maxlength="500">
               </div>
             </div>
           </div>

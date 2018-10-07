@@ -19,6 +19,7 @@ import { StoreSearchComponent } from './pages/store/store-search/store-search.co
 import { ProductSearchComponent } from './pages/product/product-search/product-search.component';
 import { PromotionSearchComponent } from './pages/promotion/promotion-search/promotion-search.component';
 import { MemberPreviewComponent } from './pages/member/member-preview/member-preview.component';
+import { NewsSearchComponent } from './pages/news/news-search/news-search.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'list/product', component: ProductSearchComponent, canActivate: [AuthGuard] },
   { path: 'list/promotion/:keyword', component: PromotionSearchComponent, canActivate: [AuthGuard] },
   { path: 'list/promotion', component: PromotionSearchComponent, canActivate: [AuthGuard] },
+  { path: 'list/news', component: NewsSearchComponent, canActivate: [AuthGuard] },
   { path: '**', component: FileNotFoundComponent }
 ];
 
@@ -79,7 +81,18 @@ export class UiRoutingModule {
   }
 
   private filterSearchBarZone(path: string) {
-    const regPath = `^(${UrlPath.WELCOME}|${UrlPath.SHOP}|${UrlPath.LIST_SHOP}|${UrlPath.LIST_PRODUCT}|${UrlPath.LIST_PROMOTION})`;
+
+    const paths = [
+      UrlPath.WELCOME,
+      UrlPath.SHOP,
+      UrlPath.LIST_SHOP,
+      UrlPath.LIST_PRODUCT,
+      UrlPath.LIST_PROMOTION,
+      UrlPath.LIST_NEWS
+    ];
+
+    const regPath = `^(${paths.join('|')})`;
+
     const reg = new RegExp(regPath, 'i');
     return reg.test(path);
   }

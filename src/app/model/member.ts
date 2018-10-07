@@ -31,11 +31,13 @@ export class Member extends ModelBase {
   storeIds: string[];
   productIds: string[];
   promotionIds: string[];
+  newsIds: string[];
 
   // Following
   storeFollowingIds: string[];
   productFollowingIds: string[];
   promotionFollowingIds: string[];
+  newsFollowingIds: string[];
 
   constructor() {
     super();
@@ -57,9 +59,12 @@ export class Member extends ModelBase {
     this.storeIds = [];
     this.productIds = [];
     this.promotionIds = [];
+    this.newsIds = [];
+
     this.storeFollowingIds = [];
     this.productFollowingIds = [];
     this.promotionFollowingIds = [];
+    this.newsFollowingIds = [];
   }
 
 }

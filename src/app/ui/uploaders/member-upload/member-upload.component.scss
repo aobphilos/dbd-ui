@@ -3,10 +3,14 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 10.5rem;
+  height: 11rem;
   min-width: 15.5rem;
   border-radius: 0.5rem;
   background: white;
+
+  &.news {
+    height: 8.75rem;
+  }
 
   .file-icon {
     fa-icon {
@@ -94,6 +98,10 @@
             position: inherit;
             margin: 0.75rem;
             margin-bottom: 1rem;
+            width: 82%;
+            height: 2.25rem;
+            font-family: 'rsubold';
+            font-size: 24px;
           }
 
           .bottom {
@@ -119,6 +127,57 @@
           max-width: 100%;
           width: 100%;
           padding: 0;
+        }
+      }
+
+      &.news-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        .news-image {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 60%;
+          bottom: 0;
+          padding: 0 1rem;
+
+          img {
+            max-height: 9.5rem;
+            max-width: 13rem;
+            padding: 0.35rem;
+            height: 94%;
+          }
+        }
+
+        .news-detail {
+          position: absolute;
+          top: 0;
+          left: 40%;
+          right: 0;
+          bottom: 0;
+          padding: 0.65rem 0.25rem;
+
+          .top {
+            top: 0;
+            position: inherit;
+            margin: 0.75rem;
+            margin-bottom: 1rem;
+            width: 87%;
+            height: 2.25rem;
+            font-family: 'rsubold';
+            font-size: 24px;
+          }
+
+          .middle {
+            position: inherit;
+            margin: 2.5rem 0.75rem 1rem 0.75rem;
+            padding-right: 1rem;
+            height: 6.5rem;
+          }
         }
       }
     }
