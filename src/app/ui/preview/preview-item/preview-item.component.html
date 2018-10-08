@@ -48,7 +48,7 @@
         <img class="rounded" [src]="item.imageUrl">
       </div>
       <div class="store-detail" *ngIf="!isStoreView">
-        <div class="mt-2">
+        <div class="name mt-2" placement="top" ngbTooltip="{{item.owner.storeName}}" ellipsis>
           <h4>{{item.owner.storeName}}</h4>
         </div>
         <div class="detail" ellipsis> {{item.owner.storeDescription}} </div>
