@@ -1,6 +1,7 @@
 import { Component, OnInit, forwardRef } from '@angular/core';
 import { CategoryService } from '../../../core/category.service';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Subject } from 'rxjs';
 
 const CUSTOM_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -19,6 +20,9 @@ export class CategorySelectComponent implements OnInit, ControlValueAccessor {
   categorySelected: string;
   categories: string[];
   categoryBuffer: string[];
+  categoryFiltered: string[];
+
+  doSearchSubject: Subject<any>;
 
   private bufferSize = 50;
   private itemBeforeFetchingMore = 10;
@@ -27,11 +31,39 @@ export class CategorySelectComponent implements OnInit, ControlValueAccessor {
   constructor(private categoryService: CategoryService) {
     this.categories = [];
     this.categoryBuffer = [];
+    this.categoryFiltered = [];
+
+    this.doSearchSubject = new Subject<any>();
+    this.doSearchSubject.subscribe(a => {
+      this.categoryBuffer = [];
+      this.categoryFiltered = [];
+
+      if (a) {
+        const termReg = new RegExp(`^(${a})`, 'i');
+        const filtered = this.categories.filter(cat => termReg.test(cat));
+        if (filtered && filtered.length > 0) {
+          this.categoryFiltered = [...filtered];
+        }
+      } else {
+        this.categoryFiltered = [...this.categories];
+      }
+
+      setTimeout(() => this.updateBuffer(), 0);
+    });
+  }
+
+  private updateBuffer() {
+    this.categoryBuffer = this.categoryFiltered.slice(0, this.bufferSize);
   }
 
   fetchMore() {
+
+    if (this.categoryBuffer.length >= this.categoryFiltered.length) {
+      return;
+    }
+
     const len = this.categoryBuffer.length;
-    const more = this.categories.slice(len, this.bufferSize + len);
+    const more = this.categoryFiltered.slice(len, this.bufferSize + len);
     this.loading = true;
     // using timeout here to simulate backend API delay
     setTimeout(() => {
@@ -88,6 +120,7 @@ export class CategorySelectComponent implements OnInit, ControlValueAccessor {
     this.categoryService.currentItems.subscribe(cats => {
       if (cats) {
         this.categories.splice(0, this.categories.length, ...cats);
+        this.categoryFiltered.splice(0, this.categoryFiltered.length, ...cats);
         this.categoryBuffer = this.categories.slice(0, this.bufferSize);
       }
     });
