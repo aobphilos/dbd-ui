@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, of } from 'rxjs';
-import { combineLatest, map } from 'rxjs/operators';
+import { map, combineLatest } from 'rxjs/operators';
+
 import { PromotionService } from '../../../../core/promotion.service';
-import { QueryParams } from '../../../../model/queryParams';
 import { PromotionView } from '../../../../model/views/promotion-view';
+import { QueryParams } from '../../../../model/queryParams';
 import { SearchBarService } from '../../../search-bar/search-bar.service';
 import { SearchType } from '../../../../enum/search-type';
-
+import { ILocationSelected } from '../../../../model/interfaces/location-selected';
 
 @Component({
   selector: 'app-promotion-search',
@@ -20,6 +21,7 @@ export class PromotionSearchComponent implements OnInit {
 
   isFavorite = false;
   sortDirection = 'asc';
+  locationSelected: ILocationSelected;
 
   currentPage: number;
   totalHits: number;
@@ -34,6 +36,13 @@ export class PromotionSearchComponent implements OnInit {
   ) {
     this.currentPage = 1;
     this.totalHits = 0;
+
+    this.locationSelected = {
+      provinceSelected: null,
+      districtSelected: null,
+      subDistrictSelected: null,
+      postalCodeSelected: null
+    };
   }
 
   get promotionItems() {
@@ -53,11 +62,13 @@ export class PromotionSearchComponent implements OnInit {
   }
 
   private getQueryParams(pageIndex: number) {
-    return new QueryParams(
+    const qp = new QueryParams(
       this.keyword,
       this.isFavorite,
       pageIndex
     );
+    qp.location = this.locationSelected;
+    return qp;
   }
 
   private goSearchNextPage(pageIndex: number) {
