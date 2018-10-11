@@ -11,18 +11,86 @@
       </div>
     </div>
     <div class="d-flex flex-wrap owner-detail">
-      <div class="col-6"><label>ชื่อร้าน / บริษัท :</label><span>{{store.storeName}}</span></div>
-      <div class="col-6"><label>บริหารงานโดย :</label><span>{{store.ownerName}}</span></div>
-      <div class="col-6"><label>หมายเลขโทรศัพท์ :</label><span>{{store.phone}}</span></div>
-      <div class="col-6"><label>อีเมล์ :</label><span>{{store.email}}</span></div>
-      <div class="col-6"><label>Facebook :</label><span>{{store.facebookId}}</span></div>
-      <div class="col-6"><label>Line :</label><span>{{store.lineId}}</span></div>
-      <div class="col-6"><label>Website :</label><span>{{store.website}}</span></div>
-      <div class="col-12"><label>ที่อยู่ :</label><span>{{store.address}}</span></div>
-      <div class="col-6"><label>แขวง/ตำบล :</label><span>{{store.subDistrict}}</span></div>
-      <div class="col-6"><label>เขต/อำเภอ :</label><span>{{store.district}}</span></div>
-      <div class="col-6"><label>จังหวัด :</label><span>{{store.province}}</span></div>
-      <div class="col-6"><label>รหัสไปรษณีย์ :</label><span>{{store.postalCode}}</span></div>
+      <div class="col-6 d-flex">
+        <div>
+          <label>ชื่อร้าน / บริษัท :</label>
+        </div>
+        <div class="text-desc" placement="top" ngbTooltip="{{store.storeName}}"
+          ellipsis>{{store.storeName}} </div>
+      </div>
+      <div class="col-6 d-flex">
+        <div>
+          <label>บริหารงานโดย :</label>
+        </div>
+        <div class="text-desc" placement="top" ngbTooltip="{{store.ownerName}}"
+          ellipsis>{{store.ownerName}}</div>
+      </div>
+      <div class="col-6 d-flex">
+        <div>
+          <label>หมายเลขโทรศัพท์ :</label>
+        </div>
+        <div class="text-desc" placement="top" ngbTooltip="{{store.phone}}"
+          ellipsis>{{store.phone}}</div>
+      </div>
+      <div class="col-6 d-flex">
+        <div>
+          <label>อีเมล์ :</label>
+        </div>
+        <div class="text-desc" placement="top" ngbTooltip="{{store.email}}"
+          ellipsis>{{store.email}}</div>
+      </div>
+      <div class="col-6 d-flex">
+        <div>
+          <label>Facebook :</label>
+        </div>
+        <div class="text-desc" placement="top" ngbTooltip="{{store.facebookId}}"
+          ellipsis>{{store.facebookId}}</div>
+      </div>
+      <div class="col-6 d-flex">
+        <div>
+          <label>Line :</label>
+        </div>
+        <div class="text-desc" placement="top" ngbTooltip="{{store.lineId}}"
+          ellipsis>{{store.lineId}}</div>
+      </div>
+      <div class="col-6 d-flex">
+        <div>
+          <label>Website :</label>
+        </div>
+        <div class="text-desc" placement="top" ngbTooltip="{{store.website}}"
+          ellipsis>{{store.website}}</div>
+      </div>
+      <div class="col-12 d-flex">
+        <div>
+          <label>ที่อยู่ :</label>
+        </div>
+        <div class="text-desc" placement="top" ngbTooltip="{{store.address}}"
+          ellipsis>{{store.address}}</div>
+      </div>
+      <div class="col-6 d-flex">
+        <div>
+          <label>แขวง/ตำบล :</label>
+        </div>
+        <div class="text-desc">{{store.subDistrict}}</div>
+      </div>
+      <div class="col-6 d-flex">
+        <div>
+          <label>เขต/อำเภอ :</label>
+        </div>
+        <div class="text-desc">{{store.district}}</div>
+      </div>
+      <div class="col-6 d-flex">
+        <div>
+          <label>จังหวัด :</label>
+        </div>
+        <div class="text-desc">{{store.province}}</div>
+      </div>
+      <div class="col-6 d-flex">
+        <div>
+          <label>รหัสไปรษณีย์ :</label>
+        </div>
+        <div class="text-desc">{{store.postalCode}}</div>
+      </div>
     </div>
   </div>
   <div class="d-flex justify-content-between line-break ">
