@@ -36,29 +36,36 @@
         <div>
           <label>อีเมล์ :</label>
         </div>
-        <div class="text-desc" placement="top" ngbTooltip="{{store.email}}"
-          ellipsis>{{store.email}}</div>
+        <a class="link" href="mailto:{{store.email}}" [hidden]="!(store.email) || store.email === ''">
+          <div class="text-desc"> {{store.email}} </div>
+        </a>
       </div>
       <div class="col-6 d-flex">
         <div>
           <label>Facebook :</label>
         </div>
-        <div class="text-desc" placement="top" ngbTooltip="{{store.facebookId}}"
-          ellipsis>{{store.facebookId}}</div>
+        <a class="link" href="{{store.facebookId}}" target="_blank" [hidden]="!(store.facebookId) || store.facebookId === ''">
+          <div class="text-desc" placement="top" ngbTooltip="{{store.facebookId}}"
+            ellipsis>{{store.facebookId}}</div>
+        </a>
       </div>
       <div class="col-6 d-flex">
         <div>
           <label>Line :</label>
         </div>
-        <div class="text-desc" placement="top" ngbTooltip="{{store.lineId}}"
-          ellipsis>{{store.lineId}}</div>
+        <a class="link" href="http://line.me/ti/p/~{{store.lineId}}" target="_blank"
+          [hidden]="!(store.lineId) || store.lineId === ''">
+          <div class="text-desc">{{store.lineId}}</div>
+        </a>
       </div>
       <div class="col-6 d-flex">
         <div>
           <label>Website :</label>
         </div>
-        <div class="text-desc" placement="top" ngbTooltip="{{store.website}}"
-          ellipsis>{{store.website}}</div>
+        <a class="link" href="{{store.website}}" target="_blank" [hidden]="!(store.website) || store.website === ''">
+          <div class="text-desc" placement="top" ngbTooltip="{{store.website}}"
+            ellipsis>{{store.website}}</div>
+        </a>
       </div>
       <div class="col-12 d-flex">
         <div>
