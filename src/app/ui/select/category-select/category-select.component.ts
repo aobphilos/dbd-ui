@@ -64,12 +64,7 @@ export class CategorySelectComponent implements OnInit, ControlValueAccessor {
 
     const len = this.categoryBuffer.length;
     const more = this.categoryFiltered.slice(len, this.bufferSize + len);
-    this.loading = true;
-    // using timeout here to simulate backend API delay
-    setTimeout(() => {
-      this.loading = false;
-      this.categoryBuffer = this.categoryBuffer.concat(more);
-    }, 200);
+    this.categoryBuffer = this.categoryBuffer.concat(more);
   }
 
   scroll({ end }) {

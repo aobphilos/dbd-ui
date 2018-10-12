@@ -7,26 +7,35 @@
       <div class="float-right">
       </div>
     </div>
-    <div class="col-7 mb-4">
-      <div class="input-group mx-auto">
-        <app-location-select id="locationSelected" name="locationSelected"
-          [isSearchMode]="false" class="w-100" (ngModelChange)="doSearch()"
-          [(ngModel)]="locationSelected"></app-location-select>
+    <div class="col-12 my-2">
+      <div class="row">
+        <app-category-select class="col-6" id="categoryName" name="categoryName"
+          [(ngModel)]="categoryName" (ngModelChange)="doSearch()"></app-category-select>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-10">
+              <select class="form-control" [(ngModel)]="priceRange" (change)="doSearch()">
+                <option value="none">ช่วงราคา</option>
+                <option value="0-500">ไม่เกิน 500 บาท</option>
+                <option value="500-1000">ตั้งแต่ 500 ถึง 1000 บาท</option>
+                <option value="1000-">ตั้งแต่ 1000 บาทขึ้นไป</option>
+              </select>
+            </div>
+            <div class="form-check my-auto col-2">
+              <input class="form-check-input" type="checkbox" id="followingCheck"
+                [(ngModel)]="isFavorite" (change)="doSearch()">
+              <label class="form-check-label" for="followingCheck"> ถูกใจ
+              </label>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col-5 mt-2 mb-4">
+    <div class="col-12 mb-4">
       <div class="input-group mx-auto">
-        <select class="form-control mr-4" [(ngModel)]="priceRange" (change)="doSearch()">
-          <option value="none">ช่วงราคา</option>
-          <option value="0-500">ไม่เกิน 500 บาท</option>
-          <option value="500-1000">ตั้งแต่ 500 ถึง 1000 บาท</option>
-          <option value="1000-">ตั้งแต่ 1000 บาทขึ้นไป</option>
-        </select>
-        <div class="form-check my-auto">
-          <input class="form-check-input" type="checkbox" id="followingCheck"
-            [(ngModel)]="isFavorite" (change)="doSearch()">
-          <label class="form-check-label" for="followingCheck"> ถูกใจ </label>
-        </div>
+        <app-location-select id="locationSelected" name="locationSelected"
+          [isSearchMode]="true" class="w-100" (ngModelChange)="doSearch()"
+          [(ngModel)]="locationSelected"></app-location-select>
       </div>
     </div>
     <div class="col-12 mt-4 text-center text-black" *ngIf="totalHits == 0">

@@ -7,20 +7,18 @@
       <div class="float-right">
       </div>
     </div>
-    <div class="col-7 mb-4">
+    <div class="col-11 mb-4">
       <div class="input-group mx-auto">
         <app-location-select id="locationSelected" name="locationSelected"
-          [isSearchMode]="false" class="w-100" (ngModelChange)="doSearch()"
+          [isSearchMode]="true" class="w-100" (ngModelChange)="doSearch()"
           [(ngModel)]="locationSelected"></app-location-select>
       </div>
     </div>
-    <div class="col-5 mt-2 mb-4">
-      <div class="input-group justify-content-end">
-        <div class="form-check my-auto">
-          <input class="form-check-input" type="checkbox" id="followingCheck"
-            [(ngModel)]="isFavorite" (change)="doSearch()">
-          <label class="form-check-label" for="followingCheck"> ถูกใจ </label>
-        </div>
+    <div class="col-1 mt-2 mb-4">
+      <div class="form-check my-auto">
+        <input class="form-check-input" type="checkbox" id="followingCheck"
+          [(ngModel)]="isFavorite" (change)="doSearch()">
+        <label class="form-check-label" for="followingCheck"> ถูกใจ </label>
       </div>
     </div>
     <div class="col-12 mt-4 text-center text-black" *ngIf="totalHits == 0">
