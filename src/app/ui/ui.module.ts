@@ -11,6 +11,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../../environments/environment';
 import { EllipsisModule } from 'ngx-ellipsis';
+import { LightboxModule } from 'ngx-lightbox';
 
 import { FileSizePipe } from '../core/pipe/file-size.pipe';
 import { FormatRemoveAtPipe } from '../core/pipe/format-remove-at.pipe';
@@ -75,7 +76,7 @@ import { MemberNewsComponent } from './pages/member/member-news/member-news.comp
     AngularFireStorageModule,
     CommonModule, UiRoutingModule, FormsModule, ReactiveFormsModule,
     HttpClientModule, NgSelectModule, FontAwesomeModule,
-    EllipsisModule
+    EllipsisModule, LightboxModule
   ],
   declarations: [
     LayoutComponent, HeaderComponent, FooterComponent, FileNotFoundComponent,

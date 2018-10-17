@@ -3,7 +3,9 @@ import { ILocationSelected } from './interfaces/location-selected';
 
 export class QueryParams {
 
+  public categoryName = '';
   public priceRange = '';
+
   public memberType: MemberType = MemberType.NONE;
   public location: ILocationSelected;
 

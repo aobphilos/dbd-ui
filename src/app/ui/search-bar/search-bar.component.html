@@ -3,7 +3,7 @@
     <div class="input-group mx-auto frame">
       <input type="search" aria-label="search" [(ngModel)]="keyword"
         placeholder="พิมพ์ข้อมูลที่ต้องการค้นหา" class="form-control text"
-        (keydown)="onKeyDownSearch($event)">
+        (keydown)="onKeyDownSearch($event)" (blur)="onBlurKeyword()">
       <select class="form-control list" [(ngModel)]="searchType">
         <option value="shop|1">ร้านค้า: ทั้งหมด</option>
         <option value="shop|2">ร้านค้า: เฉพาะที่ถูกใจ</option>

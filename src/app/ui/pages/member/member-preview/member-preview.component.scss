@@ -22,17 +22,15 @@
       width: 8.5rem;
     }
 
-    span {
+    .text-desc {
       text-align: left;
       padding-left: 0.65rem;
+      height: 1.75rem;
     }
 
-    .address {
-      height: 3.5rem;
-
-      .ngx-ellipsis-inner {
-        padding-left: 0.65rem;
-      }
+    .link {
+      color: #f7a600;
+      width: 22rem;
     }
   }
 

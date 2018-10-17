@@ -34,19 +34,20 @@ export class AlgoliaService {
   private initMemberStoreIndex() {
     this.memberStoreIndex = this.algolia.initIndex('MemberStore');
     this.memberStoreIndex.setSettings({
-      attributesForFaceting: ['followerIds'],
-      searchableAttributes: [
+      attributesForFaceting: [
         'isPublished',
         'followerIds',
-        'description',
         'owner.memberType',
-        'owner.storeName',
-        'owner.storeDescription',
-        'owner.address',
         'owner.province',
         'owner.district',
         'owner.subDistrict',
         'owner.postalCode'
+      ],
+      searchableAttributes: [
+        'description',
+        'owner.storeName',
+        'owner.storeDescription',
+        'owner.address'
       ]
     });
   }
@@ -54,21 +55,23 @@ export class AlgoliaService {
   private initProductIndex() {
     this.productIndex = this.algolia.initIndex('Product');
     this.productIndex.setSettings({
-      attributesForFaceting: ['followerIds'],
-      searchableAttributes: [
+      attributesForFaceting: [
         'isPublished',
         'followerIds',
-        'name',
         'categoryName',
-        'description',
         'price',
-        'owner.storeName',
-        'owner.storeDescription',
-        'owner.address',
         'owner.province',
         'owner.district',
         'owner.subDistrict',
         'owner.postalCode'
+      ],
+
+      searchableAttributes: [
+        'name',
+        'description',
+        'owner.storeName',
+        'owner.storeDescription',
+        'owner.address'
       ]
     });
   }
@@ -76,21 +79,22 @@ export class AlgoliaService {
   private initPromotionIndex() {
     this.promotionIndex = this.algolia.initIndex('Promotion');
     this.promotionIndex.setSettings({
-      attributesForFaceting: ['followerIds'],
-      searchableAttributes: [
+      attributesForFaceting: [
         'isPublished',
         'followerIds',
-        'name',
-        'description',
-        'period',
-        'urlLink',
-        'owner.storeName',
-        'owner.storeDescription',
-        'owner.address',
         'owner.province',
         'owner.district',
         'owner.subDistrict',
         'owner.postalCode'
+      ],
+
+      searchableAttributes: [
+        'name',
+        'description',
+        'period',
+        'owner.storeName',
+        'owner.storeDescription',
+        'owner.address'
       ]
     });
   }

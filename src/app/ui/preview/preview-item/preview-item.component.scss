@@ -33,6 +33,10 @@
     .display-content {
       color: rgba($color: #000000, $alpha: 0.85);
 
+      img {
+        cursor: pointer;
+      }
+
       &.product-item {
         position: absolute;
         top: 0;
@@ -90,6 +94,14 @@
             height: 5.5rem;
           }
         }
+
+        .promotion-link {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          margin: 0.7rem 1.65rem;
+        }
+
       }
 
       &.store-item {

@@ -38,6 +38,10 @@ export class SearchBarComponent implements OnInit {
     }
   }
 
+  onBlurKeyword() {
+   this.doSearch();
+  }
+
   ngOnInit() {
     this.layoutService.showSearchBar.subscribe(flag => this.toggleSerchBarSource = flag);
     this.serchBarService.searchCriteria.subscribe(options => {

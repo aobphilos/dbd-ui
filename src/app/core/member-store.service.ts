@@ -114,14 +114,27 @@ export class MemberStoreService {
       }
 
       if (qp.memberType && qp.memberType !== MemberType.NONE) {
-        qp.query += ` ${qp.memberType}`;
+        filters.push(`owner.memberType:${qp.memberType}`);
       }
 
       if (qp.location) {
-        if (qp.location.provinceSelected) { qp.query += ` ${qp.location.provinceSelected}`; }
-        if (qp.location.districtSelected) { qp.query += ` ${qp.location.districtSelected}`; }
-        if (qp.location.subDistrictSelected) { qp.query += ` ${qp.location.subDistrictSelected}`; }
-        if (qp.location.postalCodeSelected) { qp.query += ` ${qp.location.postalCodeSelected}`; }
+
+        if (qp.location.provinceSelected) {
+          filters.push(`owner.province:${qp.location.provinceSelected}`);
+        }
+
+        if (qp.location.districtSelected) {
+          filters.push(`owner.district:${qp.location.districtSelected}`);
+        }
+
+        if (qp.location.subDistrictSelected) {
+          filters.push(`owner.subDistrict:${qp.location.subDistrictSelected}`);
+        }
+
+        if (qp.location.postalCodeSelected) {
+          filters.push(`owner.postalCode:${qp.location.postalCodeSelected}`);
+        }
+
       }
 
       this.algoliaIndex.clearCache();

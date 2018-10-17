@@ -4,7 +4,7 @@
       *ngIf="showFavorite && !isStoreView"></app-favorite>
     <div class="display-content product-item" *ngIf="isProduct">
       <div class="product-image">
-        <img class="rounded border" [src]="item.imageUrl">
+        <img class="rounded border" [src]="item.imageUrl" (click)="openImage(item.imageUrl, item.name)">
       </div>
       <div class="product-detail">
         <div class="top" placement="top" ngbTooltip="{{item.name}}" ellipsis>
@@ -18,7 +18,7 @@
     </div>
     <div class="display-content product-item" *ngIf="isPromotion">
       <div class="product-image">
-        <img class="rounded border" [src]="item.imageUrl">
+        <img class="rounded border" [src]="item.imageUrl" (click)="openImage(item.imageUrl, item.name)">
       </div>
       <div class="product-detail">
         <div class="top" placement="top" ngbTooltip="{{item.name}}" ellipsis>{{item.name}}
@@ -26,29 +26,34 @@
         <div class="middle" ellipsis>{{item.description}}</div>
         <div class="bottom">
           <div class="text-gray">{{item.period}}</div>
-          <div class="right text-right text-red" (click)="goStoreInfo(item.ownerId)">{{item.owner.storeName}}</div>
+          <div class="link text-red" (click)="goStoreInfo(item.ownerId)">{{item.owner.storeName}}</div>
         </div>
+      </div>
+      <div class="promotion-link"  [hidden]="!(item.urlLink) || item.urlLink === ''">
+        <a class="text-red" [href]="item.urlLink" target="_blank">
+          รายละเอียดเพิ่มเติม </a>
       </div>
     </div>
     <div class="display-content news-item" *ngIf="isNews">
       <div class="news-image">
-        <img class="rounded" [src]="item.imageUrl">
+        <img class="rounded" [src]="item.imageUrl" (click)="openImage(item.imageUrl, item.topic)">
       </div>
       <div class="news-detail">
         <div class="top" placement="top" ngbTooltip="{{item.topic}}" ellipsis>{{item.topic}}
         </div>
-        <div class="middle" ellipsis>{{item.description}}</div>        
-        <div class="bottom right" >
+        <div class="middle" ellipsis>{{item.description}}</div>
+        <div class="bottom right">
           <a [href]="item.moreDetailUrl" class="link" target="_blank">อ่านเพิ่มเติม</a>
         </div>
       </div>
     </div>
     <div class="display-content store-item" *ngIf="isStore">
       <div class="store-image" [ngClass]="{'expand': isStoreView}">
-        <img class="rounded" [src]="item.imageUrl">
+        <img class="rounded" [src]="item.imageUrl" (click)="openImage(item.imageUrl, item.owner.storeName)">
       </div>
       <div class="store-detail" *ngIf="!isStoreView">
-        <div class="name mt-2" placement="top" ngbTooltip="{{item.owner.storeName}}" ellipsis>
+        <div class="name mt-2" placement="top" ngbTooltip="{{item.owner.storeName}}"
+          ellipsis>
           <h4>{{item.owner.storeName}}</h4>
         </div>
         <div class="detail" ellipsis> {{item.owner.storeDescription}} </div>

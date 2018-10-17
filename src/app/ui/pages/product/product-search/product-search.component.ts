@@ -21,6 +21,7 @@ export class ProductSearchComponent implements OnInit {
 
   isFavorite = false;
   sortDirection = 'asc';
+  categoryName = '';
   priceRange = 'none';
   locationSelected: ILocationSelected;
 
@@ -65,6 +66,7 @@ export class ProductSearchComponent implements OnInit {
       pageIndex,
       10
     );
+    qp.categoryName = this.categoryName;
     qp.priceRange = this.priceRange;
     qp.location = this.locationSelected;
     return qp;
