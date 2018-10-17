@@ -4,7 +4,7 @@
       *ngIf="showFavorite && !isStoreView"></app-favorite>
     <div class="display-content product-item" *ngIf="isProduct">
       <div class="product-image">
-        <img class="rounded border" [src]="item.imageUrl">
+        <img class="rounded border" [src]="item.imageUrl" (click)="openImage(item.imageUrl, item.name)">
       </div>
       <div class="product-detail">
         <div class="top" placement="top" ngbTooltip="{{item.name}}" ellipsis>
@@ -18,7 +18,7 @@
     </div>
     <div class="display-content product-item" *ngIf="isPromotion">
       <div class="product-image">
-        <img class="rounded border" [src]="item.imageUrl">
+        <img class="rounded border" [src]="item.imageUrl" (click)="openImage(item.imageUrl, item.name)">
       </div>
       <div class="product-detail">
         <div class="top" placement="top" ngbTooltip="{{item.name}}" ellipsis>{{item.name}}
@@ -36,7 +36,7 @@
     </div>
     <div class="display-content news-item" *ngIf="isNews">
       <div class="news-image">
-        <img class="rounded" [src]="item.imageUrl">
+        <img class="rounded" [src]="item.imageUrl" (click)="openImage(item.imageUrl, item.topic)">
       </div>
       <div class="news-detail">
         <div class="top" placement="top" ngbTooltip="{{item.topic}}" ellipsis>{{item.topic}}
@@ -49,7 +49,7 @@
     </div>
     <div class="display-content store-item" *ngIf="isStore">
       <div class="store-image" [ngClass]="{'expand': isStoreView}">
-        <img class="rounded" [src]="item.imageUrl">
+        <img class="rounded" [src]="item.imageUrl" (click)="openImage(item.imageUrl, item.owner.storeName)">
       </div>
       <div class="store-detail" *ngIf="!isStoreView">
         <div class="name mt-2" placement="top" ngbTooltip="{{item.owner.storeName}}"

@@ -5021,6 +5021,11 @@ ngx-ellipsis@^1.1.3:
     element-resize-detector "^1.1.14"
     tslib "^1.9.0"
 
+ngx-lightbox@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ngx-lightbox/-/ngx-lightbox-1.1.0.tgz#b3591c502f3dd22f3c293d5c355609d55e6a12b0"
+  integrity sha512-un1clDlOoHiAApOh0KXrBsV5d9NjNh7N5ggJE6TNozm5jVAho0G9gzdqI87K1XjJ6+IQhqOud1uz+mrA9g/OtQ==
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
