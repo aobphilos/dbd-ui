@@ -85,6 +85,18 @@ export class PreviewItemComponent implements OnInit {
     this.lightbox.close();
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    if (!this.item.imageUrl || this.item.imageUrl === '') {
+
+      if (this.isProduct) {
+        this.item.imageUrl = '/assets/uploaders/product.png';
+      } else if (this.isPromotion) {
+        this.item.imageUrl = '/assets/uploaders/product.png';
+      } else if (this.isStore) {
+        this.item.imageUrl = '/assets/uploaders/shop.png';
+      }
+
+    }
+  }
 
 }
