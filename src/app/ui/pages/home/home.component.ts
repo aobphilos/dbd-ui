@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../core/auth.service';
-import { MemberService } from '../../../core/member.service';
 import { of } from 'rxjs';
+import { DataService } from 'src/app/core/data.service';
 
 @Component({
   selector: 'app-home',
@@ -12,12 +12,19 @@ export class HomeComponent implements OnInit {
 
   private hasVerified: boolean;
 
-  constructor(public authService: AuthService, private memberService: MemberService) { }
+  constructor(
+    public authService: AuthService,
+    private dataService: DataService) { }
 
   get userVerified() {
     return of(this.hasVerified);
   }
 
-  ngOnInit() { }
+  upload() {
+    this.dataService.upload();
+  }
+
+  ngOnInit() {
+  }
 
 }

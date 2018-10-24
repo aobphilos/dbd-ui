@@ -35,6 +35,7 @@ import { PromotionService } from '../core/promotion.service';
 import { CategoryService } from '../core/category.service';
 import { LocationService } from '../core/location.service';
 import { SearchBarService } from './search-bar/search-bar.service';
+import { DataService } from '../core/data.service';
 
 import { NotifyComponent } from './notify/notify.component';
 import { IndicatorComponent } from './indicator/indicator.component';
@@ -93,7 +94,7 @@ import { MemberNewsComponent } from './pages/member/member-news/member-news.comp
   providers: [
     AuthService, LayoutService, AuthGuard, NotifyService, AlgoliaService,
     MemberService, IndicatorService, StoreService, ProductService, PromotionService,
-    CategoryService, SearchBarService, LocationService
+    CategoryService, SearchBarService, LocationService, DataService
   ],
   exports: [LayoutComponent]
 })

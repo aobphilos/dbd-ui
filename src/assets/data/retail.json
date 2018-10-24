@@ -1,0 +1,4294 @@
+{
+  "data": [{
+      "storeName": "ร้านค้าประชารัฐบ้านชุมชนฟ้าใหม่",
+      "ownerName": "คุณวิง มีเดช",
+      "storeDescription": "",
+      "phone": "097-1908476",
+      "email": "user.r001@dbdui.com"
+    },
+    {
+      "storeName": "ร้านวรรณา(ประชารัฐ)",
+      "ownerName": "คุณวรรณา หอมสะอาด",
+      "storeDescription": "",
+      "phone": "089-4332994",
+      "email": "user.r002@dbdui.com"
+    },
+    {
+      "storeName": "ร้านมาลี(ประชารัฐ)",
+      "ownerName": "คุณวนิดา โตวรกุล          ",
+      "storeDescription": "",
+      "phone": "063-4269164",
+      "email": "user.r003@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐกองชุมชนบ้านวัดเกต",
+      "ownerName": "คุณนศกรณ พัฒพมาศ",
+      "storeDescription": "",
+      "phone": "091-9191997",
+      "email": "user.r004@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนสันปูเลย",
+      "ownerName": "คุณจักรกฤษ คำแก่น",
+      "storeDescription": "",
+      "phone": "094-9716578",
+      "email": "user.r005@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านสันน้ำบ่อ",
+      "ownerName": "คุณขจร อุตะมะ        ",
+      "storeDescription": "",
+      "phone": "083-5641788, 093-2967189",
+      "email": "user.r006@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านห้วยห้าง",
+      "ownerName": "คุณปัญญา นันตา            ",
+      "storeDescription": "",
+      "phone": "087-1824389, 084-6777045",
+      "email": "user.r007@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านน้ำม้า",
+      "ownerName": "คุณศิริวรรณ ก๋าเงิน",
+      "storeDescription": "",
+      "phone": "053-195303",
+      "email": "user.r008@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนขัวแคร่นอร์ทเทริน",
+      "ownerName": "คุณสุรวุฒิ อนาภรณ์       ",
+      "storeDescription": "",
+      "phone": "095-6988273",
+      "email": "user.r009@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐหนองบัวสด",
+      "ownerName": "คุณดำรงค์ ตอบุญธง        ",
+      "storeDescription": "",
+      "phone": "083-7626448, 081-4986445",
+      "email": "user.r010@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐร่วมใจ",
+      "ownerName": "คุณทัศนีย์ สุรินธรรม",
+      "storeDescription": "",
+      "phone": "081-9809299",
+      "email": "user.r011@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐ",
+      "ownerName": "คุณวิเชียร เกตุประเสริฐ",
+      "storeDescription": "",
+      "phone": "084-3716939",
+      "email": "user.r012@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าสวัสดิการชุมชนบ้านสันทราย",
+      "ownerName": "คุณชาญชัย หลวงอ้าย",
+      "storeDescription": "",
+      "phone": "081-7963775",
+      "email": "user.r013@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนกองทุนหมู่บ้านพระเจ้าทองทิพย์",
+      "ownerName": "คุณวรรณ์เพ็ญ ศิลป์เจริญ",
+      "storeDescription": "",
+      "phone": "081-9514575",
+      "email": "user.r014@dbdui.com"
+    },
+    {
+      "storeName": "ร้านประสงค์(ประชารัฐ)ร้านพาขวัญ",
+      "ownerName": "คุณประสงค์ สิงห์ตา         ",
+      "storeDescription": "",
+      "phone": "086-1795635, 083-4185192",
+      "email": "user.r015@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านโป่ง",
+      "ownerName": "คุณถวิล สุริยะ",
+      "storeDescription": "",
+      "phone": "097-9206496",
+      "email": "user.r016@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านป่ากว่าว",
+      "ownerName": "คุณแสงเดือน อุประคำ",
+      "storeDescription": "",
+      "phone": "089-8558140",
+      "email": "user.r017@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าบุญปั่นมินิมาร์ท(ประชารัฐ)",
+      "ownerName": "คุณอำไพ ยะมะโน",
+      "storeDescription": "",
+      "phone": "093-9564461",
+      "email": "user.r018@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชน",
+      "ownerName": "คุณวันเพ็ญ อิ่นดวงจันทร์",
+      "storeDescription": "",
+      "phone": "089-5547511",
+      "email": "user.r019@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านแม่ขัก",
+      "ownerName": "คุณวิทูร มูลภิชัย",
+      "storeDescription": "",
+      "phone": "084-3738089",
+      "email": "user.r020@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านสันทรายทอง",
+      "ownerName": "คุณอินศร ตุ่นแก้ว         ",
+      "storeDescription": "",
+      "phone": "087-1838348",
+      "email": "user.r021@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนหมู่บ้านทุ่งยาว",
+      "ownerName": "คุณอลงกรณ์ ทิมา          ",
+      "storeDescription": "",
+      "phone": "081-0215570",
+      "email": "user.r022@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านหัวโก",
+      "ownerName": "จ.ส.ต.จรัล เสาวธีระ         ",
+      "storeDescription": "",
+      "phone": "081-7721561, 093-5929396   ",
+      "email": "user.r023@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านพระธาตุเจดีย์",
+      "ownerName": "คุณแก้ว ทิพย์คำภรณ์        ",
+      "storeDescription": "",
+      "phone": "099-5256673",
+      "email": "user.r024@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐหมู่บ้านป่าเหมือด",
+      "ownerName": "คุณอานนท์ ธะนันต์       ",
+      "storeDescription": "",
+      "phone": "081-7068297, 086-1885599",
+      "email": "user.r025@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าพิชญวิชญ์(ประชารัฐ)",
+      "ownerName": "คุณวนิชยา ตาตุ",
+      "storeDescription": "",
+      "phone": "084-1700502",
+      "email": "user.r026@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านสันปง",
+      "ownerName": "คุณโสภณ หน่อโอย          ",
+      "storeDescription": "",
+      "phone": "080-6801342, 089-8553426",
+      "email": "user.r027@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐรวมใจ บ้านต้นเหียว",
+      "ownerName": "คุณเสาวนันท์ โปทา",
+      "storeDescription": "",
+      "phone": "086-4208964",
+      "email": "user.r028@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านแม่โฮม",
+      "ownerName": "คุณประพันธ์ ปันดี          ",
+      "storeDescription": "",
+      "phone": "081-8831411, 085-0413743",
+      "email": "user.r029@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนเพื่อการเกษตร",
+      "ownerName": "คุณไสว สุระเดช",
+      "storeDescription": "",
+      "phone": "085-0368534",
+      "email": "user.r030@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐบ้านดอนเปา",
+      "ownerName": "คุณขวัญใจ ไชยแก้ว",
+      "storeDescription": "",
+      "phone": "089-7001720",
+      "email": "user.r031@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านโป่งแยงใน",
+      "ownerName": "คุณบุญเล็ก อินเต็ม",
+      "storeDescription": "",
+      "phone": "081-992-5682",
+      "email": "user.r032@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านต้นขาม",
+      "ownerName": "คุณแสวง ตำซือ",
+      "storeDescription": "",
+      "phone": "085-5710174",
+      "email": "user.r033@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านสันป่าไหน่",
+      "ownerName": "คุณบัวลอย มรม่วง",
+      "storeDescription": "",
+      "phone": "089-8385189",
+      "email": "user.r034@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าพี่เจียว(ประชารัฐ)",
+      "ownerName": "คุณจริยา จินะการ",
+      "storeDescription": "",
+      "phone": "089-9550120",
+      "email": "user.r035@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านศรีเวียง",
+      "ownerName": "คุณสมมิตร ทองใย",
+      "storeDescription": "",
+      "phone": "089-8526112",
+      "email": "user.r036@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าเพ็ญ(ประชารัฐ)",
+      "ownerName": "คุณศุกลักษณ์ ทองเที่ยง",
+      "storeDescription": "",
+      "phone": "089-8559717",
+      "email": "user.r037@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านแม่กาหัวทุ่ง",
+      "ownerName": "คุณสิทธิศักดิ์ เครืออินทร์",
+      "storeDescription": "",
+      "phone": "084-3787335",
+      "email": "user.r038@dbdui.com"
+    },
+    {
+      "storeName": "ร้านรมิดา(ประชารัฐ)",
+      "ownerName": "คุณรมิดา ฉัตรแก้วเกษม",
+      "storeDescription": "",
+      "phone": "086-7320516, 089-1561515",
+      "email": "user.r039@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านสันป่าหมากใต้",
+      "ownerName": "คุณบัวคำ เขื่อนแก้ว        ",
+      "storeDescription": "",
+      "phone": "093-1734062, 081-7849491",
+      "email": "user.r040@dbdui.com"
+    },
+    {
+      "storeName": "ร้านถุงเงินมินิมาร์ท (ประชารัฐ)",
+      "ownerName": "คุณเฉลิมชัย ธิยะ",
+      "storeDescription": "",
+      "phone": "094-0462494",
+      "email": "user.r041@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านห้วยกั้ง",
+      "ownerName": "คุณสุภาภรณ์ จันทร์มา",
+      "storeDescription": "",
+      "phone": "093-2285541",
+      "email": "user.r042@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าศศิพิมพ์(ประชารัฐ)",
+      "ownerName": "คุณศศิพิมพ์  ไชยงาม",
+      "storeDescription": "",
+      "phone": "088-5011740",
+      "email": "user.r043@dbdui.com"
+    },
+    {
+      "storeName": "ร้านสุภาพลิเดิ้นโฮม(ประชารัฐ)",
+      "ownerName": "คุณสุภาพ อุรพีพงษ์",
+      "storeDescription": "",
+      "phone": "081-7240769",
+      "email": "user.r044@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าศูนย์สาธิตการตลาดบ้านแวนวัฒนา",
+      "ownerName": "คุณเทพิน ศรีคำ",
+      "storeDescription": "",
+      "phone": "061-3487224",
+      "email": "user.r045@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชรินทิพย์ (ประชารัฐ)",
+      "ownerName": "คุณชรินทิพย์ ธันยาเรืองนนท์",
+      "storeDescription": "",
+      "phone": "088-4097845",
+      "email": "user.r046@dbdui.com"
+    },
+    {
+      "storeName": "ร้านมายโกะชัง(ประชารัฐ)",
+      "ownerName": "คุณเสาวลักษณ์ ทิพย์พรมมา",
+      "storeDescription": "",
+      "phone": "093-1403395",
+      "email": "user.r047@dbdui.com"
+    },
+    {
+      "storeName": "ร้านทุ่งกล้วยการเกษตร(ประชารัฐ)",
+      "ownerName": "คุณกิตติ เมืองคำ",
+      "storeDescription": "",
+      "phone": "086-1877274",
+      "email": "user.r048@dbdui.com"
+    },
+    {
+      "storeName": "ร้านนิตยา(ประชารัฐ)",
+      "ownerName": "คุณนิตยา รวมสุข",
+      "storeDescription": "",
+      "phone": "080-4939085",
+      "email": "user.r049@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าสหกรณ์การเกษตรตำบลแม่ลาว",
+      "ownerName": "คุณวันนา มีสุข",
+      "storeDescription": "",
+      "phone": "089-2669480",
+      "email": "user.r050@dbdui.com"
+    },
+    {
+      "storeName": "ร้านตะวัน(ประชารัฐ)",
+      "ownerName": "คุณศุภกร อนรรฆสิริกุล",
+      "storeDescription": "",
+      "phone": "081-8823911, 054-416568",
+      "email": "user.r051@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าซือฮุ้ยกี่(ประชารัฐ)",
+      "ownerName": "คุณปริญญา แซ่ซือ",
+      "storeDescription": "",
+      "phone": "091-4302455, 097-9689781",
+      "email": "user.r052@dbdui.com"
+    },
+    {
+      "storeName": "ร้านศิริพร(ประชารัฐ",
+      "ownerName": "คุณศิริพร โชคไพบูลย์",
+      "storeDescription": "",
+      "phone": "089-1915363",
+      "email": "user.r053@dbdui.com"
+    },
+    {
+      "storeName": "ร้านเจ้ไพร (ประชารัฐ)",
+      "ownerName": "คุณกิตติชัย ยิ้มยวน",
+      "storeDescription": "",
+      "phone": "086-2022039",
+      "email": "user.r054@dbdui.com"
+    },
+    {
+      "storeName": "ร้านเขมจิรา (ประชารัฐ)",
+      "ownerName": "คุณเขมจิรา ทัพพ์ปราบ",
+      "storeDescription": "",
+      "phone": "092-8438956",
+      "email": "user.r055@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านวังไคร้",
+      "ownerName": "คุณบังอร แก่นเขียว",
+      "storeDescription": "",
+      "phone": "088-2813991",
+      "email": "user.r056@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านโป่งแดง",
+      "ownerName": "คุณลำจวน ยมเกิด",
+      "storeDescription": "",
+      "phone": "085-7295921",
+      "email": "user.r057@dbdui.com"
+    },
+    {
+      "storeName": "ร้านปรารถนา (ประชารัฐ)",
+      "ownerName": "คุณปรารถนา ทานอุทิศ",
+      "storeDescription": "",
+      "phone": "061-3072291",
+      "email": "user.r058@dbdui.com"
+    },
+    {
+      "storeName": "ร้านสวิน (ประชารัฐ)",
+      "ownerName": "คุณสวิน อินหมี",
+      "storeDescription": "",
+      "phone": "098-7657841",
+      "email": "user.r059@dbdui.com"
+    },
+    {
+      "storeName": "ร้านพี่เก๋ (ประชารัฐ)",
+      "ownerName": "คุณวันนา ฤกษ์เสน",
+      "storeDescription": "",
+      "phone": "095-6376191",
+      "email": "user.r060@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนทหารผ่านศึก",
+      "ownerName": "คุณประทวน แสงทอง",
+      "storeDescription": "",
+      "phone": "065-4169151",
+      "email": "user.r061@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านหนองกิ่งฟ้า",
+      "ownerName": "คุณเจนจิรา แสนใจน้อย",
+      "storeDescription": "",
+      "phone": "081-9621674",
+      "email": "user.r062@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐหนองแขม",
+      "ownerName": "คุณเกษศิรินทร์ เอี่ยมแสน",
+      "storeDescription": "",
+      "phone": "086-7617894",
+      "email": "user.r063@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐ บ้านประดาง.",
+      "ownerName": "คุณส้มกลิ่น มีสุข",
+      "storeDescription": "",
+      "phone": "080-0171410",
+      "email": "user.r064@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐร่วมใจ",
+      "ownerName": "คุณขวัญใจ ชัยประเดิมศักดิ์ ",
+      "storeDescription": "",
+      "phone": "087-2125513, 088-4206390",
+      "email": "user.r065@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐคลองไม้แดง",
+      "ownerName": "คุณสุรีรัตน์ ปวงบุตร       ",
+      "storeDescription": "",
+      "phone": "062-2260387",
+      "email": "user.r066@dbdui.com"
+    },
+    {
+      "storeName": "ร้านรำพิน (ประชารัฐ)",
+      "ownerName": "คุณรำพิน บุญเม่น",
+      "storeDescription": "",
+      "phone": "085-7254520",
+      "email": "user.r067@dbdui.com"
+    },
+    {
+      "storeName": "ร้านปิยะนุช (ประชารัฐ)",
+      "ownerName": "คุณปิยะนุช พุ่มเงิน",
+      "storeDescription": "",
+      "phone": "093-0386566",
+      "email": "user.r068@dbdui.com"
+    },
+    {
+      "storeName": "ร้านป้าสมัย (ประชารัฐ)",
+      "ownerName": "คุณสมพงษ์ วงษ์โพธิ์",
+      "storeDescription": "",
+      "phone": "098-8434328",
+      "email": "user.r069@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านนาขุม",
+      "ownerName": "คุณลูกกลึง จันทร์สอน",
+      "storeDescription": "",
+      "phone": "081-6755348",
+      "email": "user.r070@dbdui.com"
+    },
+    {
+      "storeName": "ร้านลุงจ่า(ประชารัฐ)",
+      "ownerName": "คุณนรินทร์ บุญพันจันที",
+      "storeDescription": "",
+      "phone": "089-7088781, 085-6188899",
+      "email": "user.r071@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านทรัพย์คลองกลาง",
+      "ownerName": "คุณปราณี พิมพ์พา",
+      "storeDescription": "",
+      "phone": "093-1563646",
+      "email": "user.r072@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนหมู่3 ต.ดินทอง",
+      "ownerName": "คุณอนุศิษฎ์ สุขเจริญ",
+      "storeDescription": "",
+      "phone": "094-1214259",
+      "email": "user.r073@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านเจริญผล",
+      "ownerName": "คุณจันทิรา ทองดอนคำ",
+      "storeDescription": "",
+      "phone": "093-1393659",
+      "email": "user.r074@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐกิจทวี",
+      "ownerName": "คุณจักรกฤษณ์ พิทักษ์กิตติพร",
+      "storeDescription": "",
+      "phone": "081-7070807",
+      "email": "user.r075@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐพลายชุมพล",
+      "ownerName": "คุณเอนก สวัสดิ์วงษ์",
+      "storeDescription": "",
+      "phone": "089-6416360, 065-8641995",
+      "email": "user.r076@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนกองทุนหมู่บ้านโคกมะตูม",
+      "ownerName": "คุณพนม คำพุฒ           ",
+      "storeDescription": "",
+      "phone": "089-4390473, 090-0592537 ",
+      "email": "user.r077@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านน้ำโค้งเหนือ",
+      "ownerName": "คุณบุญรอด นิลหิรัญ",
+      "storeDescription": "",
+      "phone": "081-6044965",
+      "email": "user.r078@dbdui.com"
+    },
+    {
+      "storeName": "ร้านเจ้เยาว์(ประชารัฐ)",
+      "ownerName": "คุณนงเยาว์ เอื้อเฟื้อ",
+      "storeDescription": "",
+      "phone": "081-4759470",
+      "email": "user.r079@dbdui.com"
+    },
+    {
+      "storeName": "ร้านจิปะถะ(ประชารัฐ)",
+      "ownerName": "คุณสุมาพร เชียงแสน",
+      "storeDescription": "",
+      "phone": "097-9212805",
+      "email": "user.r080@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าสหกรณ์วัดจันท์",
+      "ownerName": "ดร.ประภาส งามสงวน       ",
+      "storeDescription": "",
+      "phone": "081-4744572, 086-9374904",
+      "email": "user.r081@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าซุลลิตาหวังเจริญ",
+      "ownerName": "คุณชุลลิตา หวังเจริญ",
+      "storeDescription": "",
+      "phone": "085-8760684",
+      "email": "user.r082@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านมงคล",
+      "ownerName": "คุณยุพิน มหายศนันท์",
+      "storeDescription": "",
+      "phone": "081-6722890",
+      "email": "user.r083@dbdui.com"
+    },
+    {
+      "storeName": "ร้านควง684(ประชารัฐ)",
+      "ownerName": "คุณประยุทธ โนราช",
+      "storeDescription": "",
+      "phone": "086-0271940",
+      "email": "user.r084@dbdui.com"
+    },
+    {
+      "storeName": "ร้านประชารัฐต้นซอย",
+      "ownerName": "คุณวรวิน ธนะ",
+      "storeDescription": "",
+      "phone": "097-9716895",
+      "email": "user.r085@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านอภัยคีรี",
+      "ownerName": "คุณสุดใจ ใจไว",
+      "storeDescription": "",
+      "phone": "085-1723129",
+      "email": "user.r086@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านม่วงใหม่",
+      "ownerName": "คุณเดชา หลวงฤทธิ์",
+      "storeDescription": "",
+      "phone": "086-1870343",
+      "email": "user.r087@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านปัวชัย(กทบ)",
+      "ownerName": "ร.ต.ท.ประสงค์ เขื่อนคำ     ",
+      "storeDescription": "",
+      "phone": "081-6023664, 087-1848231",
+      "email": "user.r088@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าสหกรณ์ร้านค้าบ้านหนองบัว",
+      "ownerName": "คุณแทน เทพเสน",
+      "storeDescription": "",
+      "phone": "089-2567404",
+      "email": "user.r089@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านดอนทอง",
+      "ownerName": "คุณประหยัด กำแทง",
+      "storeDescription": "",
+      "phone": "082-1828712",
+      "email": "user.r090@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านนาหนุน2",
+      "ownerName": "คุณผดุงศักดิ์ ใบยา",
+      "storeDescription": "",
+      "phone": "089-8883125",
+      "email": "user.r091@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านซาววา(กทบ)",
+      "ownerName": "คุณสุทัศน์ พรมมา",
+      "storeDescription": "",
+      "phone": "093-1397801",
+      "email": "user.r092@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนถ้ำผานางคอย",
+      "ownerName": "คุณดำรง ใหม่ศรี",
+      "storeDescription": "",
+      "phone": "086-1174211",
+      "email": "user.r093@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐ ต.เด่นชัย",
+      "ownerName": "คุณปวริศา เวียงทอง",
+      "storeDescription": "",
+      "phone": "085-7191730",
+      "email": "user.r094@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านวังกวางเหนือ",
+      "ownerName": "คุณนฤมล แสนอินทร์",
+      "storeDescription": "",
+      "phone": "096-6789369",
+      "email": "user.r095@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนกองทุนหมู่บ้านโป่งศรี",
+      "ownerName": "คุณอดิศร ถิ่นทิพย์",
+      "storeDescription": "",
+      "phone": "093-1371974",
+      "email": "user.r096@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชน ต.บ้านถิ่น",
+      "ownerName": "คุณสมชาญ ถิ่นหลวง       ",
+      "storeDescription": "",
+      "phone": "081-7642467, 095-4647816",
+      "email": "user.r097@dbdui.com"
+    },
+    {
+      "storeName": "ร้านสุนันทา(ประชารัฐ)",
+      "ownerName": "คุณสุนันทา สงวนสัตย์      ",
+      "storeDescription": "",
+      "phone": "089-5554721",
+      "email": "user.r098@dbdui.com"
+    },
+    {
+      "storeName": "สหกรณ์การเกษตรวังชิ่น",
+      "ownerName": "คุณจันทิรา เอี่ยวโฉม",
+      "storeDescription": "",
+      "phone": "088-2615056",
+      "email": "user.r099@dbdui.com"
+    },
+    {
+      "storeName": "ร้านนางบุญล้อม(ประชารัฐ)",
+      "ownerName": "คุณบุญล้อม กาศสกุล",
+      "storeDescription": "",
+      "phone": "093-1384579",
+      "email": "user.r100@dbdui.com"
+    },
+    {
+      "storeName": "ร้านมาลัย(ประชารัฐ)",
+      "ownerName": "คุณมาลัย รู้หลัก",
+      "storeDescription": "",
+      "phone": "084-8076065",
+      "email": "user.r101@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐกองทุนทาสบเส้า",
+      "ownerName": "คุณทองใบ เจริญโต๊ะ",
+      "storeDescription": "",
+      "phone": "081-0241505",
+      "email": "user.r102@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐกองทุนหมู่บ้านดอยสารภี",
+      "ownerName": "คุณจรัล คำฟู",
+      "storeDescription": "",
+      "phone": "085-6948461",
+      "email": "user.r103@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐชุมชนบ้านหลวย",
+      "ownerName": "คุณลัดดา บรรลือวงค์",
+      "storeDescription": "",
+      "phone": "081-6734932",
+      "email": "user.r104@dbdui.com"
+    },
+    {
+      "storeName": "ร้านพี่เล็ก (ประชารัฐ)",
+      "ownerName": "คุณประทุมพร อินตา",
+      "storeDescription": "",
+      "phone": "087-1917729",
+      "email": "user.r105@dbdui.com"
+    },
+    {
+      "storeName": "ร้านมณีวรรณ (ประชารัฐ)",
+      "ownerName": "คุณมณีวรรณ ชัยศรี",
+      "storeDescription": "",
+      "phone": "082-8900460",
+      "email": "user.r106@dbdui.com"
+    },
+    {
+      "storeName": "ร้านอรภาการค้า(ประชารัฐ)",
+      "ownerName": "คุณอรภา สมย้อย          ",
+      "storeDescription": "",
+      "phone": "087-1736181, 094-6201116",
+      "email": "user.r107@dbdui.com"
+    },
+    {
+      "storeName": "ร้านเพ็ญศรี (ประชารัฐ)",
+      "ownerName": "คุณเพ็ญศรี กุมมารกาศ",
+      "storeDescription": "",
+      "phone": "087-1802344",
+      "email": "user.r108@dbdui.com"
+    },
+    {
+      "storeName": "ร้านบุญมี(ประชารัฐ)",
+      "ownerName": "คุณธาราดล ชัชวาลพศุตม์",
+      "storeDescription": "",
+      "phone": "088-5471138",
+      "email": "user.r109@dbdui.com"
+    },
+    {
+      "storeName": "ร้านโบนัสช็อป(ประชารัฐ)",
+      "ownerName": "คุณเภา สมบูรณ์โชค        ",
+      "storeDescription": "",
+      "phone": "086-1171373, 087-1759494",
+      "email": "user.r110@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าสบาย(ประชารัฐ)",
+      "ownerName": "คุณลำจวน นันตากาศ",
+      "storeDescription": "",
+      "phone": "087-1807663",
+      "email": "user.r111@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าบัวลอย (ประชารัฐ)",
+      "ownerName": "คุณภักดี จะกาศ",
+      "storeDescription": "",
+      "phone": "089-5565761",
+      "email": "user.r112@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าอุ้ม (ประชารัฐ)",
+      "ownerName": "คุณนิตยา รัตนัส",
+      "storeDescription": "",
+      "phone": "084-9853166",
+      "email": "user.r113@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านต้นมื่น",
+      "ownerName": "คุณสนั่น นันทะสี",
+      "storeDescription": "",
+      "phone": "081-0305999",
+      "email": "user.r114@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านห้างฉัตรเหนือ",
+      "ownerName": "คุณบุญยิ่ง สันแดง",
+      "storeDescription": "",
+      "phone": "089-4303803",
+      "email": "user.r115@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐชุมชนบ้านผึ้ง",
+      "ownerName": "คุณกรรณิการ์ ขาวละมูล",
+      "storeDescription": "",
+      "phone": "085-7052397",
+      "email": "user.r116@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐชุมชนบ้านประสบสุข",
+      "ownerName": "คุณฉลาด ฝั้นจักสาย",
+      "storeDescription": "",
+      "phone": "081-0309469",
+      "email": "user.r117@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านท่าแหนใต้",
+      "ownerName": "คุณเฉลิมพล ปิงขอด",
+      "storeDescription": "",
+      "phone": "081-2899452",
+      "email": "user.r118@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านเด่น",
+      "ownerName": "คุณปัน พรหมมาบุญ",
+      "storeDescription": "",
+      "phone": "093-2548555",
+      "email": "user.r119@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนกล้วยกลาง",
+      "ownerName": "คุณสายฝน โนปิง",
+      "storeDescription": "",
+      "phone": "093-3561595",
+      "email": "user.r120@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านสามขา",
+      "ownerName": "คุณบุญเรือน เฒ่าคำ        ",
+      "storeDescription": "",
+      "phone": "081-1794771, 084-3289941",
+      "email": "user.r121@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านแม่สุกสามัคคี",
+      "ownerName": "คุณพรพิมล มีแก้ว",
+      "storeDescription": "",
+      "phone": "097-9807849",
+      "email": "user.r122@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าจินดามินิมาร์ท(ประชารัฐ)",
+      "ownerName": "คุณจินดา ยอดเปง",
+      "storeDescription": "",
+      "phone": "087-5460381",
+      "email": "user.r123@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านหนองหว้า",
+      "ownerName": "คุณประมวล โนนทะเสน",
+      "storeDescription": "",
+      "phone": "089-572-0617",
+      "email": "user.r124@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านคุ้มวัดโพธิ์",
+      "ownerName": "คุณพัลลพ ดอเส",
+      "storeDescription": "",
+      "phone": "062-197-4929",
+      "email": "user.r125@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านวังแสงใต้",
+      "ownerName": "คุณวงเดือน ศรีคุ้ม",
+      "storeDescription": "",
+      "phone": "090-290-1278",
+      "email": "user.r126@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านหนองคอง",
+      "ownerName": "คุณเทียม สุพรรณเวียง",
+      "storeDescription": "",
+      "phone": "083-338-4179",
+      "email": "user.r127@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านโนนศาลา",
+      "ownerName": "คุณกวี ทุมภา",
+      "storeDescription": "",
+      "phone": "061-074-5909",
+      "email": "user.r128@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าสหกรณ์บ้านหนองบัวน้อย",
+      "ownerName": "คุณอุเทน จอมทอง, คุณนพเก้า พิมทำนาม",
+      "storeDescription": "",
+      "phone": "099-4862659, 081-546-0792",
+      "email": "user.r129@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านโสกก้อง",
+      "ownerName": "คุณยุทธนา ชินทะนาน",
+      "storeDescription": "",
+      "phone": "062-147-3015",
+      "email": "user.r130@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านแสงนภา",
+      "ownerName": "คุณสมบัติ ชิดทิด",
+      "storeDescription": "",
+      "phone": "084-7893162",
+      "email": "user.r131@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านโคกหางวัง",
+      "ownerName": "คุณเผชิญ สิงหกาญจนกุล",
+      "storeDescription": "",
+      "phone": "086-9954097",
+      "email": "user.r132@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านท่าบม",
+      "ownerName": "คุณเนตรติยา รัดสา",
+      "storeDescription": "",
+      "phone": "084-9541526",
+      "email": "user.r133@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนบ้านนาฝาย",
+      "ownerName": "คุณปราจีน สิมาสุด",
+      "storeDescription": "",
+      "phone": "062-4955296",
+      "email": "user.r134@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าสวัสดิการชุมชนบ้านปวนพุ",
+      "ownerName": "คุณจีรนุช พรหมดี",
+      "storeDescription": "",
+      "phone": "089-5742333",
+      "email": "user.r135@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านฟากนา",
+      "ownerName": "คุณสุนันทา มุ่งก่อกลาง",
+      "storeDescription": "",
+      "phone": "081-9656039",
+      "email": "user.r136@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชมชนโนนกกหาด",
+      "ownerName": "คุณแสวง วิยะวรรณ",
+      "storeDescription": "",
+      "phone": "084-8216727",
+      "email": "user.r137@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านหินเกิ้ง",
+      "ownerName": "คุณกฤษดา ขุขัน",
+      "storeDescription": "",
+      "phone": "085-4616455",
+      "email": "user.r138@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านฟากห้วย",
+      "ownerName": "คุณสุพัฒน์ นานวน",
+      "storeDescription": "",
+      "phone": "084-5460492",
+      "email": "user.r139@dbdui.com"
+    },
+    {
+      "storeName": "กองทุนชมชนบ้านติ้วตลาดเย็น",
+      "ownerName": "คุณณีรนุช เพรชเวียง",
+      "storeDescription": "",
+      "phone": "094-9356541",
+      "email": "user.r140@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านโนนตูม",
+      "ownerName": "คุณไพรบูล โนนตูม",
+      "storeDescription": "",
+      "phone": "090-0424023",
+      "email": "user.r141@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าสวัสดิการกองทุนหนองเต่า",
+      "ownerName": "คุณสังวาลย์ พวงชมภู",
+      "storeDescription": "",
+      "phone": "096-187-7696",
+      "email": "user.r142@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านบก",
+      "ownerName": "คุณสมหาญ กาญจนา ",
+      "storeDescription": "",
+      "phone": "098-572-0317",
+      "email": "user.r143@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนประชารัฐ ม.4",
+      "ownerName": "คุณนงนุช โชควณิชย์",
+      "storeDescription": "",
+      "phone": "045-481018",
+      "email": "user.r144@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านเซเป็ด",
+      "ownerName": "คุณเกษร เครือสี",
+      "storeDescription": "",
+      "phone": "085-610-1470",
+      "email": "user.r145@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนร้านค้าชุมชน ม.3",
+      "ownerName": "คุณสฤษดิ์ สมนึก",
+      "storeDescription": "",
+      "phone": "087-870-8956",
+      "email": "user.r146@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านสว่าง",
+      "ownerName": "คุณสุกัน แสนสุข",
+      "storeDescription": "",
+      "phone": "082-863-2691",
+      "email": "user.r147@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนตำบลนาพิน",
+      "ownerName": "คุณอุดร อภัย",
+      "storeDescription": "",
+      "phone": "085-777-5189",
+      "email": "user.r148@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านบ่อขี้ตุ่น",
+      "ownerName": "คุณสายใหม วันชูเพลิด",
+      "storeDescription": "",
+      "phone": "061-064-6897",
+      "email": "user.r149@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้า กทบ.ซะซอม",
+      "ownerName": "คุณอุทิต ภูทอง",
+      "storeDescription": "",
+      "phone": "094-361-4962",
+      "email": "user.r150@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านหนองเป็ด",
+      "ownerName": "คุณบุญหลาย รัตนกุล",
+      "storeDescription": "",
+      "phone": "080-487-0159",
+      "email": "user.r151@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านนาคาย",
+      "ownerName": "คุณบุญมา ใจใหญ่",
+      "storeDescription": "",
+      "phone": "099-168-5995",
+      "email": "user.r152@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านโนนจิก",
+      "ownerName": "คุณทอง ทองอ่อน",
+      "storeDescription": "",
+      "phone": "081-485-6327",
+      "email": "user.r153@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านหนองเมือง",
+      "ownerName": "คุณคำหล้า เกาะแสะ",
+      "storeDescription": "",
+      "phone": "097-067-5863",
+      "email": "user.r154@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านโนนค้อ",
+      "ownerName": "คุณจันทร ไชยมงคล",
+      "storeDescription": "",
+      "phone": "089-945-0059",
+      "email": "user.r155@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านนาห่อม ม.9",
+      "ownerName": "คุณจันทร์เพ็ญ ก่อบุญ",
+      "storeDescription": "",
+      "phone": "061-028-2235",
+      "email": "user.r156@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านทุ่งส้มป่อย",
+      "ownerName": "คุณบุญจันทร์ เนื้องาม",
+      "storeDescription": "",
+      "phone": "080-490-8004",
+      "email": "user.r157@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐหนองขามใหญ่",
+      "ownerName": "คุณคำภา งามพันธ์",
+      "storeDescription": "",
+      "phone": "090-608-5659",
+      "email": "user.r158@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนคำบาก",
+      "ownerName": "คุณคหบ์ชาติ สาโท",
+      "storeDescription": "",
+      "phone": "093-412-9538",
+      "email": "user.r159@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าสวัสดิการชุมชนตบหู1",
+      "ownerName": "คุณไสว พรมภักดี",
+      "storeDescription": "",
+      "phone": "095-146-3009",
+      "email": "user.r160@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านโคกเทียม",
+      "ownerName": "คุณสถิตย์ สุดเต้",
+      "storeDescription": "",
+      "phone": "088-102-6465",
+      "email": "user.r161@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านบัวงาม",
+      "ownerName": "คุณสำราญ โพธิ์พันธ์",
+      "storeDescription": "",
+      "phone": "087-870-6477",
+      "email": "user.r162@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนยางพัฒนา",
+      "ownerName": "คุณณรงค์ แสงไสย์",
+      "storeDescription": "",
+      "phone": "083-382-8059",
+      "email": "user.r163@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐโคกชำแระ",
+      "ownerName": "คุณบุญ มาลัย",
+      "storeDescription": "",
+      "phone": "063-030-3969",
+      "email": "user.r164@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านประชารัฐ",
+      "ownerName": "คุณไพรัตน์ สายเสน",
+      "storeDescription": "",
+      "phone": "083-3781711",
+      "email": "user.r165@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐหมู่ 12",
+      "ownerName": "คุณดวงเดือน ภัควันต์",
+      "storeDescription": "",
+      "phone": "098-3152789",
+      "email": "user.r166@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านหัวดอนเหนือ",
+      "ownerName": "คุณอุทัย พูลศรี",
+      "storeDescription": "",
+      "phone": "081-697-1645",
+      "email": "user.r167@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐบ้านโนนสูง",
+      "ownerName": "คุณสิทธิพร จำปาแก้ว",
+      "storeDescription": "",
+      "phone": "082-127-5495",
+      "email": "user.r168@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนหมู่บ้านโนนม่วง ม.3",
+      "ownerName": "คุณสมบูรณ์ ปิ่นชูรัตน์",
+      "storeDescription": "",
+      "phone": "083-128-6051",
+      "email": "user.r169@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนบ้านศรีสว่าง",
+      "ownerName": "คุณแหวน ประทุมชาติ",
+      "storeDescription": "",
+      "phone": "098-1794510",
+      "email": "user.r170@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านหัวงัว",
+      "ownerName": "คุณไพทูรย์ กาลจักร",
+      "storeDescription": "",
+      "phone": "087-9746896, 087-1080858",
+      "email": "user.r171@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านสีสุก",
+      "ownerName": "คุณสุริยา เหมือนทอง",
+      "storeDescription": "",
+      "phone": "089-8652903",
+      "email": "user.r172@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านหัวงัว",
+      "ownerName": "คุณคำเขียน  แก่นจำปา",
+      "storeDescription": "",
+      "phone": "085-6568373",
+      "email": "user.r173@dbdui.com"
+    },
+    {
+      "storeName": "กองทุนบ้านค้อเหนือ ม.1",
+      "ownerName": "คุณบัวเฮียง ปราบณรงค์",
+      "storeDescription": "",
+      "phone": "099-8469590",
+      "email": "user.r174@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านนาแก",
+      "ownerName": "คุณสมหมาย บุตรน้ำเพชร",
+      "storeDescription": "",
+      "phone": "086-0990707, 065-1237156",
+      "email": "user.r175@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านนาหลู่ ม.3",
+      "ownerName": "คุณบุญธรรม เมฆมล",
+      "storeDescription": "",
+      "phone": "087-8777069",
+      "email": "user.r176@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนคำน้ำสร้าง",
+      "ownerName": "คุณสุนทร ศรีชนะ",
+      "storeDescription": "",
+      "phone": "088-361-3509",
+      "email": "user.r177@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านกุดไกรสร",
+      "ownerName": "คุณละอองศรี แก้วไสย",
+      "storeDescription": "",
+      "phone": "086-867-7092",
+      "email": "user.r178@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนวาริชภูมิ",
+      "ownerName": "คุณสันทนา  อินธิแสง",
+      "storeDescription": "",
+      "phone": "088-5659909",
+      "email": "user.r179@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านโพนทอง",
+      "ownerName": "คุณรัฐพงษ์ สุราษฎร์ขวัญ",
+      "storeDescription": "",
+      "phone": "062-118-2776",
+      "email": "user.r180@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านนาฮี",
+      "ownerName": "คุณจำลอง อินริเสน",
+      "storeDescription": "",
+      "phone": "063-9218949",
+      "email": "user.r181@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านดงสาร",
+      "ownerName": "คุณสุวรรณ พงศ์บุตร",
+      "storeDescription": "",
+      "phone": "081-3808517",
+      "email": "user.r182@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านดงยอ",
+      "ownerName": "คุณสุภารัตน์ โพธิ์พันธุ์",
+      "storeDescription": "",
+      "phone": "082-1130248",
+      "email": "user.r183@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านหนอง",
+      "ownerName": "คุณคเชน เหลืองาม",
+      "storeDescription": "",
+      "phone": "086-2372144",
+      "email": "user.r184@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านคำอินแปลง",
+      "ownerName": "คุณรุ่งอนันต์ นวลกนก",
+      "storeDescription": "",
+      "phone": "095-1691739",
+      "email": "user.r185@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านคลองสาร",
+      "ownerName": "คุณนันทภรณ์ ขันทะศรี",
+      "storeDescription": "",
+      "phone": "087-2319572",
+      "email": "user.r186@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านนาอุดม",
+      "ownerName": "คุณหนูไกล พิมพันธ์",
+      "storeDescription": "",
+      "phone": "088-3062354",
+      "email": "user.r187@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านศรีชมชื่น",
+      "ownerName": "คุณทองหลาง บรรเทาพิษ",
+      "storeDescription": "",
+      "phone": "095-8066226",
+      "email": "user.r188@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าบ้านน้ำเที่ยง หมู่ 9",
+      "ownerName": "คุณสมาน สาเกตุ",
+      "storeDescription": "",
+      "phone": "085-4641321",
+      "email": "user.r189@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าบ้านนาบัว หมู่ 6",
+      "ownerName": "คุณสมคิด วงษ์เสียงดัง",
+      "storeDescription": "",
+      "phone": "080-1892977",
+      "email": "user.r190@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าบ้านดงนาม่วง",
+      "ownerName": "คุณอัมพัน แก้วชิน",
+      "storeDescription": "",
+      "phone": "082-1196997",
+      "email": "user.r191@dbdui.com"
+    },
+    {
+      "storeName": "ศูนย์สาธิตการตลาดบ้านดอนหมากผาง",
+      "ownerName": "คุณบัณฑิตา ชยางบุตร",
+      "storeDescription": "",
+      "phone": "084-4281732",
+      "email": "user.r192@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐบ้านตาด ม.1",
+      "ownerName": "คุณภิญญดา ภูภามศรี",
+      "storeDescription": "",
+      "phone": "089-8437791",
+      "email": "user.r193@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชน นิคม 3",
+      "ownerName": "คุณภควัฒน์ นนทะสุด",
+      "storeDescription": "",
+      "phone": "083-1446831",
+      "email": "user.r194@dbdui.com"
+    },
+    {
+      "storeName": "หมู่บ้านจันทราราม หมู่ 14",
+      "ownerName": "คุณจุรีพร ปัญญากุล",
+      "storeDescription": "",
+      "phone": "080-7606989",
+      "email": "user.r195@dbdui.com"
+    },
+    {
+      "storeName": "บ้านสามขาสันติสุขใต้",
+      "ownerName": "คุณสมาน คำพา",
+      "storeDescription": "",
+      "phone": "085-7401781",
+      "email": "user.r196@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านหนองขาม",
+      "ownerName": "คุณชาย เชื่อมแก้ว",
+      "storeDescription": "",
+      "phone": "084-7880133",
+      "email": "user.r197@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านอุ่มจาน",
+      "ownerName": "คุณสมคิด จันทรเสนา",
+      "storeDescription": "",
+      "phone": "098-6094377",
+      "email": "user.r198@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านอุ่มจาน ม.13",
+      "ownerName": "คุณวรชัย ผางสวัสดิ์",
+      "storeDescription": "",
+      "phone": "087-9213036",
+      "email": "user.r199@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านน้ำปู",
+      "ownerName": "คุณคำพันธ์ มหาฤทธิ์",
+      "storeDescription": "",
+      "phone": "082-8573990",
+      "email": "user.r200@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนกองทุนหมู่บ้าน",
+      "ownerName": "คุณสุพรรณี ศรีราคำ",
+      "storeDescription": "",
+      "phone": "061-6628753",
+      "email": "user.r201@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าสวัสดิการชุมชนบ้านไชยวาน",
+      "ownerName": "คุณสวาท สังข์ทอง",
+      "storeDescription": "",
+      "phone": "089-8619013",
+      "email": "user.r202@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าสหกรณ์ชุมชนบ้านนานกชุม",
+      "ownerName": "คุณหลงมา แก้วแสนชัย",
+      "storeDescription": "",
+      "phone": "062-9871893",
+      "email": "user.r203@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าสหกรณ์ชุมชนคำยาง",
+      "ownerName": "คุณโฉมยงค์ อุคำ",
+      "storeDescription": "",
+      "phone": "098-7126665",
+      "email": "user.r204@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านทุงพัฒนา",
+      "ownerName": "คุณบุญไพร ศรีริธา",
+      "storeDescription": "",
+      "phone": "099-0304845",
+      "email": "user.r205@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านไผ้ล้อม-โนนสมบัติ",
+      "ownerName": "คุณยวนใจ อุทัยมา",
+      "storeDescription": "",
+      "phone": "089-5726304",
+      "email": "user.r206@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชน ดงกลาง",
+      "ownerName": "คุณจรันดร์ ลีลาสอน",
+      "storeDescription": "",
+      "phone": "092-3411194",
+      "email": "user.r207@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐชุมชนหนองนาไฮ",
+      "ownerName": "คุณเพ็ญณี สร้างคำ",
+      "storeDescription": "",
+      "phone": "081-1837936",
+      "email": "user.r208@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนกองทุนบ้านวังทอง",
+      "ownerName": "คุณบานเย็น เหล่าสุข",
+      "storeDescription": "",
+      "phone": "086-0360433",
+      "email": "user.r209@dbdui.com"
+    },
+    {
+      "storeName": "กองทุนหมู่บ้านเขือน้ำ",
+      "ownerName": "คุณแจ่มจันทร์ ประทุมวัน",
+      "storeDescription": "",
+      "phone": "064-1204822",
+      "email": "user.r210@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐโคกสะอาด",
+      "ownerName": "คุณปนาวัลย์ การเกษภูมิพัฒน์",
+      "storeDescription": "",
+      "phone": "093-3276942",
+      "email": "user.r211@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนนาเก็นน้อย",
+      "ownerName": "คุณสมบูรณ์ ลาน้ำเที่ยง",
+      "storeDescription": "",
+      "phone": "061-1567847",
+      "email": "user.r212@dbdui.com"
+    },
+    {
+      "storeName": "กองทุนหมู่บ้านหัวบึง",
+      "ownerName": "คุณไมตรี เที่ยงจิตร์",
+      "storeDescription": "",
+      "phone": "087-1618612",
+      "email": "user.r213@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชน",
+      "ownerName": "คุณถนอม ทองบุตร",
+      "storeDescription": "",
+      "phone": "087-2174723",
+      "email": "user.r214@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านเหล่าสีเอียก",
+      "ownerName": "คุณนรมน โยธะนันท์",
+      "storeDescription": "",
+      "phone": "087-8521628",
+      "email": "user.r215@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐโคกสง่า",
+      "ownerName": "คุณประสพ สาเหตุ",
+      "storeDescription": "",
+      "phone": "098-6602142",
+      "email": "user.r216@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านโกรก",
+      "ownerName": "คุณพงษ์ศักดิ์ ชัยมงคล",
+      "storeDescription": "",
+      "phone": "088-3538932",
+      "email": "user.r217@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านทำนบพัฒนา",
+      "ownerName": "คุณธนวัฒน์ รุ่งโชติกุล",
+      "storeDescription": "",
+      "phone": "065-8133228",
+      "email": "user.r218@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านพันธุสงวน/แหลมลวก",
+      "ownerName": "คุณนคร แช่มเมืองฟ้า",
+      "storeDescription": "",
+      "phone": "090-829-4927",
+      "email": "user.r219@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านชุมชน 30 กันยาพัฒนา",
+      "ownerName": "คุณสงบ ประทีป",
+      "storeDescription": "",
+      "phone": "093-3914241",
+      "email": "user.r220@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านสะพานทอง",
+      "ownerName": "คุณทองสาง ปะทาปา, คุณปาจารย์  ค้าสเปอร์",
+      "storeDescription": "",
+      "phone": "084-9614361, 093-3483727",
+      "email": "user.r221@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านโนนแดง",
+      "ownerName": "คุณสมัย พันธ์วงศ์",
+      "storeDescription": "",
+      "phone": "088-4776135",
+      "email": "user.r222@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐ",
+      "ownerName": "คุณชู จันทคาม",
+      "storeDescription": "",
+      "phone": "088-5627432",
+      "email": "user.r223@dbdui.com"
+    },
+    {
+      "storeName": "กองทุนหมู่บ้านโพธิ์ณรงค์",
+      "ownerName": "คุณแสนเจริญ เชียงนอก",
+      "storeDescription": "",
+      "phone": "085-7740667",
+      "email": "user.r224@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนหม่บ้านเสริมสุข",
+      "ownerName": "คุณปราณี กอบกระโทก",
+      "storeDescription": "",
+      "phone": "084-3240116",
+      "email": "user.r225@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านสระพระพัฒนา",
+      "ownerName": "คุณนงนุช รานสันเทียะ",
+      "storeDescription": "",
+      "phone": "088-7053979",
+      "email": "user.r226@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านหนองกระสัง",
+      "ownerName": "คุณปริศนา เรียงสันเทียะ",
+      "storeDescription": "",
+      "phone": "084-4749058",
+      "email": "user.r227@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านโนนอุดม",
+      "ownerName": "คุณวิลัยพร ประทุมศรี, คุณเกษร สายน้ำ",
+      "storeDescription": "",
+      "phone": "080-481-4174",
+      "email": "user.r228@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านโนสะอาด",
+      "ownerName": "คุณสนธยา บริบูรณ์",
+      "storeDescription": "",
+      "phone": "061-947-0653",
+      "email": "user.r229@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านโคกสะอาด",
+      "ownerName": "คุณดวงใจ บุญเรือง",
+      "storeDescription": "",
+      "phone": "086-2497181",
+      "email": "user.r230@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านคลองสะท้อน",
+      "ownerName": "คุณวาสนา ไวว่อง",
+      "storeDescription": "",
+      "phone": "088-4877588",
+      "email": "user.r231@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐ สิริวัฒนากุล",
+      "ownerName": "คุณประนอม สิริวัฒนากุล",
+      "storeDescription": "",
+      "phone": "081-0622420",
+      "email": "user.r232@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านหญ้าคา",
+      "ownerName": "คุณพรพิมล วัชรชวนะ, คุณพูนทรัพย์ แก้วกัลยา",
+      "storeDescription": "",
+      "phone": "085-754-0560",
+      "email": "user.r233@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านหนองพลวง",
+      "ownerName": "คุณวิเชียร อุทรสะ, คุณชาติ กระจ่างโพธิ์",
+      "storeDescription": "",
+      "phone": "061-1087856, 062-2820483",
+      "email": "user.r234@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านระหันค่าย",
+      "ownerName": "คุณจำเริญ เชิงจอหอ",
+      "storeDescription": "",
+      "phone": "086-259-5304",
+      "email": "user.r235@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านหนองโจด",
+      "ownerName": "คุณสำรวย ประจิตร, คุณพิมพ์ชนิศร สวัสดิ์วุฒิกร",
+      "storeDescription": "",
+      "phone": "089-280-2319",
+      "email": "user.r236@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านหนองม่วงใหญ่",
+      "ownerName": "คุณอรุณ ชุ่มกลาง",
+      "storeDescription": "",
+      "phone": "087-9663028, 093-0970488",
+      "email": "user.r237@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านโคกหนองโสน",
+      "ownerName": "คุณภานุจา อุทิศรัมย์",
+      "storeDescription": "",
+      "phone": "085-766-6919",
+      "email": "user.r238@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐหนองหญ้าขาว",
+      "ownerName": "คุณไพฑูลย์ นาเขียว",
+      "storeDescription": "",
+      "phone": "086-249-4025",
+      "email": "user.r239@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านทุ่งสว่าง",
+      "ownerName": "คุณวสันต์ ยางเครือ",
+      "storeDescription": "",
+      "phone": "087-2562449",
+      "email": "user.r240@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านหนองนกคู่",
+      "ownerName": "คุณสุรีพร สายสามพราน ",
+      "storeDescription": "",
+      "phone": "099-937-5648",
+      "email": "user.r241@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าร้านค้าประชารัฐตาจง",
+      "ownerName": "คุณพรสวรรค์ ปาสาเน",
+      "storeDescription": "",
+      "phone": "080-7289085",
+      "email": "user.r242@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านสำโรง",
+      "ownerName": "คุณอัชรา รัชตสันติ, คุณเจนจิรา บุตรไธสง",
+      "storeDescription": "",
+      "phone": "084-6061554, 089-5461026",
+      "email": "user.r243@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านหนองหว้า",
+      "ownerName": "คุณประยูร แสนบุญศิริ",
+      "storeDescription": "",
+      "phone": "097-3438620",
+      "email": "user.r244@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านโนนกระพี้",
+      "ownerName": "คุณชำนาญ พลสวัสดิ์, คุณเพ็ญนภา เสาเปรียง",
+      "storeDescription": "",
+      "phone": "086-2497394, 081-0580791",
+      "email": "user.r245@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐกองทุนหมู่บ้านโนนสมบูรณ์",
+      "ownerName": "คุณทวี ช่างปลูก, คุณจุฑามาศ ฤทธิ์สระ",
+      "storeDescription": "",
+      "phone": "087-9824980",
+      "email": "user.r246@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านโนนดู่",
+      "ownerName": "คุณวรรณี ไพรวิจารณ์, คุณวาสนา ทานเหนือ",
+      "storeDescription": "",
+      "phone": "093-4603566, 084-7708319",
+      "email": "user.r247@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าศูนย์สาธาติการตลาดบ้านหนองไผ่งาม",
+      "ownerName": "คุณศิริพงษ์ ขอเสริมกลาง",
+      "storeDescription": "",
+      "phone": "086-2567840",
+      "email": "user.r248@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าธงฟ้าประชารัฐสุขสวัสดิ์35",
+      "ownerName": "คุณบุญมา คุณพานทอง เมฆอรุณ",
+      "storeDescription": "",
+      "phone": "02-4638402, 085-3404390",
+      "email": "user.r249@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านใหม่",
+      "ownerName": "คุณภัทรานิษฐ์ หิตกา, คุณปฐรัตน์ หิตการุญ",
+      "storeDescription": "",
+      "phone": "092-7325554, 091-4286477",
+      "email": "user.r250@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนตำบลสวนป่าน",
+      "ownerName": "คุณศุภลักษณ์ ติเยาว์",
+      "storeDescription": "",
+      "phone": "081-2918640",
+      "email": "user.r251@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐลานตากฟ้า",
+      "ownerName": "คุณชาญฤทธิ์ สุภเวก",
+      "storeDescription": "",
+      "phone": "081-9253393",
+      "email": "user.r252@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านอ้อมใหญ่",
+      "ownerName": "คุณลำควน แก้วสีคราม, คุณสมหมาย ทองนาค",
+      "storeDescription": "",
+      "phone": "089-2112453",
+      "email": "user.r253@dbdui.com"
+    },
+    {
+      "storeName": "ร้านรวยบุญ88 shop(ประชารัฐ)",
+      "ownerName": "คุณบุญให้ หวังเศรษฐกุล",
+      "storeDescription": "",
+      "phone": "081-4335211",
+      "email": "user.r254@dbdui.com"
+    },
+    {
+      "storeName": "ร้านชุมชนบ้านดอนพุทรา",
+      "ownerName": "คุณมลิวัณย์ ชื่นอนุสรณ์",
+      "storeDescription": "",
+      "phone": "082-2450984",
+      "email": "user.r255@dbdui.com"
+    },
+    {
+      "storeName": "ร้านศูนย์สาธิตการตลาดหมู่บ้านห้วยกรด",
+      "ownerName": "คุณชลอ วันดี",
+      "storeDescription": "",
+      "phone": "081-8801143",
+      "email": "user.r256@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านทะเลบก",
+      "ownerName": "คุณประสิทธิ์ มีผิวหอม, คุณเมธาวี อ่วมดอนไพร",
+      "storeDescription": "",
+      "phone": "061-6263265, 089-0392644",
+      "email": "user.r257@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐ",
+      "ownerName": "คุณพรเทพ จ้อยร่อย",
+      "storeDescription": "",
+      "phone": "081-7367076",
+      "email": "user.r258@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าศูนย์สาธิตการตลาดบ้านปลักไม้ลาย",
+      "ownerName": "คุณวรพล เจนคจบ",
+      "storeDescription": "",
+      "phone": "081-9423622",
+      "email": "user.r259@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้า ปัญญา สาวทรัพย์(ประชารัฐ)",
+      "ownerName": "คุณปัญญา  คุณสมหวัง สาวทรัพย์",
+      "storeDescription": "",
+      "phone": "081-3989043",
+      "email": "user.r260@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าพรจิตรา (ประชารัฐ)",
+      "ownerName": "คุณนราวรินทร์ เกรียงธนสาร",
+      "storeDescription": "",
+      "phone": "086-4089355",
+      "email": "user.r261@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าน้องวุ้นเส้น (ประชารัฐ)",
+      "ownerName": "คุณกมลวรรณ เชาวอุบล",
+      "storeDescription": "",
+      "phone": "080-2806189",
+      "email": "user.r262@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าซีนมิมาร์ท (ประชารัฐ)",
+      "ownerName": "คุณสมศรี แก้วทอง",
+      "storeDescription": "",
+      "phone": "085-2371319",
+      "email": "user.r263@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าคุณอ้อย (ประชารัฐ)",
+      "ownerName": "คุณจำลอง รักษาสุข",
+      "storeDescription": "",
+      "phone": "065-6536291",
+      "email": "user.r264@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าคุณนิด (ประชารัฐ)",
+      "ownerName": "คุณปภากร นาคสัมพันธ์",
+      "storeDescription": "",
+      "phone": "089-0336240",
+      "email": "user.r265@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าโครงการตลาดประชารัฐ ปากเกร็ด ของดีวิถีนนท์ กองทุนหมู้บาน",
+      "ownerName": "คุณรุจิรา ลี้สกุล",
+      "storeDescription": "",
+      "phone": "081-5638475",
+      "email": "user.r266@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐสวัสดิการกองทุนชุมชนบางพูดสามัคคี 3",
+      "ownerName": "คุณเอกศิษฐ์ ศรวิเศษ",
+      "storeDescription": "",
+      "phone": "093-9894644",
+      "email": "user.r267@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐสวัสดิการกองทุนชุมชนบางตลาดพัฒนา 9 ",
+      "ownerName": "คุณพิมพรรณ ประดิษฐ์เกตุ",
+      "storeDescription": "",
+      "phone": "085-9885272",
+      "email": "user.r268@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าจงดี (ประชารัฐ)",
+      "ownerName": "คุณจงดี แซ่เนี้ย, คุณเมธาภา วิทนา",
+      "storeDescription": "",
+      "phone": "095-6562246",
+      "email": "user.r269@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าบุญเสริม (ประชารัฐ)",
+      "ownerName": "คุณบุญเสริม นิ่มกลิ่น",
+      "storeDescription": "",
+      "phone": "081-4487711",
+      "email": "user.r270@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าบุญมา (ประชารัฐ)",
+      "ownerName": "คุณบุญมา กล้าสมุทร",
+      "storeDescription": "",
+      "phone": "094-1316049",
+      "email": "user.r271@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านหนองปรือ",
+      "ownerName": "คุณพรีทัศน์ ทรงปภาทรัพย์",
+      "storeDescription": "",
+      "phone": "081-8575037",
+      "email": "user.r272@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านคลองรังสิต",
+      "ownerName": "คุณวราวุธ สงบ",
+      "storeDescription": "",
+      "phone": "087-0102112",
+      "email": "user.r273@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านคลองโพธิ์",
+      "ownerName": "คุณสมใจ ดอกแย้ม",
+      "storeDescription": "",
+      "phone": "081-753-6669",
+      "email": "user.r274@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านมะขามป้อม",
+      "ownerName": "คุณณรงค์  โตใหญ่",
+      "storeDescription": "",
+      "phone": "083-260-9299",
+      "email": "user.r275@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านคลองอ้ายจาม",
+      "ownerName": "คุณนงเยาว์ กุณโฮง",
+      "storeDescription": "",
+      "phone": "064-220-8195",
+      "email": "user.r276@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านคลองลิง",
+      "ownerName": "คุณวรรณา บ้างศรชัย",
+      "storeDescription": "",
+      "phone": "085-2453005",
+      "email": "user.r277@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านทางยาว",
+      "ownerName": "คุณสมศักดิ์ ฉ่ำศรี",
+      "storeDescription": "",
+      "phone": "085-048-5972",
+      "email": "user.r278@dbdui.com"
+    },
+    {
+      "storeName": "หมู่ 1 บ้านคลองหนึ่ง",
+      "ownerName": "คุณลำพูน ศรีพุฒ",
+      "storeDescription": "",
+      "phone": "086-784-4787",
+      "email": "user.r279@dbdui.com"
+    },
+    {
+      "storeName": "ชุมชนบ้านตองเปอะ หมู่ 1",
+      "ownerName": "คุณปณิดา บุตรหงาน",
+      "storeDescription": "",
+      "phone": "094-8709595",
+      "email": "user.r280@dbdui.com"
+    },
+    {
+      "storeName": "ร้านแม่ลาประชารัฐ",
+      "ownerName": "คุณมนูญ เรืองประยูร",
+      "storeDescription": "",
+      "phone": "089-8012901",
+      "email": "user.r281@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านคานหัก",
+      "ownerName": "คุณสำรวม รักษาซื่อ",
+      "storeDescription": "",
+      "phone": "081-8035632",
+      "email": "user.r282@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนตำบลบ้านใหม่",
+      "ownerName": "คุณสิงห์ โทระพันธ์/คุณเกศินี",
+      "storeDescription": "",
+      "phone": "089-6133575",
+      "email": "user.r283@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านบางหัก",
+      "ownerName": "คุณสิทธิศักดิ์ นวมอุ่น",
+      "storeDescription": "",
+      "phone": "089-2415829",
+      "email": "user.r284@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐบ้านคลองกระทุ่ม",
+      "ownerName": "คุณปริวัฒน์ อินทร์ไชยา",
+      "storeDescription": "",
+      "phone": "092-8624582",
+      "email": "user.r285@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชน ม.3",
+      "ownerName": "คุณอุดร ทอนชัย",
+      "storeDescription": "",
+      "phone": "081-4848655",
+      "email": "user.r286@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านลิขิต",
+      "ownerName": "คุณอำนาจ สุวรรณนิมิตร",
+      "storeDescription": "",
+      "phone": "089-7910469",
+      "email": "user.r287@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนตำบลแพรกษา",
+      "ownerName": "คุณณัฐพล นาคดี",
+      "storeDescription": "",
+      "phone": "094-5626169",
+      "email": "user.r288@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าบริการชุมชน",
+      "ownerName": "คุณวินัย บุญยัง, คุณพิไลวรรณ แจ่มหม้อ",
+      "storeDescription": "",
+      "phone": "091-0902884, 082-2421667",
+      "email": "user.r289@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐบ้านไทยเกรียง",
+      "ownerName": "คุณปราณี ศรีบัวทิม",
+      "storeDescription": "",
+      "phone": "081-9342808",
+      "email": "user.r290@dbdui.com"
+    },
+    {
+      "storeName": "ร้านฤกษ์งามเจริญ",
+      "ownerName": "คุณสมใจ ฆังดัสสะ",
+      "storeDescription": "",
+      "phone": "082-7959859",
+      "email": "user.r291@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐกองทุนคลองศาลาแดง",
+      "ownerName": "คุณนิธิกร มะโนรัตน์",
+      "storeDescription": "",
+      "phone": "081-563-6677",
+      "email": "user.r292@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าบุษบา(ประชารัฐ)",
+      "ownerName": "คุณบุษบา นามโครต",
+      "storeDescription": "",
+      "phone": "087-9008341",
+      "email": "user.r293@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าพี่นัน(ประชารัฐ)",
+      "ownerName": "คุณกัญญา สิริวัฒนณปภัช",
+      "storeDescription": "",
+      "phone": "085-108-7038",
+      "email": "user.r294@dbdui.com"
+    },
+    {
+      "storeName": "ร้านเฟริสท์(ประชารัฐ)",
+      "ownerName": "คุณยุพิน/คุณพรมงคล ฉันท์รัตนโยธิน",
+      "storeDescription": "",
+      "phone": "086-7501414, 02-9212904",
+      "email": "user.r295@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชน",
+      "ownerName": "คุณมานพ แย้มเม่ง",
+      "storeDescription": "",
+      "phone": "089-6894050",
+      "email": "user.r296@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าบ้านสหกรณ์ ม.4",
+      "ownerName": "คุณสมศักดิ์ รถทอง",
+      "storeDescription": "",
+      "phone": "081-0077090",
+      "email": "user.r297@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าบ้านหัวหอม",
+      "ownerName": "คุณปุณณภา มั่นอยู่คง",
+      "storeDescription": "",
+      "phone": "084-6442615",
+      "email": "user.r298@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าฝน มินิมาร์ท(ประชารัฐ)",
+      "ownerName": "คุณจินตนา คำวิจารณ์",
+      "storeDescription": "",
+      "phone": "080-6084947, 098-0584299",
+      "email": "user.r299@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านคลองยาว",
+      "ownerName": "คุณไพโรจน์  เหมือนปิ๋ว",
+      "storeDescription": "",
+      "phone": "097-2953139",
+      "email": "user.r300@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านคลองเป้ง",
+      "ownerName": "คุณพเยาว์ หาดสมบัติ",
+      "storeDescription": "",
+      "phone": "087-071-0615",
+      "email": "user.r301@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านคลองขุด",
+      "ownerName": "คุณนีรนุช ศิริธนะ",
+      "storeDescription": "",
+      "phone": "087-667-5210",
+      "email": "user.r302@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านหัวกระบือ",
+      "ownerName": "คุณสมจิตร สามัคคี",
+      "storeDescription": "",
+      "phone": "083-716-5116",
+      "email": "user.r303@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐกองทุนบ้านเกาะ หมู่ 7",
+      "ownerName": "คุณทรงยศ สำอางค์ศรี",
+      "storeDescription": "",
+      "phone": "087-9049446",
+      "email": "user.r304@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐกองทุนบ้านน้ำวน",
+      "ownerName": "คุณสร้อย เทพรักษ์",
+      "storeDescription": "",
+      "phone": "081-7943046",
+      "email": "user.r305@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านบางแพเหนือ",
+      "ownerName": "คุณทองชุบ ศึกษาชาติ",
+      "storeDescription": "",
+      "phone": "081-7585721",
+      "email": "user.r306@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านคลองขุน",
+      "ownerName": "คุณสุทัศน์ อยู่นาน",
+      "storeDescription": "",
+      "phone": "089-2382153",
+      "email": "user.r307@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐเพื่อชุมชน",
+      "ownerName": "คุณสมพร ปานโต",
+      "storeDescription": "",
+      "phone": "081-9432618",
+      "email": "user.r308@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าพิช(ประชารัฐ)",
+      "ownerName": "คุณพิช ทานจีน",
+      "storeDescription": "",
+      "phone": "086-0198478",
+      "email": "user.r309@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านโคกกลาง",
+      "ownerName": "คุณพเยาว์ ไชยบุตร",
+      "storeDescription": "",
+      "phone": "081-8803135",
+      "email": "user.r310@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐเมืองสุวรรณประสิทธิ์2-3",
+      "ownerName": "คุณณัฐนัย เจนจัดการ",
+      "storeDescription": "",
+      "phone": "094-786-2840",
+      "email": "user.r311@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าสวัสดิการชุมชนประชารัฐ",
+      "ownerName": "คุณศักดิ์ดา ชมจิตร์",
+      "storeDescription": "",
+      "phone": "089-405-8553",
+      "email": "user.r312@dbdui.com"
+    },
+    {
+      "storeName": "ร้านส้ม (ประชารัฐ)",
+      "ownerName": "คุณชุติมา แซ่ตั๊น",
+      "storeDescription": "",
+      "phone": "086-8264838",
+      "email": "user.r313@dbdui.com"
+    },
+    {
+      "storeName": "ร้านบ้านโบว์มินิมาร์ท (ประชารัฐ)",
+      "ownerName": "คุณกนกวรรณ รุ่งนภาไพศาล",
+      "storeDescription": "",
+      "phone": "091-7794272",
+      "email": "user.r314@dbdui.com"
+    },
+    {
+      "storeName": "ร้านบรรจง (ประชารัฐ)",
+      "ownerName": "คุณบรรจง เกิดนนท์",
+      "storeDescription": "",
+      "phone": "087-1497740",
+      "email": "user.r315@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าปนะชารัฐชุมชน บ้านคลองลัด    ",
+      "ownerName": "คุณพิชัย  นิลสลับ   ",
+      "storeDescription": "",
+      "phone": "081-7504900",
+      "email": "user.r316@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านปึกใหญ่",
+      "ownerName": "คุณนคร วรรัตน์",
+      "storeDescription": "",
+      "phone": "095-569-9593",
+      "email": "user.r317@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชน ต.วัดหลวง",
+      "ownerName": "คุณนภา วาจาสัตย์",
+      "storeDescription": "",
+      "phone": "085-093-0553",
+      "email": "user.r318@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนปรียานุช",
+      "ownerName": "คุณปรียานุช นิยม",
+      "storeDescription": "",
+      "phone": "083-768-7258",
+      "email": "user.r319@dbdui.com"
+    },
+    {
+      "storeName": "ประชารัฐท้ายเซิด-ตากแดด",
+      "ownerName": "คุณเนตรนภา จันทรา",
+      "storeDescription": "",
+      "phone": "096-465-1307",
+      "email": "user.r320@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านเหมือง",
+      "ownerName": "คุณสายใจ รอดรัตน์",
+      "storeDescription": "",
+      "phone": "061-314-3266",
+      "email": "user.r321@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านวังกระชาย",
+      "ownerName": "คุณบุญชู มูลศิริ, คุณน้ำอ้อย อนันตสุข",
+      "storeDescription": "",
+      "phone": "086-036-2431, 081-2936138",
+      "email": "user.r322@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านมะพลับดก",
+      "ownerName": "คุณณิชชา อินทรมงคล, คุณราเชณ อินทรมงคล",
+      "storeDescription": "",
+      "phone": "087-849-2972, 084-4772888",
+      "email": "user.r323@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านวังสามัคคี",
+      "ownerName": "คุณสมศักดิ์ แก้วกล่ำ",
+      "storeDescription": "",
+      "phone": "082-171-0266",
+      "email": "user.r324@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านท่าทราย",
+      "ownerName": "คุณเชาวลิต คงกระพันธ์",
+      "storeDescription": "",
+      "phone": "087-601-5407",
+      "email": "user.r325@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านคลองขุด",
+      "ownerName": "คุณอาทิตย์ บุญท้วม",
+      "storeDescription": "",
+      "phone": "087-608-6263",
+      "email": "user.r326@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐโพธิ์แทน",
+      "ownerName": "คุณบรรญัติ เสนอใจ, คุณเพ็ญพยอม มากเจริญ",
+      "storeDescription": "",
+      "phone": "081-791-9824",
+      "email": "user.r327@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าศูนย์สาธิตการตลาด ม.4",
+      "ownerName": "คุณสมหมาย ม่วงจินดา",
+      "storeDescription": "",
+      "phone": "064-291-5837",
+      "email": "user.r328@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนตำบลลำสนธิ",
+      "ownerName": "คุณสมนึก ตาเม่น",
+      "storeDescription": "",
+      "phone": "089-775-7252",
+      "email": "user.r329@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐ ม.12",
+      "ownerName": "คุณลูกอินทร์ คงหาสุข",
+      "storeDescription": "",
+      "phone": "082-052-9100",
+      "email": "user.r330@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านหนองเกตุ",
+      "ownerName": "คุณนพวรรณ กองชีพ",
+      "storeDescription": "",
+      "phone": "086-396-5236",
+      "email": "user.r331@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐ ม.10",
+      "ownerName": "คุณสุดลัดดา กระแสอรรถ",
+      "storeDescription": "",
+      "phone": "086-419-0900",
+      "email": "user.r332@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐบ้านไผ่แหลม",
+      "ownerName": "คุณมยุรี เหมือนเผ่า",
+      "storeDescription": "",
+      "phone": "089-077-6210",
+      "email": "user.r333@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านเขารวกน้อย",
+      "ownerName": "คุณนิยม อยู่สนอง, คุณไพรรินทร์ แย้มชุติ",
+      "storeDescription": "",
+      "phone": "080-0202709",
+      "email": "user.r334@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐสุขใจ",
+      "ownerName": "คุณจุฑาภรณ์ พลิคามิน",
+      "storeDescription": "",
+      "phone": "085-073-4711",
+      "email": "user.r335@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนคลองบางโฉลงล่าง",
+      "ownerName": "คุณพีรฉัตร พรรณสุขศรี, คุณภิญโญชัย หอมสมบัติ",
+      "storeDescription": "",
+      "phone": "093-385-8999",
+      "email": "user.r336@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบางบ่อ",
+      "ownerName": "คุณมณฑา โรจนวิชัย, คุณทัศนา โพธิ์คำฉาย",
+      "storeDescription": "",
+      "phone": "086-533-7489",
+      "email": "user.r337@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านตลาดบางพลีน้อย",
+      "ownerName": "คุณสัมฤทธิ์ พึ่งนุศล",
+      "storeDescription": "",
+      "phone": "094-843-7728",
+      "email": "user.r338@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านคลองหลุมลึก",
+      "ownerName": "คุณนิติพัฒน์ กุญพารักษ์",
+      "storeDescription": "",
+      "phone": "064-969-4916, 081-9836208",
+      "email": "user.r339@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐบ้านคลองกระแซงเตย ",
+      "ownerName": "คุณทวี เย็นเปี่ยม, คุณประสิทธิ์ อินทรศร",
+      "storeDescription": "",
+      "phone": "095-667-3732",
+      "email": "user.r340@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านปีกกา",
+      "ownerName": "คุณดวงเดือน กลัดทอง",
+      "storeDescription": "",
+      "phone": "086-818-0563",
+      "email": "user.r341@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐบ้านคลองนางหงษ์ ",
+      "ownerName": "คุณปรีชา สมานจิตร, คุณอารมย์ สมานจิตร",
+      "storeDescription": "",
+      "phone": "063-153-4377",
+      "email": "user.r342@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐบางเพรียง",
+      "ownerName": "คุณไพโรจน์ เหลือสิน",
+      "storeDescription": "",
+      "phone": "089-894-2427",
+      "email": "user.r343@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนกองทุนบ้านท้ายวัด",
+      "ownerName": "คุณปรีชา แก้วประเสริฐ, คุณอรสา แก้วประเสริฐ",
+      "storeDescription": "",
+      "phone": "088-852-7498",
+      "email": "user.r344@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐคลองด่าน",
+      "ownerName": "คุณวิไล พึ่งเอี่ยม",
+      "storeDescription": "",
+      "phone": "089-5354952",
+      "email": "user.r345@dbdui.com"
+    },
+    {
+      "storeName": "ร้านสวัสดิการบ้านหอมศีล",
+      "ownerName": "คุณไพรัช เรืองฤทธิ์",
+      "storeDescription": "",
+      "phone": "081-614-6925",
+      "email": "user.r346@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านโปร่งสว่าง",
+      "ownerName": "คุณสวัสดิ์ อ่อนดี",
+      "storeDescription": "",
+      "phone": "081-757-9782",
+      "email": "user.r347@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านหัวทุ่ง",
+      "ownerName": "คุณอนงค์ ผ่องจิตร์",
+      "storeDescription": "",
+      "phone": "089-809-1240",
+      "email": "user.r348@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านท่าเดื่อ",
+      "ownerName": "คุณวลัยพร กันทะสาร",
+      "storeDescription": "",
+      "phone": "085-422-6112",
+      "email": "user.r349@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าบ้านชุมชนบางระกำ",
+      "ownerName": "คุณวิชัย ทองบุญ, คุณศุภรัตน์ เทพวงศ์",
+      "storeDescription": "",
+      "phone": "086-0739610, 086-128-1969",
+      "email": "user.r350@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านป่าไผ่",
+      "ownerName": "คุณสมจิตร์ ประชุมพันธ์, คุณชนากานต์ สังข์กลม",
+      "storeDescription": "",
+      "phone": "084-120-2425",
+      "email": "user.r351@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านโคก ม.7",
+      "ownerName": "คุณภูริชญา บุญน้อม",
+      "storeDescription": "",
+      "phone": "081-853-4861",
+      "email": "user.r352@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนร่วมใจ",
+      "ownerName": "คุณวาสนา ท้วมพัด",
+      "storeDescription": "",
+      "phone": "089-614-6912",
+      "email": "user.r353@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าบ้านท้องคุ้งเหนือ",
+      "ownerName": "คุณสุภัค รอบรู้",
+      "storeDescription": "",
+      "phone": "082-231-2262",
+      "email": "user.r354@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าลุงตุ๋ย(ประชารัฐ)",
+      "ownerName": "คุณตุ๋ย  ศรีนิม",
+      "storeDescription": "",
+      "phone": "091-7804368",
+      "email": "user.r355@dbdui.com"
+    },
+    {
+      "storeName": "ร้านเชอร์รี่ กุลชรีวรรณ(ประชารัฐ)",
+      "ownerName": "คุณกุลชรีวรรณ  ทองบู่",
+      "storeDescription": "",
+      "phone": "091-0097112",
+      "email": "user.r356@dbdui.com"
+    },
+    {
+      "storeName": "ร้านเจ้เม้า(ประชารัฐ)",
+      "ownerName": "คุณบุญเรือน  จันทร์ตรี",
+      "storeDescription": "",
+      "phone": "086-0925507",
+      "email": "user.r357@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าบ้านเบสท์(ประชารัฐ)",
+      "ownerName": "คุณกมลวรรณ ช้างชาวนา",
+      "storeDescription": "",
+      "phone": "089-9318593",
+      "email": "user.r358@dbdui.com"
+    },
+    {
+      "storeName": "ร้านแมน(ประชารัฐ)",
+      "ownerName": "คุณวสันต์ สหพัฒนวงศ์",
+      "storeDescription": "",
+      "phone": "092-5029988",
+      "email": "user.r359@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าลุงสมยศ(ประชารัฐ)",
+      "ownerName": "คุณสมยศ วุฒิประดิษฐ์",
+      "storeDescription": "",
+      "phone": "086-8306750",
+      "email": "user.r360@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าป้าหมู หน้าวัด(ประชารัฐ)",
+      "ownerName": "คุณเรืองศิริ เท้งบางด้วน",
+      "storeDescription": "",
+      "phone": "02-7507491, 085-1759510, 063-1814949",
+      "email": "user.r361@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าสมพงษ์(ประชารัฐ)",
+      "ownerName": "คุณสมพงษ์ บุญทูล",
+      "storeDescription": "",
+      "phone": "081-4247646",
+      "email": "user.r362@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าณรากร(ประชารัฐ)",
+      "ownerName": "คุณณรากร นิลสยาม",
+      "storeDescription": "",
+      "phone": "094-5457323",
+      "email": "user.r363@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าคุณต๋อย(ประชารัฐ)",
+      "ownerName": "คุณต๋อย ชูทับทิม",
+      "storeDescription": "",
+      "phone": "081-7156945",
+      "email": "user.r364@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าวิชาวีร์ ดีลักษ์(ประชารัฐ)",
+      "ownerName": "คุณวิชาวีร์ ดีลักษ์",
+      "storeDescription": "",
+      "phone": "084-6355258",
+      "email": "user.r365@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าจิราวรรณ เยาวรักษ์(ประชารัฐ)",
+      "ownerName": "คุณจิราวรรณ เยาวรักษ์",
+      "storeDescription": "",
+      "phone": "02-364-2707/081-458-6315",
+      "email": "user.r366@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าพรชัย มินิมาร์ท(ประชารัฐ)",
+      "ownerName": "คุณจิณณะ พงศธรรุ่งกาล",
+      "storeDescription": "",
+      "phone": "095-5362656",
+      "email": "user.r367@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าดุษฎี อนุรักษ์สุนทร(ประชารัฐ)",
+      "ownerName": "คุณดุษฎี อนุรักษ์สุนทร",
+      "storeDescription": "",
+      "phone": "081-817-0959",
+      "email": "user.r368@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากิตติพงศ์ นาวาทอง(ประชารัฐ)",
+      "ownerName": "คุณกิตติพงศ์ นาวาทอง",
+      "storeDescription": "",
+      "phone": "081-7116254/02-7509871",
+      "email": "user.r369@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าจุฑารัตน์ ลัดพลี(ประชารัฐ)",
+      "ownerName": "คุณจุฑารัตน์ ลัดพลี",
+      "storeDescription": "",
+      "phone": "099-2826113",
+      "email": "user.r370@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐ ",
+      "ownerName": "คุณชัยยา รักดี",
+      "storeDescription": "",
+      "phone": "089-4582088",
+      "email": "user.r371@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าวิงค์ทอง(ประชารัฐ)",
+      "ownerName": "คุณประทุม เจียวใช่เฮ็ง",
+      "storeDescription": "",
+      "phone": "086-9774267",
+      "email": "user.r372@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ารัตนสิน(ประชารัฐ)",
+      "ownerName": "คุณธารินทร์ เรืองสวัสดิ์",
+      "storeDescription": "",
+      "phone": "087-7451999",
+      "email": "user.r373@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐกองทุนหมู่บ้านบางทะลุสันติสุข",
+      "ownerName": "คุณชุบ  ทรัพย์สิน             ",
+      "storeDescription": "",
+      "phone": "089-9817908",
+      "email": "user.r374@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐเพื่อชุมชน กองทุนหมู่บ้านบ้านนา",
+      "ownerName": "รต.ประทุม หอมละออ, คุณพัชรา แพนุ้ย",
+      "storeDescription": "",
+      "phone": "084-5974416, 081-0789480",
+      "email": "user.r375@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐชุมชนเมืองพะเนียด",
+      "ownerName": "คุณสุรินทร์ ขุนฑวุฒิ, คุณศิริรัตน์ ขุนฑวุฒิ",
+      "storeDescription": "",
+      "phone": "081-7378178, 083-1996895",
+      "email": "user.r376@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนบ้านเขาหลาง",
+      "ownerName": "คุณประเสริฐ พรายอินทร์",
+      "storeDescription": "",
+      "phone": "081-9581221, 064-0154533",
+      "email": "user.r377@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านรัตนโกศัย",
+      "ownerName": "คุณณพวรรณ ทองคำ",
+      "storeDescription": "",
+      "phone": "081-2578206",
+      "email": "user.r378@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านล่าง",
+      "ownerName": "คุณพิษณุ นิลบางพระ",
+      "storeDescription": "",
+      "phone": "089-5057521",
+      "email": "user.r379@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าวิสาหกิจชุมชนร้านค้าพัลวาล 4",
+      "ownerName": "คุณกนกวรรณ สุริโย",
+      "storeDescription": "",
+      "phone": "086-2546788, 091-6514917",
+      "email": "user.r380@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนตำบลตะปาน",
+      "ownerName": "คุณประทุม เพชรรัตน์",
+      "storeDescription": "",
+      "phone": "081-0919903",
+      "email": "user.r381@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐชุมชนท่าล้อน",
+      "ownerName": "คุณประสาน อุดมสัตยานุกิจ",
+      "storeDescription": "",
+      "phone": "081-9689486",
+      "email": "user.r382@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านควนสูง",
+      "ownerName": "คุณอรุณ เกลี้ยงกลม",
+      "storeDescription": "",
+      "phone": "086-2735699",
+      "email": "user.r383@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนบ้านทุ่งในไร่",
+      "ownerName": "คุณมานะ วสุลิปิกร",
+      "storeDescription": "",
+      "phone": "083-1742086",
+      "email": "user.r384@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนสวัสดิการบ้านหนองเคียน",
+      "ownerName": "คุณปิยะนันทร์ รักกลัด",
+      "storeDescription": "",
+      "phone": "095-2698915",
+      "email": "user.r385@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐกองทุนบ้านนาใหม่ ",
+      "ownerName": "คุณจรรยา ถุงทอง",
+      "storeDescription": "",
+      "phone": "098-0139448",
+      "email": "user.r386@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านห้วยเรียน",
+      "ownerName": "คุณฉวี ชุนเขตต์",
+      "storeDescription": "",
+      "phone": "084-4464022",
+      "email": "user.r387@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนบ้านห้วยใหญ่",
+      "ownerName": "คุณโสภณ วัฒนกูล",
+      "storeDescription": "",
+      "phone": "061-3189297",
+      "email": "user.r388@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านหนองดุก",
+      "ownerName": "คุณสำราญ ทรรพคช, คุณจิตรา ฉวาง",
+      "storeDescription": "",
+      "phone": "081-7470265, 085-7934885",
+      "email": "user.r389@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านใหม่จัตวา",
+      "ownerName": "คุณจะรวย เพชรทอง",
+      "storeDescription": "",
+      "phone": "089-8718347",
+      "email": "user.r390@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าแตงโม(ประชารัฐ)",
+      "ownerName": "คุณอรทัย ธำนินวล",
+      "storeDescription": "",
+      "phone": "080-5293217",
+      "email": "user.r391@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าสุวรรณ(ประชารัฐ)",
+      "ownerName": "คุณสุวรรณ จันทาโพธิ์",
+      "storeDescription": "",
+      "phone": "086-2839719",
+      "email": "user.r392@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าจักรพงษ์(ประชารัฐ)",
+      "ownerName": "คุณจักรพงษ์ อินมี",
+      "storeDescription": "",
+      "phone": "092-0708835",
+      "email": "user.r393@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าสหกรณ์การเกษตรเมืองสุราษฎร์",
+      "ownerName": "คุณกัลยารัตน์ เทพเลื่อน",
+      "storeDescription": "",
+      "phone": "092-8939415",
+      "email": "user.r394@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าอรรถพร(ประชารัฐ)",
+      "ownerName": "คุณอรรถพร แสงแก้ว",
+      "storeDescription": "",
+      "phone": "085-4772256",
+      "email": "user.r395@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าไร้เฟิ้ล&แองเจิ้ล(ประชารัฐ)",
+      "ownerName": "คุณกนกวรรณ มะลิสุวรรณ",
+      "storeDescription": "",
+      "phone": "081-4640021",
+      "email": "user.r396@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ายุพา(ประชารัฐ)",
+      "ownerName": "คุณยุพา จูงพงศ์",
+      "storeDescription": "",
+      "phone": "081-9684012",
+      "email": "user.r397@dbdui.com"
+    },
+    {
+      "storeName": "ร้านเพ็ญศรี(ประชารัฐ)",
+      "ownerName": "คุณเพ็ญศรี คงสวี",
+      "storeDescription": "",
+      "phone": "098-0810809",
+      "email": "user.r398@dbdui.com"
+    },
+    {
+      "storeName": "ร้านเจ๊แดง(ประชารัฐ)",
+      "ownerName": "คุณกรณิกา สุทธิพล",
+      "storeDescription": "",
+      "phone": "086-9464769",
+      "email": "user.r399@dbdui.com"
+    },
+    {
+      "storeName": "ร้านพี่กบของชำ(ประชารัฐ)",
+      "ownerName": "คุณอมรรัตน์ พึ่งพล",
+      "storeDescription": "",
+      "phone": "087-2728755, 077-501090",
+      "email": "user.r400@dbdui.com"
+    },
+    {
+      "storeName": "ร้านทุ่งคาเจริญโภคภัณฑ์(ประชารัฐ)",
+      "ownerName": "คุณเงินยวง วรรณศิลป์",
+      "storeDescription": "",
+      "phone": "081-3262750",
+      "email": "user.r401@dbdui.com"
+    },
+    {
+      "storeName": "ร้าน เอ.ที มินิมาร์ท(ประชารัฐ)",
+      "ownerName": "คุณโชติรัตน์ สร้อยสลับ",
+      "storeDescription": "",
+      "phone": "081-0916015",
+      "email": "user.r402@dbdui.com"
+    },
+    {
+      "storeName": "ร้านน้องฟ้า(ประชารัฐ)",
+      "ownerName": "คุณลำยอง ทองสุข",
+      "storeDescription": "",
+      "phone": "090-1629819",
+      "email": "user.r403@dbdui.com"
+    },
+    {
+      "storeName": "ร้านอนันต์ ออย(ประชารัฐ)",
+      "ownerName": "คุณวินัย ยิ้มอนันต์",
+      "storeDescription": "",
+      "phone": "093-6595741",
+      "email": "user.r404@dbdui.com"
+    },
+    {
+      "storeName": "ร้านพิมพ์พะลัง(ประชารัฐ)",
+      "ownerName": "คุณพิมพ์ พะลัง",
+      "storeDescription": "",
+      "phone": "089-2875921, 088-0522526",
+      "email": "user.r405@dbdui.com"
+    },
+    {
+      "storeName": "ร้านอุทัย(ประชารัฐ)",
+      "ownerName": "คุณอุทัย นาคสิงห์",
+      "storeDescription": "",
+      "phone": "081-5394984",
+      "email": "user.r406@dbdui.com"
+    },
+    {
+      "storeName": "ร้านคุณเอก(ประชารัฐ)",
+      "ownerName": "คุณนิทัศน์ แป้นนาบอน",
+      "storeDescription": "",
+      "phone": "098-1049553",
+      "email": "user.r407@dbdui.com"
+    },
+    {
+      "storeName": "ร้านประกอบโมสุขะ(ประชารัฐ)",
+      "ownerName": "คุณประกอบ โมสุขะ",
+      "storeDescription": "",
+      "phone": "089-97911460",
+      "email": "user.r408@dbdui.com"
+    },
+    {
+      "storeName": "ร้านพี่หนู(ประชารัฐ)",
+      "ownerName": "คุณวิลาวรรณ จันทร์โพธิ์",
+      "storeDescription": "",
+      "phone": "062-8582987",
+      "email": "user.r409@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านสำโรงแฉ้ ",
+      "ownerName": "คุณวรีภา เอี่ยมสอาด",
+      "storeDescription": "",
+      "phone": "081-5421880",
+      "email": "user.r410@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านทุ่งหม้อแตก ",
+      "ownerName": "คุณเวียน แก้วคง",
+      "storeDescription": "",
+      "phone": "081-0963554",
+      "email": "user.r411@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าลูกช้างมินิมาร์ท(ประชารัฐ)",
+      "ownerName": "คุณสาธิต ชูเปีย",
+      "storeDescription": "",
+      "phone": "091-0494252",
+      "email": "user.r412@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐกองทุนหมู่บ้าน บ้านรับแพรก (ประชารัฐ)",
+      "ownerName": "คุณสมพงศ์ จันทราพท, คุณอุบล ดวงภักดี",
+      "storeDescription": "",
+      "phone": "084-4079094",
+      "email": "user.r413@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้า โชคอมรแก้ว 3 (ร้านชุมชนมะขามเฒ่า)",
+      "ownerName": "คุณบุญแก้ว เทพฉิม, คุณณริณพิศพัฒศ์ บุตรขันธ์",
+      "storeDescription": "",
+      "phone": "081-9577019, 084-2503996",
+      "email": "user.r414@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านนาบเตย",
+      "ownerName": "คุณนิพล บุญศิริ, คุณพัทธี คงศรี",
+      "storeDescription": "",
+      "phone": "080-5478932, 088-2118735",
+      "email": "user.r415@dbdui.com"
+    },
+    {
+      "storeName": "ร้านติ๊ก(ประชารัฐ)",
+      "ownerName": "คุณกาญจนา มีจันทร์",
+      "storeDescription": "",
+      "phone": "089-7361432",
+      "email": "user.r416@dbdui.com"
+    },
+    {
+      "storeName": "ร้านพี่ณี ท่าบอน(ประชารัฐ)",
+      "ownerName": "คุณวรรณี ปลอดทองสม",
+      "storeDescription": "",
+      "phone": "099-3625343",
+      "email": "user.r417@dbdui.com"
+    },
+    {
+      "storeName": "ร้านลุงพลมินิมาร์ท บ้านใหม่(ประชารัฐ)",
+      "ownerName": "คุณวีระพล พูลภักดี",
+      "storeDescription": "",
+      "phone": "082-4201562",
+      "email": "user.r418@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านทับช้าง",
+      "ownerName": "คุณพิน แพทย์พรรณ์",
+      "storeDescription": "",
+      "phone": "089-2974023, 086-2989435",
+      "email": "user.r419@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐกองทุนหมู่บ้านมาบปรือ ",
+      "ownerName": "คุณนฤดล เปลี่ยนถาวร, คุณสมหมาย ประกิตสันธนะ",
+      "storeDescription": "",
+      "phone": "089-9785574, 081-4783682",
+      "email": "user.r420@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าฟ้ามาลีมินิมาร์ท(ประชารัฐ)",
+      "ownerName": "คุณมาลี จันทร์สง",
+      "storeDescription": "",
+      "phone": "081-6099506",
+      "email": "user.r421@dbdui.com"
+    },
+    {
+      "storeName": "ร้านไพโรจน์ พะตง(ประชารัฐ)",
+      "ownerName": "คุณไพโรจน์ เพ็ชรสัก",
+      "storeDescription": "",
+      "phone": "081-2766687",
+      "email": "user.r422@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าศรัญญา(ประชารัฐ)",
+      "ownerName": "คุณศรัญญา ปล้องคง",
+      "storeDescription": "",
+      "phone": "083-1850758",
+      "email": "user.r423@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐชุมชนบ้านใหม่",
+      "ownerName": "คุณวิเชียร พงศ์พิทักษ์, คุณอุบล พงศ์ไพบูลย์",
+      "storeDescription": "",
+      "phone": "062-0644920, 085-0798115",
+      "email": "user.r424@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐกองทุนหมู่บ้าน บ้านบางหรอด",
+      "ownerName": "คุณสุมล เกตุพันธ์",
+      "storeDescription": "",
+      "phone": "080-5413985",
+      "email": "user.r425@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐสุขใจ",
+      "ownerName": "คุณวรันธร แก้วศรี",
+      "storeDescription": "",
+      "phone": "098-7031342",
+      "email": "user.r426@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐบ้านคูวาตก",
+      "ownerName": "คุณสมพงศ์ แก้วจันทร์, คุณอุไรวรรณ อินทร์อักษร",
+      "storeDescription": "",
+      "phone": "086-4287713, 099-3152825",
+      "email": "user.r427@dbdui.com"
+    },
+    {
+      "storeName": "ร้านลุงกุศล(ประชารัฐ)",
+      "ownerName": "คุณกุศล ทับไทร",
+      "storeDescription": "",
+      "phone": "098-7065168",
+      "email": "user.r428@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านใหม่",
+      "ownerName": "คุณศิริมา หนูพันธ์, คุณลดาพรรณ หนูพันธ์",
+      "storeDescription": "",
+      "phone": "086-9623492",
+      "email": "user.r429@dbdui.com"
+    },
+    {
+      "storeName": "ร้านศิริสักดิ์การค้า(ประชารัฐ)",
+      "ownerName": "คุณศิริศักดิ์ พิทักษ์สันติพล",
+      "storeDescription": "",
+      "phone": "095-3497632, 089-2972985",
+      "email": "user.r430@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าจันทร์แจ๋มใส(ประชารัฐ)",
+      "ownerName": "คุณจรรยา เจริญวรนาท",
+      "storeDescription": "",
+      "phone": "080-5413666",
+      "email": "user.r431@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านคลองยอ",
+      "ownerName": "คุณอำนวย ทวีจันทร์",
+      "storeDescription": "",
+      "phone": "086-2995323",
+      "email": "user.r432@dbdui.com"
+    },
+    {
+      "storeName": "ร้านป้าเอียด(ประชารัฐ)",
+      "ownerName": "คุณสวาสดิ์ ช่วยนรินทร์",
+      "storeDescription": "",
+      "phone": "099-1717890",
+      "email": "user.r433@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ารุ่งไพลินมินิมาร์ท(ประชารัฐ)",
+      "ownerName": "คุณรจเรช รุจิราวิศรุต",
+      "storeDescription": "",
+      "phone": "081-3885321",
+      "email": "user.r434@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านใหม่",
+      "ownerName": "คุณศรัณยา หนูเขียว",
+      "storeDescription": "",
+      "phone": "087-2998896",
+      "email": "user.r435@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐ หมู่ 8 ",
+      "ownerName": "คุณพนม แก้วศรี, คุณรัตนา บุญเพ็ชร",
+      "storeDescription": "",
+      "phone": "087-2880852, 093-7782364",
+      "email": "user.r436@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านช่อนทอง",
+      "ownerName": "คุณธนู ทองขวัญ",
+      "storeDescription": "",
+      "phone": "061-1819155",
+      "email": "user.r437@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าบ้านกอบจิตมินิมาร์ท(ประชารัฐ)",
+      "ownerName": "คุณชญาภา กอบจิตต์",
+      "storeDescription": "",
+      "phone": "084-8612535",
+      "email": "user.r438@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านปลักจอก",
+      "ownerName": "คุณพรทิพย์ รัตนชล",
+      "storeDescription": "",
+      "phone": "089-8789811",
+      "email": "user.r439@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐบ้านหนองหอยโข่ง",
+      "ownerName": "คุณสมพร ชูบุญส่ง",
+      "storeDescription": "",
+      "phone": "081-0810690",
+      "email": "user.r440@dbdui.com"
+    },
+    {
+      "storeName": "ร้าค้าสถาบันชุมชนบ้านตะโล๊ะ",
+      "ownerName": "คุณดนม่าหน๊ะ กรุหมอ",
+      "storeDescription": "",
+      "phone": "080-1367550",
+      "email": "user.r441@dbdui.com"
+    },
+    {
+      "storeName": "ร้าค้าชุมชนกองทุนหมู่บ้านไทย-จังโหลน",
+      "ownerName": "คุณกิตติ บุญนำ",
+      "storeDescription": "",
+      "phone": "093-5289969",
+      "email": "user.r442@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านกะเช๊ะ",
+      "ownerName": "คุณรอสาลี หนิหมะ",
+      "storeDescription": "",
+      "phone": "081-1625674",
+      "email": "user.r443@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐกองทุนหมู่บ้านหัวควน",
+      "ownerName": "คุณวิลาวัลย์ แซ่ก๊ก",
+      "storeDescription": "",
+      "phone": "081-0977448",
+      "email": "user.r444@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชน",
+      "ownerName": "คุณอัญชลี ทองเอียด",
+      "storeDescription": "",
+      "phone": "090-8262382",
+      "email": "user.r445@dbdui.com"
+    },
+    {
+      "storeName": "ร้านสวัสดิการ ม.5 บ้านในเมือง",
+      "ownerName": "คุณวิสุทธิ แก้วมาก",
+      "storeDescription": "",
+      "phone": "084-3955587",
+      "email": "user.r446@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านยูงงาม ",
+      "ownerName": "คุณเชื่อง ไชยสงคราม",
+      "storeDescription": "",
+      "phone": "095-4195683",
+      "email": "user.r447@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชน ต.เขาไพร",
+      "ownerName": "คุณวิถี ไชยมณี, คุณลัดดาวัลย์ ไชยช่วย",
+      "storeDescription": "",
+      "phone": "081-0847454, 098-7925829",
+      "email": "user.r448@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านหนองนนท์",
+      "ownerName": "คุณณัฐชากาญจน์ เขาแก้ว",
+      "storeDescription": "",
+      "phone": "094-8013632",
+      "email": "user.r449@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐน้ำผุด",
+      "ownerName": "คุณประพันธ์ แพงทวี",
+      "storeDescription": "",
+      "phone": "082-4114971",
+      "email": "user.r450@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐกิตติกุล",
+      "ownerName": "คุณเพ็ญพรรณ แสงยิ่ง",
+      "storeDescription": "",
+      "phone": "083-6486429",
+      "email": "user.r451@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐเพื่อชุมชน ม.4",
+      "ownerName": "คุณอาลี แซะอามา",
+      "storeDescription": "",
+      "phone": "093-6627391",
+      "email": "user.r452@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านพรุ",
+      "ownerName": "คุณเสน่ห์ ซุ้ยขาว",
+      "storeDescription": "",
+      "phone": "080-3658504",
+      "email": "user.r453@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐกองทุนบ้านไร่",
+      "ownerName": "คุณซาฟีอี อาดำ",
+      "storeDescription": "",
+      "phone": "081-3681653",
+      "email": "user.r454@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านในใส",
+      "ownerName": "คุณอารีรัตน์ เอียดดี, คุณลัดดา มัจฉา",
+      "storeDescription": "",
+      "phone": "087-4776951",
+      "email": "user.r455@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านวังผาสามัคคี",
+      "ownerName": "คุณประยูร จันทรชุม",
+      "storeDescription": "",
+      "phone": "095-2014505",
+      "email": "user.r456@dbdui.com"
+    },
+    {
+      "storeName": "กงทุนหมู่บ้านและชุมชนเมือง จ.สตูล",
+      "ownerName": "คุณรอชะนันท์ เสมเลิม, คุณอรพรรณ ปาละหมีน",
+      "storeDescription": "",
+      "phone": "087-5426508",
+      "email": "user.r457@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านควนดินดำ",
+      "ownerName": "คุณไพโรจน์ ดำพลับ",
+      "storeDescription": "",
+      "phone": "082-8260591",
+      "email": "user.r458@dbdui.com"
+    },
+    {
+      "storeName": "วิสาหกิจชุมชนกลุ่มแม่บ้านบินตัง",
+      "ownerName": "คุณสีตีฝาตีม๊ะ วัฒนะ",
+      "storeDescription": "",
+      "phone": "083-1840994",
+      "email": "user.r459@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านตะโละใส",
+      "ownerName": "คุณสมพร เหมรา",
+      "storeDescription": "",
+      "phone": "081-7981303",
+      "email": "user.r460@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนมัสยิดสะพานเคียน",
+      "ownerName": "คุณวินิช ตาเดอิน",
+      "storeDescription": "",
+      "phone": "081-9579297",
+      "email": "user.r461@dbdui.com"
+    },
+    {
+      "storeName": "ร้านนายยาหมาย(ประชารัฐ)",
+      "ownerName": "คุณยาหมาย หลีเยาว์",
+      "storeDescription": "",
+      "phone": "089-5958452",
+      "email": "user.r462@dbdui.com"
+    },
+    {
+      "storeName": "ร้านนายอิสมาแอล ลีมูสา(ประชารัฐ)",
+      "ownerName": "คุณอิสมาแอล ลีมูสา",
+      "storeDescription": "",
+      "phone": "081-7485040",
+      "email": "user.r463@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐบ้านไร่ใหญ่",
+      "ownerName": "คุณอ้วน คงพินิจพาณิชกิจ",
+      "storeDescription": "",
+      "phone": "062-8672010",
+      "email": "user.r464@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐ",
+      "ownerName": "คุณวิชัย เกิดสุข, คุณสนอง เอียดประพาล",
+      "storeDescription": "",
+      "phone": "080-8825476, 061-5497941",
+      "email": "user.r465@dbdui.com"
+    },
+    {
+      "storeName": "ร้านนายหมี(ประชารัฐ)",
+      "ownerName": "คุณหมี พลจรัส",
+      "storeDescription": "",
+      "phone": "081-4764646",
+      "email": "user.r466@dbdui.com"
+    },
+    {
+      "storeName": "ร้านอมรีย์(ประชารัฐ)",
+      "ownerName": "คุณอัสมา บุตรเต้",
+      "storeDescription": "",
+      "phone": "093-9319091",
+      "email": "user.r467@dbdui.com"
+    },
+    {
+      "storeName": "ร้านสิริชัย(ประชารัฐ)",
+      "ownerName": "คุณสิริชัย ภักดี",
+      "storeDescription": "",
+      "phone": "091-2039881",
+      "email": "user.r468@dbdui.com"
+    },
+    {
+      "storeName": "ร้านมดยักษ์(ประชารัฐ)",
+      "ownerName": "คุณสายลม เต้งชู",
+      "storeDescription": "",
+      "phone": "080-3654983",
+      "email": "user.r469@dbdui.com"
+    },
+    {
+      "storeName": "ร้านมันหมก มินิมาร์ท(ประชารัฐ)",
+      "ownerName": "คุณอภินันต์ ใจดี",
+      "storeDescription": "",
+      "phone": "092-3231224",
+      "email": "user.r470@dbdui.com"
+    },
+    {
+      "storeName": "ร้านปทุมพร(ประชารัฐ)",
+      "ownerName": "คุณปทุมพร คำเจริญ",
+      "storeDescription": "",
+      "phone": "096-6158506",
+      "email": "user.r471@dbdui.com"
+    },
+    {
+      "storeName": "ร้านพลอยสุดา(ประชารัฐ)",
+      "ownerName": "คุณพลอยสุดา เหล่าเส็น",
+      "storeDescription": "",
+      "phone": "098-7320062",
+      "email": "user.r472@dbdui.com"
+    },
+    {
+      "storeName": "ร้านหยงมินิมาร์ท(ประชารัฐ)",
+      "ownerName": "คุณพรหมพิริยะ หนูอินทร์",
+      "storeDescription": "",
+      "phone": "085-4717320",
+      "email": "user.r473@dbdui.com"
+    },
+    {
+      "storeName": "ร้านจี้จำ(ประชารัฐ)",
+      "ownerName": "คุณอริสา เพ็ชรเครือ",
+      "storeDescription": "",
+      "phone": "089-7727749",
+      "email": "user.r474@dbdui.com"
+    },
+    {
+      "storeName": "ร้านพี่อ้อย มินิมาร์ท(ประชารัฐ)",
+      "ownerName": "คุณปัณฑิตา ชูช่วง",
+      "storeDescription": "",
+      "phone": "096-1684432",
+      "email": "user.r475@dbdui.com"
+    },
+    {
+      "storeName": "ร้านนวลจันทร์(ประชารัฐ)",
+      "ownerName": "คุณนวลจันทร์ ไชยบุตร",
+      "storeDescription": "",
+      "phone": "086-2834170",
+      "email": "user.r476@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าสวัสดิการหมู่บ้าน",
+      "ownerName": "คุณสัมพันธ์ อีทาน",
+      "storeDescription": "",
+      "phone": "087-2750156",
+      "email": "user.r477@dbdui.com"
+    },
+    {
+      "storeName": "ร้านมาริสา (ประชารัฐ)",
+      "ownerName": "คุณมาริสา ชายกุล",
+      "storeDescription": "",
+      "phone": "085-6915334",
+      "email": "user.r478@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านนาออก",
+      "ownerName": "คุณดนริ บุตรฤทธิ์",
+      "storeDescription": "",
+      "phone": "083-3963838",
+      "email": "user.r479@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐชุมชนพาสันติ",
+      "ownerName": "คุณวรรณี ชินตระกูล",
+      "storeDescription": "",
+      "phone": "086-9546089",
+      "email": "user.r480@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านตัวเล็ก",
+      "ownerName": "คุณจีระศักดิ์ พรหมรักษ์",
+      "storeDescription": "",
+      "phone": "081-7872621",
+      "email": "user.r481@dbdui.com"
+    },
+    {
+      "storeName": "บ้านน้องพรีม(ประชารัฐ)",
+      "ownerName": "คุณสัมภาส ชุมพล",
+      "storeDescription": "",
+      "phone": "087-8812761",
+      "email": "user.r482@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านโมคลาน",
+      "ownerName": "คุณอมรศักดิ์ อมรจรรยาภัณฑ์, คุณปรีดา เหมมัน",
+      "storeDescription": "",
+      "phone": "087-6287226",
+      "email": "user.r483@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านวัดโหนด",
+      "ownerName": "คุณน้อย หลีหลัง",
+      "storeDescription": "",
+      "phone": "089-4718731",
+      "email": "user.r484@dbdui.com"
+    },
+    {
+      "storeName": "กองทุนหมู่บ้านบ้านควนลำภู",
+      "ownerName": "คุณสมคิด จันทร์เดช",
+      "storeDescription": "",
+      "phone": "086-2703780",
+      "email": "user.r485@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้า SML บ้านท้ายสำเภา",
+      "ownerName": "คุณอนุศักดิ์ แก้วโสภาค",
+      "storeDescription": "",
+      "phone": "084-0561882",
+      "email": "user.r486@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านห้วยช่อง",
+      "ownerName": "คุณกิ่งดาว จันทร์ชุม",
+      "storeDescription": "",
+      "phone": "087-2678555",
+      "email": "user.r487@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านกะทูนเหนือ",
+      "ownerName": "คุณจริง ตามี",
+      "storeDescription": "",
+      "phone": "087-8826127",
+      "email": "user.r488@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านคลองใหม่",
+      "ownerName": "คุณธิติมา ธุระกิจ",
+      "storeDescription": "",
+      "phone": "080-3889737",
+      "email": "user.r489@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐบ้านจังหูนใต้",
+      "ownerName": "คุณโสภา อมรลักษณ์, คุณชมนาถ เกตุชาติ",
+      "storeDescription": "",
+      "phone": "086-9439448",
+      "email": "user.r490@dbdui.com"
+    },
+    {
+      "storeName": "ร้านบิวมินิมาร์ท (ประชารัฐ)",
+      "ownerName": "คุณเกวลี เปาะทองคำ",
+      "storeDescription": "",
+      "phone": "089-9736859",
+      "email": "user.r491@dbdui.com"
+    },
+    {
+      "storeName": "ร้านเฟื่องฟ้า (ประชารัฐ)",
+      "ownerName": "คุณอนุรักษ์ ดารากัย",
+      "storeDescription": "",
+      "phone": "084-0585862",
+      "email": "user.r492@dbdui.com"
+    },
+    {
+      "storeName": "ร้านเลขที่ 1 (ประชารัฐ)",
+      "ownerName": "คุณกนกรวี เล่งวงศ์",
+      "storeDescription": "",
+      "phone": "087-3831402",
+      "email": "user.r493@dbdui.com"
+    },
+    {
+      "storeName": "ร้านเฉลิมเกษตรภัณฑ์(ประชารัฐ)",
+      "ownerName": "คุณเฉลิม คลอดเพ็ง",
+      "storeDescription": "",
+      "phone": "083-6342394",
+      "email": "user.r494@dbdui.com"
+    },
+    {
+      "storeName": "ร้านป้าไร - ลุงกูล(ประชารัฐ)",
+      "ownerName": "คุณมนิษิณี โสมจันทร์",
+      "storeDescription": "",
+      "phone": "099-2464622",
+      "email": "user.r495@dbdui.com"
+    },
+    {
+      "storeName": "ร้านพลอยชมพู มินิมาร์ท(ประชารัฐ)",
+      "ownerName": "คุณนพรัตน์ คุระแก้ว",
+      "storeDescription": "",
+      "phone": "087-3850907",
+      "email": "user.r496@dbdui.com"
+    },
+    {
+      "storeName": "ร้านพรไพศาล  (ประชารัฐ)",
+      "ownerName": "คุณกนกรัตน์ มูสาลี",
+      "storeDescription": "",
+      "phone": "088-7621994",
+      "email": "user.r497@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าบ้านเกตุแก้ว (ประชารัฐ)",
+      "ownerName": "คุณสุกิจ เกตุแก้ว",
+      "storeDescription": "",
+      "phone": "086-9412995",
+      "email": "user.r498@dbdui.com"
+    },
+    {
+      "storeName": "ร้านสารภี (ประชารัฐ)",
+      "ownerName": "คุณสารภี เย็นเอง",
+      "storeDescription": "",
+      "phone": "099-2464622",
+      "email": "user.r499@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐยินดี",
+      "ownerName": "คุณยินดี ",
+      "storeDescription": "",
+      "phone": "081-0688304",
+      "email": "user.r500@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้าน้ำขาว",
+      "ownerName": "คุณสุนทร  มณีไม",
+      "storeDescription": "",
+      "phone": "089-2925537",
+      "email": "user.r501@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าสหกรการเกษตรสี่แยกตลาดเก่า",
+      "ownerName": "คุณถาวล พวาศรี",
+      "storeDescription": "",
+      "phone": "085-7860611",
+      "email": "user.r502@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านสะพานนาคบุตร",
+      "ownerName": "คุณกฤษฎา  ไชยคงดีสวัสดิ์คุณรดาณัฐ  สุขขุม",
+      "storeDescription": "",
+      "phone": "095-4199494, 083-5556301",
+      "email": "user.r503@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐกองทุนหมู่บ้านหัวฝาย (ต.หนองช้างคืน)",
+      "ownerName": "นางกฤษณา สงเคราะห์พันท์",
+      "storeDescription": "",
+      "phone": "081-472-1206",
+      "email": "user.r504@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านห้วยมะเฟือง",
+      "ownerName": "คุณเกสร กาวี",
+      "storeDescription": "",
+      "phone": "084-370-7389",
+      "email": "user.r505@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านม่วง",
+      "ownerName": "นางอนันทิตา ณ คำตัน",
+      "storeDescription": "",
+      "phone": "089-801-9264",
+      "email": "user.r506@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐหมู่บ้านเกษตรพัฒนา",
+      "ownerName": "นายสุบิน อินต๊ะ",
+      "storeDescription": "",
+      "phone": "098-796-6139",
+      "email": "user.r507@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านหนองหนาม",
+      "ownerName": "นายปพล เยาว์สิทธิชัย",
+      "storeDescription": "",
+      "phone": "087-656-0919",
+      "email": "user.r508@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านสบป้าด",
+      "ownerName": "นายอินแก้ว แก้บุญเป้ง",
+      "storeDescription": "",
+      "phone": "081-950-1734",
+      "email": "user.r509@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐกองทุนหมู่บ้านบ้านป่าเป่า ",
+      "ownerName": "นางกาญจนาภรณ์ แก้ววงศ์",
+      "storeDescription": "",
+      "phone": "086-916-4662",
+      "email": "user.r510@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านสหกรณ์ 3",
+      "ownerName": "นายบุญส่ง ท้าวคำ",
+      "storeDescription": "",
+      "phone": "081-594-8709",
+      "email": "user.r511@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านฮ่องแล้ง",
+      "ownerName": "นายชาญชัย นวคุณานนท์",
+      "storeDescription": "",
+      "phone": "086-559-7837",
+      "email": "user.r512@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านกอกชุม หมู่ 6",
+      "ownerName": "นางอำไพ เป็งราชรอง",
+      "storeDescription": "",
+      "phone": "084-047-3270",
+      "email": "user.r513@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐชุมชนบ้านสันดอนรอม",
+      "ownerName": "นางทองศรี จันทรธง",
+      "storeDescription": "",
+      "phone": "086-607-6326",
+      "email": "user.r514@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านห้วยน้ำเย็น",
+      "ownerName": "นางสาวนันท์สนัส เลิศสิริการนูล",
+      "storeDescription": "",
+      "phone": "098-571-1047",
+      "email": "user.r515@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านวังสะแกงใต้",
+      "ownerName": "นางฉวีวรรณ์ ยันทะวาย",
+      "storeDescription": "",
+      "phone": "089-997-7516",
+      "email": "user.r516@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐบ้านแพะห้วยบง",
+      "ownerName": "นางอรุณ ขุนนา",
+      "storeDescription": "",
+      "phone": "086-118-4946",
+      "email": "user.r517@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านศรีงาม หมู่ 5",
+      "ownerName": "นางชัชฎาภรณ์ ชมสูง",
+      "storeDescription": "",
+      "phone": "094-637-2891",
+      "email": "user.r518@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านใหม่สามัคคี",
+      "ownerName": "นายธนศิลป์ หน้าชุม",
+      "storeDescription": "",
+      "phone": "089-556-8427",
+      "email": "user.r519@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านห้วยบง",
+      "ownerName": "นางเพ็ญทิพา รู้รอบ",
+      "storeDescription": "",
+      "phone": "093-032-3095",
+      "email": "user.r520@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐบ้านต้นผึ้ง",
+      "ownerName": "นายวิชัย เป็งเรือง",
+      "storeDescription": "",
+      "phone": "086-191-7722",
+      "email": "user.r521@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐบ้านวังธาร",
+      "ownerName": "คุณปรัชญา บุญชัยอาจ",
+      "storeDescription": "",
+      "phone": "094-627-3377",
+      "email": "user.r522@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนหมู่บ้านสบเมาะ",
+      "ownerName": "นายอินแก้ว แก้บุญเป้ง",
+      "storeDescription": "",
+      "phone": "086-189-2841",
+      "email": "user.r523@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐหมู่บ้านท่าไคร้",
+      "ownerName": "นายสมชาย เหล็กเพชร",
+      "storeDescription": "",
+      "phone": "081-287-4807",
+      "email": "user.r524@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านแม่ย่อยใต้ หมู่ 2",
+      "ownerName": "นางภัสร์นิภา อาสากิจ",
+      "storeDescription": "",
+      "phone": "089-1296-113",
+      "email": "user.r525@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านหล่ายสาย",
+      "ownerName": "นางลัดดา ปละอุด",
+      "storeDescription": "",
+      "phone": "082-191-8590",
+      "email": "user.r526@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านกิ่วแล",
+      "ownerName": "นางสมพิศ ศรีฟ้าเลือน",
+      "storeDescription": "",
+      "phone": "081-169-0141",
+      "email": "user.r527@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านแม่ย้อยเหนือ หมู่ 1",
+      "ownerName": "คุณอมร ศรีจันทร์",
+      "storeDescription": "",
+      "phone": "081-960-9409",
+      "email": "user.r528@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านน้ำตกแม่สา",
+      "ownerName": "คุณสุวิน จักรวาล",
+      "storeDescription": "",
+      "phone": "081-884-3712",
+      "email": "user.r529@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านแหนโง้ม",
+      "ownerName": "นางชนนาถ มานะอุดมสิน",
+      "storeDescription": "",
+      "phone": "084-885-2908",
+      "email": "user.r530@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐกองทุนหมู่บ้าน บ้านดู่",
+      "ownerName": "นางแสงอรุณ กูลนรา",
+      "storeDescription": "",
+      "phone": "084-613-6055",
+      "email": "user.r531@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านสหกรณ์ 5",
+      "ownerName": "นายไพรัช ซิมทิม",
+      "storeDescription": "",
+      "phone": "088-458-1772",
+      "email": "user.r532@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านทุ่งแท่น",
+      "ownerName": "นายบุญทา เจริญเดชาภัทร",
+      "storeDescription": "",
+      "phone": "092-371-9416",
+      "email": "user.r533@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านผาช่อ",
+      "ownerName": "นายสงกรานต์ เจริญสุข",
+      "storeDescription": "",
+      "phone": "081-992-9788",
+      "email": "user.r534@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนกองทุนหมู่บ้านห้วยไผ่",
+      "ownerName": "นางโสรยา บุญยมหา",
+      "storeDescription": "",
+      "phone": "089-560-8728",
+      "email": "user.r535@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐกองทุนหมู่บ้านม่วงเขียว",
+      "ownerName": "นางอนงค์ ปัญใจแก้ว",
+      "storeDescription": "",
+      "phone": "087-657-0736",
+      "email": "user.r536@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านทรายมูล หมู่ที่ 2",
+      "ownerName": "นางสุมนา ทายิตา",
+      "storeDescription": "",
+      "phone": "063-594-2577",
+      "email": "user.r537@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าสหกรณ์บ้านดงบัง",
+      "ownerName": "นางรัตนะ คำดี",
+      "storeDescription": "",
+      "phone": "088-514-6440",
+      "email": "user.r538@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านสังคม",
+      "ownerName": "นางจันทร์เพ็ญ ปานคาน",
+      "storeDescription": "",
+      "phone": "081-056-8057",
+      "email": "user.r539@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าสวัสดิการชุมชนบ้านผ่านศึก 1",
+      "ownerName": "นางชลธิดา เมืองทา",
+      "storeDescription": "",
+      "phone": "080-197-5471",
+      "email": "user.r540@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านโคกพัฒนา",
+      "ownerName": "นางมณีกานต์ ฆ้องคำ",
+      "storeDescription": "",
+      "phone": "089-714-7148",
+      "email": "user.r541@dbdui.com"
+    },
+    {
+      "storeName": "ศูนย์สาธิตการตลาดบ้านเหล่าอ้อย",
+      "ownerName": "นางสุนิสา สำแดงชัย",
+      "storeDescription": "",
+      "phone": "081-799-2404",
+      "email": "user.r542@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านเล้า",
+      "ownerName": "นายประพจน์ ประหา",
+      "storeDescription": "",
+      "phone": "093-325-4513",
+      "email": "user.r543@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐบ้านอุ่มจาน หมู่ 8",
+      "ownerName": "นายไกรษร บุดดี",
+      "storeDescription": "",
+      "phone": "082-150-7550",
+      "email": "user.r544@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนสวัสดิการประชารัฐบ้านเมืองปัง",
+      "ownerName": "นายชัยณรงค์ เนื่องไชยยศ",
+      "storeDescription": "",
+      "phone": "085-608-9945",
+      "email": "user.r545@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านโซ่ง",
+      "ownerName": "นายสุจิตร สันเต",
+      "storeDescription": "",
+      "phone": "084-790-1819",
+      "email": "user.r546@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐผ่านศึกษา 4",
+      "ownerName": "นางจุไรวรรณ พูลสาทรกูล",
+      "storeDescription": "",
+      "phone": "081-975-8942",
+      "email": "user.r547@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านหนองกุงธนสาร",
+      "ownerName": "นายทวี บุดดา",
+      "storeDescription": "",
+      "phone": "082-841-2044",
+      "email": "user.r548@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านนาข่า",
+      "ownerName": "นายวิเชียร แก้วตา",
+      "storeDescription": "",
+      "phone": "084-428-7530",
+      "email": "user.r549@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐตำบลในเมือง",
+      "ownerName": "นางสาวรุ่งนภา จารย์โพธิ์",
+      "storeDescription": "",
+      "phone": "085-011-6910",
+      "email": "user.r550@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้ากองทุนหมู่บ้านตามโครงการประชารัฐบ้านกุดสระ",
+      "ownerName": "นายไพโรจน์ ไชยกัณหา",
+      "storeDescription": "",
+      "phone": "083-337-5536",
+      "email": "user.r551@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านโนนชัยพร",
+      "ownerName": "นายสุดใจ ทองกุล",
+      "storeDescription": "",
+      "phone": "087-855-1239",
+      "email": "user.r552@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าสวัสดิการตำบลเมืองหมี (บ้านท่าดอกคำ)",
+      "ownerName": "นางจีระนัน พรหมหิตา",
+      "storeDescription": "",
+      "phone": "088-561-1711",
+      "email": "user.r553@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านห้วยแก",
+      "ownerName": "รตต.บำรุง พัฒนณีย์",
+      "storeDescription": "",
+      "phone": "098-101-2496",
+      "email": "user.r554@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านดู่เหนือ",
+      "ownerName": "นางอรพิม หาญวงษ์",
+      "storeDescription": "",
+      "phone": "087-226-1293",
+      "email": "user.r555@dbdui.com"
+    },
+    {
+      "storeName": "ศูนย์สาธิตการตลาดบ้านวังหินลาด-วังเจริญ",
+      "ownerName": "นายทองดี กันหาเรียง",
+      "storeDescription": "",
+      "phone": "090-901-0309",
+      "email": "user.r556@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านด่าน",
+      "ownerName": "นายเลอพงษ์ รักษาเพียร",
+      "storeDescription": "",
+      "phone": "062-904-9093",
+      "email": "user.r557@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านคอกวัว",
+      "ownerName": "นายอุดม บุบผาโสภา",
+      "storeDescription": "",
+      "phone": "096-373-4683",
+      "email": "user.r558@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านฝายหิน หมู่ 4",
+      "ownerName": "นางสังเวียน มีศาสตร์",
+      "storeDescription": "",
+      "phone": "082-309-8519",
+      "email": "user.r559@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าสวัสดิการชุมชนบ้านหินโงมเหนือ",
+      "ownerName": "นางสาวาสนา สุดสงคราม",
+      "storeDescription": "",
+      "phone": "083-141-7630",
+      "email": "user.r560@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านหนองสองห้อง",
+      "ownerName": "นายสมบัติ ยอดเสลา",
+      "storeDescription": "",
+      "phone": "093-467-4763",
+      "email": "user.r561@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าเพื่อการเกษตรประชารัฐบ้านจีต",
+      "ownerName": "นางแจ่มจันทร์ โสดาเดษ",
+      "storeDescription": "",
+      "phone": "083-143-9102",
+      "email": "user.r562@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐหนองติ้ว",
+      "ownerName": "นายคำพันธุ์ ชัยนนท์",
+      "storeDescription": "",
+      "phone": "087-441-7436",
+      "email": "user.r563@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านศรีพัฒนา",
+      "ownerName": "นางสาวพรชณิตว์ แสงอ่อน",
+      "storeDescription": "",
+      "phone": "095 717 6474",
+      "email": "user.r564@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านปลา",
+      "ownerName": "นางสาวสุวิมล บำรุงพืช",
+      "storeDescription": "",
+      "phone": "081-697-2575",
+      "email": "user.r565@dbdui.com"
+    },
+    {
+      "storeName": "ร้านหางน้ำสาคร",
+      "ownerName": "นายมาโนชญ์ ดีเกษม",
+      "storeDescription": "",
+      "phone": "087-309-5989",
+      "email": "user.r566@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านห้วยผักชี",
+      "ownerName": "นายสายยันต์ จันทรา",
+      "storeDescription": "",
+      "phone": "087-170-3610",
+      "email": "user.r567@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านโพธิ์ศรี",
+      "ownerName": "นางสาวปิ่น รุจยากรกุล",
+      "storeDescription": "",
+      "phone": "098-874-5294",
+      "email": "user.r568@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนกลางนา",
+      "ownerName": "นายรัฐกร นาดีสงวนนาม",
+      "storeDescription": "",
+      "phone": "086-881-8188",
+      "email": "user.r569@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนท่าบ้านหลวง หมู่ 5",
+      "ownerName": "นายสมควร น้ำจันทร์",
+      "storeDescription": "",
+      "phone": "089-565-3835",
+      "email": "user.r570@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านหัวชุกบัว",
+      "ownerName": "นางวิยะดา อยู่สำราญ",
+      "storeDescription": "",
+      "phone": "086-072-3608",
+      "email": "user.r571@dbdui.com"
+    },
+    {
+      "storeName": "ร้านชุมชนบ้านบางวัว",
+      "ownerName": "นางรภัสรีญ์ เทียมทันพร",
+      "storeDescription": "",
+      "phone": "095-779-5245",
+      "email": "user.r572@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนศูนย์เทคโนโลยีและร้านค้าชุมชน (บ้านต้นโพธิ์/บางขะแยง)",
+      "ownerName": "นางสาวสมจิตร ดำขำ",
+      "storeDescription": "",
+      "phone": "089-815-8418",
+      "email": "user.r573@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านดง",
+      "ownerName": "นางสมควร บังศรี",
+      "storeDescription": "",
+      "phone": "062-658-5056",
+      "email": "user.r574@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านหลวง",
+      "ownerName": "นายสุรัตน์ จำเนียงธรรม",
+      "storeDescription": "",
+      "phone": "092-451-5514",
+      "email": "user.r575@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านบ่อใหญ่",
+      "ownerName": "นายสุเทพ พุ่มไสว",
+      "storeDescription": "",
+      "phone": "089-918-7850",
+      "email": "user.r576@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านเจ้า หมู่ 3",
+      "ownerName": "นายบุญเสริม กันต่าย",
+      "storeDescription": "",
+      "phone": "081-778-4519",
+      "email": "user.r577@dbdui.com"
+    },
+    {
+      "storeName": "ชุมชนร่วมใจประชารัฐพีพีมินิมาร์ท",
+      "ownerName": "นายหนิม ทองเบ้า",
+      "storeDescription": "",
+      "phone": "081-382-8308",
+      "email": "user.r578@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านคลองคต",
+      "ownerName": "นางหัสทัย ทัดทอง",
+      "storeDescription": "",
+      "phone": "083-878-8295",
+      "email": "user.r579@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านชุ้น",
+      "ownerName": "นางจิตราพรณ์ ศรีคำ",
+      "storeDescription": "",
+      "phone": "098-3327737",
+      "email": "user.r580@dbdui.com"
+    },
+    {
+      "storeName": "ร้านชุมชน 59 หมู่ 5",
+      "ownerName": "สอ.ประสิทธิ์ ตงประสา",
+      "storeDescription": "",
+      "phone": "089-762-6860",
+      "email": "user.r581@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐชุมชนบ้านปากง่าม",
+      "ownerName": "นางสุภิศรา เสียงสนั่น",
+      "storeDescription": "",
+      "phone": "094-234-8263",
+      "email": "user.r582@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านโรงกุ้ง",
+      "ownerName": "นายสุริยา หรือประเสริฐ",
+      "storeDescription": "",
+      "phone": "091-436-4533",
+      "email": "user.r583@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านคอนจาน",
+      "ownerName": "นายเหมันต์ มาลากอง",
+      "storeDescription": "",
+      "phone": "092-678-5427",
+      "email": "user.r584@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านเอกหลาดฝั่งตะวันตก",
+      "ownerName": "นางเอื้อมพร ศรีโหมด",
+      "storeDescription": "",
+      "phone": "092-805-8975",
+      "email": "user.r585@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านมอบลัด",
+      "ownerName": "นายณัฐพสิทธิ์ ชูประดิษฐ์",
+      "storeDescription": "",
+      "phone": "092-745-6634",
+      "email": "user.r586@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านท่าตลาด",
+      "ownerName": "นายปราโมทย์ อ้อพงษ์",
+      "storeDescription": "",
+      "phone": "081-941-0580",
+      "email": "user.r587@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนท่าบ้านหลวง หมู่ 4",
+      "ownerName": "นายภานุวัฒน์ อ่อนสง่า",
+      "storeDescription": "",
+      "phone": "094-621-4493",
+      "email": "user.r588@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐบ้านวัดสน",
+      "ownerName": "นางประจวบ  หนูยุ่น",
+      "storeDescription": "",
+      "phone": "081-3689494",
+      "email": "user.r589@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐบ้านป่ากัน  ",
+      "ownerName": "นางสาวศันทิรา หลีกา",
+      "storeDescription": "",
+      "phone": "088-3882461",
+      "email": "user.r590@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐบ้านนาทวี  ",
+      "ownerName": "ร.ต.ท.ประจบ หนูดำ",
+      "storeDescription": "",
+      "phone": "065-7860062",
+      "email": "user.r591@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านคลองไข่มุก",
+      "ownerName": "นางจุฑามาศ ชัยวร",
+      "storeDescription": "",
+      "phone": "087-9683597",
+      "email": "user.r592@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านเมืองราชนิคม ",
+      "ownerName": "นายบารมี  จันทร์โชตะ",
+      "storeDescription": "",
+      "phone": "086-9423357",
+      "email": "user.r593@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านหมอคง",
+      "ownerName": "นายก่อเดช อาหวัง",
+      "storeDescription": "",
+      "phone": "081-9634243",
+      "email": "user.r594@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนประชารัฐบ้านใหม่ ",
+      "ownerName": "นางอุบล พงศ์ไพบูลย์",
+      "storeDescription": "",
+      "phone": "062-0644920",
+      "email": "user.r595@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านป่ายาง",
+      "ownerName": "นางวัญเพ็ญ กัลยา",
+      "storeDescription": "",
+      "phone": "087-2997339",
+      "email": "user.r596@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านวังปริง",
+      "ownerName": "นางผุสดี หมื่นเดช",
+      "storeDescription": "",
+      "phone": "080-7002445",
+      "email": "user.r597@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าประชารัฐบ้านทุ่งโพธิ์",
+      "ownerName": "นางกัลยกร อินจันทร์",
+      "storeDescription": "",
+      "phone": "089-5974911",
+      "email": "user.r598@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านโพธิ์-หัวถิน  ",
+      "ownerName": "นางสาวนิสา มาแดง",
+      "storeDescription": "",
+      "phone": "081-3885537",
+      "email": "user.r599@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านพังยาง  ",
+      "ownerName": "นายสุเทพ สุขแจ่ม",
+      "storeDescription": "",
+      "phone": "081-0940734",
+      "email": "user.r600@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านพลีใต้  ",
+      "ownerName": "นางวัชรียา ขะเดหรี",
+      "storeDescription": "",
+      "phone": "095-6491718",
+      "email": "user.r601@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านลานควาย ",
+      "ownerName": "นายพิชิต บุญรัตน์",
+      "storeDescription": "",
+      "phone": "090-8829231",
+      "email": "user.r602@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านตีนคลอง",
+      "ownerName": "นายสะอาด หมัดหมาน",
+      "storeDescription": "",
+      "phone": "087-2925945",
+      "email": "user.r603@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านลุ่ม",
+      "ownerName": "นายสิทธิศักดิ์ ทองสุข",
+      "storeDescription": "",
+      "phone": "081-0946333",
+      "email": "user.r604@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านวังบวบ",
+      "ownerName": "นางณัฐกฤตา นาคน้อย",
+      "storeDescription": "",
+      "phone": "087-4544728",
+      "email": "user.r605@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านควนขัน",
+      "ownerName": "นายอุดมศักดิ์  เต้แกว",
+      "storeDescription": "",
+      "phone": "085-8996498",
+      "email": "user.r606@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านทุ่งขมิ้น",
+      "ownerName": "นายภิรมย์ ทองจารึก",
+      "storeDescription": "",
+      "phone": "081-9573103",
+      "email": "user.r607@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านช่องเขา",
+      "ownerName": "นายอภัย คอยอาสา",
+      "storeDescription": "",
+      "phone": "089-3779326",
+      "email": "user.r608@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านทุ่งกระจูด",
+      "ownerName": "นางสาวสุภาวดี    เกลา",
+      "storeDescription": "",
+      "phone": "089-8732787",
+      "email": "user.r609@dbdui.com"
+    },
+    {
+      "storeName": "บ้านสำโรงแฉ้",
+      "ownerName": "นายอานนท์   คงศรี",
+      "storeDescription": "",
+      "phone": "093-6858799",
+      "email": "user.r610@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านโคกหาร",
+      "ownerName": "นางสาวสมฤทัย ชอบทกิจ",
+      "storeDescription": "",
+      "phone": "081-0778101",
+      "email": "user.r611@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านวัดหน้าเมือง ",
+      "ownerName": "นายยุทธิชัย ปานดง",
+      "storeDescription": "",
+      "phone": "093-6795483",
+      "email": "user.r612@dbdui.com"
+    },
+    {
+      "storeName": "ร้านค้าชุมชนบ้านตีนนา",
+      "ownerName": "นางอาทิตยา ช่างสาร",
+      "storeDescription": "",
+      "phone": "087-2943437",
+      "email": "user.r613@dbdui.com"
+    }
+  ]
+}

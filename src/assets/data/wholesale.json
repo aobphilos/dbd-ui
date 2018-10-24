@@ -1,0 +1,521 @@
+{
+  "data": [{
+      "storeName": "บริษัท เสรีลำปางจำกัด",
+      "ownerName": "คุณศรัญญา เจนวานิชกุล",
+      "storeDescription": "",
+      "phone": "089-9522419",
+      "email": "user.w001@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท อุตรดิตถ์ เอส ทีเทรดดิ้ง จำกัด",
+      "ownerName": "คุณปาจรีย์  อุ่นเจริญ",
+      "storeDescription": "",
+      "phone": "093-2684994",
+      "email": "user.w002@dbdui.com"
+    },
+    {
+      "storeName": "ห้างหุ้นส่วนจำกัด ดาวประเสริฐ",
+      "ownerName": "คุณภาณุพงศ์  ดาวประเสริฐ",
+      "storeDescription": "",
+      "phone": "088-2371476",
+      "email": "user.w003@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท วสันต์ เอกซ์เพรส จำกัด",
+      "ownerName": "คุณสัจจะ เริงเสนีย์",
+      "storeDescription": "",
+      "phone": "095-5469952",
+      "email": "user.w004@dbdui.com"
+    },
+    {
+      "storeName": "ภาณุพงศ์กรุ๊ป",
+      "ownerName": "คุณภาณุพงศ์ อิ่มจิตต์",
+      "storeDescription": "",
+      "phone": "083-7610076",
+      "email": "user.w005@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท กิตกมล จำกัด",
+      "ownerName": "คุณณรงค์  จารีประสิทธิ์",
+      "storeDescription": "",
+      "phone": "081-671-4562",
+      "email": "user.w006@dbdui.com"
+    },
+    {
+      "storeName": "มุกดาพาณิช",
+      "ownerName": "คุณพรพรรณ จันทร์ทิม",
+      "storeDescription": "",
+      "phone": "084-5783317",
+      "email": "user.w007@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท สมสวัสดิ์ ดีพาร์ทเมนท์สโตร์",
+      "ownerName": "คุณวิทวัล ลิมปิอังคนันท์ ",
+      "storeDescription": "",
+      "phone": "081-9042825",
+      "email": "user.w008@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท เอ็มเอ็ม สุโขทัย เอ็นเตอร์ไพร้สจำกัด",
+      "ownerName": "คุณสมพงษ์  ปัญญากร",
+      "storeDescription": "",
+      "phone": "081-7272999",
+      "email": "user.w009@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท แสงไทย แพร่",
+      "ownerName": "คุณทองหล่อ วิบูลย์ประภัสร์",
+      "storeDescription": "",
+      "phone": "081-9513645",
+      "email": "user.w010@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท แจ่มฟ้า เซปมาร์ท จำกัด",
+      "ownerName": "คุณอัญเชิญ  วงษ์มณีรุ่ง",
+      "storeDescription": "",
+      "phone": "081-952-7856",
+      "email": "user.w011@dbdui.com"
+    },
+    {
+      "storeName": "นราเปอร์มารท์",
+      "ownerName": "คุณสาธิต  บุญทอง",
+      "storeDescription": "",
+      "phone": "065-8789899",
+      "email": "user.w012@dbdui.com"
+    },
+    {
+      "storeName": "ทองอินทร์ ทีจี",
+      "ownerName": "คุณกษิดิษ ดีเดชา",
+      "storeDescription": "",
+      "phone": "089-0707001",
+      "email": "user.w013@dbdui.com"
+    },
+    {
+      "storeName": "หจก.จงกล 1999",
+      "ownerName": "คุณกนกวรรณ ปานวัชรา",
+      "storeDescription": "",
+      "phone": "081-266-5501",
+      "email": "user.w014@dbdui.com"
+    },
+    {
+      "storeName": "บ.ศรีชัยคง 1997 จก.",
+      "ownerName": "คุณวันชัย จิรัฐติเวท",
+      "storeDescription": "",
+      "phone": "098-445-0969",
+      "email": "user.w015@dbdui.com"
+    },
+    {
+      "storeName": "หจก.เอียมอัญ มาร์ท",
+      "ownerName": "คุณมนต์ชัย พงศ์พฤฒพันธ์",
+      "storeDescription": "",
+      "phone": "086-584-5377",
+      "email": "user.w016@dbdui.com"
+    },
+    {
+      "storeName": "บ.ต.ปัญญา จก.",
+      "ownerName": "คุณอารีย์ ชอบทองหลาง",
+      "storeDescription": "",
+      "phone": "080-649-3412",
+      "email": "user.w017@dbdui.com"
+    },
+    {
+      "storeName": "บ.ณัฐิยา มาร์เก็ตติ้ง จก.",
+      "ownerName": "คุณณัฐิยา วรรสิทธิ์",
+      "storeDescription": "",
+      "phone": "083-670-3728",
+      "email": "user.w018@dbdui.com"
+    },
+    {
+      "storeName": "หจก.พิพัฒนโชติ",
+      "ownerName": "คุณศุภโชค ชุนเกาะ",
+      "storeDescription": "",
+      "phone": "081-999-1781",
+      "email": "user.w019@dbdui.com"
+    },
+    {
+      "storeName": "บ.วงศ์มังกร ซุปเปอร์สโตร์ จก.",
+      "ownerName": "คุณกมลทิพย์ ไชยจารุวณิช",
+      "storeDescription": "",
+      "phone": "092-636-4654",
+      "email": "user.w020@dbdui.com"
+    },
+    {
+      "storeName": "บ.นาฟ สเตชั่นเนอรี่ จก.",
+      "ownerName": "คุณอดิเรก สุภา",
+      "storeDescription": "",
+      "phone": "089-425-7471",
+      "email": "user.w021@dbdui.com"
+    },
+    {
+      "storeName": "ร้านชมดาว",
+      "ownerName": "คุณดาวรุ่ง เชยคำดี",
+      "storeDescription": "",
+      "phone": "096-740-7705",
+      "email": "user.w022@dbdui.com"
+    },
+    {
+      "storeName": "บ.บิ๊กแคท มาร์ท จก.",
+      "ownerName": "คุณไพศาล แจ่มจำรัส",
+      "storeDescription": "",
+      "phone": "081-876-8766",
+      "email": "user.w023@dbdui.com"
+    },
+    {
+      "storeName": "เอ็น เอ มาร์ท",
+      "ownerName": "คุณณรงค์ชัย โล่ห์ชนะเจริญพร",
+      "storeDescription": "",
+      "phone": "081-876-3861",
+      "email": "user.w024@dbdui.com"
+    },
+    {
+      "storeName": "บ.บิ๊กแคท ดีซี จก.",
+      "ownerName": "คุณนุชนนท์ แจ่มจำรัส",
+      "storeDescription": "",
+      "phone": "062-985-6088",
+      "email": "user.w025@dbdui.com"
+    },
+    {
+      "storeName": "บ.กรุงไทย ซุปเปอร์ จก.",
+      "ownerName": "คุณเกียรติ วาปีทะ",
+      "storeDescription": "",
+      "phone": "081-876-8766",
+      "email": "user.w026@dbdui.com"
+    },
+    {
+      "storeName": "ห้างหุ้นส่วนจำกัด ดรักสโตร์มินิมาร์ท",
+      "ownerName": "คุณนพพร อินผวน",
+      "storeDescription": "",
+      "phone": "081-7906450",
+      "email": "user.w027@dbdui.com"
+    },
+    {
+      "storeName": "บ.ยงสงวนกรุ๊ป จก.",
+      "ownerName": "คุณสมถวิล คำพาทู",
+      "storeDescription": "",
+      "phone": "085-4011682",
+      "email": "user.w028@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท ฮกกี่ซุปเปอร์มาร์ท จำกัด",
+      "ownerName": "คุณธิติ วิชชาพิณ",
+      "storeDescription": "",
+      "phone": "086-4617981",
+      "email": "user.w029@dbdui.com"
+    },
+    {
+      "storeName": "บจ.เค.เอ็น.จี",
+      "ownerName": "คุณพรสวรรค์ วงศ์ชัยเพ็ง",
+      "storeDescription": "",
+      "phone": "089-2807821",
+      "email": "user.w030@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท กัญนภัทร กรุ๊ป จำกัด",
+      "ownerName": "คุณธนภัทร  ชองรัมย์",
+      "storeDescription": "",
+      "phone": "094-2566969",
+      "email": "user.w031@dbdui.com"
+    },
+    {
+      "storeName": "ก.ทรัพย์เจริญ",
+      "ownerName": "คุณเดชา วงษ์อินภา",
+      "storeDescription": "",
+      "phone": "093-6615338",
+      "email": "user.w032@dbdui.com"
+    },
+    {
+      "storeName": "ห้างหุ้นส่วนจำกัด อึ้งเซ้งเฮง (1994)",
+      "ownerName": "คุณกัณฑ์พงศ์  สุระวรรวิจิต",
+      "storeDescription": "",
+      "phone": "081-7397168",
+      "email": "user.w033@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท อินฟินิท มอลล์ จำกัด (สาขาสวนหลวง)",
+      "ownerName": "คุณศักดิ์ศิริ  เนียวกุล",
+      "storeDescription": "",
+      "phone": "087-5922479",
+      "email": "user.w034@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท พัชรา ดีเอ็ม จำกัด",
+      "ownerName": "คุณนิธิพัฒน์  สุทธิธรรม",
+      "storeDescription": "",
+      "phone": "081-3745221",
+      "email": "user.w035@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท สมุทรสาคร เอส.ดี.โอ (49) จำกัด",
+      "ownerName": "คุณอาณัติ  อธิคมปัญญาวงศ์",
+      "storeDescription": "",
+      "phone": "081-4225608",
+      "email": "user.w036@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท พัชราซุปเปอร์มาร์เก็ต",
+      "ownerName": "คุณพัชรดา อธิคมปัญญาวงศ์",
+      "storeDescription": "",
+      "phone": "081-5171354",
+      "email": "user.w037@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท รัตนไพบูลย์ 2555 จำกัด (สำนักงานใหญ่) ",
+      "ownerName": "คุณสมภพ รัตนไพบูลย์",
+      "storeDescription": "",
+      "phone": "089-8361456",
+      "email": "user.w038@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท อินฟินิท มอลล์ จำกัด (สาขาเมืองสมุทรปราการ)",
+      "ownerName": "คุณสาธิต  ทองจับ",
+      "storeDescription": "",
+      "phone": "083-6076677",
+      "email": "user.w039@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท เกษร ซุปเปอร์เซ็นเตอร์ จำกัด",
+      "ownerName": "คุณณัฐวุฒิ  วานิชกูล",
+      "storeDescription": "",
+      "phone": "083-1559277",
+      "email": "user.w040@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท รัตนไพบูลย์ 2555 จำกัด (สาขานครปฐม) ",
+      "ownerName": "คุณสุรัตน์  รัตนไพบูลย์ ",
+      "storeDescription": "",
+      "phone": "086-3638123",
+      "email": "user.w041@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท เทพบัวทอง  จำกัด",
+      "ownerName": "คุณหนึ่งฤทัย  หัสเดช",
+      "storeDescription": "",
+      "phone": "088-2812449",
+      "email": "user.w042@dbdui.com"
+    },
+    {
+      "storeName": "ห้างหุ้นส่วนจำกัด เบลมาร์ท (สำนักงานใหญ่)",
+      "ownerName": "คุณจิรพรรณ  ต้นประสงค์รัตน์",
+      "storeDescription": "",
+      "phone": "087-0792888",
+      "email": "user.w043@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท พี.วาย.กิจศิริ จำกัด",
+      "ownerName": "คุณกวีกิจ  แซ่โง้ว",
+      "storeDescription": "",
+      "phone": "085-5557577",
+      "email": "user.w044@dbdui.com"
+    },
+    {
+      "storeName": "ร้านพี เจ ค้าดี",
+      "ownerName": "คุณจันทิมา วรธรรมสรณ์",
+      "storeDescription": "",
+      "phone": "086-3057405",
+      "email": "user.w045@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท อินฟินิท มอลล์ จำกัด (สาขาท้ายบ้านใหม่)",
+      "ownerName": "คุณเมย์ ครรชิตวัฒนา",
+      "storeDescription": "",
+      "phone": "02-1169885",
+      "email": "user.w046@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท กรชัยสหพัฒน์ จำกัด",
+      "ownerName": "คุณวรพจน์ เมทนีกรชัย",
+      "storeDescription": "",
+      "phone": "089-8102927",
+      "email": "user.w047@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท อัน อัน มินิมาร์ท จำกัด",
+      "ownerName": "คุณสุขุม ปัญญากร",
+      "storeDescription": "",
+      "phone": "081-0379898",
+      "email": "user.w048@dbdui.com"
+    },
+    {
+      "storeName": "ห้างหุ้นส่วนจำกัด รุ่งชัยจันทร์รักษา ",
+      "ownerName": "คุณอรุณี  จันทร์รักษา",
+      "storeDescription": "",
+      "phone": "089-1666643",
+      "email": "user.w049@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท สว่างวงศ์ ดีพาร์ทเมนท์สโตร์",
+      "ownerName": "คุณสุรีย์ โตวิวัฒน์",
+      "storeDescription": "",
+      "phone": "084-8199899",
+      "email": "user.w050@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท อัมพรสรรพสินค้า จำกัด",
+      "ownerName": "คุณธีระ อัมพรพฤติ",
+      "storeDescription": "",
+      "phone": "081-5665555",
+      "email": "user.w051@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท มาเธอร์มาร์เก็ตติง",
+      "ownerName": "คุณวีรยุทธ  คลองรั้ว",
+      "storeDescription": "",
+      "phone": "075-620700",
+      "email": "user.w052@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท แซด.เอ.วี.อี   จำกัด",
+      "ownerName": "คุณสุรัตน์  จิตรไมตรีเจริญ",
+      "storeDescription": "",
+      "phone": "081-6074477",
+      "email": "user.w053@dbdui.com"
+    },
+    {
+      "storeName": "บริษัทสุราษฎร์ธานี ดีเวลลอปเม้นท์ จำกัด",
+      "ownerName": "คุณสศิษฏ์  ปัญจคุณาธร",
+      "storeDescription": "",
+      "phone": "089-1968660",
+      "email": "user.w054@dbdui.com"
+    },
+    {
+      "storeName": "ห้างหุ้นส่วนจำกัด ทุ่งสงยงเจริญ",
+      "ownerName": "คุณสุนทรี  ปัญจคุณาธร",
+      "storeDescription": "",
+      "phone": "080-521-4494",
+      "email": "user.w055@dbdui.com"
+    },
+    {
+      "storeName": "บริษัทชุมพรโอเชี่ยนกรุ๊ป(สาขา 1)",
+      "ownerName": "คุณพินิจ  นราธรสวัสดิกุล",
+      "storeDescription": "",
+      "phone": "081-8944525",
+      "email": "user.w056@dbdui.com"
+    },
+    {
+      "storeName": "ห้างหุ้นส่วนจำกัด ส.ตรีมิตร",
+      "ownerName": "คุณวิเชฎฐ์  กันตะพงษ์",
+      "storeDescription": "",
+      "phone": "081-0871589",
+      "email": "user.w057@dbdui.com"
+    },
+    {
+      "storeName": "หจก. ลื้อเอ็กเซ้ง",
+      "ownerName": "คุณศราวุธ ประกิตสุวรรณ",
+      "storeDescription": "",
+      "phone": "083-0088555",
+      "email": "user.w058@dbdui.com"
+    },
+    {
+      "storeName": "ร้านหน้าควนซุปเปอร์",
+      "ownerName": "คุณพิสิทธิ์ รัตนลือรุ่งโรจน์",
+      "storeDescription": "",
+      "phone": "094-5958994",
+      "email": "user.w059@dbdui.com"
+    },
+    {
+      "storeName": "ร้านเขาพระนิ่มมินิมาร์ท",
+      "ownerName": "คุณราตรี  เพ็งคง",
+      "storeDescription": "",
+      "phone": "081-8920510",
+      "email": "user.w060@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท สหไทยดีพาร์เมนท์สโตร์",
+      "ownerName": "คุณจิตาภา อินสุวรรรณ",
+      "storeDescription": "",
+      "phone": "090-7013628",
+      "email": "user.w061@dbdui.com"
+    },
+    {
+      "storeName": "ร้านอุสาพานิช",
+      "ownerName": "คุณสลิล  ปัญจคุณาธร",
+      "storeDescription": "",
+      "phone": "089-1968660",
+      "email": "user.w062@dbdui.com"
+    },
+    {
+      "storeName": "ห้างหุ้นส่วนจำกัด กระบี่เบญจมินทร์",
+      "ownerName": "คุณสิทธิศักดิ์  รักซื่อ",
+      "storeDescription": "",
+      "phone": "081-9787902",
+      "email": "user.w063@dbdui.com"
+    },
+    {
+      "storeName": "บริษัทชุมพรโอเชี่ยนกรุ๊ปสำนักงานใหญ่",
+      "ownerName": "คุณไชยลิน  เบญอริยกุล",
+      "storeDescription": "",
+      "phone": "081-6065555",
+      "email": "user.w064@dbdui.com"
+    },
+    {
+      "storeName": "ห้างหุ้นส่วนจำกัด กะซ้งค้าส่ง",
+      "ownerName": "คุณวีรดา สังข์ประสิทธิ์",
+      "storeDescription": "",
+      "phone": "093-8791654",
+      "email": "user.w065@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท ศรีสมัยค้าส่ง",
+      "ownerName": "คุณลินจง  วงศ์เสาวภาคย์กุล",
+      "storeDescription": "",
+      "phone": "073-245468",
+      "email": "user.w066@dbdui.com"
+    },
+    {
+      "storeName": "บริษัทสกลธนา จำกัด",
+      "ownerName": "คุณอุปถัมภ์  ศิริไชย",
+      "storeDescription": "",
+      "phone": "081-8979186",
+      "email": "user.w067@dbdui.com"
+    },
+    {
+      "storeName": "ร้านโพธิ์เจริญการค้า",
+      "ownerName": "คุณจิตนา  บุญแล",
+      "storeDescription": "",
+      "phone": "089-6524807",
+      "email": "user.w068@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท เคแอนด์เค ซุปเปอร์ค้าส่ง หาดใหญ่ 2009",
+      "ownerName": "คุณวไลพร พ่วงเพช",
+      "storeDescription": "",
+      "phone": "084-8448417",
+      "email": "user.w069@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท โอเดียนเซาท์เทิร์นเซ็นเตอร์ จำกัด",
+      "ownerName": "คุณฐิตารัตน์ สิรินนท์สกุล",
+      "storeDescription": "",
+      "phone": "087-8995556",
+      "email": "user.w070@dbdui.com"
+    },
+    {
+      "storeName": "บริษัท ก้ายช้วน เค.ซี. ช็อปปิ้งเซ็นเตอร์",
+      "ownerName": "คุณก้องกิดากร สุวรรมณี",
+      "storeDescription": "",
+      "phone": "083-1835327",
+      "email": "user.w071@dbdui.com"
+    },
+    {
+      "storeName": "ร้านชุมทองการค้า",
+      "ownerName": "คุณพงษ์ศิลป์ วงศาวณิชย์กิจ",
+      "storeDescription": "",
+      "phone": "081-1241516",
+      "email": "user.w072@dbdui.com"
+    },
+    {
+      "storeName": "ร้านบุบผาการค้า",
+      "ownerName": "คุณจารี ชุมทอง",
+      "storeDescription": "",
+      "phone": "081-3679116",
+      "email": "user.w073@dbdui.com"
+    },
+    {
+      "storeName": "ห้างหุ้นส่วนจำกัด ศรีทองกุล เทรดดิ้ง",
+      "ownerName": "คุณศุภชัย  ศรีทองกุล",
+      "storeDescription": "",
+      "phone": "081-8934366",
+      "email": "user.w074@dbdui.com"
+    }
+  ]
+}
