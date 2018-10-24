@@ -129,21 +129,13 @@ export class MemberUploadComponent implements OnInit {
     if (uploader.hasImage) {
       this.showBusy();
       if (uploader.userOldImage) {
-        this.updateDb()
-          .then(() => {
-            this.modalRef.close(); this.hideBusy();
-          }, err => this.logError(err));
+        this.updateDbWithImage(this.model.imageUrl);
       } else {
-
         uploader.startUpload()
           .then(
             result => {
               result.subscribe(url => {
-                this.model.imageUrl = url;
-                this.updateDb()
-                  .then(() => {
-                    this.modalRef.close(); this.hideBusy();
-                  }, err => this.logError(err));
+                this.updateDbWithImage(url);
               });
             },
             err => this.logError(err));
@@ -153,6 +145,28 @@ export class MemberUploadComponent implements OnInit {
     }
 
     this.notifyService.setWarningMessage('Please choose an image');
+
+  }
+
+  private updateDbWithImage(imageUrl: string) {
+    this.model.imageUrl = imageUrl;
+    this.updateDb()
+      .then(() => {
+        this.modalRef.close(); this.hideBusy();
+      }, err => this.logError(err));
+  }
+
+  private setDefaultImageUrl() {
+
+    if (!this.model.imageUrl || this.model.imageUrl === '') {
+      if (this.isProduct) {
+        this.model.imageUrl = '/assets/uploaders/product.png';
+      } else if (this.isPromotion) {
+        this.model.imageUrl = '/assets/uploaders/product.png';
+      } else if (this.isStore) {
+        this.model.imageUrl = '/assets/uploaders/shop.png';
+      }
+    }
 
   }
 
@@ -216,6 +230,8 @@ export class MemberUploadComponent implements OnInit {
       this.model.ownerId = this.owner.id;
       this.model.owner = OwnerView.create(this.owner);
     }
+
+    this.setDefaultImageUrl();
 
     this.imageUrlSubject.next(this.model.imageUrl);
   }
