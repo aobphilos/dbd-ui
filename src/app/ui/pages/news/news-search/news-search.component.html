@@ -16,7 +16,8 @@
     </ng-template>
     <div class="col-12 mt-3" *ngIf="totalHits > 0">
       <ngb-pagination class="d-flex justify-content-end" [collectionSize]="totalHits"
-        [(page)]="currentPage" [pageSize]="10" (pageChange)="onPageChange()"></ngb-pagination>
+        [(page)]="currentPage" [pageSize]="10" (pageChange)="onPageChange()"
+        [maxSize]="10" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
     </div>
   </div>
 </div>
